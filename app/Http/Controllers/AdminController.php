@@ -17,4 +17,9 @@ class AdminController extends Controller
         return redirect('/');
     }
 
+     // AdminLogoutPage
+     public function AdminLogoutPage(){
+         return view('admin.admin_logout');
+     }
+
 }
