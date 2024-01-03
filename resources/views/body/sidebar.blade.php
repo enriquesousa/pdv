@@ -51,7 +51,14 @@
 
                 {{-- Dashboards --}}
                 <li>
-                    <a href="#sidebarDashboards" data-bs-toggle="collapse">
+                    
+                     {{-- También podemos acceder como href="{{ url('/dashboard') }}" --}}
+                     <a href="{{ route('dashboard') }}"> 
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span> Panel </span>
+                    </a>
+
+                    {{-- <a href="#sidebarDashboards" data-bs-toggle="collapse">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="badge bg-success rounded-pill float-end">4</span>
                         <span> Dashboards </span>
@@ -71,7 +78,8 @@
                                 <a href="dashboard-4.html">Dashboard 4</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
+
                 </li>
 
                 {{-- * CONTROL --}}

@@ -56,6 +56,7 @@
 
                                     {{-- Email/Name/Phone --}}
                                     <div class="mb-3">
+
                                         <label for="login" class="form-label">Correo electrónico/Nombre/Teléfono</label>
 
                                         <input class="form-control @error('login') is-invalid @enderror" value="{{ old('login') }}" name="login" type="text" id="login" required="" placeholder="Introduce tu correo electrónico" autofocus>
@@ -67,9 +68,10 @@
 
                                     {{-- Password --}}
                                     <div class="mb-3">
-                                        <label for="password" class="form-label">Contraseña</label>
-                                        <div class="input-group input-group-merge">
 
+                                        <label for="password" class="form-label">Contraseña</label>
+
+                                        <div class="input-group input-group-merge">
                                             <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Ingresa tu contraseña">
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
@@ -77,8 +79,8 @@
                                             @error('login')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
-
                                         </div>
+
                                     </div>
 
                                     {{-- Remember me --}}

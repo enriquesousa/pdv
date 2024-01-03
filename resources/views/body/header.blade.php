@@ -1,8 +1,10 @@
 <!-- Topbar Start -->
 <div class="navbar-custom">
     <div class="container-fluid">
+
         <ul class="list-unstyled topnav-menu float-end mb-0">
 
+            {{-- CLICK DROPDOWN CAJA PARA CAJA DE BÚSQUEDA app-search-box dropdown --}}
             <li class="d-none d-lg-block">
                 <form class="app-search">
                     <div class="app-search-box dropdown">
@@ -74,6 +76,7 @@
                 </form>
             </li>
 
+            {{-- CAJA DE BÚSQUEDA --}}
             <li class="dropdown d-inline-block d-lg-none">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown"
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -87,6 +90,7 @@
                 </div>
             </li>
 
+            {{-- ICONO FULL SCREEN --}}
             <li class="dropdown d-none d-lg-inline-block">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen"
                     href="#">
@@ -94,6 +98,7 @@
                 </a>
             </li>
 
+            {{-- LIGAS DROPDOWN  --}}
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown"
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -150,6 +155,7 @@
                 </div>
             </li>
 
+            {{-- BANDERAS DE IDIOMAS --}}
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown"
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -184,6 +190,7 @@
                 </div>
             </li>
 
+            {{-- CAMPANA DE NOTIFICACIONES --}}
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
@@ -281,25 +288,39 @@
                 </div>
             </li>
 
+
+
+            {{-- PERFIL - Código para poder traer datos del usuario para desplegar foto de perfil y nombre de usuario --}}
+            @php
+                $id = Auth::user()->id;
+                $adminData = App\Models\User::find($id);
+            @endphp
+
+            {{-- PERFIL dropdown notification-list topbar-dropdown --}}
             <li class="dropdown notification-list topbar-dropdown">
+
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown"
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{ asset('backend/assets/images/users/user-1.jpg') }}" alt="user-image"
-                        class="rounded-circle">
-                    <span class="pro-user-name ms-1">
-                        Geneva <i class="mdi mdi-chevron-down"></i>
-                    </span>
+
+                    {{-- Foto de perfil --}}
+                    <img src="{{ (!empty($adminData->photo)) ? url('upload/admin_image/'.$adminData->photo) : url('upload/no_image.jpg') }}" alt="user-image" class="rounded-circle">
+
+                    {{-- Nombre de usuario --}}
+                    <span class="pro-user-name ms-1">{{ $adminData->name }}<i class="mdi mdi-chevron-down"></i></span>
+
                 </a>
+
+                {{-- profile-dropdown --}}
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
                     <!-- item-->
                     <div class="dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome !</h6>
+                        <h6 class="text-overflow m-0">Bienvenido !</h6>
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{ route('admin.profile') }}" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
-                        <span>My Account</span>
+                        <span>Mi Perfil</span>
                     </a>
 
                     <!-- item-->
@@ -309,9 +330,9 @@
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{ route('change.password') }}" class="dropdown-item notify-item">
                         <i class="fe-lock"></i>
-                        <span>Lock Screen</span>
+                        <span>Cambiar Contraseña</span>
                     </a>
 
                     <div class="dropdown-divider"></div>
@@ -325,6 +346,7 @@
                 </div>
             </li>
 
+
             <li class="dropdown notification-list">
                 <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
                     <i class="fe-settings noti-icon"></i>
@@ -335,7 +357,8 @@
 
         <!-- LOGO -->
         <div class="logo-box">
-            <a href="index.html" class="logo logo-dark text-center">
+
+            <a href="{{ route('dashboard') }}" class="logo logo-dark text-center">
                 <span class="logo-sm">
                     <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="" height="22">
                     <!-- <span class="logo-lg-text-light">UBold</span> -->
@@ -346,7 +369,7 @@
                 </span>
             </a>
 
-            <a href="index.html" class="logo logo-light text-center">
+            <a href="{{ route('dashboard') }}" class="logo logo-light text-center">
                 <span class="logo-sm">
                     <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="" height="22">
                 </span>
@@ -354,8 +377,10 @@
                     <img src="{{ asset('backend/assets/images/logo-pdv-esweb-light.png') }}" alt="" height="20">
                 </span>
             </a>
+
         </div>
 
+        {{-- MENU DEL TOPBAR topnav-menu topnav-menu-left --}}
         <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
             <li>
                 <button class="button-menu-mobile waves-effect waves-light">
@@ -522,7 +547,9 @@
                 </div>
             </li>
         </ul>
+
         <div class="clearfix"></div>
+
     </div>
 </div>
 <!-- end Topbar -->
