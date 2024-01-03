@@ -333,7 +333,7 @@
                     {{-- settings-tab --}}
                     <div class="tab-pane active" id="settings-tab" role="tabpanel">
                         <h6 class="fw-medium px-3 m-0 py-2 font-13 text-uppercase bg-light">
-                            <span class="d-block py-1">Configuración del Tema</span>
+                            <span class="d-block py-1">Configuración Tema</span>
                         </h6>
 
                         <div class="p-3">
