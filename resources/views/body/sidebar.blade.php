@@ -3,42 +3,59 @@
 
     <div class="h-100" data-simplebar>
 
+        {{-- PERFIL - Código para poder traer datos del usuario para desplegar foto de perfil y nombre de usuario --}}
+        @php
+            $id = Auth::user()->id;
+            $adminData = App\Models\User::find($id);
+        @endphp
+
         <!-- User box -->
         <div class="user-box text-center">
-            <img src="{{ asset('backend/assets/images/users/user-1.jpg') }}" alt="user-img" title="Mat Helme"
-                class="rounded-circle avatar-md">
+            
+            {{-- <img src="{{ asset('backend/assets/images/users/user-1.jpg') }}" alt="user-img" title="Mat Helme"
+                class="rounded-circle avatar-md"> --}}
+
+            {{-- Foto de perfil --}}
+            <img src="{{ (!empty($adminData->photo)) ? url('upload/admin_image/'.$adminData->photo) : url('upload/no_image.jpg') }}" alt="user-image" class="rounded-circle">    
+
             <div class="dropdown">
                 <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
-                    data-bs-toggle="dropdown">Geneva Kennedy</a>
+                    data-bs-toggle="dropdown">{{ $adminData->name }}</a>
+
                 <div class="dropdown-menu user-pro-dropdown">
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-user me-1"></i>
-                        <span>My Account</span>
+                     <!-- item-->
+                     <a href="{{ route('admin.profile') }}" class="dropdown-item notify-item">
+                        <i class="fe-user"></i>
+                        <span>Mi Perfil</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-settings me-1"></i>
+                        <i class="fe-settings"></i>
                         <span>Settings</span>
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-lock me-1"></i>
-                        <span>Lock Screen</span>
+                    <a href="{{ route('change.password') }}" class="dropdown-item notify-item">
+                        <i class="fe-lock"></i>
+                        <span>Cambiar Contraseña</span>
                     </a>
 
+                    <div class="dropdown-divider"></div>
+
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-log-out me-1"></i>
-                        <span>Logout</span>
+                    <a href="{{ route('admin.logout') }}" class="dropdown-item notify-item">
+                        <i class="fe-log-out"></i>
+                        <span>Salir</span>
                     </a>
 
                 </div>
             </div>
-            <p class="text-muted">Admin Head</p>
+
+            <p class="text-muted">Admin</p>
+
+
         </div>
 
         <!--- Sidemenu -->
@@ -49,7 +66,7 @@
                 {{-- * NAVEGACIÓN --}}
                 <li class="menu-title">NAVEGACIÓN</li>
 
-                {{-- Dashboards --}}
+                {{-- Dashboards / Panel --}}
                 <li>
                     
                      {{-- También podemos acceder como href="{{ url('/dashboard') }}" --}}
@@ -85,13 +102,25 @@
                 {{-- * CONTROL --}}
                 <li class="menu-title mt-2">CONTROL</li>
 
-                {{-- Calendar --}}
+                {{-- Control de Empleados --}}
                 <li>
-                    <a href="apps-calendar.html">
-                        <i class="mdi mdi-calendar"></i>
-                        <span> Calendar </span>
+                    <a href="#sidebarEmpleados" data-bs-toggle="collapse">
+                        <i class="mdi mdi-account-multiple-outline"></i>
+                        <span>Empleados</span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="sidebarEmpleados">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.employee') }}">Lista Empleados</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('employee.add') }}">Agregar Empleado</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
+
 
                 {{-- Chat --}}
                 <li>

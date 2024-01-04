@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\EmployeeController;
 
 
 
@@ -50,6 +51,16 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
     Route::get('/change/password', [AdminController::class, 'ChangePassword'])->name('change.password');
     Route::post('/update/password', [AdminController::class, 'UpdatePassword'])->name('update.password');
+
+    // Rutas Employees
+    Route::controller(EmployeeController::class)->group(function () {
+        Route::get('/all/employee', 'EmployeeList')->name('all.employee');
+        Route::get('/employee/add', 'EmployeeAdd')->name('employee.add');
+        Route::post('/employee/store', 'EmployeeStore')->name('employee.store');
+        Route::get('/employee/edit/{id}', 'EmployeeEdit')->name('employee.edit');
+        Route::post('/employee/update', 'EmployeeUpdate')->name('employee.update');
+        Route::get('/employee/delete/{id}', 'EmployeeDelete')->name('employee.delete');    
+    });
 
 
     

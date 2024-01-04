@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        
+        // Para convertir a formato money
+        // To use it in Blade: @convert($var)
+        // $@convert($property->max_price)
+        Blade::directive('convert', function ($money) {
+            // converts string into float 
+            return "<?php echo number_format($money, 2); ?>";
+        });
+
     }
 }
