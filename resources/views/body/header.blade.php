@@ -344,7 +344,7 @@
                     </a>
 
                 </div>
-                
+
             </li>
 
 
@@ -401,6 +401,7 @@
                 <!-- End mobile menu toggle-->
             </li>
 
+            {{-- Create New Menu --}}
             <li class="dropdown d-none d-xl-block">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
@@ -443,6 +444,7 @@
                 </div>
             </li>
 
+            {{-- Mega Menu --}}
             <li class="dropdown dropdown-mega d-none d-xl-block">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
@@ -547,6 +549,7 @@
 
                 </div>
             </li>
+            
         </ul>
 
         <div class="clearfix"></div>

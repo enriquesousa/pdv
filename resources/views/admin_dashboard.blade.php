@@ -80,7 +80,7 @@
     </div>
     <!-- END wrapper -->
 
-    <!-- Right Sidebar -->
+    <!-- CONFIGURACIÓN DEL TEMA right Sidebar -->
     <div class="right-bar">
         <div data-simplebar class="h-100">
 
