@@ -121,6 +121,25 @@
                     </div>
                 </li>
 
+                {{-- Control de Clientes --}}
+                <li>
+                    <a href="#sidebarClientes" data-bs-toggle="collapse">
+                        <i class="mdi mdi-account-multiple-outline"></i>
+                        <span>Clientes</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarClientes">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.customer') }}">Lista Clientes</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('customer.add') }}">Agregar Cliente</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
 
                 {{-- Chat --}}
                 <li>
