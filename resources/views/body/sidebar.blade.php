@@ -140,6 +140,25 @@
                     </div>
                 </li>
 
+                {{-- Control de Proveedores --}}
+                <li>
+                    <a href="#sidebarProveedores" data-bs-toggle="collapse">
+                        <i class="mdi mdi-account-multiple-outline"></i>
+                        <span>Proveedores</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarProveedores">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.supplier') }}">Lista de Proveedores</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('supplier.add') }}">Agregar Proveedor</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
 
                 {{-- Chat --}}
                 <li>
