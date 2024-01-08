@@ -30,7 +30,7 @@ class SalaryController extends Controller
                 'employee_id' => 'required',
                 'month' => 'required',
                 'year' => 'required',
-                'advance_salary' => 'required|numeric|max:1000000',
+                // 'advance_salary' => 'required|numeric|max:1000000',
             ],
 
             [

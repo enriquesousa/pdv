@@ -64,19 +64,28 @@
                                         <td>$ @convert($floatVar)</td>
 
                                         {{-- Avance de Salario--}}
-                                        {{-- @php
-                                            $floatVar =  floatval($item->advance_salary); 
-                                        @endphp
-                                        <td>$ @convert($floatVar)</td> --}}
-                                        
-                                        <td></td>
+                                        <td>
+                                            @if ($item->advance->advance_salary == NULL)
+                                                <span class="badge bg-danger">No hay Avance</span>
+                                            @else    
+                                                @php
+                                                    $floatVar =  floatval($item->advance->advance_salary); 
+                                                @endphp
+                                                $ @convert($floatVar)
+                                            @endif
+                                        </td>
 
-                                        <td></td>
+                                        <td>
+                                            @php
+                                                $amount = $item->salary - $item->advance->advance_salary;
+                                                $floatVar =  floatval($amount); 
+                                            @endphp
+                                            <strong> <span class="badge bg-warning">$ @convert($floatVar)</span> </strong>
+                                        </td>
 
 
                                         <td>
-                                            <a href="{{ route('edit.advance.salary', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
-                                            <a href="{{ route('delete.advance.salary', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a>
+                                            <a href="{{ route('edit.advance.salary', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Pagar Ahora</a>
                                         </td>
                                     </tr>
 

@@ -61,10 +61,16 @@
                                         <td>$ @convert($floatVar)</td>
 
                                         {{-- Avance de Salario--}}
-                                        @php
-                                            $floatVar =  floatval($item->advance_salary); 
-                                        @endphp
-                                        <td>$ @convert($floatVar)</td>
+                                        <td>
+                                            @if ($item->advance_salary == NULL)
+                                                <span class="badge bg-danger">No hay Avance</span>
+                                            @else    
+                                                @php
+                                                    $floatVar =  floatval($item->advance_salary); 
+                                                @endphp
+                                                $ @convert($floatVar)
+                                            @endif
+                                        </td>
 
                                         <td>
                                             <a href="{{ route('edit.advance.salary', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
