@@ -95,6 +95,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/delete/advance/salary/{id}', 'AdvanceSalaryDelete')->name('delete.advance.salary');  
     });
 
+    // Rutas Pay Salary
+    Route::controller(SalaryController::class)->group(function () {
+	    Route::get('/pay/salary', 'PaySalary')->name('pay.salary');
+    });
+
 
     
 });
