@@ -138,6 +138,28 @@ class SalaryController extends Controller
        return view('backend.salary.paid_salary', compact('paysalary'));
     }
 
+    // EmployeeSalaryStore
+    public function EmployeeSalaryStore(Request $request){
+       
+        $employee_id = $request->employee_id;
+
+        PaySalary::insert([
+            'employee_id' => $request->employee_id,
+            'salary_month' => $request->salary_month,
+            'paid_amount' => $request->paid_amount,
+            'advance_salary' => $request->advance_salary,
+            'due_salary' => $request->due_salary,
+            'created_at' => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message' => 'Salario de Empleado Pagado Exitosamente',
+            'alert-type' => 'success'
+        );
+    
+        return redirect()->route('pay.salary')->with($notification);
+
+    }
 
 
 }

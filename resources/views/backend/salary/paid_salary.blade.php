@@ -30,7 +30,7 @@
 
                             <div class="tab-pane" id="settings">
 
-                                <form method="post" action="{{ route('advance.salary.store') }}">
+                                <form method="post" action="{{ route('employee.salary.store') }}">
                                     @csrf
 
                                     <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i>Pagar Salario</h5>
@@ -47,6 +47,7 @@
                                                         {{ $paysalary->name }}
                                                     </h5>
                                                 </div>
+                                                <input type="hidden" name="employee_id" value="{{ $paysalary->id }}">
                                             </div>
                                         </div>
 
@@ -59,6 +60,7 @@
                                                     <h5 class="mt-1 font-size-14">
                                                         {{ __(date('F', strtotime('-1 month'))) }}
                                                     </h5>
+                                                    <input type="hidden" name="salary_month" value="{{ __(date('F', strtotime('-1 month'))) }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -83,6 +85,7 @@
                                                     <h5 class="mt-1 font-size-14">
                                                         $ @convert($floatVar)
                                                     </h5>
+                                                    <input type="hidden" name="paid_amount" value="{{ $paysalary->salary }}">
                                                     <span class="badge bg-soft-danger text-success">Sueldo</span>
                                                 </div>
                                             </div>
@@ -102,6 +105,7 @@
                                                         $ @convert($floatVar)
                                                         <span class="badge bg-soft-danger text-warning">Avance</span>
                                                     </h5>
+                                                    <input type="hidden" name="advance_salary" value="{{ $paysalary->advance->advance_salary }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -115,7 +119,7 @@
 
                                                     @php
                                                         $amount = $paysalary->salary - $paysalary->advance->advance_salary;
-                                                        $floatVar = floatval($amount);
+                                                        $floatVar = floatval(round($amount));
                                                     @endphp
 
                                                     @if ($paysalary->advance->advance_salary == NULL)
@@ -129,6 +133,7 @@
                                                     @endif
                                                     
                                                     <span class="badge bg-soft-danger text-danger">Pagar</span>
+                                                    <input type="hidden" name="due_salary" value="{{ round($amount, 2) }}">
 
                                                 </div>
                                             </div>
