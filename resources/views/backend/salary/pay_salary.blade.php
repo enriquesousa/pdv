@@ -85,8 +85,9 @@
 
 
                                         <td>
-                                            <a href="{{ route('edit.advance.salary', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Pagar Ahora</a>
+                                            <a href="{{ route('pay.now.salary', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Pagar Ahora</a>
                                         </td>
+                                        
                                     </tr>
 
                                 @endforeach

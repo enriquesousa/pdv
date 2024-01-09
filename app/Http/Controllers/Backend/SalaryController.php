@@ -127,11 +127,15 @@ class SalaryController extends Controller
     //////////////////////// Métodos Pay Salary - Salarios Pagados /////////////////
 
     // PaySalary
-    public function PaySalary(){
-       
+    public function PaySalary(){  
         $employee = Employee::latest()->get();
         return view('backend.salary.pay_salary', compact('employee'));
+    }
 
+    // PayNowSalary
+    public function PayNowSalary($id){
+       $paysalary = Employee::findOrFail($id);
+       return view('backend.salary.paid_salary', compact('paysalary'));
     }
 
 
