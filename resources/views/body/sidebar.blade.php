@@ -176,7 +176,10 @@
                                 <a href="{{ route('add.advance.salary') }}">Agregar Salario</a>
                             </li>
                             <li>
-                                <a href="{{ route('pay.salary') }}">Salarios Pagados</a>
+                                <a href="{{ route('pay.salary') }}">Pagar Salario</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('month.salary') }}">Salarios del Ultimo Mes</a>
                             </li>
 
                         </ul>

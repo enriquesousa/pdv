@@ -16,7 +16,7 @@
                             <a href="{{ route('add.advance.salary') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Salario</a>
                         </ol>
                     </div>
-                    <h4 class="page-title">Lista de Salarios en Avance</h4>
+                    <h4 class="page-title">Salario del Mes Pasado</h4>
                 </div>
             </div>
         </div>     
@@ -34,12 +34,11 @@
                                 <tr>
                                     <th>Serie</th>
                                     <th>Imagen</th>
-                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Mes</th>
                                     {{-- <th>Año</th> --}}
                                     <th>Salario</th>
-                                    <th>Avance</th>
+                                    <th>Estatus</th>
                                     <th>Acción</th>
                                 </tr>
                             </thead>
@@ -47,13 +46,13 @@
                         
                             <tbody>
 
-                                @foreach ($salary as $key => $item)
+                                @foreach ($paidSalary as $key => $item)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td><img src="{{ asset($item->employee->image) }}" style="width: 50px; height: 40px;"></td>
-                                        <td>{{ $item->employee->id }}</td>
                                         <td>{{ $item->employee->name }}</td>
-                                        <td>{{ $item->month }}</td>
+                                        <td>{{ $item->salary_month }}</td>
+
                                         {{-- <td>{{ $item->year }}</td> --}}
 
                                         {{-- Salario --}}
@@ -62,21 +61,14 @@
                                         @endphp
                                         <td>$ @convert($floatVar)</td>
 
-                                        {{-- Avance de Salario--}}
+                                        {{-- Estatus --}}
                                         <td>
-                                            @if ($item->advance_salary == NULL)
-                                                <span class="badge bg-danger">No hay Avance</span>
-                                            @else    
-                                                @php
-                                                    $floatVar =  floatval($item->advance_salary); 
-                                                @endphp
-                                                $ @convert($floatVar)
-                                            @endif
+                                            <span class="badge bg-soft-danger text-success">Pagado Completo</span>
                                         </td>
 
+                                        {{-- Botones de Acción --}}
                                         <td>
-                                            <a href="{{ route('edit.advance.salary', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
-                                            <a href="{{ route('delete.advance.salary', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a>
+                                            <a href="{{ route('edit.advance.salary', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Historial</a>
                                         </td>
                                     </tr>
 

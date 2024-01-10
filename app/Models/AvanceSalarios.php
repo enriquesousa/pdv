@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PaySalary extends Model
+class AvanceSalarios extends Model
 {
     use HasFactory;
-    
-    protected $guarded = [];
 
     // Relación con 'id' del empleado
     public function employee()

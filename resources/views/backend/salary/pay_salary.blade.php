@@ -16,7 +16,7 @@
                             <a href="{{ route('add.advance.salary') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Salario</a>
                         </ol>
                     </div>
-                    <h4 class="page-title">Lista de Salarios Pagados</h4>
+                    <h4 class="page-title">Pagar Salario</h4>
                 </div>
             </div>
         </div>     
@@ -37,6 +37,7 @@
                                     <th>Imagen</th>
                                     <th>Nombre</th>
                                     <th>Mes</th>
+                                    <th>Año</th>
                                     <th>Salario</th>
                                     <th>Avance</th>
                                     <th>Se debe</th>
@@ -56,6 +57,8 @@
                                         {{-- Mes anterior --}}
                                         <td><span class="badge bg-info"> {{ __(date("F", strtotime('-1 month'))) }} </span></td>
 
+                                        {{-- Año --}}
+                                        <td><span class="badge bg-info"> {{ $item->advance->year }} </span></td>
 
                                         {{-- Salario --}}
                                         @php
