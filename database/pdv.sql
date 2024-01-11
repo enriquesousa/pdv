@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 07, 2024 at 05:45 PM
+-- Generation Time: Jan 11, 2024 at 07:09 PM
 -- Server version: 10.11.4-MariaDB-1~deb12u1
 -- PHP Version: 8.2.7
 
@@ -32,6 +32,7 @@ CREATE TABLE `advance_salaries` (
   `employee_id` int(11) NOT NULL,
   `month` varchar(255) DEFAULT NULL,
   `year` varchar(255) DEFAULT NULL,
+  `status` varchar(15) DEFAULT NULL,
   `advance_salary` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -41,11 +42,46 @@ CREATE TABLE `advance_salaries` (
 -- Dumping data for table `advance_salaries`
 --
 
-INSERT INTO `advance_salaries` (`id`, `employee_id`, `month`, `year`, `advance_salary`, `created_at`, `updated_at`) VALUES
-(2, 9, 'Enero', '2023', '5000', '2023-10-31 15:24:58', NULL),
-(3, 8, 'Enero', '2023', '1500', '2023-10-31 15:25:35', NULL),
-(4, 6, 'Enero', '2023', '5500', '2023-10-31 15:26:15', NULL),
-(5, 9, 'Diciembre', '2023', '2000', '2023-12-31 01:25:47', NULL);
+INSERT INTO `advance_salaries` (`id`, `employee_id`, `month`, `year`, `status`, `advance_salary`, `created_at`, `updated_at`) VALUES
+(28, 18, 'Enero', '2024', 'Pagado', NULL, '2024-01-10 23:38:07', '2024-01-11 18:37:43'),
+(29, 19, 'Enero', '2024', NULL, NULL, '2024-01-10 23:39:17', NULL),
+(30, 20, 'Enero', '2024', NULL, NULL, '2024-01-10 23:39:47', NULL),
+(31, 21, 'Enero', '2024', NULL, NULL, '2024-01-10 23:40:15', NULL),
+(32, 22, 'Enero', '2024', NULL, NULL, '2024-01-10 23:40:47', NULL),
+(33, 23, 'Enero', '2024', NULL, NULL, '2024-01-10 23:41:10', NULL),
+(34, 24, 'Enero', '2024', NULL, NULL, '2024-01-10 23:41:35', NULL),
+(35, 25, 'Enero', '2024', NULL, NULL, '2024-01-10 23:42:06', NULL),
+(36, 26, 'Enero', '2024', NULL, NULL, '2024-01-10 23:42:32', NULL),
+(37, 27, 'Enero', '2024', NULL, NULL, '2024-01-10 23:42:59', NULL),
+(38, 27, 'Diciembre', '2023', 'Pagado', NULL, '2024-01-11 18:23:24', '2024-01-11 18:37:06'),
+(39, 26, 'Diciembre', '2023', NULL, '400', '2024-01-10 23:44:22', NULL),
+(40, 25, 'Diciembre', '2023', 'Pagado', '350', '2024-01-10 23:44:36', '2024-01-11 18:37:10'),
+(41, 24, 'Diciembre', '2023', NULL, '400', '2024-01-10 23:44:49', NULL),
+(42, 18, 'Diciembre', '2023', NULL, NULL, '2024-01-11 18:39:37', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `avance_salarios`
+--
+
+CREATE TABLE `avance_salarios` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `month` varchar(255) DEFAULT NULL,
+  `year` varchar(255) DEFAULT NULL,
+  `advance_salary` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `avance_salarios`
+--
+
+INSERT INTO `avance_salarios` (`id`, `employee_id`, `month`, `year`, `advance_salary`, `created_at`, `updated_at`) VALUES
+(18, 27, 'Diciembre', '2023', NULL, '2024-01-11 18:23:24', NULL),
+(19, 18, 'Diciembre', '2023', NULL, '2024-01-11 18:39:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -113,14 +149,16 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`id`, `name`, `email`, `phone`, `address`, `experience`, `image`, `salary`, `vacation`, `city`, `created_at`, `updated_at`) VALUES
-(1, 'Carmen Landry', 'mynejoq@mailinator.com', '+1 (411) 804-5305', 'ANT CARR A CHAPALA NUM 2748, ALAMO INDUSTRIAL, 45560', '2 Años', 'upload/employee/1780783815232879.jpg', '15600', '2', 'Guadalajara, Jalisco', '2023-11-05 07:54:33', '2023-11-05 07:54:33'),
-(2, 'Declan Joyner', 'soxu@mailinator.com', '+1 (296) 566-5094', 'ARTICULO 27 NO. 4100 7, A. CONSTITUCION', '3 Años', 'upload/employee/1781107929559108.jpg', '15000', '3', 'Tijuana, BC', '2023-11-05 07:54:23', '2023-11-05 07:54:23'),
-(5, 'Carolyn Norris', 'loxopujen@mailinator.com', '+1 (944) 523-9006', '60 North Nobel Street', '2 Años', 'upload/employee/1781141596546228.jpg', '12300', '2', 'Tijuana, BC', '2023-11-05 07:54:12', '2023-11-05 07:54:12'),
-(6, 'Jena Kelly', 'kyqovy@mailinator.com', '+1 (891) 205-4017', '921 Rocky New Lane', '3 Años', 'upload/employee/1781141644022694.jpg', '10000', '3', 'Rosarito BC', '2023-11-05 07:53:54', '2023-11-05 07:53:54'),
-(7, 'Shellie Hester', 'xacofud@mailinator.com', '+1 (521) 358-1249', '318 Old Extension', '5 Años', 'upload/employee/1781141701407182.jpg', '9250', '4', 'Ensenada BC', '2023-11-05 07:53:38', '2023-11-05 07:53:38'),
-(8, 'Regan Johns', 'kidabu@mailinator.com', '+1 (453) 941-2024', '994 Cowley Drive', '1 Año', 'upload/employee/1781141815037667.jpg', '8500', '1', 'Tijuana, BC', '2023-11-05 07:53:24', '2023-11-05 07:53:24'),
-(9, 'Coby Mays', 'kymuqi@mailinator.com', '+1 (591) 386-4277', '476 East White Cowley Freeway', '2 Años', 'upload/employee/1781141851771376.jpg', '7000', '2', 'Mexicali B.C.', '2023-11-05 07:53:13', '2023-11-05 07:53:13'),
-(10, 'Quentin Wilcox', 'juqalov@mailinator.com', '+1 (836) 541-2163', '54 Cowley Freeway', '2 Años', 'upload/employee/1781141879793564.jpg', '6000', '1', 'Mexicali B.C.', '2023-11-05 07:53:04', '2023-11-05 07:53:04');
+(18, 'Abraham Best', 'gavah@mailinator.com', '+1 (279) 667-7724', '34 Cowley Boulevard', '4 Años', 'upload/employee/1787748561400688.jpg', '15600', '5', 'Tijuana, BC', '2024-01-10 23:38:07', NULL),
+(19, 'Omar Goodman', 'xugogopip@mailinator.com', '+1 (384) 224-5348', '41 Oak Avenue', '5 Años', 'upload/employee/1787748635216536.jpg', '16500', '3', 'Ensenada BC', '2024-01-10 23:39:17', NULL),
+(20, 'Fallon Lester', 'sysimymyp@mailinator.com', '+1 (185) 507-9791', '889 South Clarendon Extension', '1 Año', 'upload/employee/1787748666577686.jpg', '18000', '5', 'CDMX', '2024-01-10 23:39:47', NULL),
+(21, 'Kelly Jones', 'facocejage@mailinator.com', '+1 (572) 944-6367', '71 Oak Drive', '2 Años', 'upload/employee/1787748695510320.jpg', '15600', '5', 'CDMX', '2024-01-10 23:40:15', NULL),
+(22, 'Ivory Brady', 'fonuwazobi@mailinator.com', '+1 (559) 342-6886', '150 East Rocky Milton Court', '4 Años', 'upload/employee/1787748729224152.jpg', '14500', '4', 'CDMX', '2024-01-10 23:40:47', NULL),
+(23, 'Talon Woods', 'cynisohah@mailinator.com', '+1 (141) 759-9847', '67 Fabien Lane', '5 Años', 'upload/employee/1787748753242847.jpg', '18000', '5', 'Tijuana, BC', '2024-01-10 23:41:10', NULL),
+(24, 'Chester Bradley', 'tuhumajem@mailinator.com', '+1 (578) 464-7261', '30 Clarendon Road', '1 Año', 'upload/employee/1787748779743865.jpg', '18000', '4', 'CDMX', '2024-01-10 23:41:35', NULL),
+(25, 'Felicia Wyatt', 'kaxoduly@mailinator.com', '+1 (379) 647-9342', '74 East Rocky Clarendon Parkway', '3 Años', 'upload/employee/1787748812604845.jpg', '18000', '5', 'Tijuana, BC', '2024-01-10 23:42:06', NULL),
+(26, 'Buffy Craft', 'hyzusagope@mailinator.com', '+1 (309) 379-4347', '625 South New Road', '3 Años', 'upload/employee/1787748839640897.jpg', '14500', '3', 'Tijuana, BC', '2024-01-10 23:42:32', NULL),
+(27, 'Aline Bell', 'hyfe@mailinator.com', '+1 (885) 541-1176', '571 Second Extension', '4 Años', 'upload/employee/1787748867991686.jpg', '15600', '4', 'Ensenada BC', '2024-01-10 23:42:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -163,7 +201,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2024_01_06_084349_create_customers_table', 3),
 (7, '2024_01_06_175235_create_suppliers_table', 4),
 (8, '2024_01_06_175238_create_suppliers_table', 5),
-(9, '2024_01_07_091939_create_advance_salaries_table', 6);
+(9, '2024_01_07_091939_create_advance_salaries_table', 6),
+(10, '2024_01_08_055955_create_pay_salaries_table', 7),
+(11, '2024_01_08_055957_create_pay_salaries_table', 8),
+(12, '2024_01_09_194721_create_avance_salarios_table', 9);
 
 -- --------------------------------------------------------
 
@@ -176,6 +217,34 @@ CREATE TABLE `password_reset_tokens` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pay_salaries`
+--
+
+CREATE TABLE `pay_salaries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `salary_month` varchar(255) DEFAULT NULL,
+  `year` varchar(255) DEFAULT NULL,
+  `paid_amount` varchar(255) DEFAULT NULL,
+  `advance_salary` varchar(255) DEFAULT NULL,
+  `due_salary` varchar(255) DEFAULT NULL,
+  `status` varchar(15) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pay_salaries`
+--
+
+INSERT INTO `pay_salaries` (`id`, `employee_id`, `salary_month`, `year`, `paid_amount`, `advance_salary`, `due_salary`, `status`, `created_at`, `updated_at`) VALUES
+(8, 27, 'Diciembre', '2023', '15600', '0', '15600', 'Pagado', '2024-01-11 18:37:06', NULL),
+(9, 25, 'Diciembre', '2023', '18000', '350', '17650', 'Pagado', '2024-01-11 18:37:10', NULL),
+(10, 18, 'Enero', '2024', '15600', '0', '15600', 'Pagado', '2024-01-11 18:37:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -254,7 +323,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `photo`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'Jose', 'admin@gmail.com', '6646289328', '20240103172978.jpg', NULL, '$2y$12$8eS3WvmFg0yzL/HxocTNA.wFbdfCb0Dll.w45ouMJ/zj9CMWx1zu.', 'OLfwE3yjk7kN0Ex8eJGVNkqzmGtprne4WRIJH7netCaaoWkO4eaPwpAByYmq', '2024-01-01 10:20:41', '2024-01-07 14:54:14');
+(2, 'Jose', 'admin@gmail.com', '6646289328', '20240103172978.jpg', NULL, '$2y$12$8eS3WvmFg0yzL/HxocTNA.wFbdfCb0Dll.w45ouMJ/zj9CMWx1zu.', 'wju8IDsvI8sAcbgmpZ9KuIphsd9IvyJn83SDRiMP1Jjv0zlWIjY87Ua6nNqA', '2024-01-01 10:20:41', '2024-01-07 14:54:14');
 
 --
 -- Indexes for dumped tables
@@ -264,6 +333,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `photo`, `email_verified_at
 -- Indexes for table `advance_salaries`
 --
 ALTER TABLE `advance_salaries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `avance_salarios`
+--
+ALTER TABLE `avance_salarios`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -298,6 +373,12 @@ ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
+-- Indexes for table `pay_salaries`
+--
+ALTER TABLE `pay_salaries`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -326,7 +407,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `advance_salaries`
 --
 ALTER TABLE `advance_salaries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT for table `avance_salarios`
+--
+ALTER TABLE `avance_salarios`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -338,7 +425,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -350,7 +437,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `pay_salaries`
+--
+ALTER TABLE `pay_salaries`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
