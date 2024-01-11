@@ -85,7 +85,7 @@
                                             @if ($item->advance_salary == NULL)
                                                 <span class="badge bg-danger">No hay Avance</span>
                                                 @php
-                                                    $avance_salario = NULL;
+                                                    $avance_salario = "0";
                                                 @endphp
                                             @else    
                                                 @php
@@ -117,6 +117,7 @@
                                             @endif
                                         </td>
 
+                                        {{-- {{ dd( $item->employee->id, $item->month, $item->year, $avance_salario,$seDebe, $item->id) }} --}}
 
                                         <td>
                                             @if ($item->status == NULL)

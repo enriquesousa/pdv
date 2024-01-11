@@ -177,12 +177,58 @@
                                 <a href="{{ route('add.advance.salary') }}">Agregar Salario</a>
                             </li>
                             <li>
-                                <a href="{{ route('pay.salary') }}">Pagar Salario Ultimo Mes</a>
+                                <a href="{{ route('pay.salary') }}">Pagar Salarios Ultimo Mes</a>
                             </li>
                             <li>
-                                <a href="{{ route('month.salary') }}">Salarios Ultimo Mes</a>
+                                <a href="{{ route('month.salary') }}">Ver Salarios Ultimo Mes</a>
                             </li>
 
+                            {{-- Menus Multilevel --}}
+                            <li>
+                                <a href="#sidebarMultiNivel2" data-bs-toggle="collapse">
+                                    Pagar Salarios Otro Mes <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarMultiNivel2">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="{{ route('pay.salary.other.month', 'Enero') }}">Enero</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('pay.salary.other.month', 'Febrero') }}">Febrero</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('pay.salary.other.month', 'Marzo') }}">Marzo</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('pay.salary.other.month', 'Abril') }}">Abril</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('pay.salary.other.month', 'Mayo') }}">Mayo</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('pay.salary.other.month', 'Junio') }}">Junio</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('pay.salary.other.month', 'Julio') }}">Julio</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('pay.salary.other.month', 'Agosto') }}">Agosto</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('pay.salary.other.month', 'Septiembre') }}">Septiembre</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('pay.salary.other.month', 'Octubre') }}">Octubre</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('pay.salary.other.month', 'Noviembre') }}">Noviembre</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('pay.salary.other.month', 'Diciembre') }}">Diciembre</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
 
                             {{-- Menus Multilevel --}}
                             <li>

@@ -9,6 +9,16 @@
 					"label": "Formato de fecha (date) en español en blade con carbon"
 				}
 			]
+		},
+		{
+			"path": "resources/views/backend/salary/pay_salary_other_month.blade.php",
+			"bookmarks": [
+				{
+					"line": 98,
+					"column": 59,
+					"label": "Debug en Blade"
+				}
+			]
 		}
 	]
 }

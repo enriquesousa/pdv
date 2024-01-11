@@ -13,10 +13,10 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <a href="{{ route('add.advance.salary') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Salario</a>
+                            <a href="{{ route('pay.salary') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Pagar Salarios Ultimo Mes</a>
                         </ol>
                     </div>
-                    <h4 class="page-title">Salario del Mes Pasado</h4>
+                    <h4 class="page-title">Lista de Salarios Pagados del Mes Pasado</h4>
                 </div>
             </div>
         </div>     

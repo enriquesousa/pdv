@@ -16,7 +16,7 @@
                             <a href="{{ route('add.advance.salary') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Salario</a>
                         </ol>
                     </div>
-                    <h4 class="page-title">Lista de Todos los Salarios en Avance</h4>
+                    <h4 class="page-title">Pagar Salario</h4>
                 </div>
             </div>
         </div>     
@@ -27,7 +27,8 @@
                 <div class="card">
                     <div class="card-body">
 
-                        {{-- <h4 class="header-title">Lista de Empleados</h4> --}}
+                        {{-- Desplegar este mes y año--}}
+                        <h4 class="header-title">Lista de Pagos del Mes: {{ $mes }} {{ date("Y") }}</h4>
 
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                             <thead>
@@ -36,11 +37,12 @@
                                     <th>Imagen</th>
                                     <th>ID</th>
                                     <th>Nombre</th>
+                                    <th>Mes</th>
+                                    <th>Año</th>
                                     <th>Salario</th>
-                                    <th><span>Mes</span></th>
-                                    <th><span>Año</span></th>
-                                    <th><span>Avance</span></th>
-                                    <th><span class="badge bg-primary">Estatus</span></th>
+                                    <th>Avance</th>
+                                    <th>Se debe</th>
+                                    <th>Estatus</th>
                                     <th>Acción</th>
                                 </tr>
                             </thead>
@@ -48,12 +50,29 @@
                         
                             <tbody>
 
-                                @foreach ($salary as $key => $item)
+                                @foreach ($employee as $key => $item)
+
+                                    {{-- Mientras el año corresponda con el del mes anterior, puedes desplegar los avances --}}
+                                    {{-- @if ($item->advance->year == date("Y", strtotime('-1 month'))) --}}
+
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
+
+                                        {{-- Imagen --}}
                                         <td><img src="{{ asset($item->employee->image) }}" style="width: 50px; height: 40px;"></td>
+
+                                        {{-- ID de Empleado --}}
                                         <td>{{ $item->employee->id }}</td>
+
+                                        {{-- Nombre de Empleado --}}
                                         <td>{{ $item->employee->name }}</td>
+
+                                        {{-- Mes anterior --}}
+                                        {{-- <td><span class="badge bg-info"> {{ __(date("F", strtotime('-1 month'))) }} </span></td> --}}
+                                        <td><span class="badge bg-info"> {{ $item->month }} </span></td>
+
+                                        {{-- Año --}}
+                                        <td><span class="badge bg-info"> {{ $item->year }} </span></td>
 
                                         {{-- Salario --}}
                                         @php
@@ -61,19 +80,33 @@
                                         @endphp
                                         <td>$ @convert($floatVar)</td>
 
-                                        <td>{{ $item->month }}</td>
-                                        <td>{{ $item->year }}</td>
-
                                         {{-- Avance de Salario--}}
                                         <td>
                                             @if ($item->advance_salary == NULL)
                                                 <span class="badge bg-danger">No hay Avance</span>
+                                                @php
+                                                    $avance_salario = "0";
+                                                @endphp
                                             @else    
                                                 @php
                                                     $floatVar =  floatval($item->advance_salary); 
+                                                    $avance_salario = $item->advance_salary;
                                                 @endphp
                                                 $ @convert($floatVar)
                                             @endif
+                                        </td>
+
+                                        {{-- Debug en Blade --}}
+                                        {{-- {{ dd($avance_salario) }} --}}
+
+                                        {{-- Se debe --}}
+                                        <td>
+                                            @php
+                                                $amount = $item->employee->salary - $item->advance_salary;
+                                                $seDebe = $amount;
+                                                $floatVar =  floatval($amount); 
+                                            @endphp
+                                            <strong> <span class="badge bg-warning">$ @convert($floatVar)</span> </strong>
                                         </td>
 
                                         {{-- Estatus de Salario--}}
@@ -87,15 +120,17 @@
                                             @endif
                                         </td>
 
+                                        {{-- {{ dd( $item->employee->id, $item->month, $item->year, $avance_salario,$seDebe, $item->id) }} --}}
 
                                         <td>
                                             @if ($item->status == NULL)
-                                                <a href="{{ route('edit.advance.salary', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar Avance</a>
+                                                <a href="{{ route('pay.now.salary', [$item->employee->id,$item->month,$item->year,$avance_salario,$seDebe,$item->id]) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Pagar Ahora</a>
                                             @endif
-
-                                            {{-- <a href="{{ route('delete.advance.salary', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a> --}}
                                         </td>
+                                        
                                     </tr>
+
+                                    {{-- @endif --}}
 
                                 @endforeach
 

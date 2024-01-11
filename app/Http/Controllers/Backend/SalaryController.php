@@ -160,8 +160,16 @@ class SalaryController extends Controller
         return view('backend.salary.pay_salary', compact('employee'));
     }
 
+    // PaySalaryOtherMonth
+    public function PaySalaryOtherMonth($mes){  
+        $employee = AdvanceSalary::where('month', $mes)->where('year', date("Y"))->latest()->get();
+        // dd($employee);
+        return view('backend.salary.pay_salary_other_month', compact('employee', 'mes'));
+    }
+
     // PayNowSalary
     public function PayNowSalary($id, $month, $year, $avance_salario, $SeDebe, $advance_id){
+       //dd($id, $month, $year, $avance_salario, $SeDebe, $advance_id); 
        $paySalary = Employee::findOrFail($id);
        return view('backend.salary.paid_salary', compact('paySalary', 'month', 'year', 'avance_salario', 'SeDebe', 'advance_id'));
     }
