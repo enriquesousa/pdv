@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('employee_id');
             $table->string('month')->nullable();
             $table->string('year')->nullable();
+            $table->string('status')->nullable();
             $table->string('advance_salary')->nullable();
             
             $table->timestamps();

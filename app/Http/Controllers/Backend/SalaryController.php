@@ -89,6 +89,7 @@ class SalaryController extends Controller
     public function AllAdvanceSalary()
     {
         $salary = AdvanceSalary::latest()->get();
+        // dd($salary);
         return view('backend.salary.all_advance_salary', compact('salary'));
     }
 
@@ -149,14 +150,20 @@ class SalaryController extends Controller
 
     // PaySalary
     public function PaySalary(){  
-        $employee = Employee::latest()->get();
+
+        // $employee = Employee::latest()->get();
+        // dd($employee);
+
+        // $employee = AdvanceSalary::where('year', Carbon::now()->format('Y'))->get();
+        $employee = AdvanceSalary::where('year', date("Y", strtotime('-1 month')))->get();
+        // dd($employee);
         return view('backend.salary.pay_salary', compact('employee'));
     }
 
     // PayNowSalary
-    public function PayNowSalary($id){
-       $paysalary = Employee::findOrFail($id);
-       return view('backend.salary.paid_salary', compact('paysalary'));
+    public function PayNowSalary($id, $month, $year, $avance_salario, $SeDebe, $advance_id){
+       $paySalary = Employee::findOrFail($id);
+       return view('backend.salary.paid_salary', compact('paySalary', 'month', 'year', 'avance_salario', 'SeDebe', 'advance_id'));
     }
 
     // EmployeeSalaryStore
@@ -164,12 +171,20 @@ class SalaryController extends Controller
        
         $employee_id = $request->employee_id;
 
+        // Guardar el status de Salario Pagado en tabla 'advance_salaries'
+        AdvanceSalary::findOrFail($request->advance_id)->update([
+            'status' => $request->salary_status,
+        ]);
+
+        // Guardar el Salario Pagado con su status en tabla 'pay_salaries'
         PaySalary::insert([
             'employee_id' => $request->employee_id,
             'salary_month' => $request->salary_month,
+            'year' => $request->salary_year,
             'paid_amount' => $request->paid_amount,
             'advance_salary' => $request->advance_salary,
             'due_salary' => $request->due_salary,
+            'status' => $request->salary_status,
             'created_at' => Carbon::now(),
         ]);
 

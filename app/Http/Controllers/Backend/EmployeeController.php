@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Employee;
+use App\Models\AdvanceSalary;
 use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
 
@@ -25,65 +26,88 @@ class EmployeeController extends Controller
         return view('backend.employee.add_employee');
     }
 
-     // EmployeeStore
-     public function EmployeeStore(Request $request)
-     {
- 
-         $validateData = $request->validate(
-             [
-                 'name' => 'required|max:200',
-                 'email' => 'required|unique:employees|max:200',
-                 'phone' => 'required|max:200',
-                 'address' => 'required|max:400',
-                 'salary' => 'required|numeric|max:1000000',
-                 'vacation' => 'required|max:200',
-                 'city' => 'required|max:200',
-                 'experience' => 'required',
-                 'image' => 'required',
-             ],
- 
-             [
-                 'name.required' => 'El nombre es requerido',
-                 'email.required' => 'El correo es requerido',
-                 'phone.required' => 'El teléfono es requerido',
-                 'address.required' => 'La dirección es requerida',
-                 'salary.required' => 'El salario es requerido',
-                 'vacation.required' => 'La vacación es requerida',
-                 'city.required' => 'La ciudad es requerida',
-                 'experience.required' => 'La experiencia es requerida',
-                 'image.required' => 'La imagen es requerida',
-             ]
-         );
- 
-         $image = $request->file('image');
-         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-         Image::make($image)->resize(300, 300)->save('upload/employee/' . $name_gen);
-         $save_url = 'upload/employee/' . $name_gen;
- 
-         Employee::insert([
- 
-             'name' => $request->name,
-             'email' => $request->email,
-             'phone' => $request->phone,
-             'address' => $request->address,
-             'experience' => $request->experience,
-             'salary' => $request->salary,
-             'vacation' => $request->vacation,
-             'city' => $request->city,
-             'image' => $save_url,
-             'created_at' => Carbon::now(),
- 
-         ]);
- 
-         $notification = array(
-             'message' => 'Empleado Registrado Exitosamente',
-             'alert-type' => 'success'
-         );
- 
-         return redirect()->route('all.employee')->with($notification);
-     }
+    // EmployeeStore
+    public function EmployeeStore(Request $request)
+    {
 
-     // EmployeeEdit
+        $validateData = $request->validate(
+            [
+                'name' => 'required|max:200',
+                'email' => 'required|unique:employees|max:200',
+                'phone' => 'required|max:200',
+                'address' => 'required|max:400',
+                'salary' => 'required|numeric|max:1000000',
+                'vacation' => 'required|max:200',
+                'city' => 'required|max:200',
+                'experience' => 'required',
+                'image' => 'required',
+            ],
+
+            [
+                'name.required' => 'El nombre es requerido',
+                'email.required' => 'El correo es requerido',
+                'phone.required' => 'El teléfono es requerido',
+                'address.required' => 'La dirección es requerida',
+                'salary.required' => 'El salario es requerido',
+                'vacation.required' => 'La vacación es requerida',
+                'city.required' => 'La ciudad es requerida',
+                'experience.required' => 'La experiencia es requerida',
+                'image.required' => 'La imagen es requerida',
+            ]
+        );
+
+        $image = $request->file('image');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(300, 300)->save('upload/employee/' . $name_gen);
+        $save_url = 'upload/employee/' . $name_gen;
+
+        Employee::insert([
+
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'experience' => $request->experience,
+            'salary' => $request->salary,
+            'vacation' => $request->vacation,
+            'city' => $request->city,
+            'image' => $save_url,
+            'created_at' => Carbon::now(),
+
+        ]);
+
+
+        //  Tomar el ID del último registro insertado
+        $employee_id = Employee::orderby('id', 'desc')->first();
+        // obtener mes actual
+        // $mes = Carbon::now()->format('M');
+        // $year = Carbon::now()->format('Y');
+        // $advance_salary = NULL;
+        $now = Carbon::now();
+        // $now->englishMonth; // January
+        $mes = __($now->englishMonth);
+        $year = date("Y");
+        $advance_salary = NULL;
+
+        // Graba registro en la tabla 'advance_salaries'
+        AdvanceSalary::insert([
+            'employee_id' => $employee_id->id,
+            'month' => $mes,
+            'year' => $year,
+            'advance_salary' => $advance_salary,
+            'created_at' => Carbon::now(),
+        ]);
+
+
+        $notification = array(
+            'message' => 'Empleado Registrado Exitosamente',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.employee')->with($notification);
+    }
+
+    // EmployeeEdit
     public function EmployeeEdit($id)
     {
         $employee = Employee::findOrFail($id);
@@ -154,7 +178,6 @@ class EmployeeController extends Controller
             );
 
             return redirect()->route('all.employee')->with($notification);
-
         } else {
 
             Employee::findOrFail($employee_id)->update([
@@ -177,18 +200,22 @@ class EmployeeController extends Controller
             );
 
             return redirect()->route('all.employee')->with($notification);
-
         } // End else Condition  
 
     }
 
     // EmployeeDelete
-    public function EmployeeDelete($id){
+    public function EmployeeDelete($id)
+    {
         $employee_img = Employee::findOrFail($id);
         $img = $employee_img->image;
         unlink($img);
 
         Employee::findOrFail($id)->delete();
+
+        // Eliminar registros en la tabla 'advance_salarios'
+        AdvanceSalary::where('employee_id', $id)->delete();
+
 
         $notification = array(
             'message' => 'Empleado Eliminado Exitosamente',
@@ -197,5 +224,4 @@ class EmployeeController extends Controller
 
         return redirect()->back()->with($notification);
     }
-
 }

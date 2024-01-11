@@ -34,6 +34,8 @@
                                 <tr>
                                     <th>Serie</th>
                                     <th>Imagen</th>
+                                    <th>ID</th>
+                                    <th>Fecha</th>
                                     <th>Nombre</th>
                                     <th>Correo</th>
                                     <th>Teléfono</th>
@@ -49,6 +51,13 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td><img src="{{ asset($item->image) }}" style="width: 50px; height: 40px;"></td>
+                                        <td>{{ $item->id }}</td>
+
+                                        {{-- Formato de fecha (date) en español (dia de la semana, dia mes y año) --}}
+                                        {{-- <td>{{ \Carbon\Carbon::parse($item->date)->locale('es')->isoFormat('dddd, D [de] MMMM [de] YYYY') }}</td> --}}
+                                        {{-- <td>{{ \Carbon\Carbon::parse($item->created_at)->locale('es')->isoFormat('D[/]MMMM[/]YYYY') }}</td> --}}
+                                        <td>{{ \Carbon\Carbon::parse($item->created_at)->locale('es')->isoFormat('D[/]MMM[/]YYYY') }}</td>
+
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->phone }}</td>

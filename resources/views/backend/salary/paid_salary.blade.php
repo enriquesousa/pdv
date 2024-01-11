@@ -35,19 +35,22 @@
 
                                     <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i>Pagar Salario</h5>
 
+                                    {{-- paso el id de la tabla de advance_salaries --}}
+                                    <input type="hidden" name="advance_id" value="{{ $advance_id }}">
+
                                     <div class="row">
 
                                         {{-- Nombre Empleado --}}
                                         <div class="col-md-4">
                                             <p class="mt-2 mb-1 text-muted">Nombre Empleado</p>
                                             <div class="d-flex align-items-start">
-                                                <img src="{{ asset($paysalary->image) }}" alt="Arya S" class="rounded-circle me-2" height="24" />
+                                                <img src="{{ asset($paySalary->image) }}" alt="Arya S" class="rounded-circle me-2" height="24" />
                                                 <div class="w-100">
                                                     <h5 class="mt-1 font-size-14">
-                                                        {{ $paysalary->name }}
+                                                        {{ $paySalary->name }}
                                                     </h5>
                                                 </div>
-                                                <input type="hidden" name="employee_id" value="{{ $paysalary->id }}">
+                                                <input type="hidden" name="employee_id" value="{{ $paySalary->id }}">
                                             </div>
                                         </div>
 
@@ -58,9 +61,23 @@
                                                 <i class="mdi mdi-calendar-month-outline font-18 text-success me-1"></i>
                                                 <div class="w-100">
                                                     <h5 class="mt-1 font-size-14">
-                                                        {{ __(date('F', strtotime('-1 month'))) }}
+                                                        {{ $month }}
                                                     </h5>
-                                                    <input type="hidden" name="salary_month" value="{{ __(date('F', strtotime('-1 month'))) }}">
+                                                    <input type="hidden" name="salary_month" value="{{ $month }}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{-- Año del Salario --}}
+                                        <div class="col-md-4">
+                                            <p class="mt-2 mb-1 text-muted">Año del Salario</p>
+                                            <div class="d-flex align-items-start">
+                                                <i class="mdi mdi-calendar-month-outline font-18 text-success me-1"></i>
+                                                <div class="w-100">
+                                                    <h5 class="mt-1 font-size-14">
+                                                        {{ $year }}
+                                                    </h5>
+                                                    <input type="hidden" name="salary_year" value="{{ $year }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -79,13 +96,13 @@
                                                 <i class="mdi mdi-account-cash font-18 text-success me-1"></i>
                                                 <div class="w-100">
                                                     @php
-                                                        $amount = $paysalary->salary;
+                                                        $amount = $paySalary->salary;
                                                         $floatVar = floatval($amount);
                                                     @endphp
                                                     <h5 class="mt-1 font-size-14">
                                                         $ @convert($floatVar)
                                                     </h5>
-                                                    <input type="hidden" name="paid_amount" value="{{ $paysalary->salary }}">
+                                                    <input type="hidden" name="paid_amount" value="{{ $paySalary->salary }}">
                                                     <span class="badge bg-soft-danger text-success">Sueldo</span>
                                                 </div>
                                             </div>
@@ -98,14 +115,14 @@
                                                 <i class="mdi mdi-account-cash font-18 text-success me-1"></i>
                                                 <div class="w-100">
                                                     @php
-                                                        $amount = $paysalary->advance->advance_salary;
+                                                        $amount = $avance_salario;
                                                         $floatVar = floatval($amount);
                                                     @endphp
                                                     <h5 class="mt-1 font-size-14">
                                                         $ @convert($floatVar)
                                                         <span class="badge bg-soft-danger text-warning">Avance</span>
                                                     </h5>
-                                                    <input type="hidden" name="advance_salary" value="{{ $paysalary->advance->advance_salary }}">
+                                                    <input type="hidden" name="advance_salary" value="{{ $avance_salario }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -118,14 +135,14 @@
                                                 <div class="w-100">
 
                                                     @php
-                                                        $amount = $paysalary->salary - $paysalary->advance->advance_salary;
+                                                        $amount = $SeDebe;
                                                         $floatVar = floatval(round($amount));
                                                     @endphp
 
-                                                    @if ($paysalary->advance->advance_salary == NULL)
-                                                    <h5 class="mt-1 font-size-14">
-                                                        No hay Avance
-                                                    </h5>
+                                                    @if ($SeDebe == NULL)
+                                                        <h5 class="mt-1 font-size-14">
+                                                            No hay Avance
+                                                        </h5>
                                                     @else
                                                         <h5 class="mt-1 font-size-14">
                                                             $ @convert($floatVar)
@@ -134,6 +151,7 @@
                                                     
                                                     <span class="badge bg-soft-danger text-danger">Pagar</span>
                                                     <input type="hidden" name="due_salary" value="{{ round($amount, 2) }}">
+                                                    <input type="hidden" name="salary_status" value="{{ "Pagado" }}">
 
                                                 </div>
                                             </div>

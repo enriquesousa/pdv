@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('paid_amount')->nullable();
             $table->string('advance_salary')->nullable();
             $table->string('due_salary')->nullable();
+            $table->string('status')->nullable();
 
             $table->timestamps();
         });

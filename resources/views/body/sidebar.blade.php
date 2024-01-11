@@ -163,29 +163,79 @@
                 <li>
                     <a href="#sidebarSalario" data-bs-toggle="collapse">
                         <i class="mdi mdi-account-multiple-outline"></i>
-                        <span>Avances de Salario</span>
+                        <span>Salarios</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarSalario">
+
                         <ul class="nav-second-level">
 
                             <li>
-                                <a href="{{ route('all.advance.salary') }}">Lista Salarios</a>
+                                <a href="{{ route('all.advance.salary') }}">Avances de Salario</a>
                             </li>
                             <li>
                                 <a href="{{ route('add.advance.salary') }}">Agregar Salario</a>
                             </li>
                             <li>
-                                <a href="{{ route('pay.salary') }}">Pagar Salario</a>
+                                <a href="{{ route('pay.salary') }}">Pagar Salario Ultimo Mes</a>
                             </li>
                             <li>
-                                <a href="{{ route('month.salary') }}">Salarios del Ultimo Mes</a>
+                                <a href="{{ route('month.salary') }}">Salarios Ultimo Mes</a>
+                            </li>
+
+
+                            {{-- Menus Multilevel --}}
+                            <li>
+                                <a href="#sidebarMultiNivel2" data-bs-toggle="collapse">
+                                    Second Level <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarMultiNivel2">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="javascript: void(0);">Item 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript: void(0);">Item 2</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a href="#sidebarMultiNivel3" data-bs-toggle="collapse">
+                                    Third Level <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarMultiNivel3">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="javascript: void(0);">Item 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#sidebarMultiNivel4" data-bs-toggle="collapse">
+                                                Item 2 <span class="menu-arrow"></span>
+                                            </a>
+                                            <div class="collapse" id="sidebarMultiNivel4">
+                                                <ul class="nav-second-level">
+                                                    <li>
+                                                        <a href="javascript: void(0);">Item 1</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Item 2</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
 
                         </ul>
+
+
                     </div>
                 </li>
 
+               
 
 
 
@@ -545,6 +595,123 @@
                     </div>
                 </li>
                 
+                {{-- Charts --}}
+                <li>
+                    <a href="#sidebarCharts" data-bs-toggle="collapse">
+                        <i class="mdi mdi-poll"></i>
+                        <span> Charts </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarCharts">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="charts-apex.html">Apex Charts</a>
+                            </li>
+                            <li>
+                                <a href="charts-flot.html">Flot Charts</a>
+                            </li>
+                            <li>
+                                <a href="charts-morris.html">Morris Charts</a>
+                            </li>
+                            <li>
+                                <a href="charts-chartjs.html">Chartjs Charts</a>
+                            </li>
+                            <li>
+                                <a href="charts-peity.html">Peity Charts</a>
+                            </li>
+                            <li>
+                                <a href="charts-chartist.html">Chartist Charts</a>
+                            </li>
+                            <li>
+                                <a href="charts-c3.html">C3 Charts</a>
+                            </li>
+                            <li>
+                                <a href="charts-sparklines.html">Sparklines Charts</a>
+                            </li>
+                            <li>
+                                <a href="charts-knob.html">Jquery Knob Charts</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                {{-- Maps --}}
+                <li>
+                    <a href="#sidebarMaps" data-bs-toggle="collapse">
+                        <i class="mdi mdi-map-outline"></i>
+                        <span> Maps </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarMaps">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="maps-google.html">Google Maps</a>
+                            </li>
+                            <li>
+                                <a href="maps-vector.html">Vector Maps</a>
+                            </li>
+                            <li>
+                                <a href="maps-mapael.html">Mapael Maps</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                {{-- Multi Level --}}
+                <li>
+                    <a href="#sidebarMultilevel" data-bs-toggle="collapse">
+                        <i class="mdi mdi-share-variant"></i>
+                        <span> Multi Level </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarMultilevel">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="#sidebarMultilevel2" data-bs-toggle="collapse">
+                                    Second Level <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarMultilevel2">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="javascript: void(0);">Item 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript: void(0);">Item 2</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a href="#sidebarMultilevel3" data-bs-toggle="collapse">
+                                    Third Level <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarMultilevel3">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="javascript: void(0);">Item 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#sidebarMultilevel4" data-bs-toggle="collapse">
+                                                Item 2 <span class="menu-arrow"></span>
+                                            </a>
+                                            <div class="collapse" id="sidebarMultilevel4">
+                                                <ul class="nav-second-level">
+                                                    <li>
+                                                        <a href="javascript: void(0);">Item 1</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript: void(0);">Item 2</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
             </ul>
 

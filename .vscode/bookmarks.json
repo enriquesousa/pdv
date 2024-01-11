@@ -1,0 +1,14 @@
+{
+	"files": [
+		{
+			"path": "resources/views/backend/employee/all_employee.blade.php",
+			"bookmarks": [
+				{
+					"line": 55,
+					"column": 79,
+					"label": "Formato de fecha (date) en español en blade con carbon"
+				}
+			]
+		}
+	]
+}

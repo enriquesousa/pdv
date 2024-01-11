@@ -98,7 +98,7 @@ Route::middleware(['auth'])->group(function () {
     // Rutas Pay Salary
     Route::controller(SalaryController::class)->group(function () {
 	    Route::get('/pay/salary', 'PaySalary')->name('pay.salary');
-	    Route::get('/pay/now/salary/{id}', 'PayNowSalary')->name('pay.now.salary');
+	    Route::get('/pay/now/salary/{id}/{month}/{year}/{avance_salario}/{SeDebe}/{advance_id}', 'PayNowSalary')->name('pay.now.salary');
         Route::post('/employee/salary/store', 'EmployeeSalaryStore')->name('employee.salary.store');
         Route::get('/month/salary', 'MonthSalary')->name('month.salary');
     });
