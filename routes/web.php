@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\Backend\SalaryController;
+use App\Http\Controllers\Config\AniosController;
 
 
 /*
@@ -102,6 +103,16 @@ Route::middleware(['auth'])->group(function () {
 	    Route::get('/pay/now/salary/{id}/{month}/{year}/{avance_salario}/{SeDebe}/{advance_id}', 'PayNowSalary')->name('pay.now.salary');
         Route::post('/employee/salary/store', 'EmployeeSalaryStore')->name('employee.salary.store');
         Route::get('/month/salary', 'MonthSalary')->name('month.salary');
+    });
+
+    // Configuraciones Datos (Años) 
+    Route::controller(AniosController::class)->group(function () {
+        Route::get('/all/anios', 'AniosList')->name('all.anios');
+        Route::get('/anio/add', 'AnioAdd')->name('anio.add');
+        Route::post('/anio/store', 'AnioStore')->name('anio.store');
+        Route::get('/anio/edit/{id}', 'AnioEdit')->name('anio.edit');
+        Route::post('/anio/update', 'AnioUpdate')->name('anio.update');
+        Route::get('/anio/delete/{id}', 'AnioDelete')->name('anio.delete');    
     });
 
 

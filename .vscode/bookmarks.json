@@ -1,6 +1,16 @@
 {
 	"files": [
 		{
+			"path": "resources/views/backend/config/all_anios.blade.php",
+			"bookmarks": [
+				{
+					"line": 72,
+					"column": 53,
+					"label": "Para tener auto focus en el botón de agregar Año"
+				}
+			]
+		},
+		{
 			"path": "resources/views/backend/employee/all_employee.blade.php",
 			"bookmarks": [
 				{
@@ -17,6 +27,16 @@
 					"line": 98,
 					"column": 59,
 					"label": "Debug en Blade"
+				}
+			]
+		},
+		{
+			"path": "app/Http/Controllers/Backend/SalaryController.php",
+			"bookmarks": [
+				{
+					"line": 30,
+					"column": 22,
+					"label": "checkbox check en el request"
 				}
 			]
 		}

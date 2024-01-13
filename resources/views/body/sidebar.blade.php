@@ -162,7 +162,7 @@
                 {{-- Avances de Salario --}}
                 <li>
                     <a href="#sidebarSalario" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-multiple-outline"></i>
+                        <i class="mdi mdi-account-cash-outline"></i>
                         <span>Salarios</span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -281,7 +281,29 @@
                     </div>
                 </li>
 
-               
+
+
+               {{-- * CONFIGURACIÓN DEL SISTEMA --}}
+               <li class="menu-title mt-2">CONFIGURACIÓN</li>
+
+               {{-- Configuración de Datos --}}
+               <li>
+                   <a href="#sidebarConfigData" data-bs-toggle="collapse">
+                       <i class="mdi mdi-poll"></i>
+                       <span>Datos</span>
+                       <span class="menu-arrow"></span>
+                   </a>
+                   <div class="collapse" id="sidebarConfigData">
+                       <ul class="nav-second-level">
+                           <li>
+                               <a href="{{ route('all.anios') }}">Años</a>
+                           </li>
+                           <li>
+                               <a href="{{ route('dashboard') }}">Meses</a>
+                           </li>
+                       </ul>
+                   </div>
+               </li>
 
 
 

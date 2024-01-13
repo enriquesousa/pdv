@@ -10,6 +10,7 @@ use App\Models\AvanceSalarios;
 use App\Models\Employee;
 use App\Models\PaySalary;
 use Carbon\Carbon;
+use App\Models\Config\Anios;
 
 class SalaryController extends Controller
 {
@@ -19,70 +20,152 @@ class SalaryController extends Controller
     public function AddAdvanceSalary()
     {
         $employee = Employee::latest()->get();
-        return view('backend.salary.add_advance_salary', compact('employee'));
+        $anios = Anios::latest()->get();
+        return view('backend.salary.add_advance_salary', compact('employee', 'anios'));
     }
 
     // AdvanceSalaryStore
     public function AdvanceSalaryStore(Request $request)
     {
 
-        $validateData = $request->validate(
-            [
-                'employee_id' => 'required',
-                'month' => 'required',
-                'year' => 'required',
-                // 'advance_salary' => 'required|numeric|max:1000000',
-            ],
+        $todos = $request->CheckEmployees;
+        // dd($todos);
 
-            [
-                'employee_id.required' => 'El empleado es requerido',
-                'month.required' => 'El mes es requerido',
-                'year.required' => 'El año es requerido',
-                'advance_salary.required' => 'El salario es requerido, debe ser numérico, y no debe ser mayor a 1000000',
-            ]
-        );
-
-        $month = $request->month;
-        $year = $request->year;
-        $employee_id = $request->employee_id;
-
-
-        // En la tabla 'advance_salaries' y tabla 'advance_salarios' se valida que no exista un registro con el mismo 'month' y 'year'
-        $advanced = AdvanceSalary::where('month', $month)->where('year', $year)->where('employee_id', $employee_id)->first();
-        if ($advanced === NULL) {
-
-            AdvanceSalary::insert([
-                'employee_id' => $request->employee_id,
-                'month' => $request->month,
-                'year' => $request->year,
-                'advance_salary' => $request->advance_salary,
-                'created_at' => Carbon::now(),
-            ]);
-
-            // Copia registro en la tabla 'advance_salarios'
-            $advances = AvanceSalarios::insert([
-                'employee_id' => $request->employee_id,
-                'month' => $request->month,
-                'year' => $request->year,
-                'advance_salary' => $request->advance_salary,
-                'created_at' => Carbon::now(),
-            ]);
-
-            $notification = array(
-                'message' => 'Salario en Avanzado Agregado Exitosamente',
-                'alert-type' => 'success'
+        // Si no esta puesto el checkbox de todos los empleados, si puedes validar a employee_id
+        if ($todos == null) {
+            
+            $validateData = $request->validate(
+                [
+                    'employee_id' => 'required',
+                    'month' => 'required',
+                    'year' => 'required',
+                    // 'advance_salary' => 'required|numeric|max:1000000',
+                ],
+    
+                [
+                    'employee_id.required' => 'El empleado es requerido',
+                    'month.required' => 'El mes es requerido',
+                    'year.required' => 'El año es requerido',
+                    'advance_salary.required' => 'El salario es requerido, debe ser numérico, y no debe ser mayor a 1000000',
+                ]
             );
+    
+            $month = $request->month;
+            $year = $request->year;
+            $employee_id = $request->employee_id;
+
+            // En la tabla 'advance_salaries' y tabla 'advance_salarios' se valida que no exista un registro con el mismo 'month' y 'year'
+            $advanced = AdvanceSalary::where('month', $month)->where('year', $year)->where('employee_id', $employee_id)->first();
+            if ($advanced === NULL) {
+
+                AdvanceSalary::insert([
+                    'employee_id' => $request->employee_id,
+                    'month' => $request->month,
+                    'year' => $request->year,
+                    'advance_salary' => $request->advance_salary,
+                    'created_at' => Carbon::now(),
+                ]);
+
+                // Copia registro en la tabla 'advance_salarios'
+                $advances = AvanceSalarios::insert([
+                    'employee_id' => $request->employee_id,
+                    'month' => $request->month,
+                    'year' => $request->year,
+                    'advance_salary' => $request->advance_salary,
+                    'created_at' => Carbon::now(),
+                ]);
+
+                $notification = array(
+                    'message' => 'Salario en Avanzado Agregado Exitosamente',
+                    'alert-type' => 'success'
+                );
+
+                return redirect()->route('all.advance.salary')->with($notification);
+            } else {
+
+                $notification = array(
+                    'message' => 'Salario en Avanzado ya existe',
+                    'alert-type' => 'warning'
+                );
+
+                return redirect()->route('all.advance.salary')->with($notification);
+            }
+
+        }else{
+
+            $mensaje = null;
+
+            $validateData = $request->validate(
+                [
+                    'month' => 'required',
+                    'year' => 'required',
+                ],
+    
+                [
+                    'month.required' => 'El mes es requerido',
+                    'year.required' => 'El año es requerido',
+                ]
+            );
+    
+            $month = $request->month;
+            $year = $request->year;
+
+            $empleados = Employee::latest()->get();
+
+            foreach ($empleados as $key => $item) {
+
+                $employee_id = $item->id;
+
+                // En la tabla 'advance_salaries' y tabla 'advance_salarios' se valida que no exista un registro con el mismo 'month' y 'year'
+                $advanced = AdvanceSalary::where('month', $month)->where('year', $year)->where('employee_id', $employee_id)->first();
+                if ($advanced === NULL) {
+
+                    AdvanceSalary::insert([
+                        'employee_id' => $employee_id,
+                        'month' => $request->month,
+                        'year' => $request->year,
+                        'advance_salary' => $request->advance_salary,
+                        'created_at' => Carbon::now(),
+                    ]);
+
+                    // Copia registro en la tabla 'advance_salarios'
+                    $advances = AvanceSalarios::insert([
+                        'employee_id' => $employee_id,
+                        'month' => $request->month,
+                        'year' => $request->year,
+                        'advance_salary' => $request->advance_salary,
+                        'created_at' => Carbon::now(),
+                    ]);
+
+
+                } else {
+
+                    $mensaje = 'El registro ya existe';
+                    
+                }
+                
+
+            }
+
+            if ($mensaje == null) {
+
+                $notification = array(
+                    'message' => 'Registros Agregados Exitosamente',
+                    'alert-type' => 'success'
+                );
+
+            }else{
+
+                $notification = array(
+                    'message' => 'Algunos Registros Ya Existían',
+                    'alert-type' => 'info'
+                );
+            }
 
             return redirect()->route('all.advance.salary')->with($notification);
-        } else {
 
-            $notification = array(
-                'message' => 'Salario en Avanzado ya existe',
-                'alert-type' => 'warning'
-            );
-
-            return redirect()->route('all.advance.salary')->with($notification);
         }
+
     }
 
     // AllAdvanceSalary
@@ -207,7 +290,8 @@ class SalaryController extends Controller
 
     // MonthSalary
     public function MonthSalary(){
-        $paidSalary = PaySalary::latest()->get();
+        // Lista los sueldos pagados del ultimo mes
+        $paidSalary = PaySalary::where('year', date("Y", strtotime('-1 month')))->where('salary_month', __(date("F", strtotime('-1 month'))))->get();
         return view('backend.salary.month_salary', compact('paidSalary'));
     }
 

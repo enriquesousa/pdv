@@ -527,6 +527,10 @@
     <!-- Dashboar 1 init js-->
     <script src="{{ asset('backend/assets/js/pages/dashboard-1.init.js') }}"></script>
 
+    
+    <!-- Tippy js-->
+    <script src="{{ asset('backend/assets/libs/tippy.js/tippy.all.min.js') }}"></script>
+
     <!-- App js-->
     <script src="{{ asset('backend/assets/js/app.min.js') }}"></script>
 
@@ -583,6 +587,7 @@
         @endif
     </script>
 
+    
 </body>
 
 </html>
