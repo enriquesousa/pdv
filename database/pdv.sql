@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 11, 2024 at 07:09 PM
+-- Generation Time: Jan 14, 2024 at 06:52 PM
 -- Server version: 10.11.4-MariaDB-1~deb12u1
 -- PHP Version: 8.2.7
 
@@ -51,37 +51,65 @@ INSERT INTO `advance_salaries` (`id`, `employee_id`, `month`, `year`, `status`, 
 (33, 23, 'Enero', '2024', NULL, NULL, '2024-01-10 23:41:10', NULL),
 (34, 24, 'Enero', '2024', NULL, NULL, '2024-01-10 23:41:35', NULL),
 (35, 25, 'Enero', '2024', NULL, NULL, '2024-01-10 23:42:06', NULL),
-(36, 26, 'Enero', '2024', NULL, NULL, '2024-01-10 23:42:32', NULL),
-(37, 27, 'Enero', '2024', NULL, NULL, '2024-01-10 23:42:59', NULL),
-(38, 27, 'Diciembre', '2023', 'Pagado', NULL, '2024-01-11 18:23:24', '2024-01-11 18:37:06'),
-(39, 26, 'Diciembre', '2023', NULL, '400', '2024-01-10 23:44:22', NULL),
-(40, 25, 'Diciembre', '2023', 'Pagado', '350', '2024-01-10 23:44:36', '2024-01-11 18:37:10'),
-(41, 24, 'Diciembre', '2023', NULL, '400', '2024-01-10 23:44:49', NULL),
-(42, 18, 'Diciembre', '2023', NULL, NULL, '2024-01-11 18:39:37', NULL);
+(36, 26, 'Enero', '2024', 'Pagado', NULL, '2024-01-10 23:42:32', '2024-01-14 00:53:38'),
+(37, 27, 'Enero', '2024', 'Pagado', NULL, '2024-01-10 23:42:59', '2024-01-14 00:53:09'),
+(58, 27, 'Diciembre', '2023', 'Pagado', '350', '2024-01-14 00:48:20', '2024-01-14 00:50:39'),
+(59, 26, 'Diciembre', '2023', 'Pagado', NULL, '2024-01-13 20:56:03', '2024-01-14 00:51:27'),
+(60, 25, 'Diciembre', '2023', 'Pagado', '100', '2024-01-14 02:09:14', '2024-01-14 02:09:39'),
+(61, 24, 'Diciembre', '2023', 'Pagado', NULL, '2024-01-13 20:56:03', '2024-01-14 00:51:32'),
+(62, 23, 'Diciembre', '2023', 'Pagado', '560', '2024-01-14 00:48:50', '2024-01-14 00:51:41'),
+(63, 22, 'Diciembre', '2023', 'Pagado', NULL, '2024-01-13 20:56:03', '2024-01-14 00:50:52'),
+(64, 21, 'Diciembre', '2023', NULL, NULL, '2024-01-13 20:56:03', NULL),
+(65, 20, 'Diciembre', '2023', NULL, NULL, '2024-01-13 20:56:03', NULL),
+(66, 19, 'Diciembre', '2023', 'Pagado', NULL, '2024-01-13 20:56:03', '2024-01-14 00:52:38'),
+(67, 18, 'Diciembre', '2023', NULL, NULL, '2024-01-13 20:56:03', NULL),
+(68, 27, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
+(69, 26, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
+(70, 25, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
+(71, 24, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
+(72, 23, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
+(73, 22, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
+(74, 21, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
+(75, 20, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
+(76, 19, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
+(77, 18, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
+(78, 23, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
+(79, 27, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
+(80, 26, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
+(81, 25, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
+(82, 24, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
+(83, 22, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
+(84, 21, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
+(85, 20, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
+(86, 19, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
+(87, 18, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `avance_salarios`
+-- Table structure for table `anios`
 --
 
-CREATE TABLE `avance_salarios` (
+CREATE TABLE `anios` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `employee_id` int(11) NOT NULL,
-  `month` varchar(255) DEFAULT NULL,
-  `year` varchar(255) DEFAULT NULL,
-  `advance_salary` varchar(255) DEFAULT NULL,
+  `anio` varchar(4) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `avance_salarios`
+-- Dumping data for table `anios`
 --
 
-INSERT INTO `avance_salarios` (`id`, `employee_id`, `month`, `year`, `advance_salary`, `created_at`, `updated_at`) VALUES
-(18, 27, 'Diciembre', '2023', NULL, '2024-01-11 18:23:24', NULL),
-(19, 18, 'Diciembre', '2023', NULL, '2024-01-11 18:39:37', NULL);
+INSERT INTO `anios` (`id`, `anio`, `created_at`, `updated_at`) VALUES
+(1, '2023', NULL, NULL),
+(2, '2024', NULL, '2024-01-12 19:49:34'),
+(5, '2025', NULL, NULL),
+(6, '2026', NULL, NULL),
+(7, '2027', NULL, NULL),
+(8, '2028', NULL, NULL),
+(9, '2029', NULL, NULL),
+(10, '2030', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -154,7 +182,7 @@ INSERT INTO `employees` (`id`, `name`, `email`, `phone`, `address`, `experience`
 (20, 'Fallon Lester', 'sysimymyp@mailinator.com', '+1 (185) 507-9791', '889 South Clarendon Extension', '1 Año', 'upload/employee/1787748666577686.jpg', '18000', '5', 'CDMX', '2024-01-10 23:39:47', NULL),
 (21, 'Kelly Jones', 'facocejage@mailinator.com', '+1 (572) 944-6367', '71 Oak Drive', '2 Años', 'upload/employee/1787748695510320.jpg', '15600', '5', 'CDMX', '2024-01-10 23:40:15', NULL),
 (22, 'Ivory Brady', 'fonuwazobi@mailinator.com', '+1 (559) 342-6886', '150 East Rocky Milton Court', '4 Años', 'upload/employee/1787748729224152.jpg', '14500', '4', 'CDMX', '2024-01-10 23:40:47', NULL),
-(23, 'Talon Woods', 'cynisohah@mailinator.com', '+1 (141) 759-9847', '67 Fabien Lane', '5 Años', 'upload/employee/1787748753242847.jpg', '18000', '5', 'Tijuana, BC', '2024-01-10 23:41:10', NULL),
+(23, 'Talon Woods', 'cynisohah@mailinator.com', '+1 (141) 759-9847', '67 Fabien Lane', '5 Años', 'upload/employee/1787748753242847.jpg', '16500', '5', 'Tijuana, BC', '2024-01-14 00:49:49', '2024-01-14 00:49:49'),
 (24, 'Chester Bradley', 'tuhumajem@mailinator.com', '+1 (578) 464-7261', '30 Clarendon Road', '1 Año', 'upload/employee/1787748779743865.jpg', '18000', '4', 'CDMX', '2024-01-10 23:41:35', NULL),
 (25, 'Felicia Wyatt', 'kaxoduly@mailinator.com', '+1 (379) 647-9342', '74 East Rocky Clarendon Parkway', '3 Años', 'upload/employee/1787748812604845.jpg', '18000', '5', 'Tijuana, BC', '2024-01-10 23:42:06', NULL),
 (26, 'Buffy Craft', 'hyzusagope@mailinator.com', '+1 (309) 379-4347', '625 South New Road', '3 Años', 'upload/employee/1787748839640897.jpg', '14500', '3', 'Tijuana, BC', '2024-01-10 23:42:32', NULL),
@@ -204,7 +232,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2024_01_07_091939_create_advance_salaries_table', 6),
 (10, '2024_01_08_055955_create_pay_salaries_table', 7),
 (11, '2024_01_08_055957_create_pay_salaries_table', 8),
-(12, '2024_01_09_194721_create_avance_salarios_table', 9);
+(12, '2024_01_09_194721_create_avance_salarios_table', 9),
+(13, '2024_01_12_101149_create_anios_table', 10);
 
 -- --------------------------------------------------------
 
@@ -242,9 +271,15 @@ CREATE TABLE `pay_salaries` (
 --
 
 INSERT INTO `pay_salaries` (`id`, `employee_id`, `salary_month`, `year`, `paid_amount`, `advance_salary`, `due_salary`, `status`, `created_at`, `updated_at`) VALUES
-(8, 27, 'Diciembre', '2023', '15600', '0', '15600', 'Pagado', '2024-01-11 18:37:06', NULL),
-(9, 25, 'Diciembre', '2023', '18000', '350', '17650', 'Pagado', '2024-01-11 18:37:10', NULL),
-(10, 18, 'Enero', '2024', '15600', '0', '15600', 'Pagado', '2024-01-11 18:37:43', NULL);
+(11, 27, 'Diciembre', '2023', '15600', '350', '15250', 'Pagado', '2024-01-14 00:50:39', NULL),
+(12, 22, 'Diciembre', '2023', '14500', '0', '14500', 'Pagado', '2024-01-14 00:50:52', NULL),
+(13, 26, 'Diciembre', '2023', '14500', '0', '14500', 'Pagado', '2024-01-14 00:51:27', NULL),
+(14, 24, 'Diciembre', '2023', '18000', '0', '18000', 'Pagado', '2024-01-14 00:51:32', NULL),
+(15, 23, 'Diciembre', '2023', '16500', '560', '15940', 'Pagado', '2024-01-14 00:51:41', NULL),
+(16, 19, 'Diciembre', '2023', '16500', '0', '16500', 'Pagado', '2024-01-14 00:52:38', NULL),
+(17, 27, 'Enero', '2024', '15600', '0', '15600', 'Pagado', '2024-01-14 00:53:09', NULL),
+(18, 26, 'Enero', '2024', '14500', '0', '14500', 'Pagado', '2024-01-14 00:53:38', NULL),
+(19, 25, 'Diciembre', '2023', '18000', '100', '17900', 'Pagado', '2024-01-14 02:09:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -323,7 +358,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `photo`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'Jose', 'admin@gmail.com', '6646289328', '20240103172978.jpg', NULL, '$2y$12$8eS3WvmFg0yzL/HxocTNA.wFbdfCb0Dll.w45ouMJ/zj9CMWx1zu.', 'wju8IDsvI8sAcbgmpZ9KuIphsd9IvyJn83SDRiMP1Jjv0zlWIjY87Ua6nNqA', '2024-01-01 10:20:41', '2024-01-07 14:54:14');
+(2, 'Jose', 'admin@gmail.com', '6646289328', '20240103172978.jpg', NULL, '$2y$12$8eS3WvmFg0yzL/HxocTNA.wFbdfCb0Dll.w45ouMJ/zj9CMWx1zu.', 'RCmnSrc9QypxGnbkmtpkpHgMVHrvVDRCNA9X8vV4vvTOe9WI3raGdvKW1RvW', '2024-01-01 10:20:41', '2024-01-07 14:54:14');
 
 --
 -- Indexes for dumped tables
@@ -336,9 +371,9 @@ ALTER TABLE `advance_salaries`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `avance_salarios`
+-- Indexes for table `anios`
 --
-ALTER TABLE `avance_salarios`
+ALTER TABLE `anios`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -407,13 +442,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `advance_salaries`
 --
 ALTER TABLE `advance_salaries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
--- AUTO_INCREMENT for table `avance_salarios`
+-- AUTO_INCREMENT for table `anios`
 --
-ALTER TABLE `avance_salarios`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+ALTER TABLE `anios`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -437,13 +472,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `pay_salaries`
 --
 ALTER TABLE `pay_salaries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

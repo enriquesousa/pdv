@@ -104,6 +104,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/employee/salary/store', 'EmployeeSalaryStore')->name('employee.salary.store');
         Route::get('/month/salary', 'MonthSalary')->name('month.salary');
         Route::get('/history/salary/{id}', 'HistorySalary')->name('history.salary');
+        Route::get('/history/detail/salary/{id}', 'HistoryDetailSalary')->name('history.detail.salary');
     });
 
     // Configuraciones Datos (Años) 

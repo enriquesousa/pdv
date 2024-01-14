@@ -7,6 +7,31 @@
     <!-- Start Content-->
     <div class="container-fluid">
         
+        <!-- Standard modal content -->
+        <div id="modal_assign-{{ $employee_id . '-' . $item->month . '-' . $item->year }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="standard-modalLabel">Modal Heading</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Text in a modal</h6>
+                        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                        <hr>
+                        <h6>Overflowing text to show scroll behavior</h6>
+                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
         <!-- start page title -->
         <div class="row">
             <div class="col-12">
@@ -111,7 +136,8 @@
 
                                         <td>
                                             @if ($item->status != NULL)
-                                                <a href="{{ route('pay.salary') }}" class="btn btn-blue rounded-pill waves-effect waves-light">Detalle</a>
+                                                {{-- <a href="{{ route('history.detail.salary', $item->sueldoPagado->employee_id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Detalle</a> --}}
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_assign-{{ $item->employee_id . '-' . $item->month . '-' . $item->year }}">Detalle</button>
                                             @endif
                                         </td>
                                         

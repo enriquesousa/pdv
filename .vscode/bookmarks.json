@@ -34,7 +34,7 @@
 			"path": "app/Http/Controllers/Backend/SalaryController.php",
 			"bookmarks": [
 				{
-					"line": 30,
+					"line": 29,
 					"column": 22,
 					"label": "checkbox check en el request"
 				}

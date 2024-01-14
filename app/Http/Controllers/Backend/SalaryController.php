@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\AdvanceSalary;
-use App\Models\AvanceSalarios;
 use App\Models\Employee;
 use App\Models\PaySalary;
 use Carbon\Carbon;
@@ -66,14 +65,6 @@ class SalaryController extends Controller
                     'created_at' => Carbon::now(),
                 ]);
 
-                // Copia registro en la tabla 'advance_salarios'
-                $advances = AvanceSalarios::insert([
-                    'employee_id' => $request->employee_id,
-                    'month' => $request->month,
-                    'year' => $request->year,
-                    'advance_salary' => $request->advance_salary,
-                    'created_at' => Carbon::now(),
-                ]);
 
                 $notification = array(
                     'message' => 'Salario en Avanzado Agregado Exitosamente',
@@ -121,15 +112,6 @@ class SalaryController extends Controller
                 if ($advanced === NULL) {
 
                     AdvanceSalary::insert([
-                        'employee_id' => $employee_id,
-                        'month' => $request->month,
-                        'year' => $request->year,
-                        'advance_salary' => $request->advance_salary,
-                        'created_at' => Carbon::now(),
-                    ]);
-
-                    // Copia registro en la tabla 'advance_salarios'
-                    $advances = AvanceSalarios::insert([
                         'employee_id' => $employee_id,
                         'month' => $request->month,
                         'year' => $request->year,
@@ -197,16 +179,6 @@ class SalaryController extends Controller
                'created_at' => Carbon::now(), 
            ]);
         
-        // Copia registro en la tabla 'advance_salarios'
-        // Para llevar un historial de las veces que se le ha dado un avance de salario a un empleado
-        $advances = AvanceSalarios::insert([
-            'employee_id' => $request->employee_id,
-            'month' => $request->month,
-            'year' => $request->year,
-            'advance_salary' => $request->advance_salary,
-            'created_at' => Carbon::now(),
-        ]);
-    
         $notification = array(
            'message' => 'Salario Avanzado Actualizado Exitosamente',
            'alert-type' => 'success'
@@ -302,5 +274,10 @@ class SalaryController extends Controller
         return view('backend.salary.history_salary', compact('historySalary'));
     }
 
+    // HistoryDetailSalary
+    public function HistoryDetailSalary($id){
+       $detalle = PaySalary::findOrFail($id);
+       return view('backend.salary.history_detail_salary', compact('detalle'));
+    }
 
 }
