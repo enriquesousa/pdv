@@ -295,5 +295,12 @@ class SalaryController extends Controller
         return view('backend.salary.month_salary', compact('paidSalary'));
     }
 
+    // HistorySalary
+    public function HistorySalary($id){
+        $historySalary = AdvanceSalary::where('employee_id', $id)->get();
+        // dd($historySalary);
+        return view('backend.salary.history_salary', compact('historySalary'));
+    }
+
 
 }

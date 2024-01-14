@@ -68,7 +68,7 @@
 
                                         {{-- Botones de Acción --}}
                                         <td>
-                                            <a href="{{ route('edit.advance.salary', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Historial</a>
+                                            <a href="{{ route('history.salary', $item->employee_id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Historial</a>
                                         </td>
                                     </tr>
 

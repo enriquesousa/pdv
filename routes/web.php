@@ -103,6 +103,7 @@ Route::middleware(['auth'])->group(function () {
 	    Route::get('/pay/now/salary/{id}/{month}/{year}/{avance_salario}/{SeDebe}/{advance_id}', 'PayNowSalary')->name('pay.now.salary');
         Route::post('/employee/salary/store', 'EmployeeSalaryStore')->name('employee.salary.store');
         Route::get('/month/salary', 'MonthSalary')->name('month.salary');
+        Route::get('/history/salary/{id}', 'HistorySalary')->name('history.salary');
     });
 
     // Configuraciones Datos (Años) 

@@ -15,5 +15,11 @@ class AdvanceSalary extends Model
     {
         return $this->belongsTo(Employee::class, 'employee_id', 'id');
     }
+
+    // Relación con 'employee_id' de la tabla 'pay_salaries'
+    public function sueldoPagado()
+    {
+        return $this->belongsTo(PaySalary::class, 'employee_id', 'employee_id');
+    }
     
 }
