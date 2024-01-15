@@ -150,24 +150,23 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="standard-modalLabel">Modal Heading</h4>
+                        <h4 class="modal-title" id="standard-modalLabel">Detalle del Pago</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h6>Text in a modal</h6>
-                        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-                        <hr>
-                        <h6>Overflowing text to show scroll behavior</h6>
-                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+
                         <p><strong>ID:</strong> <span id="user-id"></span></p>
+                        <p><strong>Nombre:</strong> <span id="user-name"></span></p>
+                        <p><strong>Imagen:</strong> <span id="user-image"></span></p>
                         <p><strong>Mes:</strong> <span id="user-month"></span></p>
                         <p><strong>Año:</strong> <span id="user-year"></span></p>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                      
+                        {{-- Queda pendiente aprender como puedo pasar la variable de la imagen para poder desplegar --}}
+
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -188,13 +187,15 @@
           $.get(userURL, function (data) {
               $('#userShowModal').modal('show');
               $('#user-id').text(data.employee_id);
+              $('#user-name').text(data.name);
+              $('#user-image').text(data.image);
               $('#user-month').text(data.month);
               $('#user-year').text(data.year);
           })
        });
        
     });
-  
+    
 </script>
 
 @endsection

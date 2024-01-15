@@ -276,8 +276,26 @@ class SalaryController extends Controller
 
     // HistoryDetailSalary
     public function HistoryDetailSalary($id){
-       $user = AdvanceSalary::findOrFail($id);
-       return response()->json($user);
+        $user = AdvanceSalary::findOrFail($id);
+
+        $user = [
+            'id' => $user->id,
+            'employee_id' => $user->employee_id,
+            'month' => $user->month,
+            'year' => $user->year,
+            'advance_salary' => $user->advance_salary,
+            'status' => $user->status,
+            'created_at' => $user->created_at,
+            'name' => $user->employee->name,
+            'email' => $user->employee->email,
+            'phone' => $user->employee->phone,
+            'address' => $user->employee->address,
+            'image' => $user->employee->image,
+            'paid_amount' => $user->sueldoPagado->paid_amount,
+        ];
+
+
+        return response()->json($user);
     }
 
 }
