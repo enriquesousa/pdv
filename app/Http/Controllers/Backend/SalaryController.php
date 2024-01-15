@@ -276,8 +276,8 @@ class SalaryController extends Controller
 
     // HistoryDetailSalary
     public function HistoryDetailSalary($id){
-       $detalle = PaySalary::findOrFail($id);
-       return view('backend.salary.history_detail_salary', compact('detalle'));
+       $user = AdvanceSalary::findOrFail($id);
+       return response()->json($user);
     }
 
 }
