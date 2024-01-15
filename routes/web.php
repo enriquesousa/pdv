@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\Backend\SalaryController;
 use App\Http\Controllers\Config\AniosController;
+use App\Http\Controllers\Backend\AttendanceController;
 
 
 /*
@@ -115,6 +116,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/anio/edit/{id}', 'AnioEdit')->name('anio.edit');
         Route::post('/anio/update', 'AnioUpdate')->name('anio.update');
         Route::get('/anio/delete/{id}', 'AnioDelete')->name('anio.delete');    
+    });
+
+    // Control de Asistencias
+    Route::controller(AttendanceController::class)->group(function () {
+	    Route::get('/employee/attendances/list', 'EmployeeAttendancesList')->name('employee.attendances.list');
+        
     });
 
 

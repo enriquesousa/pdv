@@ -177,16 +177,16 @@
                                 <a href="{{ route('add.advance.salary') }}">Agregar Salario</a>
                             </li>
                             <li>
-                                <a href="{{ route('pay.salary') }}">Pagar Salarios Ultimo Mes</a>
+                                <a href="{{ route('pay.salary') }}">Pagar Ultimo Mes</a>
                             </li>
                             <li>
-                                <a href="{{ route('month.salary') }}">Ver Salarios Ultimo Mes</a>
+                                <a href="{{ route('month.salary') }}">Ver Ultimo Mes</a>
                             </li>
 
                             {{-- Menus Multilevel --}}
                             <li>
                                 <a href="#sidebarMultiNivel2" data-bs-toggle="collapse">
-                                    Pagar Salarios Otro Mes <span class="menu-arrow"></span>
+                                    Pagar Otro Mes <span class="menu-arrow"></span>
                                 </a>
                                 <div class="collapse" id="sidebarMultiNivel2">
                                     <ul class="nav-second-level">
@@ -230,8 +230,8 @@
                                 </div>
                             </li>
 
-                            {{-- Menus Multilevel --}}
-                            <li>
+                            {{-- Menus Multilevel sidebarMultiNivel2 --}}
+                            {{-- <li>
                                 <a href="#sidebarMultiNivel2" data-bs-toggle="collapse">
                                     Second Level <span class="menu-arrow"></span>
                                 </a>
@@ -245,9 +245,10 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> --}}
 
-                            <li>
+                            {{-- Menus Multilevel sidebarMultiNivel3 --}}
+                            {{-- <li>
                                 <a href="#sidebarMultiNivel3" data-bs-toggle="collapse">
                                     Third Level <span class="menu-arrow"></span>
                                 </a>
@@ -273,7 +274,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> --}}
 
                         </ul>
 
@@ -281,7 +282,21 @@
                     </div>
                 </li>
 
-
+                {{-- Asistencias --}}
+                <li>
+                    <a href="#attendance" data-bs-toggle="collapse">
+                        <i class="mdi mdi-book-clock-outline"></i>
+                        <span>Control Asistencias</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="attendance">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('employee.attendances.list') }}">Lista de Asistencias</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
                {{-- * CONFIGURACIÓN DEL SISTEMA --}}
                <li class="menu-title mt-2">CONFIGURACIÓN</li>
