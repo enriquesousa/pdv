@@ -13,7 +13,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <a href="{{ route('add.employee.attendance') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Asistencia de Empleados</a>
+                            {{-- <a href="{{ route('customer.add') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Cliente</a> --}}
                         </ol>
                     </div>
                     <h4 class="page-title">Lista Asistencia de Empleados</h4>
@@ -33,23 +33,31 @@
                             <thead>
                                 <tr>
                                     <th>Serie</th>
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
                                     <th>Fecha</th>
-                                    <th>Acción</th>
+                                    <th>Estatus</th>
                                 </tr>
                             </thead>
                         
                         
                             <tbody>
 
-                                @foreach ($allData as $key => $item)
+                                @foreach ($details as $key => $item)
+
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
+                                        <td><img src="{{ asset($item->employee->image) }}" style="width: 50px; height: 40px;"></td>
+                                        <td>{{ $item->employee->name }}</td>
                                         <td>{{ \Carbon\Carbon::parse($item->date)->locale('es')->isoFormat('D[/]MM[/]YYYY') }}</td>
-                                       
-                                        <td>
-                                            <a href="{{ route('edit.employee.attendance', $item->date) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
-                                            <a href="{{ route('view.employee.attendance', $item->date) }}" class="btn btn-danger rounded-pill waves-effect waves-light">Detalle</a>
-                                        </td>
+
+                                        @if ($item->attend_status == 'Presente')
+                                            <td style="color: #2c921a">{{ $item->attend_status }}</td>
+                                        @elseif ($item->attend_status == 'Permiso')
+                                            <td style="color: #a6b317">{{ $item->attend_status }}</td>
+                                        @elseif ($item->attend_status == 'Ausente')
+                                            <td style="color: #8a1414">{{ $item->attend_status }}</td>                                                                                    
+                                        @endif
 
                                     </tr>
 
