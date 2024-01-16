@@ -48,8 +48,8 @@
                                         
                                        
                                         <td>
-                                            <a href="{{ route('customer.edit', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
-                                            <a href="{{ route('customer.delete', $item->id) }}" class="btn btn-danger rounded-pill waves-effect waves-light">Detalle</a>
+                                            <a href="#" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
+                                            <a href="#" class="btn btn-danger rounded-pill waves-effect waves-light">Detalle</a>
                                         </td>
 
                                     </tr>
