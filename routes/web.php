@@ -123,6 +123,7 @@ Route::middleware(['auth'])->group(function () {
 	    Route::get('/list/employee/attendances', 'ListEmployeeAttendances')->name('employee.attendances.list');
 	    Route::get('/add/employee/attendances', 'AddEmployeeAttendances')->name('add.employee.attendance');
 	    Route::post('/store/employee/attendances', 'StoreEmployeeAttendances')->name('employee.attendances.store');
+        Route::get('/edit/employee/attendances/{date}', 'EditEmployeeAttendances')->name('edit.employee.attendance');
     });
 
 

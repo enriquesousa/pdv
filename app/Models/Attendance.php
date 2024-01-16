@@ -10,4 +10,9 @@ class Attendance extends Model
     use HasFactory;
     protected $guarded = [];
     
+    // Relación con 'id' del empleado
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id', 'id');
+    }
 }

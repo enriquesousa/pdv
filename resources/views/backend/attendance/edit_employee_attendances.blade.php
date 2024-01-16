@@ -37,6 +37,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
+
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <h4>
@@ -46,6 +47,8 @@
                                 </h4>
                             </ol>
                         </div>
+
+                        <h4 class="page-title">Editar Asistencia</h4>
                     </div>
                 </div>
             </div>
@@ -65,6 +68,7 @@
                                            name="date" 
                                            id="date"
                                            class="checkdate form-control form-control-sm singledatepicker"
+                                           value="{{ $editData['0']['date'] }}"
                                            placeholder="Fecha de Asistencia" 
                                            autocomplete="off">
                                 </div>
@@ -90,16 +94,16 @@
 
                                     <tbody>
 
-                                        @foreach ($employees as $key => $employee)
+                                        @foreach ($editData as $key => $item)
 
-                                            <tr id="div {{ $employee->id }}" class="text-center">
+                                            <tr class="text-center">
 
-                                                <input type="hidden" name="employee_id[]" value="{{ $employee->id }}"
+                                                <input type="hidden" name="employee_id[]" value="{{ $item->id }}"
                                                     class="employee_id">
 
                                                 <td>{{ $key + 1 }}</td>
-                                                <td><img src="{{ asset($employee->image) }}" style="width: 50px; height: 40px;"></td>
-                                                <td>{{ $employee->name }}</td>
+                                                <td><img src="{{ asset($item->employee->image) }}" style="width: 50px; height: 40px;"></td>
+                                                <td>{{ $item->employee->name }}</td>
 
                                                 <td colspan="3">
                                                     <div class="switch-toggle switch-3 switch-candy">
@@ -109,21 +113,23 @@
                                                                name="attend_status{{ $key }}" 
                                                                value="Presente"
                                                                type="radio" 
-                                                               checked="checked">
+                                                               {{ $item->attend_status == 'Presente' ? 'checked' : '' }}>
                                                         <label for="present{{ $key }}">Presente</label>
 
                                                         <input class="leave" 
                                                                id="leave{{ $key }}"
                                                                name="attend_status{{ $key }}" 
                                                                value="Permiso"
-                                                               type="radio">
+                                                               type="radio"
+                                                               {{ $item->attend_status == 'Permiso' ? 'checked' : '' }}>
                                                         <label for="leave{{ $key }}">Permiso</label>
 
                                                         <input class="absent" 
                                                                id="absent{{ $key }}"
                                                                name="attend_status{{ $key }}" 
                                                                value="Ausente"
-                                                               type="radio">
+                                                               type="radio"
+                                                               {{ $item->attend_status == 'Ausente' ? 'checked' : '' }}>
                                                         <label for="absent{{ $key }}">Ausente</label>
 
                                                         <a></a>
@@ -137,7 +143,7 @@
                                     </tbody>
 
                                 </table>
-                                <button type="submit" class="btn btn-success btn-sm"> Guardar </button>
+                                <button type="submit" class="btn btn-success btn-sm"> Actualizar </button>
                             </form>
                         </div>
                         <!-- end card body-->

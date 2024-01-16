@@ -48,7 +48,7 @@
                                         
                                        
                                         <td>
-                                            <a href="#" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
+                                            <a href="{{ route('edit.employee.attendance', $item->date) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
                                             <a href="#" class="btn btn-danger rounded-pill waves-effect waves-light">Detalle</a>
                                         </td>
 
