@@ -84,11 +84,11 @@
                                         </tr>
                                         <tr>
                                             <th class="text-center btn present_all"
-                                                style="display: table-cell;background-color:#114190">Presente</th>
+                                                style="display: table-cell;background-color:#43F124">Presente</th>
                                             <th class="text-center btn leave_all"
-                                                style="display: table-cell;background-color:#114190">Permiso</th>
+                                                style="display: table-cell;background-color:#E0F041">Permiso</th>
                                             <th class="text-center btn absent_all"
-                                                style="display: table-cell;background-color:#114190">Ausente</th>
+                                                style="display: table-cell;background-color:#FC3333">Ausente</th>
                                         </tr>
                                     </thead>
 
@@ -98,7 +98,7 @@
 
                                             <tr class="text-center">
 
-                                                <input type="hidden" name="employee_id[]" value="{{ $item->id }}"
+                                                <input type="hidden" name="employee_id[]" value="{{ $item->employee_id }}"
                                                     class="employee_id">
 
                                                 <td>{{ $key + 1 }}</td>
@@ -114,7 +114,11 @@
                                                                value="Presente"
                                                                type="radio" 
                                                                {{ $item->attend_status == 'Presente' ? 'checked' : '' }}>
-                                                        <label for="present{{ $key }}">Presente</label>
+                                                        @if ($item->attend_status == 'Presente')
+                                                            <label for="present{{ $key }}" style="color: #43F124">Presente</label>
+                                                        @else
+                                                            <label for="present{{ $key }}">Presente</label>
+                                                        @endif       
 
                                                         <input class="leave" 
                                                                id="leave{{ $key }}"
@@ -122,7 +126,11 @@
                                                                value="Permiso"
                                                                type="radio"
                                                                {{ $item->attend_status == 'Permiso' ? 'checked' : '' }}>
-                                                        <label for="leave{{ $key }}">Permiso</label>
+                                                        @if ($item->attend_status == 'Permiso')
+                                                            <label for="leave{{ $key }}" style="color: #c0cf14">Permiso</label>
+                                                        @else
+                                                            <label for="leave{{ $key }}">Permiso</label>
+                                                        @endif       
 
                                                         <input class="absent" 
                                                                id="absent{{ $key }}"
@@ -130,7 +138,11 @@
                                                                value="Ausente"
                                                                type="radio"
                                                                {{ $item->attend_status == 'Ausente' ? 'checked' : '' }}>
-                                                        <label for="absent{{ $key }}">Ausente</label>
+                                                        @if ($item->attend_status == 'Ausente')
+                                                            <label for="absent{{ $key }}" style="color: #FC3333">Ausente</label>
+                                                        @else
+                                                            <label for="absent{{ $key }}">Ausente</label>
+                                                        @endif       
 
                                                         <a></a>
 

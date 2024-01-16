@@ -26,6 +26,9 @@ class AttendanceController extends Controller
     // StoreEmployeeAttendances
     public function StoreEmployeeAttendances(Request $request){
 
+        // Eliminar registros con la fecha, esto lo hacemos para que nos sirva este método también para actualizar
+        Attendance::where('date',date('Y-m-d',strtotime($request->date)))->delete();
+
         // Cuenta el numero de empleados
         $countEmployee = count($request->employee_id);
 
