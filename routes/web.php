@@ -120,8 +120,8 @@ Route::middleware(['auth'])->group(function () {
 
     // Control de Asistencias
     Route::controller(AttendanceController::class)->group(function () {
-	    Route::get('/employee/attendances/list', 'EmployeeAttendancesList')->name('employee.attendances.list');
-        
+	    Route::get('/list/employee/attendances', 'ListEmployeeAttendances')->name('employee.attendances.list');
+	    Route::get('/add/employee/attendances', 'AddEmployeeAttendances')->name('add.employee.attendance');
     });
 
 
