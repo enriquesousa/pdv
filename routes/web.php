@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\Backend\SalaryController;
 use App\Http\Controllers\Config\AniosController;
 use App\Http\Controllers\Backend\AttendanceController;
+use App\Http\Controllers\Backend\CategoryController;
 
 
 /*
@@ -127,7 +128,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/view/employee/attendances/{date}', 'ViewEmployeeAttendances')->name('view.employee.attendance');
     });
 
-
+    // Categorías
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('/list/category', 'ListCategory')->name('list.category');
+    });
     
 });
 

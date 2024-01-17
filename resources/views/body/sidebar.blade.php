@@ -298,6 +298,23 @@
                     </div>
                 </li>
 
+
+                {{-- Categorías --}}
+                <li>
+                    <a href="#category" data-bs-toggle="collapse">
+                        <i class="mdi mdi-table-cog"></i>
+                        <span>Categorías</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="category">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('list.category') }}">Lista Categorías</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                {{-- * CONFIGURACIÓN DEL SISTEMA --}}
                <li class="menu-title mt-2">CONFIGURACIÓN</li>
 
