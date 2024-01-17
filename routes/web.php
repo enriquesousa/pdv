@@ -131,6 +131,7 @@ Route::middleware(['auth'])->group(function () {
     // Categorías
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/list/category', 'ListCategory')->name('list.category');
+        Route::post('/store/category', 'StoreCategory')->name('store.category');
     });
     
 });
