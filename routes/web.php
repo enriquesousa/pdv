@@ -141,7 +141,7 @@ Route::middleware(['auth'])->group(function () {
     // Productos
     Route::controller(ProductController::class)->group(function () {
         Route::get('/list/product', 'ListProduct')->name('list.product');
-        
+        Route::get('/add/product', 'AddProduct')->name('add.product');
     });
 
 
