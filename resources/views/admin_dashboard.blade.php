@@ -563,6 +563,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="{{ asset('backend/assets/js/code.js') }}"></script>
 
+    {{-- Para validar formularios con JQuery --}}
+    <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
 
     {{-- Toastr Code toster --}}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

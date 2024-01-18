@@ -49,6 +49,21 @@
 					"label": "Auto focus on input in bootstrap modal"
 				}
 			]
+		},
+		{
+			"path": "resources/views/backend/product/add_product.blade.php",
+			"bookmarks": [
+				{
+					"line": 183,
+					"column": 55,
+					"label": "Js para el manejo de la validación de la forma"
+				},
+				{
+					"line": 273,
+					"column": 51,
+					"label": "JS para el manejo de la imagen en la forma"
+				}
+			]
 		}
 	]
 }
