@@ -135,7 +135,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="advance_salary" class="form-label">Salario Avanzado</label>
-                                                <input type="text" name="advance_salary"
+                                                <input type="number" name="advance_salary"
                                                     class="form-control @error('advance_salary') is-invalid @enderror"
                                                     value="{{ $salary->advance_salary }}">
                                                 @error('advance_salary')

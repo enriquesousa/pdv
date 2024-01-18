@@ -51,10 +51,16 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td><img src="{{ asset($item->product_image) }}" style="width: 50px; height: 40px;"></td>
                                         <td>{{ $item->product_name }}</td>
-                                        <td>{{ $item->category_id }}</td>
-                                        <td>{{ $item->supplier_id }}</td>
+                                        <td>{{ $item->category->category_name }}</td>
+                                        <td>{{ $item->supplier->name }}</td>
                                         <td>{{ $item->product_code }}</td>
-                                        <td>{{ $item->selling_price }}</td>
+                                        <td>
+                                            @php
+                                                $floatVar =  floatval($item->selling_price); 
+                                            @endphp
+                                            $ @convert($floatVar)
+                                        </td>
+
                                        
                                         <td>
                                             <a href="{{ route('customer.edit', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>

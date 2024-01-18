@@ -33,7 +33,7 @@
                             {{-- Forma Agregar Cliente --}}
                             <div class="tab-pane" id="settings">
 
-                                <form id="myForm" method="post" action="{{ route('customer.store') }}" enctype="multipart/form-data">
+                                <form id="myForm" method="post" action="{{ route('store.product') }}" enctype="multipart/form-data">
                                     @csrf
 
                                     <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Agregar
@@ -90,7 +90,7 @@
                                         {{-- Product en Almacén 'product_garage' --}}
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="product_garage" class="form-label">En Almacén</label>
+                                                <label for="product_garage" class="form-label">Localización en Almacén</label>
                                                 <input type="text" name="product_garage" class="form-control">
                                             </div>
                                         </div>
@@ -123,7 +123,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="buying_price" class="form-label">Precio de Compra</label>
-                                                <input type="text" name="buying_price" class="form-control">
+                                                <input type="number" name="buying_price" class="form-control">
                                             </div>
                                         </div>
 
@@ -131,7 +131,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="selling_price" class="form-label">Precio de Venta</label>
-                                                <input type="text" name="selling_price" class="form-control">
+                                                <input type="number" name="selling_price" class="form-control">
                                             </div>
                                         </div>
 
