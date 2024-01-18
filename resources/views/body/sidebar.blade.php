@@ -315,6 +315,31 @@
                     </div>
                 </li>
 
+
+                {{-- Productos --}}
+                <li>
+                    <a href="#product" data-bs-toggle="collapse">
+                        <i class="mdi mdi-carrot"></i>
+                        <span>Productos</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="product">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('list.product') }}">Lista Productos</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('list.category') }}">Agregar Producto</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
+
+
+
+
                {{-- * CONFIGURACIÓN DEL SISTEMA --}}
                <li class="menu-title mt-2">CONFIGURACIÓN</li>
 

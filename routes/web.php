@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\SalaryController;
 use App\Http\Controllers\Config\AniosController;
 use App\Http\Controllers\Backend\AttendanceController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ProductController;
 
 
 /*
@@ -136,6 +137,14 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update/category', 'UpdateCategory')->name('update.category');
         Route::get('/delete/category/{id}', 'DeleteCategory')->name('delete.category');
     });
+
+    // Productos
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('/list/product', 'ListProduct')->name('list.product');
+        
+    });
+
+
     
 });
 
