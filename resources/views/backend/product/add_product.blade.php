@@ -78,13 +78,13 @@
                                         </div>
 
 
-                                        {{-- Product Code 'product_code' --}}
-                                        <div class="col-md-6">
+                                        {{-- Product Code 'product_code', lo vamos a auto generar con paquete de Laravel --}}
+                                        {{-- <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="product_code" class="form-label">Código</label>
                                                 <input type="text" name="product_code" class="form-control">
                                             </div>
-                                        </div>
+                                        </div> --}}
 
 
                                         {{-- Product en Almacén 'product_garage' --}}
@@ -195,9 +195,9 @@
                     supplier_id: {
                         required : true,
                     }, 
-                    product_code: {
-                        required : true,
-                    }, 
+                    // product_code: {
+                    //     required : true,
+                    // }, 
                     product_garage: {
                         required : true,
                     }, 
@@ -230,9 +230,9 @@
                     supplier_id: {
                         required : 'Favor de Seleccionar un Proveedor',
                     },
-                    product_code: {
-                        required : 'Favor de Ingresar el Código del Producto',
-                    },
+                    // product_code: {
+                    //     required : 'Favor de Ingresar el Código del Producto',
+                    // },
                     product_garage: {
                         required : 'Favor de ingresar el Cantidad en almacén',
                     },
