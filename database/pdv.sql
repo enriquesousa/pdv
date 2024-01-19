@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 14, 2024 at 06:52 PM
+-- Generation Time: Jan 19, 2024 at 05:37 PM
 -- Server version: 10.11.4-MariaDB-1~deb12u1
 -- PHP Version: 8.2.7
 
@@ -43,46 +43,26 @@ CREATE TABLE `advance_salaries` (
 --
 
 INSERT INTO `advance_salaries` (`id`, `employee_id`, `month`, `year`, `status`, `advance_salary`, `created_at`, `updated_at`) VALUES
-(28, 18, 'Enero', '2024', 'Pagado', NULL, '2024-01-10 23:38:07', '2024-01-11 18:37:43'),
-(29, 19, 'Enero', '2024', NULL, NULL, '2024-01-10 23:39:17', NULL),
-(30, 20, 'Enero', '2024', NULL, NULL, '2024-01-10 23:39:47', NULL),
-(31, 21, 'Enero', '2024', NULL, NULL, '2024-01-10 23:40:15', NULL),
-(32, 22, 'Enero', '2024', NULL, NULL, '2024-01-10 23:40:47', NULL),
-(33, 23, 'Enero', '2024', NULL, NULL, '2024-01-10 23:41:10', NULL),
-(34, 24, 'Enero', '2024', NULL, NULL, '2024-01-10 23:41:35', NULL),
-(35, 25, 'Enero', '2024', NULL, NULL, '2024-01-10 23:42:06', NULL),
-(36, 26, 'Enero', '2024', 'Pagado', NULL, '2024-01-10 23:42:32', '2024-01-14 00:53:38'),
-(37, 27, 'Enero', '2024', 'Pagado', NULL, '2024-01-10 23:42:59', '2024-01-14 00:53:09'),
-(58, 27, 'Diciembre', '2023', 'Pagado', '350', '2024-01-14 00:48:20', '2024-01-14 00:50:39'),
-(59, 26, 'Diciembre', '2023', 'Pagado', NULL, '2024-01-13 20:56:03', '2024-01-14 00:51:27'),
-(60, 25, 'Diciembre', '2023', 'Pagado', '100', '2024-01-14 02:09:14', '2024-01-14 02:09:39'),
-(61, 24, 'Diciembre', '2023', 'Pagado', NULL, '2024-01-13 20:56:03', '2024-01-14 00:51:32'),
-(62, 23, 'Diciembre', '2023', 'Pagado', '560', '2024-01-14 00:48:50', '2024-01-14 00:51:41'),
-(63, 22, 'Diciembre', '2023', 'Pagado', NULL, '2024-01-13 20:56:03', '2024-01-14 00:50:52'),
-(64, 21, 'Diciembre', '2023', NULL, NULL, '2024-01-13 20:56:03', NULL),
-(65, 20, 'Diciembre', '2023', NULL, NULL, '2024-01-13 20:56:03', NULL),
-(66, 19, 'Diciembre', '2023', 'Pagado', NULL, '2024-01-13 20:56:03', '2024-01-14 00:52:38'),
-(67, 18, 'Diciembre', '2023', NULL, NULL, '2024-01-13 20:56:03', NULL),
-(68, 27, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
-(69, 26, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
-(70, 25, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
-(71, 24, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
-(72, 23, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
-(73, 22, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
-(74, 21, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
-(75, 20, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
-(76, 19, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
-(77, 18, 'Febrero', '2024', NULL, NULL, '2024-01-13 20:57:21', NULL),
-(78, 23, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
-(79, 27, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
-(80, 26, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
-(81, 25, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
-(82, 24, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
-(83, 22, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
-(84, 21, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
-(85, 20, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
-(86, 19, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL),
-(87, 18, 'Marzo', '2024', NULL, NULL, '2024-01-14 02:08:05', NULL);
+(88, 28, 'Enero', '2024', NULL, NULL, '2024-01-17 16:54:49', NULL),
+(89, 29, 'Enero', '2024', NULL, NULL, '2024-01-17 16:55:36', NULL),
+(90, 30, 'Enero', '2024', NULL, NULL, '2024-01-17 16:58:19', NULL),
+(91, 31, 'Enero', '2024', NULL, NULL, '2024-01-17 16:58:42', NULL),
+(92, 32, 'Enero', '2024', NULL, NULL, '2024-01-17 16:59:35', NULL),
+(93, 33, 'Enero', '2024', NULL, NULL, '2024-01-17 17:00:29', NULL),
+(94, 34, 'Enero', '2024', NULL, NULL, '2024-01-17 17:00:57', NULL),
+(95, 35, 'Enero', '2024', NULL, NULL, '2024-01-17 17:01:38', NULL),
+(96, 36, 'Enero', '2024', NULL, NULL, '2024-01-17 17:02:15', NULL),
+(97, 37, 'Enero', '2024', NULL, NULL, '2024-01-17 17:02:51', NULL),
+(98, 37, 'Diciembre', '2023', 'Pagado', '500', '2024-01-17 17:11:32', '2024-01-17 17:12:16'),
+(99, 36, 'Diciembre', '2023', NULL, '300.5', '2024-01-18 18:49:59', '2024-01-18 18:49:59'),
+(100, 35, 'Diciembre', '2023', NULL, NULL, '2024-01-17 17:08:55', NULL),
+(101, 34, 'Diciembre', '2023', NULL, NULL, '2024-01-17 17:08:55', NULL),
+(102, 33, 'Diciembre', '2023', NULL, NULL, '2024-01-17 17:08:55', NULL),
+(103, 31, 'Diciembre', '2023', NULL, NULL, '2024-01-17 17:08:55', NULL),
+(104, 30, 'Diciembre', '2023', NULL, NULL, '2024-01-17 17:08:55', NULL),
+(105, 32, 'Diciembre', '2023', NULL, NULL, '2024-01-17 17:08:55', NULL),
+(106, 29, 'Diciembre', '2023', NULL, NULL, '2024-01-17 17:08:55', NULL),
+(107, 28, 'Diciembre', '2023', NULL, NULL, '2024-01-17 17:08:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -110,6 +90,77 @@ INSERT INTO `anios` (`id`, `anio`, `created_at`, `updated_at`) VALUES
 (8, '2028', NULL, NULL),
 (9, '2029', NULL, NULL),
 (10, '2030', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `attendances`
+--
+
+CREATE TABLE `attendances` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `attend_status` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `attendances`
+--
+
+INSERT INTO `attendances` (`id`, `employee_id`, `date`, `attend_status`, `created_at`, `updated_at`) VALUES
+(101, 28, '2023-12-19', 'Presente', '2024-01-17 17:14:42', '2024-01-17 17:14:42'),
+(102, 29, '2023-12-19', 'Presente', '2024-01-17 17:14:42', '2024-01-17 17:14:42'),
+(103, 30, '2023-12-19', 'Presente', '2024-01-17 17:14:42', '2024-01-17 17:14:42'),
+(104, 31, '2023-12-19', 'Presente', '2024-01-17 17:14:42', '2024-01-17 17:14:42'),
+(105, 32, '2023-12-19', 'Presente', '2024-01-17 17:14:42', '2024-01-17 17:14:42'),
+(106, 33, '2023-12-19', 'Ausente', '2024-01-17 17:14:42', '2024-01-17 17:14:42'),
+(107, 34, '2023-12-19', 'Permiso', '2024-01-17 17:14:42', '2024-01-17 17:14:42'),
+(108, 35, '2023-12-19', 'Permiso', '2024-01-17 17:14:42', '2024-01-17 17:14:42'),
+(109, 36, '2023-12-19', 'Presente', '2024-01-17 17:14:42', '2024-01-17 17:14:42'),
+(110, 37, '2023-12-19', 'Presente', '2024-01-17 17:14:42', '2024-01-17 17:14:42'),
+(111, 28, '2024-01-15', 'Presente', '2024-01-17 17:15:02', '2024-01-17 17:15:02'),
+(112, 29, '2024-01-15', 'Presente', '2024-01-17 17:15:02', '2024-01-17 17:15:02'),
+(113, 30, '2024-01-15', 'Presente', '2024-01-17 17:15:02', '2024-01-17 17:15:02'),
+(114, 31, '2024-01-15', 'Presente', '2024-01-17 17:15:02', '2024-01-17 17:15:02'),
+(115, 32, '2024-01-15', 'Presente', '2024-01-17 17:15:02', '2024-01-17 17:15:02'),
+(116, 33, '2024-01-15', 'Presente', '2024-01-17 17:15:02', '2024-01-17 17:15:02'),
+(117, 34, '2024-01-15', 'Presente', '2024-01-17 17:15:02', '2024-01-17 17:15:02'),
+(118, 35, '2024-01-15', 'Presente', '2024-01-17 17:15:02', '2024-01-17 17:15:02'),
+(119, 36, '2024-01-15', 'Presente', '2024-01-17 17:15:02', '2024-01-17 17:15:02'),
+(120, 37, '2024-01-15', 'Ausente', '2024-01-17 17:15:02', '2024-01-17 17:15:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `category_name`, `created_at`, `updated_at`) VALUES
+(2, 'Frutas y Verduras', '2024-01-17 17:27:45', NULL),
+(3, 'Carnes, Pescados y Mariscos', '2024-01-17 17:28:16', '2024-01-18 16:48:06'),
+(5, 'Mascotas', '2024-01-17 17:28:29', NULL),
+(6, 'Lácteos', '2024-01-17 17:28:43', '2024-01-18 16:47:48'),
+(7, 'Congelados', '2024-01-17 17:28:51', NULL),
+(8, 'Bebidas y Licores', '2024-01-17 17:28:56', '2024-01-18 16:47:26'),
+(9, 'Abarrotes', '2024-01-17 17:29:03', '2024-01-18 16:45:59'),
+(10, 'Hogar y Autos', '2024-01-17 17:29:10', '2024-01-18 16:45:47'),
+(11, 'Electrónica', '2024-01-17 17:29:16', '2024-01-18 16:45:26'),
+(12, 'Ferretería', '2024-01-17 17:29:22', NULL),
+(13, 'Juguetería', '2024-01-18 16:52:06', '2024-01-18 16:53:24');
 
 -- --------------------------------------------------------
 
@@ -177,16 +228,16 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`id`, `name`, `email`, `phone`, `address`, `experience`, `image`, `salary`, `vacation`, `city`, `created_at`, `updated_at`) VALUES
-(18, 'Abraham Best', 'gavah@mailinator.com', '+1 (279) 667-7724', '34 Cowley Boulevard', '4 Años', 'upload/employee/1787748561400688.jpg', '15600', '5', 'Tijuana, BC', '2024-01-10 23:38:07', NULL),
-(19, 'Omar Goodman', 'xugogopip@mailinator.com', '+1 (384) 224-5348', '41 Oak Avenue', '5 Años', 'upload/employee/1787748635216536.jpg', '16500', '3', 'Ensenada BC', '2024-01-10 23:39:17', NULL),
-(20, 'Fallon Lester', 'sysimymyp@mailinator.com', '+1 (185) 507-9791', '889 South Clarendon Extension', '1 Año', 'upload/employee/1787748666577686.jpg', '18000', '5', 'CDMX', '2024-01-10 23:39:47', NULL),
-(21, 'Kelly Jones', 'facocejage@mailinator.com', '+1 (572) 944-6367', '71 Oak Drive', '2 Años', 'upload/employee/1787748695510320.jpg', '15600', '5', 'CDMX', '2024-01-10 23:40:15', NULL),
-(22, 'Ivory Brady', 'fonuwazobi@mailinator.com', '+1 (559) 342-6886', '150 East Rocky Milton Court', '4 Años', 'upload/employee/1787748729224152.jpg', '14500', '4', 'CDMX', '2024-01-10 23:40:47', NULL),
-(23, 'Talon Woods', 'cynisohah@mailinator.com', '+1 (141) 759-9847', '67 Fabien Lane', '5 Años', 'upload/employee/1787748753242847.jpg', '16500', '5', 'Tijuana, BC', '2024-01-14 00:49:49', '2024-01-14 00:49:49'),
-(24, 'Chester Bradley', 'tuhumajem@mailinator.com', '+1 (578) 464-7261', '30 Clarendon Road', '1 Año', 'upload/employee/1787748779743865.jpg', '18000', '4', 'CDMX', '2024-01-10 23:41:35', NULL),
-(25, 'Felicia Wyatt', 'kaxoduly@mailinator.com', '+1 (379) 647-9342', '74 East Rocky Clarendon Parkway', '3 Años', 'upload/employee/1787748812604845.jpg', '18000', '5', 'Tijuana, BC', '2024-01-10 23:42:06', NULL),
-(26, 'Buffy Craft', 'hyzusagope@mailinator.com', '+1 (309) 379-4347', '625 South New Road', '3 Años', 'upload/employee/1787748839640897.jpg', '14500', '3', 'Tijuana, BC', '2024-01-10 23:42:32', NULL),
-(27, 'Aline Bell', 'hyfe@mailinator.com', '+1 (885) 541-1176', '571 Second Extension', '4 Años', 'upload/employee/1787748867991686.jpg', '15600', '4', 'Ensenada BC', '2024-01-10 23:42:59', NULL);
+(28, 'Odette Roman', 'sumyv@mailinator.com', '+1 (763) 248-8128', '158 Cowley Boulevard', '5 Años', 'upload/employee/1788357366560531.jpg', '15600', '5', 'Tijuana, BC', '2024-01-17 16:54:49', NULL),
+(29, 'George Lucas', 'fawepaj@mailinator.com', '+1 (416) 527-2342', '869 Cowley Drive', '5 Años', 'upload/employee/1788357415855891.jpg', '20000', '10', 'CDMX', '2024-01-17 16:55:36', NULL),
+(30, 'Hope Mcdowell', 'byzaqiwa@mailinator.com', '+1 (308) 487-2042', '873 Second Parkway', '1 Año', 'upload/employee/1788357586901750.jpg', '15800', '5', 'Tijuana, BC', '2024-01-17 16:59:47', '2024-01-17 16:59:47'),
+(31, 'Jolie Hodge', 'kisigigi@mailinator.com', '+1 (362) 396-6028', '789 New Parkway', '5 Años', 'upload/employee/1788357611476850.jpg', '18000', '5', 'Tijuana, BC', '2024-01-17 16:59:56', '2024-01-17 16:59:56'),
+(32, 'John Strickland', 'nuca@mailinator.com', '+1 (746) 703-6622', '19 South New Boulevard', '2 Años', 'upload/employee/1788357666720077.jpg', '16500', '5', 'Ensenada BC', '2024-01-17 16:59:35', NULL),
+(33, 'Autumn Burns', 'kerokojo@mailinator.com', '+1 (527) 408-1725', '35 White Milton Extension', '3 Años', 'upload/employee/1788357723866320.jpg', '14500', '5', 'Tijuana, BC', '2024-01-17 17:00:29', NULL),
+(34, 'Moses Curtis', 'kizovux@mailinator.com', '+1 (469) 304-3422', '58 West Rocky Hague Lane', '3 Años', 'upload/employee/1788357752736524.jpg', '16500', '5', 'Tijuana, BC', '2024-01-17 17:00:57', NULL),
+(35, 'Alyssa Phelps', 'hehoxan@mailinator.com', '+1 (489) 727-2251', '669 South Rocky Milton Street', '2 Años', 'upload/employee/1788357795434110.jpg', '16500', '3', 'Tijuana, BC', '2024-01-17 17:01:38', NULL),
+(36, 'Ulysses Rodriguez', 'kywar@mailinator.com', '+1 (952) 957-8127', '19 Fabien Road', '5 Años', 'upload/employee/1788357835041854.jpg', '12300', '2', 'Tijuana, BC', '2024-01-17 17:02:15', NULL),
+(37, 'Courtney Cruz', 'sejyciqy@mailinator.com', '+1 (187) 707-1387', '781 East First Court', '5 Años', 'upload/employee/1788357872141151.jpg', '15600', '6', 'Tijuana, BC', '2024-01-17 17:02:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -233,7 +284,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2024_01_08_055955_create_pay_salaries_table', 7),
 (11, '2024_01_08_055957_create_pay_salaries_table', 8),
 (12, '2024_01_09_194721_create_avance_salarios_table', 9),
-(13, '2024_01_12_101149_create_anios_table', 10);
+(13, '2024_01_12_101149_create_anios_table', 10),
+(14, '2024_01_15_130815_create_attendances_table', 11),
+(15, '2024_01_16_192616_create_categories_table', 12),
+(16, '2024_01_17_175005_create_products_table', 13),
+(17, '2024_01_17_175007_create_products_table', 14);
 
 -- --------------------------------------------------------
 
@@ -271,15 +326,7 @@ CREATE TABLE `pay_salaries` (
 --
 
 INSERT INTO `pay_salaries` (`id`, `employee_id`, `salary_month`, `year`, `paid_amount`, `advance_salary`, `due_salary`, `status`, `created_at`, `updated_at`) VALUES
-(11, 27, 'Diciembre', '2023', '15600', '350', '15250', 'Pagado', '2024-01-14 00:50:39', NULL),
-(12, 22, 'Diciembre', '2023', '14500', '0', '14500', 'Pagado', '2024-01-14 00:50:52', NULL),
-(13, 26, 'Diciembre', '2023', '14500', '0', '14500', 'Pagado', '2024-01-14 00:51:27', NULL),
-(14, 24, 'Diciembre', '2023', '18000', '0', '18000', 'Pagado', '2024-01-14 00:51:32', NULL),
-(15, 23, 'Diciembre', '2023', '16500', '560', '15940', 'Pagado', '2024-01-14 00:51:41', NULL),
-(16, 19, 'Diciembre', '2023', '16500', '0', '16500', 'Pagado', '2024-01-14 00:52:38', NULL),
-(17, 27, 'Enero', '2024', '15600', '0', '15600', 'Pagado', '2024-01-14 00:53:09', NULL),
-(18, 26, 'Enero', '2024', '14500', '0', '14500', 'Pagado', '2024-01-14 00:53:38', NULL),
-(19, 25, 'Diciembre', '2023', '18000', '100', '17900', 'Pagado', '2024-01-14 02:09:39', NULL);
+(20, 37, 'Diciembre', '2023', '15600', '500', '15100', 'Pagado', '2024-01-17 17:12:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -299,6 +346,39 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `supplier_id` int(11) NOT NULL,
+  `product_code` varchar(255) NOT NULL,
+  `product_garage` varchar(255) DEFAULT NULL,
+  `product_image` varchar(255) NOT NULL,
+  `product_store` varchar(255) DEFAULT NULL,
+  `buying_date` varchar(255) DEFAULT NULL,
+  `expire_date` varchar(255) DEFAULT NULL,
+  `buying_price` varchar(255) DEFAULT NULL,
+  `selling_price` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `product_name`, `category_id`, `supplier_id`, `product_code`, `product_garage`, `product_image`, `product_store`, `buying_date`, `expire_date`, `buying_price`, `selling_price`, `created_at`, `updated_at`) VALUES
+(1, 'Yoghurt griego Oikos natural 900 g - 75', 6, 3, '2400000001', 'A1', 'upload/product/1788540467388190.png', '5', '2024-01-02', '2024-01-25', '60', '75', '2024-01-19 17:25:07', NULL),
+(2, 'Queso Kraft tipo parmesano rallado 227 g - 139', 6, 3, '2400000002', 'A1', 'upload/product/1788540549067189.png', '5', '2024-01-01', '2024-01-27', '100', '139', '2024-01-19 17:26:25', NULL),
+(3, 'Huevo blanco Bachoco fresco 18 pzas - 46.50', 6, 3, '240001', 'A1', 'upload/product/1788540699277398.png', '5', '2024-01-01', '2024-01-31', '40', '50', '2024-01-19 17:28:48', NULL),
+(4, 'Queso crema Philadelphia original 180 g - 38', 6, 3, 'CD240002', 'A1', 'upload/product/1788540921341155.png', '5', '2024-01-01', '2024-01-31', '25', '30', '2024-01-19 17:32:20', NULL);
 
 -- --------------------------------------------------------
 
@@ -329,10 +409,10 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`id`, `name`, `email`, `phone`, `address`, `shopname`, `image`, `type`, `account_holder`, `account_number`, `bank_name`, `bank_branch`, `city`, `created_at`, `updated_at`) VALUES
-(1, 'Haley Mitchell', 'fudequbej@mailinator.com', '+1 (215) 571-8418', 'Doloribus pariatur', 'Melvin Walsh', 'upload/supplier/1781019150176655.jpg', 'Distribuidor', 'Vitae quia excepteur', '45665489', 'Santander', 'La Mesa', 'Tijuana, BC', '2023-10-29 06:57:00', NULL),
-(3, 'Tad Cantu Group', 'pafarobu@mailinator.com', '+1 (879) 976-6713', 'Eligendi labore esse', 'Colton Mcconnell', 'upload/supplier/1781025474508581.jpg', 'Mayorista', 'Qui vero consequatur', '396', 'Jena Robertson', 'Porro non assumenda', 'Eu tempora deserunt', '2023-10-30 06:27:03', '2023-10-30 06:27:03'),
-(4, 'Geoffrey Dotson', 'nikozuwe@mailinator.com', '+1 (257) 737-6012', '20 Hague Lane', 'Jack Riley', 'upload/supplier/1781142231965594.jpg', 'Distribuidor', 'Geoffrey Dotson', '415', 'Rana Lyons', 'Dignissimos laudanti', 'Tijuana, BC', '2023-10-30 15:33:20', NULL),
-(5, 'Seth Baird 2', 'pybelaral@mailinator.com', '+1 (594) 839-5712', '873 West Oak Court', 'Quinlan Nelson', 'upload/supplier/1781142270314764.jpg', 'Mayorista', 'Seth Baird', '919', 'Willow Golden', 'Quae fugiat voluptat', 'Ensenada BC', '2024-01-07 02:20:42', '2024-01-07 02:20:42');
+(1, 'Procter & Gamble', 'fudequbej@mailinator.com', '+1 (215) 571-8418', 'Doloribus pariatur', 'Melvin Walsh', 'upload/supplier/1781019150176655.jpg', 'Distribuidor', 'Vitae quia excepteur', '45665489', 'Santander', 'La Mesa', 'Tijuana, BC', '2024-01-18 19:04:44', '2024-01-18 19:04:44'),
+(3, 'Sigma Alimentos', 'pafarobu@mailinator.com', '+1 (879) 976-6713', 'Eligendi labore esse', 'Colton Mcconnell', 'upload/supplier/1781025474508581.jpg', 'Mayorista', 'Qui vero consequatur', '396', 'Jena Robertson', 'Porro non assumenda', 'Eu tempora deserunt', '2024-01-18 19:04:24', '2024-01-18 19:04:24'),
+(4, 'Coca-Cola FEMSA', 'nikozuwe@mailinator.com', '+1 (257) 737-6012', '20 Hague Lane', 'Jack Riley', 'upload/supplier/1781142231965594.jpg', 'Distribuidor', 'Geoffrey Dotson', '415', 'Rana Lyons', 'Dignissimos laudanti', 'Tijuana, BC', '2024-01-18 19:04:06', '2024-01-18 19:04:06'),
+(5, 'Grupo Bimbo', 'pybelaral@mailinator.com', '+1 (594) 839-5712', '873 West Oak Court', 'Quinlan Nelson', 'upload/supplier/1781142270314764.jpg', 'Mayorista', 'Seth Baird', '919', 'Willow Golden', 'Quae fugiat voluptat', 'Ensenada BC', '2024-01-18 19:03:52', '2024-01-18 19:03:52');
 
 -- --------------------------------------------------------
 
@@ -358,7 +438,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `photo`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'Jose', 'admin@gmail.com', '6646289328', '20240103172978.jpg', NULL, '$2y$12$8eS3WvmFg0yzL/HxocTNA.wFbdfCb0Dll.w45ouMJ/zj9CMWx1zu.', 'RCmnSrc9QypxGnbkmtpkpHgMVHrvVDRCNA9X8vV4vvTOe9WI3raGdvKW1RvW', '2024-01-01 10:20:41', '2024-01-07 14:54:14');
+(2, 'Jose', 'admin@gmail.com', '6646289328', '20240103172978.jpg', NULL, '$2y$12$8eS3WvmFg0yzL/HxocTNA.wFbdfCb0Dll.w45ouMJ/zj9CMWx1zu.', 'CFwbTavV6hcvohd76PTrQJDUNNCZUejLoKGO68y0oCu9EpYFBMWkKw6aRmZv', '2024-01-01 10:20:41', '2024-01-07 14:54:14');
 
 --
 -- Indexes for dumped tables
@@ -374,6 +454,18 @@ ALTER TABLE `advance_salaries`
 -- Indexes for table `anios`
 --
 ALTER TABLE `anios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `attendances`
+--
+ALTER TABLE `attendances`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -422,6 +514,13 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `products_product_code_unique` (`product_code`);
+
+--
 -- Indexes for table `suppliers`
 --
 ALTER TABLE `suppliers`
@@ -442,13 +541,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `advance_salaries`
 --
 ALTER TABLE `advance_salaries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `anios`
 --
 ALTER TABLE `anios`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `attendances`
+--
+ALTER TABLE `attendances`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -460,7 +571,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -472,19 +583,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `pay_salaries`
 --
 ALTER TABLE `pay_salaries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
