@@ -44,7 +44,7 @@
 			"path": "resources/views/backend/category/list_category.blade.php",
 			"bookmarks": [
 				{
-					"line": 111,
+					"line": 110,
 					"column": 71,
 					"label": "Auto focus on input in bootstrap modal"
 				}
