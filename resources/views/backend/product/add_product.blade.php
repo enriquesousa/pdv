@@ -43,7 +43,7 @@
                                     <div class="row">
 
                                         {{-- Nombre Producto 'product_name' --}}
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group mb-3">
                                                 <label for="product_name" class="form-label">Nombre Producto</label>
                                                 <input type="text" name="product_name" class="form-control">
@@ -51,7 +51,7 @@
                                         </div>
 
                                         {{-- Categoría 'category_id' --}}
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group mb-3">
                                                 <label for="category_id" class="form-label">Categoría</label>
                                                 <select name="category_id" class="form-select">
@@ -65,7 +65,7 @@
                                         </div>
 
                                         {{-- Supplier 'supplier_id' --}}
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group mb-3">
                                                 <label for="supplier_id" class="form-label">Proveedor</label>
                                                 <select name="supplier_id" class="form-select">
@@ -88,7 +88,7 @@
 
 
                                         {{-- Product en Almacén 'product_garage' --}}
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group mb-3">
                                                 <label for="product_garage" class="form-label">Localización en Almacén</label>
                                                 <input type="text" name="product_garage" class="form-control">
@@ -96,7 +96,7 @@
                                         </div>
 
                                         {{-- Product en Tienda 'product_store' --}}
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group mb-3">
                                                 <label for="product_store" class="form-label">En Tienda</label>
                                                 <input type="text" name="product_store" class="form-control">
@@ -104,7 +104,7 @@
                                         </div>
 
                                         {{-- Fecha de Compra 'buying_date' --}}
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group mb-3">
                                                 <label for="buying_date" class="form-label">Fecha de Compra</label>
                                                 <input type="date" name="buying_date" class="form-control">
@@ -112,7 +112,7 @@
                                         </div>
 
                                         {{-- Fecha de Expiración 'expire_date' --}}
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group mb-3">
                                                 <label for="expire_date" class="form-label">Fecha de Expiración</label>
                                                 <input type="date" name="expire_date" class="form-control">
@@ -120,7 +120,7 @@
                                         </div>
 
                                         {{-- Precio de Compra 'buying_price' --}}
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group mb-3">
                                                 <label for="buying_price" class="form-label">Precio de Compra</label>
                                                 <input type="number" name="buying_price" class="form-control">
@@ -128,7 +128,7 @@
                                         </div>
 
                                         {{-- Precio de Venta 'selling_price' --}}
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group mb-3">
                                                 <label for="selling_price" class="form-label">Precio de Venta</label>
                                                 <input type="number" name="selling_price" class="form-control">
@@ -138,7 +138,7 @@
 
 
                                         {{-- Foto del Producto 'product_image' --}}
-                                        <div class="col-md-12">
+                                        <div class="col-md-3">
                                             <div class="form-group mb-3">
                                                 <label for="product_image" class="form-label">Foto del Producto</label>
                                                 <input type="file" name="product_image" id="image" class="form-control">
@@ -147,7 +147,7 @@
 
 
                                         {{-- Desplegar Foto del Producto --}}
-                                        <div class="col-md-12">
+                                        <div class="col-md-3">
                                             <div class="form-group mb-3">
                                                 <label for="example-fileinput" class="form-label"> </label>
                                                 <img id="showImage" src="{{ url('upload/no_image.jpg') }}"
@@ -158,12 +158,11 @@
 
                                     </div> <!-- end row -->
 
-
-
-                                    <div class="text-end">
+                                    <div class="text-begin">
                                         <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i
                                                 class="mdi mdi-content-save"></i> Guardar</button>
                                     </div>
+
                                 </form>
 
                             </div>
