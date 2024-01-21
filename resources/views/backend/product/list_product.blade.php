@@ -13,6 +13,12 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
+                            <a href="{{ route('import.product') }}" class="btn btn-info rounded-pill waves-effect waves-light">Importar de Excel</a>
+                            &nbsp;&nbsp;&nbsp;
+
+                            <a href="{{ route('export.product') }}" class="btn btn-danger rounded-pill waves-effect waves-light">Exportar a Excel</a>
+                            &nbsp;&nbsp;&nbsp;
+                            
                             <a href="{{ route('add.product') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Producto</a>
                         </ol>
                     </div>

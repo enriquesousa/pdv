@@ -31,7 +31,7 @@
                             {{-- Forma Agregar Cliente --}}
                             <div class="tab-pane" id="settings">
 
-                                <form id="myForm" method="post" action="{{ route('store.product') }}" enctype="multipart/form-data">
+                                <form method="post" action="{{ route('import.file.product') }}" enctype="multipart/form-data">
                                     @csrf
 
 
@@ -41,7 +41,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group mb-3">
                                                 <label for="product_name" class="form-label">Importar archivo Xlsx</label>
-                                                <input type="file" name="import_file" class="form-control">
+                                                <input type="file" name="import_file" class="form-control" required>
                                             </div>
                                         </div>
 

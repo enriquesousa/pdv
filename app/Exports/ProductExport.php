@@ -13,6 +13,6 @@ class ProductExport implements FromCollection
     public function collection()
     {
         // return Product::all();
-        return Product::select('product_name', 'product_code', 'buying_price', 'selling_price','product_garage','product_image','product_store','buying_date','expire_date')->get();
+        return Product::select('product_name', 'product_code', 'category_id', 'supplier_id', 'buying_price', 'selling_price','product_garage','product_image','product_store','buying_date','expire_date')->get();
     }
 }

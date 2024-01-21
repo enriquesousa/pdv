@@ -151,6 +151,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/import/product', 'ImportProduct')->name('import.product');
         Route::get('/export/product', 'ExportProduct')->name('export.product');
+        Route::post('/import/file/product', 'ImportFileProduct')->name('import.file.product');
     });
 
 

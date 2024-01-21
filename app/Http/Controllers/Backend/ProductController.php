@@ -14,6 +14,7 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 use App\Exports\ProductExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ProductImport;
 
 class ProductController extends Controller
 {
@@ -184,6 +185,20 @@ class ProductController extends Controller
 
         return Excel::download(new ProductExport, 'products.xlsx');
         
+    }
+
+    // ImportFileProduct
+    public function ImportFileProduct(Request $request){
+       
+        Excel::import(new ProductImport, $request->file('import_file'));
+
+        $notification = array(
+            'message' => 'Importación Exitosa',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('list.product')->with($notification);
+
     }
 
 

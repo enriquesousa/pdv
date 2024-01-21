@@ -332,7 +332,7 @@
                                 <a href="{{ route('add.product') }}">Agregar Producto</a>
                             </li>
                             <li>
-                                <a href="{{ route('import.product') }}">Importar Producto</a>
+                                <a href="{{ route('import.product') }}">Importar/Exportar Excel</a>
                             </li>
                         </ul>
                     </div>
