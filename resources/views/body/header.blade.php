@@ -362,11 +362,11 @@
             <a href="{{ route('dashboard') }}" class="logo logo-dark text-center">
                 <span class="logo-sm">
                     <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="" height="22">
-                    <!-- <span class="logo-lg-text-light">UBold</span> -->
+                    {{-- <span class="logo-lg-text-light">UBold</span> --}}
                 </span>
                 <span class="logo-lg">
-                    <img src="{{ asset('backend/assets/images/logo-pdv-esweb-dark.png') }}" alt="" height="20">
-                    <!-- <span class="logo-lg-text-light">U</span> -->
+                    <img src="{{ asset('backend/assets/images/logo-pdv-esweb-dark.png') }}" alt="" height="30">
+                    <span class="logo-lg-text-light">U</span>
                 </span>
             </a>
 
@@ -375,7 +375,7 @@
                     <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="" height="22">
                 </span>
                 <span class="logo-lg">
-                    <img src="{{ asset('backend/assets/images/logo-pdv-esweb-light.png') }}" alt="" height="20">
+                    <img src="{{ asset('backend/assets/images/logo-light2.png') }}" alt="" height="30">
                 </span>
             </a>
 

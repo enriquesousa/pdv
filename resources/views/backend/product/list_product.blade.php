@@ -63,11 +63,11 @@
 
                                        
                                         <td>
-                                            <a href="{{ route('edit.product', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
+                                            <a href="{{ route('edit.product', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 
-                                            <a href="{{ route('barcode.product', $item->id) }}" class="btn btn-info rounded-pill waves-effect waves-light">Código de Barras</a>
+                                            <a href="{{ route('barcode.product', $item->id) }}" class="btn btn-info rounded-pill waves-effect waves-light"><i class="fa fa-barcode" aria-hidden="true"></i></a>
 
-                                            <a href="{{ route('delete.product', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a>
+                                            <a href="{{ route('delete.product', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
 
