@@ -331,6 +331,9 @@
                             <li>
                                 <a href="{{ route('add.product') }}">Agregar Producto</a>
                             </li>
+                            <li>
+                                <a href="{{ route('import.product') }}">Importar Producto</a>
+                            </li>
                         </ul>
                     </div>
                 </li>

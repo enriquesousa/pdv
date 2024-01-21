@@ -172,6 +172,10 @@ class ProductController extends Controller
         
     }
 
+    // ImportProduct
+    public function ImportProduct(){
+       return view('backend.product.import_product');
+    }
 
 
 }
