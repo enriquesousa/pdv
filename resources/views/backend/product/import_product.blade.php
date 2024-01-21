@@ -13,7 +13,7 @@
                 <div class="col-12">
                     <div class="page-title-box">
                         <div class="page-title-right">
-                            <a href="{{ route('add.product') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Descargar Xlsx</a>
+                            <a href="{{ route('export.product') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Descargar Xlsx</a>
                         </div>
                         <h4 class="page-title">Importar Productos</h4>
                     </div>
