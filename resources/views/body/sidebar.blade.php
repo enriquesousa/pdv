@@ -357,7 +357,7 @@
                                 <a href="{{ route('add.expense') }}">Agregar Gasto</a>
                             </li>
                             <li>
-                                <a href="#">Gatos de Hoy</a>
+                                <a href="{{ route('today.expense') }}">Gatos de Hoy</a>
                             </li>
                             <li>
                                 <a href="#">Gatos por Mes</a>

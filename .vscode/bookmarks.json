@@ -64,6 +64,16 @@
 					"label": "JS para el manejo de la imagen en la forma"
 				}
 			]
+		},
+		{
+			"path": "resources/views/backend/salary/all_advance_salary.blade.php",
+			"bookmarks": [
+				{
+					"line": 74,
+					"column": 69,
+					"label": "money en blade"
+				}
+			]
 		}
 	]
 }
