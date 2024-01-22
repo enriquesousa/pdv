@@ -49,5 +49,40 @@ class ExpenseController extends Controller
        return view('backend.expense.today_expense', compact('today'));
     }
 
+    // EditExpense
+    public function EditExpense($id){
+        $expense = Expense::find($id);
+        return view('backend.expense.edit_expense', compact('expense'));
+    }
+
+    // UpdateExpense
+    public function UpdateExpense(Request $request){
+
+        $expense_id = $request->id;
+
+        $mes = \Carbon\Carbon::parse($request->fecha)->locale('es')->isoFormat('MMMM');
+        // dd($mes);
+
+        $año = \Carbon\Carbon::parse($request->fecha)->locale('es')->isoFormat('YYYY');
+        // dd($mes, $año);
+
+        Expense::findOrFail($expense_id)->update([
+            'details' => $request->details, 
+            'amount' => $request->amount,
+            'month' => $mes,
+            'year' => $año,
+            'date' => $request->fecha,
+            'created_at' => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message' => 'Gasto Actualizado con éxito',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('today.expense')->with($notification);
+       
+    }
+
 
 }

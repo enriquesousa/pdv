@@ -71,7 +71,7 @@
                                         <td>{{ $item->year }}</td>
                                        
                                         <td>
-                                            <a href="{{ route('customer.edit', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
+                                            <a href="{{ route('edit.expense', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
                                         </td>
                                     </tr>
 
