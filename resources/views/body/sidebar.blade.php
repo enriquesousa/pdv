@@ -360,10 +360,10 @@
                                 <a href="{{ route('today.expense') }}">Gatos de Hoy</a>
                             </li>
                             <li>
-                                <a href="#">Gatos por Mes</a>
+                                <a href="{{ route('month.expense') }}">Gatos por Mes</a>
                             </li>
                             <li>
-                                <a href="#">Gastos por Año</a>
+                                <a href="{{ route('year.expense') }}">Gastos por Año</a>
                             </li>
                         </ul>
                     </div>

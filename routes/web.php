@@ -162,6 +162,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/today/expense', 'TodayExpense')->name('today.expense');
         Route::get('/edit/expense/{id}', 'EditExpense')->name('edit.expense');
         Route::post('/update/expense', 'UpdateExpense')->name('update.expense');
+        Route::get('/month/expense', 'MonthExpense')->name('month.expense');
+        Route::get('/year/expense', 'YearExpense')->name('year.expense');
     });
 
 
