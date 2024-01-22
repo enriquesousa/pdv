@@ -12,6 +12,7 @@ use App\Http\Controllers\Config\AniosController;
 use App\Http\Controllers\Backend\AttendanceController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ExpenseController;
 
 
 /*
@@ -152,6 +153,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/import/product', 'ImportProduct')->name('import.product');
         Route::get('/export/product', 'ExportProduct')->name('export.product');
         Route::post('/import/file/product', 'ImportFileProduct')->name('import.file.product');
+    });
+
+    // Expenses
+    Route::controller(ExpenseController::class)->group(function () {
+        Route::get('/add/expense', 'AddExpense')->name('add.expense');
+       
     });
 
 

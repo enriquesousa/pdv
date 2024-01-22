@@ -11,12 +11,13 @@
 
         <!-- User box -->
         <div class="user-box text-center">
-            
+
             {{-- <img src="{{ asset('backend/assets/images/users/user-1.jpg') }}" alt="user-img" title="Mat Helme"
                 class="rounded-circle avatar-md"> --}}
 
             {{-- Foto de perfil --}}
-            <img src="{{ (!empty($adminData->photo)) ? url('upload/admin_image/'.$adminData->photo) : url('upload/no_image.jpg') }}" alt="user-image" class="rounded-circle">    
+            <img src="{{ !empty($adminData->photo) ? url('upload/admin_image/' . $adminData->photo) : url('upload/no_image.jpg') }}"
+                alt="user-image" class="rounded-circle">
 
             <div class="dropdown">
                 <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
@@ -24,8 +25,8 @@
 
                 <div class="dropdown-menu user-pro-dropdown">
 
-                     <!-- item-->
-                     <a href="{{ route('admin.profile') }}" class="dropdown-item notify-item">
+                    <!-- item-->
+                    <a href="{{ route('admin.profile') }}" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
                         <span>Mi Perfil</span>
                     </a>
@@ -64,13 +65,13 @@
             <ul id="side-menu">
 
                 {{-- * NAVEGACIÓN --}}
-                <li class="menu-title">NAVEGACIÓN</li>
+                <li class="menu-title"><span class="badge bg-primary">NAVEGACIÓN</span></li>
 
                 {{-- Dashboards / Panel --}}
                 <li>
-                    
-                     {{-- También podemos acceder como href="{{ url('/dashboard') }}" --}}
-                     <a href="{{ route('dashboard') }}"> 
+
+                    {{-- También podemos acceder como href="{{ url('/dashboard') }}" --}}
+                    <a href="{{ route('dashboard') }}">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span> Panel </span>
                     </a>
@@ -100,7 +101,7 @@
                 </li>
 
                 {{-- * CONTROL --}}
-                <li class="menu-title mt-2">CONTROL</li>
+                <li class="menu-title mt-2"><span class="badge bg-primary">CONTROL</span></li>
 
                 {{-- Control de Empleados --}}
                 <li>
@@ -215,7 +216,8 @@
                                             <a href="{{ route('pay.salary.other.month', 'Agosto') }}">Agosto</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('pay.salary.other.month', 'Septiembre') }}">Septiembre</a>
+                                            <a
+                                                href="{{ route('pay.salary.other.month', 'Septiembre') }}">Septiembre</a>
                                         </li>
                                         <li>
                                             <a href="{{ route('pay.salary.other.month', 'Octubre') }}">Octubre</a>
@@ -339,45 +341,70 @@
                 </li>
 
 
+                {{-- * MANEJO DE DINERO --}}
+                <li class="menu-title mt-2"><span class="badge bg-primary">MANEJO DE DINERO</span></li>
+
+                {{-- Reportes --}}
+                <li>
+                    <a href="#sidebarReportes" data-bs-toggle="collapse">
+                        <i class="mdi mdi-briefcase-check-outline"></i>
+                        <span>Gastos</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarReportes">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('add.expense') }}">Agregar Gasto</a>
+                            </li>
+                            <li>
+                                <a href="#">Gatos de Hoy</a>
+                            </li>
+                            <li>
+                                <a href="#">Gatos por Mes</a>
+                            </li>
+                            <li>
+                                <a href="#">Gastos por Año</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
 
+                {{-- * CONFIGURACIÓN DEL SISTEMA --}}
+                <li class="menu-title mt-2"><span class="badge bg-primary">CONFIGURACIÓN</span></li>
 
-
-               {{-- * CONFIGURACIÓN DEL SISTEMA --}}
-               <li class="menu-title mt-2">CONFIGURACIÓN</li>
-
-               {{-- Configuración de Datos --}}
-               <li>
-                   <a href="#sidebarConfigData" data-bs-toggle="collapse">
-                       <i class="mdi mdi-poll"></i>
-                       <span>Datos</span>
-                       <span class="menu-arrow"></span>
-                   </a>
-                   <div class="collapse" id="sidebarConfigData">
-                       <ul class="nav-second-level">
-                           <li>
-                               <a href="{{ route('all.anios') }}">Años</a>
-                           </li>
-                           <li>
-                               <a href="{{ route('dashboard') }}">Meses</a>
-                           </li>
-                       </ul>
-                   </div>
-               </li>
+                {{-- Configuración de Datos --}}
+                <li>
+                    <a href="#sidebarConfigData" data-bs-toggle="collapse">
+                        <i class="mdi mdi-poll"></i>
+                        <span>Datos</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarConfigData">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.anios') }}">Años</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('dashboard') }}">Meses</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
 
 
 
                 {{-- Chat --}}
-                <li>
+                {{-- <li>
                     <a href="apps-chat.html">
                         <i class="mdi mdi-forum-outline"></i>
                         <span> Chat </span>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- Ecommerce --}}
-                <li>
+                {{-- <li>
                     <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                         <i class="mdi mdi-cart-outline"></i>
                         <span> Ecommerce </span>
@@ -417,10 +444,10 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 {{-- CRM --}}
-                <li>
+                {{-- <li>
                     <a href="#sidebarCrm" data-bs-toggle="collapse">
                         <i class="mdi mdi-account-multiple-outline"></i>
                         <span> CRM </span>
@@ -445,10 +472,10 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 {{-- Email --}}
-                <li>
+                {{-- <li>
                     <a href="#sidebarEmail" data-bs-toggle="collapse">
                         <i class="mdi mdi-email-multiple-outline"></i>
                         <span> Email </span>
@@ -470,27 +497,27 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 {{-- Social Feed --}}
-                <li>
+                {{-- <li>
                     <a href="apps-social-feed.html">
                         <span class="badge bg-pink float-end">Hot</span>
                         <i class="mdi mdi-rss"></i>
                         <span> Social Feed </span>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- Companies --}}
-                <li>
+                {{-- <li>
                     <a href="apps-companies.html">
                         <i class="mdi mdi-domain"></i>
                         <span> Companies </span>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- Projects --}}
-                <li>
+                {{-- <li>
                     <a href="#sidebarProjects" data-bs-toggle="collapse">
                         <i class="mdi mdi-briefcase-check-outline"></i>
                         <span> Projects </span>
@@ -509,10 +536,10 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 {{-- Tasks --}}
-                <li>
+                {{-- <li>
                     <a href="#sidebarTasks" data-bs-toggle="collapse">
                         <i class="mdi mdi-clipboard-multiple-outline"></i>
                         <span> Tasks </span>
@@ -531,10 +558,10 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 {{-- Contacts --}}
-                <li>
+                {{-- <li>
                     <a href="#sidebarContacts" data-bs-toggle="collapse">
                         <i class="mdi mdi-book-account-outline"></i>
                         <span> Contacts </span>
@@ -550,10 +577,10 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 {{-- Tickets --}}
-                <li>
+                {{-- <li>
                     <a href="#sidebarTickets" data-bs-toggle="collapse">
                         <i class="mdi mdi-lifebuoy"></i>
                         <span> Tickets </span>
@@ -569,21 +596,21 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 {{-- File Manager --}}
-                <li>
+                {{-- <li>
                     <a href="apps-file-manager.html">
                         <i class="mdi mdi-folder-star-outline"></i>
                         <span> File Manager </span>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- * Custom --}}
-                <li class="menu-title mt-2">Custom</li>
+                {{-- <li class="menu-title mt-2">Custom</li> --}}
 
                 {{-- Auth Pages --}}
-                <li>
+                {{-- <li>
                     <a href="#sidebarAuth" data-bs-toggle="collapse">
                         <i class="mdi mdi-account-circle-outline"></i>
                         <span> Auth Pages </span>
@@ -635,10 +662,10 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 {{-- Extra Pages --}}
-                <li>
+                {{-- <li>
                     <a href="#sidebarExpages" data-bs-toggle="collapse">
                         <i class="mdi mdi-text-box-multiple-outline"></i>
                         <span> Extra Pages </span>
@@ -693,10 +720,10 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 {{-- Layouts --}}
-                <li>
+                {{-- <li>
                     <a href="#sidebarLayouts" data-bs-toggle="collapse">
                         <i class="mdi mdi-cellphone-link"></i>
                         <span class="badge bg-blue float-end">New</span>
@@ -722,9 +749,10 @@
                         </ul>
                     </div>
                 </li>
-                
+                 --}}
+
                 {{-- Charts --}}
-                <li>
+                {{-- <li>
                     <a href="#sidebarCharts" data-bs-toggle="collapse">
                         <i class="mdi mdi-poll"></i>
                         <span> Charts </span>
@@ -761,10 +789,10 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 {{-- Maps --}}
-                <li>
+                {{-- <li>
                     <a href="#sidebarMaps" data-bs-toggle="collapse">
                         <i class="mdi mdi-map-outline"></i>
                         <span> Maps </span>
@@ -783,10 +811,10 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 {{-- Multi Level --}}
-                <li>
+                {{-- <li>
                     <a href="#sidebarMultilevel" data-bs-toggle="collapse">
                         <i class="mdi mdi-share-variant"></i>
                         <span> Multi Level </span>
@@ -839,7 +867,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
             </ul>
 
