@@ -100,6 +100,19 @@
 
                 </li>
 
+                {{-- POS --}}
+                <li>
+
+                    <a href="{{ route('pos') }}">
+                        <span class="badge bg-pink float-end">Hot</span>
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span> PDV </span>
+                    </a>
+
+                </li>
+
+                
+
                 {{-- * CONTROL --}}
                 <li class="menu-title mt-2"><span class="badge bg-primary">CONTROL</span></li>
 
@@ -344,7 +357,7 @@
                 {{-- * MANEJO DE DINERO --}}
                 <li class="menu-title mt-2"><span class="badge bg-primary">MANEJO DE DINERO</span></li>
 
-                {{-- Reportes --}}
+                {{-- Gastos --}}
                 <li>
                     <a href="#sidebarReportes" data-bs-toggle="collapse">
                         <i class="mdi mdi-briefcase-check-outline"></i>

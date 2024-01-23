@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\AttendanceController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ExpenseController;
+use App\Http\Controllers\Backend\PosController;
 
 
 /*
@@ -166,6 +167,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/year/expense', 'YearExpense')->name('year.expense');
     });
 
+    // POS
+    Route::controller(PosController::class)->group(function () {
+        Route::get('/pos', 'Pos')->name('pos');
+        
+    });
 
     
 });
