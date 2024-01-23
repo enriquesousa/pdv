@@ -141,18 +141,29 @@
                                     </thead>
 
                                     <tbody>
-
                                         @foreach ($products as $key => $item)
                                             <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td><img src="{{ asset($item->product_image) }}"
-                                                        style="width: 50px; height: 40px;"></td>
-                                                <td>{{ $item->product_name }}</td>
-                                                <td><button type="submit" style="font-size: 20px; color: #000000"><i><i
-                                                                class="fas fa-plus-square"></i></i></button></td>
+                                                <form method="POST" action="{{ url('/add-cart') }}">
+                                                    @csrf
+                                                    
+                                                    <input type="hidden" name="id" value="{{ $item->id }}">
+                                                    <input type="hidden" name="name" value="{{ $item->product_name }}">
+                                                    <input type="hidden" name="qty" value="1">
+                                                    <input type="hidden" name="price" value="{{ $item->selling_price }}">
+                                                    
+                                                        <td>{{ $key + 1 }}</td>
+                                                        <td><img src="{{ asset($item->product_image) }}"
+                                                                style="width: 50px; height: 40px;"></td>
+                                                        <td>{{ $item->product_name }}</td>
+    
+                                                        {{-- botón para agregar item al carrito --}}
+                                                        <td><button type="submit" style="font-size: 20px; color: #000000">
+                                                                <i class="fas fa-plus-square"></i>
+                                                            </button>
+                                                        </td>
+                                                </form>
                                             </tr>
                                         @endforeach
-
                                     </tbody>
 
                                 </table>
