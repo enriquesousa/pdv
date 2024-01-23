@@ -35,6 +35,7 @@
                             {{-- tabla --}}
                             <div class="table-responsive">
                                 <table class="table table-bordered border-primary mb-0">
+
                                     <thead>
                                         <tr>
                                             <th>Nombre</th>
@@ -44,18 +45,26 @@
                                             <th>Acción</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Mark</td>
-                                            <td>
-                                                <input type="number" value="0" style="width: 40px;" min="1">
-                                            </td>
-                                            <td>334</td>
-                                            <td>4555</td>
-                                            <td><a href=""><i class="fas fa-trash-alt" style="color: red"></i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+
+                                    @php
+                                        $allCartItems = Cart::content();
+                                    @endphp
+                                    @foreach ($allCartItems as $item)
+                                        <tbody>
+                                            <tr>
+                                                <td>{{$item->name}}</td>
+                                                <td>
+                                                    <input type="number" value="{{$item->qty}}" style="width: 40px;" min="1">
+                                                    <button type="submit" class="btn btn-success btn-sm" style="margin-top: 1px;"><i class="fas fa-sync-alt"></i></button>
+                                                </td>
+                                                <td>$ {{$item->price}}</td>
+                                                <td>$ {{$item->price * $item->qty}}</td>
+                                                <td><a href=""><i class="fas fa-trash-alt" style="color: red"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    @endforeach
+
                                 </table>
                             </div>
 
@@ -145,7 +154,7 @@
                                             <tr>
                                                 <form method="POST" action="{{ url('/add-cart') }}">
                                                     @csrf
-                                                    
+
                                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                                     <input type="hidden" name="name" value="{{ $item->product_name }}">
                                                     <input type="hidden" name="qty" value="1">

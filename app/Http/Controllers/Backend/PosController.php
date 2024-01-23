@@ -27,7 +27,7 @@ class PosController extends Controller
             'name' => $request->name, 
             'qty' => $request->qty, 
             'price' => $request->price, 
-            'options' => ['size' => 'large']
+            'options' => ['size' => 'large', 'peso' => '1Kg']
         ]);
 
         $notification = array(
@@ -37,6 +37,12 @@ class PosController extends Controller
 
         return redirect()->back()->with($notification);
        
+    }
+
+    // AllItem
+    public function AllItem(){
+        $product_items = Cart::content();
+        return view('backend.pos.text_item', compact('product_items'));
     }
 
 
