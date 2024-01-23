@@ -14,6 +14,7 @@
         "laravel/tinker": "^2.8",
         "laraveles/spanish": "^1.5",
         "maatwebsite/excel": "^3.1",
+        "mindscms/laravelshoppingcart": "^2.1",
         "picqer/php-barcode-generator": "^2.4"
     },
     "require-dev": {
