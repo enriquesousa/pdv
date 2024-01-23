@@ -1,5 +1,6 @@
 @extends('admin_dashboard')
 @section('admin')
+
     {{-- Jquery CDN Para poder usar JS --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
@@ -28,11 +29,11 @@
                 {{-- 1er Columna --}}
                 <div class="col-lg-6 col-xl-6">
 
-                    {{-- Datos del Perfil --}}
+                    {{-- Tabla de PDV, Resumen de la Orden y Seleccionar Cliente --}}
                     <div class="card text-center">
                         <div class="card-body">
 
-                            {{-- tabla --}}
+                            {{-- Tabla de PDV --}}
                             <div class="table-responsive">
                                 <table class="table table-bordered border-primary mb-0">
 
@@ -106,10 +107,10 @@
                                 <!-- end table-responsive -->
                             </div>
 
-
                             <br>
                             {{-- Cliente --}}
-                            <form action="">
+                            <form id="myForm" method="post" action="{{ url('/create-invoice') }}">
+                                @csrf
 
                                 <div class="form-group mb-6">
                                     {{-- <label for="customer" class="form-label">Cliente</label> --}}
@@ -117,7 +118,7 @@
                                     <a href="{{ route('customer.add') }}"
                                         class="btn btn-blue rounded-pill waves-effect waves-light mb-2">Agregar Cliente</a>
 
-                                    <select name="customer" class="form-select">
+                                    <select name="customer_id" class="form-select">
                                         <option selected disabled>Seleccionar Cliente</option>
                                         @foreach ($customers as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -130,11 +131,8 @@
 
                             </form>
 
-
-
                         </div>
                     </div> <!-- end card -->
-
 
                 </div> <!-- end col-->
 
@@ -201,4 +199,37 @@
         </div> <!-- container -->
 
     </div> <!-- content -->
+
+
+ {{-- Js para el manejo de la validación de la forma --}}
+ <script type="text/javascript">
+    $(document).ready(function (){
+        $('#myForm').validate({
+            rules: {
+                customer_id: {
+                    required : true,
+                }, 
+            },
+            messages :{
+                customer_id: {
+                    required : 'Favor de Seleccionar un Cliente',
+                }, 
+            },
+            errorElement : 'span', 
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
+    
+</script>
+
+
 @endsection

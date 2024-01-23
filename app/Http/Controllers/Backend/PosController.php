@@ -72,5 +72,13 @@ class PosController extends Controller
        
     }
 
+    // CreateInvoice
+    public function CreateInvoice(Request $request){
+        $content = Cart::content();
+        $customer_id = $request->customer_id;
+        $customer = Customer::where('id', $customer_id)->first();
+        return view('backend.invoice.product_invoice', compact('content', 'customer'));
+    }
+
 
 }
