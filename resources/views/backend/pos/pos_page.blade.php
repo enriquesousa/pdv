@@ -52,14 +52,21 @@
                                     @foreach ($allCartItems as $item)
                                         <tbody>
                                             <tr>
-                                                <td>{{$item->name}}</td>
+                                                <td>{{ $item->name }}</td>
                                                 <td>
-                                                    <input type="number" value="{{$item->qty}}" style="width: 40px;" min="1">
-                                                    <button type="submit" class="btn btn-success btn-sm" style="margin-top: 1px;"><i class="fas fa-sync-alt"></i></button>
+                                                    <form method="post" action="{{ url('/cart-update/' . $item->rowId) }}">
+                                                        @csrf
+                                                        <input type="number" name="qty" value="{{ $item->qty }}"
+                                                            style="width: 40px;" min="1">
+                                                        <button type="submit" class="btn btn-success btn-sm"
+                                                            style="margin-top: 1px;"><i
+                                                                class="fas fa-sync-alt"></i></button>
+                                                    </form>
                                                 </td>
-                                                <td>$ {{$item->price}}</td>
-                                                <td>$ {{$item->price * $item->qty}}</td>
-                                                <td><a href=""><i class="fas fa-trash-alt" style="color: red"></i></a>
+                                                <td>$ {{ $item->price }}</td>
+                                                <td>$ {{ $item->price * $item->qty }}</td>
+                                                <td><a href=""><i class="fas fa-trash-alt"
+                                                            style="color: red"></i></a>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -76,20 +83,20 @@
                                     <table class="table mb-0">
                                         <tbody>
                                             <tr>
-                                                <td>Grand Total :</td>
-                                                <td>$1571.19</td>
+                                                <td>Total de Piezas :</td>
+                                                <td>{{ Cart::count() }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Descuento : </td>
-                                                <td>-$157.11</td>
+                                                <td>Subtotal :</td>
+                                                <td>$ @convert(Cart::subtotal())</td>
                                             </tr>
                                             <tr>
-                                                <td>IVA : </td>
-                                                <td>$19.22</td>
+                                                <td>IVA :</td>
+                                                <td>$ @convert(Cart::tax())</td>
                                             </tr>
                                             <tr>
                                                 <th>Total :</th>
-                                                <th>$1458.3</th>
+                                                <th>$ @convert(Cart::total())</th>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -158,18 +165,19 @@
                                                     <input type="hidden" name="id" value="{{ $item->id }}">
                                                     <input type="hidden" name="name" value="{{ $item->product_name }}">
                                                     <input type="hidden" name="qty" value="1">
-                                                    <input type="hidden" name="price" value="{{ $item->selling_price }}">
-                                                    
-                                                        <td>{{ $key + 1 }}</td>
-                                                        <td><img src="{{ asset($item->product_image) }}"
-                                                                style="width: 50px; height: 40px;"></td>
-                                                        <td>{{ $item->product_name }}</td>
-    
-                                                        {{-- botón para agregar item al carrito --}}
-                                                        <td><button type="submit" style="font-size: 20px; color: #000000">
-                                                                <i class="fas fa-plus-square"></i>
-                                                            </button>
-                                                        </td>
+                                                    <input type="hidden" name="price"
+                                                        value="{{ $item->selling_price }}">
+
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td><img src="{{ asset($item->product_image) }}"
+                                                            style="width: 50px; height: 40px;"></td>
+                                                    <td>{{ $item->product_name }}</td>
+
+                                                    {{-- botón para agregar item al carrito --}}
+                                                    <td><button type="submit" style="font-size: 20px; color: #000000">
+                                                            <i class="fas fa-plus-square"></i>
+                                                        </button>
+                                                    </td>
                                                 </form>
                                             </tr>
                                         @endforeach

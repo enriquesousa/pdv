@@ -74,6 +74,26 @@
 					"label": "money en blade"
 				}
 			]
+		},
+		{
+			"path": "resources/views/backend/pos/pos_page.blade.php",
+			"bookmarks": [
+				{
+					"line": 90,
+					"column": 80,
+					"label": "$ @convert(Cart::subtotal()) money subtotal en Cart"
+				}
+			]
+		},
+		{
+			"path": "app/Providers/AppServiceProvider.php",
+			"bookmarks": [
+				{
+					"line": 28,
+					"column": 61,
+					"label": "Blade::directive('convert', function ($money) "
+				}
+			]
 		}
 	]
 }
