@@ -65,8 +65,10 @@
                                                 </td>
                                                 <td>$ {{ $item->price }}</td>
                                                 <td>$ {{ $item->price * $item->qty }}</td>
-                                                <td><a href=""><i class="fas fa-trash-alt"
-                                                            style="color: red"></i></a>
+                                                <td>
+                                                    <a href="{{ url('/cart-remove/' . $item->rowId) }}">
+                                                        <i class="fas fa-trash-alt" style="color: red"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         </tbody>
