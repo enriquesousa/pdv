@@ -76,6 +76,16 @@
 			]
 		},
 		{
+			"path": "config/cart.php",
+			"bookmarks": [
+				{
+					"line": 6,
+					"column": 26,
+					"label": "IVA Configuracion en Cart"
+				}
+			]
+		},
+		{
 			"path": "resources/views/backend/pos/pos_page.blade.php",
 			"bookmarks": [
 				{

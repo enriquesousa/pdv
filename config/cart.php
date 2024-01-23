@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default tax rate
+    | Default tax rate IVA
     |--------------------------------------------------------------------------
     |
     | This default tax rate will be used when you make a class implement the

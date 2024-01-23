@@ -127,7 +127,7 @@
                                 </div>
 
                                 <br>
-                                <button class="btn btn-blue waves-effect waves-light">Realizar Venta</button>
+                                <button class="btn btn-blue waves-effect waves-light">Ver Recibo</button>
 
                             </form>
 
