@@ -178,6 +178,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/create-invoice', 'CreateInvoice');
     });
 
+    // Orden
+    Route::controller(OrderController::class)->group(function () {
+        Route::post('/final/invoice', 'FinalInvoice')->name('final.invoice');
+    });
+
     
 });
 

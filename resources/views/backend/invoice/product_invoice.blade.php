@@ -150,6 +150,7 @@
                                 </div> <!-- end col -->
                             </div>
 
+                            {{-- Notas, Subtotal y Total de la factura --}}
                             <div class="row">
 
                                 {{-- Columna 1: Notas --}}
@@ -180,9 +181,8 @@
                                 </div> <!-- end col -->
 
                             </div>
-                            <!-- end row -->
 
-                            {{-- Imprimir Factura  --}}
+                            {{-- Botones para Imprimir Factura PDF y Facturar(Guardar la Orden)  --}}
                             <div class="mt-4 mb-1">
                                 <div class="text-end d-print-none">
 
@@ -224,14 +224,14 @@
                         </div>
                     </div>
 
-                    <form class="px-3" method="POST" action="{{ route('store.category') }}">
+                    <form class="px-3" method="POST" action="{{ url('/final/invoice') }}">
                         @csrf
 
 
                         {{-- Forma de pago --}}
                         <div class="mb-3">
-                            <label for="username" class="form-label">Forma de pago</label>
-                            <select name="customer_id" class="form-select" id="example-select">
+                            <label for="payment_status" class="form-label">Forma de pago</label>
+                            <select name="payment_status" class="form-select" id="example-select">
                                 <option selected disabled>Seleccionar Forma de Pago</option>
                                 <option value="HandCash">Efectivo</option>
                                 <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
@@ -241,16 +241,25 @@
 
                         {{-- Pago --}}
                         <div class="mb-3">
-                            <label for="username" class="form-label">Pago</label>
-                            <input class="form-control" type="text" name="category_name" placeholder="Pay Now">
+                            <label for="pay" class="form-label">Pago</label>
+                            <input class="form-control" type="text" name="pay" placeholder="Pagar ahora">
                         </div>
 
 
                         {{-- Pendiente --}}
                         <div class="mb-3">
-                            <label for="username" class="form-label">Pendiente</label>
-                            <input class="form-control" type="text" name="category_name" placeholder="Due Amount ">
+                            <label for="due" class="form-label">Pendiente</label>
+                            <input class="form-control" type="text" name="due" placeholder="Pendiente">
                         </div>
+
+                        {{-- Pasar los demás datos de la orden --}}
+                        <input type="hidden" name="customer_id" value="{{ $customer->id }}">
+                        <input type="hidden" name="order_date" value="{{ date('d-F-Y') }}">
+                        <input type="hidden" name="order_status" value="pendiente">
+                        <input type="hidden" name="total_products" value="{{ Cart::count() }}">
+                        <input type="hidden" name="sub_total" value="{{ Cart::subtotal() }}">
+                        <input type="hidden" name="iva" value="{{ Cart::tax() }}">
+                        <input type="hidden" name="total" value="{{ Cart::total() }}"> 
 
 
                         {{-- Botón Completar la Orden --}}
