@@ -71,6 +71,18 @@ class OrderController extends Controller
         return view('backend.order.pending_order', compact('orders'));
     }
 
+    // DetailOrder
+    public function DetailOrder($order_id){
+
+        // El with('customer') es para incluir la relación con el id del cliente
+        $order = Order::with('customer')->where('id', $order_id)->first();
+
+        // El with('product') es para incluir la relación con el id del producto
+        $order_items = OrderDetails::with('product')->where('order_id', $order_id)->orderby('id', 'desc')->get();
+        
+        return view('backend.order.detail_order', compact('order', 'order_items'));
+       
+    }
 
 
 }

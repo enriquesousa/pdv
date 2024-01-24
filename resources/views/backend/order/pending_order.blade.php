@@ -59,7 +59,7 @@
                                         <td><span class="badge bg-danger">{{ $item->order_status }}</span></td>
                                        
                                         <td>
-                                            <a href="{{ route('customer.edit', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Detalles</a>
+                                            <a href="{{ route('detail.order', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Detalles</a>
                                         </td>
                                     </tr>
 
