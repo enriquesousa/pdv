@@ -172,7 +172,7 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(PosController::class)->group(function () {
         Route::get('/pos', 'Pos')->name('pos');
         Route::post('/add-cart','AddCart');
-        Route::get('/all/item', 'AllItem');
+        Route::get('/all/items/en/carrito', 'AllItem');
         Route::post('/cart-update/{rowId}', 'CartUpdate');
         Route::get('/cart-remove/{rowId}', 'CartRemove');
         Route::post('/create-invoice', 'CreateInvoice');

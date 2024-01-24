@@ -233,7 +233,7 @@
                             <label for="payment_status" class="form-label">Forma de pago</label>
                             <select name="payment_status" class="form-select" id="example-select">
                                 <option selected disabled>Seleccionar Forma de Pago</option>
-                                <option value="HandCash">Efectivo</option>
+                                <option value="Efectivo">Efectivo</option>
                                 <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
                                 <option value="Tarjeta de Débito">Tarjeta de Débito</option>
                             </select>
