@@ -1,5 +1,6 @@
 @extends('admin_dashboard')
 @section('admin')
+
     {{-- Jquery CDN Para poder usar JS --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
@@ -116,4 +117,5 @@
             });
         });
     </script>
+
 @endsection

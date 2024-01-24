@@ -1,5 +1,6 @@
 @extends('admin_dashboard')
 @section('admin')
+
     <div class="content">
 
         <!-- Start Content-->
@@ -138,7 +139,7 @@
                                                         <td>{{ $item->qty }}</td>
                                                         <td>$ @convert($item->price)</td>
                                                         @php
-                                                            $total = $item->price * $item->qty
+                                                            $total = $item->price * $item->qty;
                                                         @endphp
                                                         <td class="text-end">$ @convert($total)</td>
                                                     </tr>
@@ -157,7 +158,11 @@
                                         <h6 class="text-muted">Notas:</h6>
 
                                         <small class="text-muted">
-                                            Todas las cuentas deben pagarse dentro de los 7 días posteriores a la recepción de factura. A pagar con cheque o tarjeta de crédito o pago directo en línea. Si la cuenta no se paga dentro de los 7 días, los detalles de los créditos suministrado como confirmación del trabajo realizado se cobrará el Tarifa cotizada acordada anotada anteriormente.
+                                            Todas las cuentas deben pagarse dentro de los 7 días posteriores a la recepción
+                                            de factura. A pagar con cheque o tarjeta de crédito o pago directo en línea. Si
+                                            la cuenta no se paga dentro de los 7 días, los detalles de los créditos
+                                            suministrado como confirmación del trabajo realizado se cobrará el Tarifa
+                                            cotizada acordada anotada anteriormente.
                                         </small>
                                     </div>
                                 </div> <!-- end col -->
@@ -166,7 +171,8 @@
                                 <div class="col-sm-6">
                                     <div class="float-end">
                                         <p><b>Sub-total:</b> <span class="float-end">$ @convert(Cart::subtotal())</span></p>
-                                        <p><b>IVA (15%):</b> <span class="float-end"> &nbsp;&nbsp;&nbsp; $ @convert(Cart::tax())</span>
+                                        <p><b>IVA (15%):</b> <span class="float-end"> &nbsp;&nbsp;&nbsp; $
+                                                @convert(Cart::tax())</span>
                                         </p>
                                         <h3>$ @convert(Cart::total()) MX</h3>
                                     </div>
@@ -179,9 +185,15 @@
                             {{-- Imprimir Factura  --}}
                             <div class="mt-4 mb-1">
                                 <div class="text-end d-print-none">
+
+                                    {{-- botón imprimir --}}
                                     <a href="javascript:window.print()" class="btn btn-primary waves-effect waves-light"><i
                                             class="mdi mdi-printer me-1"></i> Imprimir</a>
-                                    <a href="#" class="btn btn-info waves-effect waves-light">Realizar Venta</a>
+
+                                    {{-- botón para abrir modal Guardar la Factura --}}
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#factura-modal">Facturar</button>
+
                                 </div>
                             </div>
 
@@ -194,4 +206,64 @@
         </div> <!-- container -->
 
     </div> <!-- content -->
+
+
+    <!-- Ventana Modal Facturar -->
+    <div id="factura-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+                    {{-- Nombre y Total --}}
+                    <div class="text-center mt-2 mb-4">
+                        <div class="auth-logo">
+                            <h3>Factura de: {{ $customer->name }}</h3>
+                            <h3>Total: $ @convert(Cart::total())</h3>
+                        </div>
+                    </div>
+
+                    <form class="px-3" method="POST" action="{{ route('store.category') }}">
+                        @csrf
+
+
+                        {{-- Forma de pago --}}
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Forma de pago</label>
+                            <select name="customer_id" class="form-select" id="example-select">
+                                <option selected disabled>Seleccionar Forma de Pago</option>
+                                <option value="HandCash">Efectivo</option>
+                                <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+                                <option value="Tarjeta de Débito">Tarjeta de Débito</option>
+                            </select>
+                        </div>
+
+                        {{-- Pago --}}
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Pago</label>
+                            <input class="form-control" type="text" name="category_name" placeholder="Pay Now">
+                        </div>
+
+
+                        {{-- Pendiente --}}
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Pendiente</label>
+                            <input class="form-control" type="text" name="category_name" placeholder="Due Amount ">
+                        </div>
+
+
+                        {{-- Botón Completar la Orden --}}
+                        <div class="mb-3 text-center">
+                            <button class="btn btn-primary" type="submit">Completar la Orden</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+
+    </div><!-- /.modal -->
+
 @endsection
