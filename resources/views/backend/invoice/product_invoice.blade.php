@@ -254,7 +254,7 @@
 
                         {{-- Pasar los demás datos de la orden --}}
                         <input type="hidden" name="customer_id" value="{{ $customer->id }}">
-                        <input type="hidden" name="order_date" value="{{ date('d-F-Y') }}">
+                        <input type="hidden" name="order_date" value="{{ \Carbon\Carbon::parse(date('Y-m-d'))->locale('es')->isoFormat('D[/]MMMM[/]YYYY') }}">
                         <input type="hidden" name="order_status" value="pendiente">
                         <input type="hidden" name="total_products" value="{{ Cart::count() }}">
                         <input type="hidden" name="sub_total" value="{{ Cart::subtotal() }}">

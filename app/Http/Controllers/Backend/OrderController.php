@@ -63,4 +63,14 @@ class OrderController extends Controller
 
         return redirect()->route('dashboard')->with($notification);
     }
+
+
+    // PendingOrder
+    public function PendingOrder(){
+        $orders = Order::where('order_status', 'pendiente')->orderBy('created_at', 'ASC')->get();
+        return view('backend.order.pending_order', compact('orders'));
+    }
+
+
+
 }

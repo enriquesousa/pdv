@@ -111,67 +111,9 @@
 
                 </li>
 
-                
 
-                {{-- * CONTROL --}}
-                <li class="menu-title mt-2"><span class="badge bg-primary">CONTROL</span></li>
-
-                {{-- Control de Empleados --}}
-                <li>
-                    <a href="#sidebarEmpleados" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-multiple-outline"></i>
-                        <span>Empleados</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarEmpleados">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('all.employee') }}">Lista Empleados</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('employee.add') }}">Agregar Empleado</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                {{-- Control de Clientes --}}
-                <li>
-                    <a href="#sidebarClientes" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-multiple-outline"></i>
-                        <span>Clientes</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarClientes">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('all.customer') }}">Lista Clientes</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('customer.add') }}">Agregar Cliente</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                {{-- Control de Proveedores --}}
-                <li>
-                    <a href="#sidebarProveedores" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-multiple-outline"></i>
-                        <span>Proveedores</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarProveedores">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('all.supplier') }}">Lista de Proveedores</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('supplier.add') }}">Agregar Proveedor</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                {{-- * Admin --}}
+                <li class="menu-title mt-2"><span class="badge bg-primary">Admin</span></li>
 
                 {{-- Avances de Salario --}}
                 <li>
@@ -301,7 +243,7 @@
                 <li>
                     <a href="#attendance" data-bs-toggle="collapse">
                         <i class="mdi mdi-book-clock-outline"></i>
-                        <span>Control Asistencias</span>
+                        <span>Asistencias</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="attendance">
@@ -312,7 +254,6 @@
                         </ul>
                     </div>
                 </li>
-
 
                 {{-- Categorías --}}
                 <li>
@@ -330,11 +271,10 @@
                     </div>
                 </li>
 
-
                 {{-- Productos --}}
                 <li>
                     <a href="#product" data-bs-toggle="collapse">
-                        <i class="mdi mdi-carrot"></i>
+                        <i class="mdi mdi-cart-outline"></i>
                         <span>Productos</span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -348,6 +288,25 @@
                             </li>
                             <li>
                                 <a href="{{ route('import.product') }}">Importar/Exportar Excel</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                {{-- Ordenes --}}
+                <li>
+                    <a href="#ordenes" data-bs-toggle="collapse">
+                        <i class="mdi mdi-clipboard-multiple-outline"></i>
+                        <span>Ordenes</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="ordenes">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('pending.order') }}">Pendientes</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('add.product') }}">Completadas</a>
                             </li>
                         </ul>
                     </div>
@@ -383,8 +342,66 @@
                 </li>
 
 
+
                 {{-- * CONFIGURACIÓN DEL SISTEMA --}}
                 <li class="menu-title mt-2"><span class="badge bg-primary">CONFIGURACIÓN</span></li>
+
+                 {{-- Control de Empleados --}}
+                 <li>
+                    <a href="#sidebarEmpleados" data-bs-toggle="collapse">
+                        <i class="mdi mdi-account-multiple-outline"></i>
+                        <span>Empleados</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarEmpleados">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.employee') }}">Lista Empleados</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('employee.add') }}">Agregar Empleado</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                {{-- Control de Clientes --}}
+                <li>
+                    <a href="#sidebarClientes" data-bs-toggle="collapse">
+                        <i class="mdi mdi-account-multiple-outline"></i>
+                        <span>Clientes</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarClientes">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.customer') }}">Lista Clientes</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('customer.add') }}">Agregar Cliente</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                {{-- Control de Proveedores --}}
+                <li>
+                    <a href="#sidebarProveedores" data-bs-toggle="collapse">
+                        <i class="mdi mdi-account-multiple-outline"></i>
+                        <span>Proveedores</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarProveedores">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.supplier') }}">Lista de Proveedores</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('supplier.add') }}">Agregar Proveedor</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
                 {{-- Configuración de Datos --}}
                 <li>
@@ -404,6 +421,8 @@
                         </ul>
                     </div>
                 </li>
+
+
 
 
 
