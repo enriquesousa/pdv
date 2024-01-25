@@ -184,6 +184,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/pending/order', 'PendingOrder')->name('pending.order');
         Route::get('/detail/order/{order_id}', 'DetailOrder')->name('detail.order');
         Route::post('/order/status/update', 'OrderStatusUpdate')->name('order.status.update');
+        Route::get('/complete/order', 'CompleteOrder')->name('complete.order');
+
     });
 
     

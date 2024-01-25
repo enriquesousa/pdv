@@ -306,7 +306,7 @@
                                 <a href="{{ route('pending.order') }}">Pendientes</a>
                             </li>
                             <li>
-                                <a href="{{ route('add.product') }}">Completadas</a>
+                                <a href="{{ route('complete.order') }}">Completadas</a>
                             </li>
                         </ul>
                     </div>

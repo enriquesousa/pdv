@@ -103,5 +103,11 @@ class OrderController extends Controller
 
     }
 
+    // CompleteOrder
+    public function CompleteOrder(){
+        $orders = Order::where('order_status', 'completada')->orderBy('created_at', 'ASC')->get();
+        return view('backend.order.complete_order', compact('orders'));
+    }
+
 
 }
