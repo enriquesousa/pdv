@@ -36,51 +36,31 @@
                         {{-- Tabla de Lista de Productos --}}
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                             <thead>
+
                                 <tr>
                                     <th>Serie</th>
                                     <th>Imagen</th>
                                     <th>Nombre</th>
                                     <th>Categoría</th>
-                                    <th>Almacén</th>
                                     <th>Proveedor</th>
                                     <th>Código</th>
-                                    <th>Precio</th>
-                                    <th>Acción</th>
+                                    <th>Almacén</th>
                                 </tr>
                             </thead>
                         
                         
                             <tbody>
-
                                 @foreach ($product as $key => $item)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td><img src="{{ asset($item->product_image) }}" style="width: 50px; height: 40px;"></td>
                                         <td>{{ $item->product_name }}</td>
                                         <td>{{ $item->category->category_name }}</td>
-                                        <td>{{ $item->product_store }}</td>
                                         <td>{{ $item->supplier->name }}</td>
                                         <td>{{ $item->product_code }}</td>
-                                        <td>
-                                            @php
-                                                $floatVar =  floatval($item->selling_price); 
-                                            @endphp
-                                            $ @convert($floatVar)
-                                        </td>
-
-                                       
-                                        <td>
-                                            <a href="{{ route('edit.product', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-
-                                            <a href="{{ route('barcode.product', $item->id) }}" class="btn btn-info rounded-pill waves-effect waves-light"><i class="fa fa-barcode" aria-hidden="true"></i></a>
-
-                                            <a href="{{ route('delete.product', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                        </td>
+                                        <td><button class="btn btn-warning waves-effect waves-light">{{ $item->product_store }}</button></td>
                                     </tr>
-
                                 @endforeach
-
-
                             </tbody>
                         </table>
 

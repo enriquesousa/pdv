@@ -1,6 +1,5 @@
 @extends('admin_dashboard')
 @section('admin')
-
     {{-- Jquery CDN Para poder usar JS --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
@@ -34,7 +33,7 @@
                         <div class="card-body">
 
                             {{-- Tabla de PDV --}}
-                            <div class="table-responsive">
+                            <div class="table-responsive mb-1">
                                 <table class="table table-bordered border-primary mb-0">
 
                                     <thead>
@@ -53,7 +52,11 @@
                                     @foreach ($allCartItems as $item)
                                         <tbody>
                                             <tr>
-                                                <td>{{ $item->name }}</td>
+                                                {{-- @php
+                                                    $in = $item->name;
+                                                    $out = strlen($in) > 50 ? substr($in,0,50)."..." : $in;
+                                                @endphp --}}
+                                                <td>{{ mb_strimwidth($item->name, 0, 50, "...") }}</td>
                                                 <td>
                                                     <form method="post" action="{{ url('/cart-update/' . $item->rowId) }}">
                                                         @csrf
@@ -79,60 +82,88 @@
                             </div>
 
                             {{-- Resumen de la Orden --}}
-                            <div class="border p-3 mt-4 mt-lg-0 rounded">
-                                <h4 class="header-title mb-3">Resumen de la Orden</h4>
+                            {{-- <p class="mt-2"><strong>Total de Piezas:</strong> {{ Cart::count() }},
+                                <strong>Subtotal:</strong> $ @convert(Cart::subtotal()), <strong>IVA:</strong> $ @convert(Cart::tax()),
+                                <strong>Total:</strong> $ @convert(Cart::total())</p> --}}
+                            <div class="row g-4">
 
-                                <div class="table-responsive">
-                                    <table class="table mb-0">
-                                        <tbody>
-                                            <tr>
-                                                <td>Total de Piezas :</td>
-                                                <td>{{ Cart::count() }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Subtotal :</td>
-                                                <td>$ @convert(Cart::subtotal())</td>
-                                            </tr>
-                                            <tr>
-                                                <td>IVA :</td>
-                                                <td>$ @convert(Cart::tax())</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Total :</th>
-                                                <th>$ @convert(Cart::total())</th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                {{-- Total de Piezas --}}
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                            placeholder="Total de Piezas" value="{{ Cart::count() }}" disabled="">
+                                        <label for="floatingInputGrid">Total de Piezas</label>
+                                    </div>
                                 </div>
-                                <!-- end table-responsive -->
+
+                                {{-- Subtotal --}}
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                            placeholder="Subtotal" value="$ @convert(Cart::subtotal())" disabled="">
+                                        <label for="floatingInputGrid">Subtotal</label>
+                                    </div>
+                                </div>
+
+                                {{-- IVA --}}
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInputGrid" placeholder="IVA"
+                                            value="$ @convert(Cart::tax())" disabled="">
+                                        <label for="floatingInputGrid">IVA</label>
+                                    </div>
+                                </div>
+
+                                {{-- Total --}}
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="floatingInputGrid"
+                                            placeholder="Total" value="$ @convert(Cart::total())" disabled="">
+                                        <label for="floatingInputGrid">Total</label>
+                                    </div>
+                                </div>
+
                             </div>
 
-                            <br>
-                            {{-- Cliente --}}
-                            <form id="myForm" method="post" action="{{ url('/create-invoice') }}">
-                                @csrf
+                        </div>
+                    </div> <!-- end card -->
 
-                                <div class="form-group mb-6">
-                                    {{-- <label for="customer" class="form-label">Cliente</label> --}}
 
-                                    <a href="{{ route('customer.add') }}"
-                                        class="btn btn-blue rounded-pill waves-effect waves-light mb-2">Agregar Cliente</a>
+                    {{-- Cliente --}}
+                    <form id="myForm" method="post" action="{{ url('/create-invoice') }}">
+                        @csrf
 
-                                    <select name="customer_id" class="form-select">
+                        <div class="row g-2 mb-4">
+
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select name="customer_id" class="form-select" id="floatingSelectGrid">
                                         <option selected disabled>Seleccionar Cliente</option>
                                         @foreach ($customers as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
                                     </select>
+                                    <label for="floatingSelectGrid">Cliente</label>
                                 </div>
+                            </div>
 
-                                <br>
-                                <button class="btn btn-blue waves-effect waves-light">Ver Recibo</button>
-
-                            </form>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <a href="{{ route('customer.add') }}"
+                                        class="btn btn-outline-primary waves-effect waves-light"
+                                        id="floatingInputGrid">Agregar Cliente</a>
+                                    <label for="floatingInputGrid"></label>
+                                </div>
+                            </div>
 
                         </div>
-                    </div> <!-- end card -->
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Ver Recibo</button>
+                        </div>
+
+                    </form>
+
 
                 </div> <!-- end col-->
 
@@ -163,7 +194,8 @@
                                                     @csrf
 
                                                     <input type="hidden" name="id" value="{{ $item->id }}">
-                                                    <input type="hidden" name="name" value="{{ $item->product_name }}">
+                                                    <input type="hidden" name="name"
+                                                        value="{{ $item->product_name }}">
                                                     <input type="hidden" name="qty" value="1">
                                                     <input type="hidden" name="price"
                                                         value="{{ $item->selling_price }}">
@@ -201,35 +233,32 @@
     </div> <!-- content -->
 
 
- {{-- Js para el manejo de la validación de la forma --}}
- <script type="text/javascript">
-    $(document).ready(function (){
-        $('#myForm').validate({
-            rules: {
-                customer_id: {
-                    required : true,
-                }, 
-            },
-            messages :{
-                customer_id: {
-                    required : 'Favor de Seleccionar un Cliente',
-                }, 
-            },
-            errorElement : 'span', 
-            errorPlacement: function (error,element) {
-                error.addClass('invalid-feedback');
-                element.closest('.form-group').append(error);
-            },
-            highlight : function(element, errorClass, validClass){
-                $(element).addClass('is-invalid');
-            },
-            unhighlight : function(element, errorClass, validClass){
-                $(element).removeClass('is-invalid');
-            },
+    {{-- Js para el manejo de la validación de la forma --}}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#myForm').validate({
+                rules: {
+                    customer_id: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    customer_id: {
+                        required: 'Favor de Seleccionar un Cliente',
+                    },
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                },
+            });
         });
-    });
-    
-</script>
-
-
+    </script>
 @endsection

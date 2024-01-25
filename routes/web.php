@@ -185,7 +185,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/detail/order/{order_id}', 'DetailOrder')->name('detail.order');
         Route::post('/order/status/update', 'OrderStatusUpdate')->name('order.status.update');
         Route::get('/complete/order', 'CompleteOrder')->name('complete.order');
-
+        Route::get('/stock/manage', 'StockManage')->name('stock.manage');
     });
 
     

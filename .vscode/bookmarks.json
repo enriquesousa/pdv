@@ -89,9 +89,9 @@
 			"path": "resources/views/backend/pos/pos_page.blade.php",
 			"bookmarks": [
 				{
-					"line": 93,
-					"column": 80,
-					"label": "$ @convert(Cart::subtotal()) money subtotal en Cart"
+					"line": 87,
+					"column": 49,
+					"label": "grid de 4 elementos row"
 				}
 			]
 		},

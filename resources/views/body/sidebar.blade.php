@@ -312,6 +312,22 @@
                     </div>
                 </li>
 
+                {{-- Almacén --}}
+                <li>
+                    <a href="#stock" data-bs-toggle="collapse">
+                        <i class="mdi mdi-text-box-multiple-outline"></i>
+                        <span>Almacén</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="stock">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('stock.manage') }}">Control de Almacén</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
 
                 {{-- * MANEJO DE DINERO --}}
                 <li class="menu-title mt-2"><span class="badge bg-primary">MANEJO DE DINERO</span></li>
@@ -346,8 +362,8 @@
                 {{-- * CONFIGURACIÓN DEL SISTEMA --}}
                 <li class="menu-title mt-2"><span class="badge bg-primary">CONFIGURACIÓN</span></li>
 
-                 {{-- Control de Empleados --}}
-                 <li>
+                {{-- Control de Empleados --}}
+                <li>
                     <a href="#sidebarEmpleados" data-bs-toggle="collapse">
                         <i class="mdi mdi-account-multiple-outline"></i>
                         <span>Empleados</span>
