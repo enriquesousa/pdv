@@ -52,11 +52,11 @@
                                 </div>
                             </div>
 
-                            {{-- Columna 1: Saludo, Columna 2: Fecha, Estatus y Numero de Orden --}}
+                            {{-- Columnas: C1: Saludo, C2: Dirección de Facturación, C3: Dirección de Entrega, C4: Fecha, Estatus y Numero de Orden --}}
                             <div class="row">
 
                                 {{-- Columna 1: Saludo --}}
-                                <div class="col-md-6">
+                                <div class="col-md-5">
                                     <div class="mt-3">
                                         <p><b>Saludos, {{ $customer->name }}</b></p>
                                         <p class="text-muted">Muchas gracias porque seguir comprando nuestros productos.
@@ -66,8 +66,37 @@
 
                                 </div><!-- end col -->
 
+                                {{-- Dirección de Facturación --}}
+                                <div class="col-md-2">
+                                    <h6>Dirección de Facturación</h6>
+                                    <address>
+                                        {{ $customer->name }}<br>
+                                        {{ $customer->address }}<br>
+                                        {{ $customer->city }}<br>
+                                        <abbr title="Comprador">C:</abbr> {{ $customer->shopname }}<br>
+                                        <abbr title="Teléfono">T:</abbr> {{ $customer->phone }}<br>
+                                        <abbr title="Correo">E:</abbr> {{ $customer->email }}
+                                    </address>
+                                </div>
+
+                                {{-- Dirección de Entrega --}}
+                                <div class="col-md-2">
+                                    <div class="float-end">
+                                        <h6>Dirección de Entrega</h6>
+                                        <address>
+                                            {{ $customer->name }}<br>
+                                            {{ $customer->address }}<br>
+                                            {{ $customer->city }}<br>
+                                            <abbr title="Comprador">C:</abbr> {{ $customer->shopname }}<br>
+                                            <abbr title="Teléfono">T:</abbr> {{ $customer->phone }}<br>
+                                            <abbr title="Correo">E:</abbr> {{ $customer->email }}
+                                        </address>
+                                    </div>
+                                </div>
+
+                                {{-- class="col-md-3 offset-md-2" --}}
                                 {{-- Columna 2: Fecha, Estatus y Numero de Orden --}}
-                                <div class="col-md-4 offset-md-2">
+                                <div class="col-md-3">
                                     <div class="mt-3 float-end">
                                         <p><strong>Fecha : </strong> <span class="float-end"> &nbsp;&nbsp;&nbsp;&nbsp; Jan
                                                 17, 2016</span></p>
@@ -79,36 +108,6 @@
 
                             </div>
 
-                            {{-- Dirección de Facturación y Dirección de Entrega --}}
-                            <div class="row mt-3">
-
-                                {{-- Dirección de Facturación --}}
-                                <div class="col-sm-6">
-                                    <h6>Dirección de Facturación</h6>
-                                    <address>
-                                        {{ $customer->name }}<br>
-                                        {{ $customer->address }}<br>
-                                        {{ $customer->city }}<br>
-                                        <abbr title="Comprador">C:</abbr> {{ $customer->shopname }}<br>
-                                        <abbr title="Teléfono">T:</abbr> {{ $customer->phone }}<br>
-                                        <abbr title="Correo">E:</abbr> {{ $customer->email }}
-                                    </address>
-                                </div> <!-- end col -->
-
-                                {{-- Dirección de Entrega --}}
-                                <div class="col-sm-6">
-                                    <h6>Dirección de Entrega</h6>
-                                    <address>
-                                        {{ $customer->name }}<br>
-                                        {{ $customer->address }}<br>
-                                        {{ $customer->city }}<br>
-                                        <abbr title="Comprador">C:</abbr> {{ $customer->shopname }}<br>
-                                        <abbr title="Teléfono">T:</abbr> {{ $customer->phone }}<br>
-                                        <abbr title="Correo">E:</abbr> {{ $customer->email }}
-                                    </address>
-                                </div> <!-- end col -->
-
-                            </div>
 
                             {{-- Tabla de detalles --}}
                             <div class="row">

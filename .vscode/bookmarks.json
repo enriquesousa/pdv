@@ -89,6 +89,11 @@
 			"path": "resources/views/backend/pos/pos_page.blade.php",
 			"bookmarks": [
 				{
+					"line": 58,
+					"column": 65,
+					"label": "string trim"
+				},
+				{
 					"line": 87,
 					"column": 49,
 					"label": "grid de 4 elementos row"
@@ -102,6 +107,16 @@
 					"line": 28,
 					"column": 61,
 					"label": "Blade::directive('convert', function ($money) "
+				}
+			]
+		},
+		{
+			"path": "resources/views/backend/invoice/product_invoice.blade.php",
+			"bookmarks": [
+				{
+					"line": 54,
+					"column": 0,
+					"label": "dividir contenido en columnas bootstrap"
 				}
 			]
 		}

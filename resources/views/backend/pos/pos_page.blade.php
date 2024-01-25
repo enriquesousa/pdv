@@ -128,7 +128,6 @@
                         </div>
                     </div> <!-- end card -->
 
-
                     {{-- Cliente --}}
                     <form id="myForm" method="post" action="{{ url('/create-invoice') }}">
                         @csrf
@@ -163,7 +162,6 @@
                         </div>
 
                     </form>
-
 
                 </div> <!-- end col-->
 
