@@ -114,9 +114,14 @@
 			"path": "resources/views/backend/invoice/product_invoice.blade.php",
 			"bookmarks": [
 				{
-					"line": 54,
+					"line": 56,
 					"column": 0,
 					"label": "dividir contenido en columnas bootstrap"
+				},
+				{
+					"line": 251,
+					"column": 94,
+					"label": "en select usar selected=\"selected\" para default value"
 				}
 			]
 		}

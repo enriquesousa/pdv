@@ -62,7 +62,7 @@ class OrderController extends Controller
 
         Cart::destroy();
 
-        return redirect()->route('dashboard')->with($notification);
+        return redirect()->route('pending.order')->with($notification);
     }
 
 

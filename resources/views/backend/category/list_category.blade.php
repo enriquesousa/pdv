@@ -92,7 +92,7 @@
                         <div class="mb-3">
                             <label for="username" class="form-label">Nombre de Categoría</label>
                             <input class="form-control" id="add_new_category" type="text" name="category_name"
-                                placeholder="Agregar Categoría" data-modalfocus>
+                                placeholder="Agregar Categoría" data-FocusEnModal>
                         </div>
 
 
@@ -113,7 +113,7 @@
     <script>
         $(document).ready(function() {
             $(".modal").on('shown.bs.modal', function() {
-                $("[data-modalfocus]", this).focus();
+                $("[data-FocusEnModal]", this).focus();
             });
         });
     </script>

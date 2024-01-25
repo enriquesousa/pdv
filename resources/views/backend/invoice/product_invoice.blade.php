@@ -1,5 +1,7 @@
 @extends('admin_dashboard')
 @section('admin')
+    {{-- Jquery CDN Para poder usar JS --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <div class="content">
 
@@ -190,8 +192,18 @@
                                             class="mdi mdi-printer me-1"></i> Imprimir</a>
 
                                     {{-- botón para abrir modal Guardar la Factura --}}
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#factura-modal">Facturar</button>
+                                    <button type="button" class="btn btn-primary" 
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#factura-modal"
+                                            data-bs-payment="{{ Cart::total() }}">
+                                            Facturar
+                                    </button>
+
+                                    {{-- <a href="#" data-bs-target="factura-modal" data-bs-toggle="modal"
+                                        data-payment="{{ Cart::total() }}"
+                                        class="btn btn-primary waves-effect waves-light">
+                                        Facturar
+                                    </a> --}}
 
                                 </div>
                             </div>
@@ -232,7 +244,7 @@
                             <label for="payment_status" class="form-label">Forma de pago</label>
                             <select name="payment_status" class="form-select" id="example-select">
                                 <option selected disabled>Seleccionar Forma de Pago</option>
-                                <option value="Efectivo">Efectivo</option>
+                                <option selected="selected" value="Efectivo">Efectivo</option>
                                 <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
                                 <option value="Tarjeta de Débito">Tarjeta de Débito</option>
                             </select>
@@ -241,24 +253,25 @@
                         {{-- Pago --}}
                         <div class="mb-3">
                             <label for="pay" class="form-label">Pago</label>
-                            <input class="form-control" type="text" name="pay" placeholder="Pagar ahora">
+                            <input class="form-control" type="number" name="pay" placeholder="Pagar ahora" value="{{ Cart::total() }}">
                         </div>
 
 
                         {{-- Pendiente --}}
                         <div class="mb-3">
                             <label for="due" class="form-label">Pendiente</label>
-                            <input class="form-control" type="text" name="due" placeholder="Pendiente">
+                            <input class="form-control" type="number" name="due" placeholder="Pendiente" value="0">
                         </div>
 
                         {{-- Pasar los demás datos de la orden --}}
                         <input type="hidden" name="customer_id" value="{{ $customer->id }}">
-                        <input type="hidden" name="order_date" value="{{ \Carbon\Carbon::parse(date('Y-m-d'))->locale('es')->isoFormat('D[/]MMMM[/]YYYY') }}">
+                        <input type="hidden" name="order_date"
+                            value="{{ \Carbon\Carbon::parse(date('Y-m-d'))->locale('es')->isoFormat('D[/]MMMM[/]YYYY') }}">
                         <input type="hidden" name="order_status" value="pendiente">
                         <input type="hidden" name="total_products" value="{{ Cart::count() }}">
                         <input type="hidden" name="sub_total" value="{{ Cart::subtotal() }}">
                         <input type="hidden" name="iva" value="{{ Cart::tax() }}">
-                        <input type="hidden" name="total" value="{{ Cart::total() }}"> 
+                        <input type="hidden" name="total" value="{{ Cart::total() }}">
 
 
                         {{-- Botón Completar la Orden --}}
@@ -273,5 +286,17 @@
         </div><!-- /.modal-dialog -->
 
     </div><!-- /.modal -->
+
+    {{-- Para pasar un valor a la ventana modal --}}
+    {{-- No me funciona todavía, voy a seguir investigando, lo hice poniendo valor (value) directo en pay y pendiente --}}
+    <script>
+        // $('#factura-modal').on('show', function(e) {
+        //     var link = e.relatedTarget(),
+        //         modal = $(this),
+        //         payment = link.data("payment");
+
+        //     modal.find("#pagar").val(payment);
+        // });
+    </script>
 
 @endsection
