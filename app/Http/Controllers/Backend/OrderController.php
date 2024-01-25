@@ -84,5 +84,24 @@ class OrderController extends Controller
        
     }
 
+    // OrderStatusUpdate
+    public function OrderStatusUpdate(Request $request){
+
+        $order_id = $request->id;
+        Order::findOrFail($order_id)->update([
+            'order_status' => 'completada'
+        ]);
+        
+        $notification = array(
+            'message' => 'La orden se completo con Éxito',
+            'alert-type' => 'success'
+        );
+
+        Cart::destroy();
+
+        return redirect()->route('pending.order')->with($notification);
+
+    }
+
 
 }

@@ -33,12 +33,15 @@
 
                             <div class="tab-pane" id="settings">
 
-                                <form method="post" action="{{ route('customer.store') }}" enctype="multipart/form-data">
+                                <form method="post" action="{{ route('order.status.update') }}" enctype="multipart/form-data">
                                     @csrf
+
+                                    <input type="hidden" name="id" value="{{ $order->id }}">
 
                                     <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Detalles de la Orden
                                     </h5>
 
+                                    {{-- Detalles del Cliente --}}
                                     <div class="row">
 
                                         {{-- Foto de Cliente 'image' --}}
@@ -114,16 +117,53 @@
                                             </div>
                                         </div>
                                
-
                                     </div> <!-- end row -->
 
-
-
-                                    <div class="text-end">
-                                        <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i
+                                    {{-- Botón Completar la Orden --}}
+                                    <div class="text-begin">
+                                        <button type="submit" class="btn btn-success waves-effect waves-light mt-1"><i
                                                 class="mdi mdi-content-save"></i> Completar la Orden</button>
                                     </div>
                                 </form>
+
+                                {{-- Desplegar Detalles de los Productos de la Orden --}}
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <table class="table dt-responsive nowrap w-100">
+
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Imagen</th>
+                                                            <th>Nombre</th>
+                                                            <th>Código</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Precio</th>
+                                                            <th>Total(+iva)</th>
+                                                        </tr>
+                                                    </thead>
+                                                
+                                                
+                                                    <tbody>
+                                                        @foreach ($order_items as $item)
+                                                            <tr>
+                                                                <td><img src="{{ asset($item->product->product_image) }}" style="width: 50px; height: 40px;"></td>
+                                                                <td>{{ $item->product->product_name }}</td>
+                                                                <td>{{ $item->product->product_code }}</td>
+                                                                <td>{{ $item->quantity }}</td>
+                                                                <td>{{ $item->product->selling_price }}</td>
+                                                                <td>{{ $item->total }}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+
+                                                </table>
+                                            </div> <!-- end card body-->
+                                        </div> <!-- end card -->
+                                    </div><!-- end col-->
+                                </div>
+                                <!-- end row-->
 
                             </div>
                             <!-- end Forma Agregar Cliente -->
