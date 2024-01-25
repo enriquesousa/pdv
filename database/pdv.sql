@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 21, 2024 at 04:26 PM
+-- Generation Time: Jan 25, 2024 at 07:58 PM
 -- Server version: 10.11.4-MariaDB-1~deb12u1
 -- PHP Version: 8.2.7
 
@@ -242,6 +242,33 @@ INSERT INTO `employees` (`id`, `name`, `email`, `phone`, `address`, `experience`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `expenses`
+--
+
+CREATE TABLE `expenses` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `details` text NOT NULL,
+  `amount` varchar(255) NOT NULL,
+  `month` varchar(255) NOT NULL,
+  `year` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `expenses`
+--
+
+INSERT INTO `expenses` (`id`, `details`, `amount`, `month`, `year`, `date`, `created_at`, `updated_at`) VALUES
+(2, 'Gasolina', '300', 'enero', '2024', '2024-01-21', '2024-01-22 17:25:37', NULL),
+(3, 'Renta', '3500', 'enero', '2024', '2024-01-18', '2024-01-22 17:54:57', NULL),
+(4, 'Papelería 222', '2350', 'enero', '2024', '2024-01-22', '2024-01-22 20:32:11', '2024-01-22 20:32:11'),
+(5, 'Comida', '1300', 'enero', '2024', '2024-01-22', '2024-01-22 18:19:45', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -288,7 +315,82 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2024_01_15_130815_create_attendances_table', 11),
 (15, '2024_01_16_192616_create_categories_table', 12),
 (16, '2024_01_17_175005_create_products_table', 13),
-(17, '2024_01_17_175007_create_products_table', 14);
+(17, '2024_01_17_175007_create_products_table', 14),
+(18, '2024_01_22_073214_create_expenses_table', 15),
+(19, '2024_01_23_072202_create_shoppingcart_table', 16),
+(20, '2024_01_24_062420_create_orders_table', 17),
+(21, '2024_01_24_063220_create_order_details_table', 17);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `order_date` varchar(255) NOT NULL,
+  `order_status` varchar(255) NOT NULL,
+  `total_products` varchar(255) NOT NULL,
+  `sub_total` varchar(255) DEFAULT NULL,
+  `iva` varchar(255) DEFAULT NULL,
+  `invoice_no` varchar(255) DEFAULT NULL,
+  `total` varchar(255) DEFAULT NULL,
+  `payment_status` varchar(255) DEFAULT NULL,
+  `pay` varchar(255) DEFAULT NULL,
+  `due` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `customer_id`, `order_date`, `order_status`, `total_products`, `sub_total`, `iva`, `invoice_no`, `total`, `payment_status`, `pay`, `due`, `created_at`, `updated_at`) VALUES
+(3, 10, '24-January-2024', 'pendiente', '5', '812.00', '121.80', 'EPOS93252487', '933.80', 'Efectivo', '900', '33', '2024-01-24 16:44:44', NULL),
+(4, 5, '24-January-2024', 'pendiente', '2', '832.00', '124.80', 'EPOS80687971', '956.80', 'Efectivo', '900', '56', '2024-01-24 16:55:25', NULL),
+(7, 6, '24/enero/2024', 'completada', '1', '154.00', '23.10', 'EPOS49528532', '177.10', 'Efectivo', '100', '77', '2024-01-24 19:25:33', '2024-01-25 00:02:13'),
+(8, 6, '24/enero/2024', 'completada', '2', '136.00', '20.40', 'EPOS34701562', '156.40', 'Efectivo', '156.40', '0', '2024-01-25 03:45:48', '2024-01-25 03:46:21'),
+(9, 7, '25/enero/2024', 'pendiente', '2', '320.00', '48.00', 'EPOS76529036', '368.00', 'Efectivo', '368', '0', '2024-01-25 16:01:44', NULL),
+(10, 4, '25/enero/2024', 'pendiente', '1', '119.00', '17.85', 'EPOS37635913', '136.85', 'Efectivo', '136.85', '0', '2024-01-25 16:44:09', NULL),
+(11, 1, '25/enero/2024', 'completada', '1', '220.00', '33.00', 'EPOS10253654', '253.00', 'Efectivo', '253.00', '0', '2024-01-25 16:45:19', '2024-01-25 16:45:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` varchar(255) DEFAULT NULL,
+  `unit_cost` varchar(255) DEFAULT NULL,
+  `total` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `quantity`, `unit_cost`, `total`, `created_at`, `updated_at`) VALUES
+(7, 3, 21, '1', '220', '253.00', NULL, NULL),
+(8, 3, 20, '1', '75', '86.25', NULL, NULL),
+(9, 3, 19, '1', '119', '136.85', NULL, NULL),
+(10, 3, 18, '2', '199', '457.70', NULL, NULL),
+(11, 4, 17, '1', '779', '895.85', NULL, NULL),
+(12, 4, 16, '1', '53', '60.95', NULL, NULL),
+(17, 7, 22, '1', '154', '177.10', NULL, NULL),
+(18, 8, 11, '2', '68', '156.40', NULL, NULL),
+(19, 9, 23, '1', '121', '139.15', NULL, NULL),
+(20, 9, 18, '1', '199', '228.85', NULL, NULL),
+(21, 10, 19, '1', '119', '136.85', NULL, NULL),
+(22, 11, 21, '1', '220', '253.00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -375,7 +477,6 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_name`, `category_id`, `supplier_id`, `product_code`, `product_garage`, `product_image`, `product_store`, `buying_date`, `expire_date`, `buying_price`, `selling_price`, `created_at`, `updated_at`) VALUES
-(2, 'Queso Kraft tipo parmesano rallado 227 g - 139', 6, 3, 'CP240005', 'A1', 'upload/product/1788540549067189.png', '5', '2024-01-01', '2024-01-27', '100', '139', '2024-01-20 02:29:14', '2024-01-20 02:29:14'),
 (3, 'Huevo blanco Bachoco fresco 18 pzas - 46.50', 6, 3, 'CP240001', 'A1', 'upload/product/1788540699277398.png', '5', '2024-01-01', '2024-01-31', '40', '50', '2024-01-20 01:49:02', '2024-01-20 01:49:02'),
 (4, 'Queso crema Philadelphia original 180 g - 38', 6, 3, 'CP240002', 'A1', 'upload/product/1788540921341155.png', '5', '2024-01-01', '2024-01-31', '25', '30', '2024-01-20 01:48:13', '2024-01-20 01:48:13'),
 (5, 'Tomates molidos Del Fuerte condimentados 259 gr.', 9, 3, 'CP240003', 'A2', 'upload/product/1788571247211010.png', '12', '2024-01-02', '2024-01-31', '8', '11.50', '2024-01-20 01:34:21', NULL),
@@ -384,8 +485,32 @@ INSERT INTO `products` (`id`, `product_name`, `category_id`, `supplier_id`, `pro
 (8, 'Chile Serrano por kilo - 36.90', 2, 1, 'CP240007', 'A2', 'upload/product/1788574898869745.png', '12', '2024-01-02', '2024-01-31', '30', '36.90', '2024-01-20 02:32:24', NULL),
 (9, 'Aerosol WD-40 Aflojatodo con 11 OZ - 144', 12, 1, 'CP240008', 'A3', 'upload/product/1788575008340510.png', '13', '2024-01-01', '2024-08-09', '100', '144', '2024-01-20 02:34:08', NULL),
 (10, 'Cerveza clara Carta Blanca 6 pack 355 mL c/u - 55', 8, 3, 'CP240009', 'A4', 'upload/product/1788575142636710.png', '20', '2024-01-01', '2025-09-01', '49', '55', '2024-01-20 02:36:16', NULL),
-(11, 'Cerveza Victoria 6 latas con 330 ml c_u - 68', 8, 3, 'CP240010', 'A3', 'upload/product/1788575223719922.png', '20', '2024-01-01', '2024-12-25', '60', '68', '2024-01-20 02:37:33', NULL),
-(12, 'Arrachera de res Marketside marinada 600 g - 207', 3, 3, 'CP240011', 'A5', 'upload/product/1788575337614194.png', '20', '2024-01-01', '2024-03-13', '180', '207', '2024-01-20 02:39:22', NULL);
+(11, 'Cerveza Victoria 6 latas con 330 ml c_u - 68', 8, 3, 'CP240010', 'A3', 'upload/product/1788575223719922.png', '18', '2024-01-01', '2024-12-25', '60', '68', '2024-01-20 02:37:33', '2024-01-25 03:46:21'),
+(12, 'Arrachera de res Marketside marinada 600 g - 207', 3, 3, 'CP240011', 'A5', 'upload/product/1788575337614194.png', '20', '2024-01-01', '2024-03-13', '180', '207', '2024-01-20 02:39:22', NULL),
+(14, 'Cepillo para Perro Pets&More de Limpieza Automática - 185', 5, 1, 'CP240012', 'A1', 'upload/product/1788833738145700.png', '10', '2024-01-01', '2025-06-11', '130', '185', '2024-01-22 23:06:32', NULL),
+(15, 'Aceite puro de soya Nutrioli 946 ml - 45', 9, 3, 'CP240013', 'B2', 'upload/product/1788833843720685.png', '10', '2024-01-02', '2025-06-18', '40', '45', '2024-01-22 23:08:13', NULL),
+(16, 'Aderezo para ensaladas Clemente Jacques estilo ranch 473 g - 53', 9, 3, 'CP240014', 'C1', 'upload/product/1788833934955043.png', '10', '2024-01-01', '2026-06-22', '45', '53', '2024-01-22 23:09:40', NULL),
+(17, 'Tequila Don Julio 70 Cristalino 700 ml - 779', 8, 4, 'CP240015', 'D1', 'upload/product/1788834035270025.png', '10', '2023-12-14', '2027-01-13', '650', '779', '2024-01-25 05:26:06', '2024-01-25 05:26:06'),
+(18, 'Molida de res premium 95_5 por kilo - 199 por Kg', 3, 3, 'CP240016', 'A1', 'upload/product/1788834122421659.png', '10', '2024-01-02', '2024-01-31', '180', '199', '2024-01-22 23:12:39', NULL),
+(19, 'Pechuga de pollo con hueso y sin piel 800 g aprox - 119 por kg', 3, 3, 'CP240017', 'A1', 'upload/product/1788834219183173.png', '10', '2024-01-01', '2024-01-31', '100', '119', '2024-01-22 23:14:11', NULL),
+(20, 'Yoghurt griego Oikos natural 900 g - 75', 6, 3, 'CP240018', 'A1', 'upload/product/1788834628150074.png', '10', '2024-01-01', '2024-01-17', '70', '75', '2024-01-22 23:20:41', NULL),
+(21, 'Alitas de pollo Bachoco Picositas sabor tocino limón picante 700 g - 220', 7, 3, 'CP240019', 'D1', 'upload/product/1788834759979205.png', '9', '2024-04-24', '2024-04-24', '180', '220', '2024-01-22 23:22:47', '2024-01-25 16:45:47'),
+(22, 'Paleta Helada Holanda Magnum mini almendras 6 pzas 55 ml c_u - 154', 7, 3, 'CP240020', 'B2', 'upload/product/1788834844836877.png', '10', '2024-01-01', '2024-05-15', '120', '154', '2024-01-22 23:24:07', NULL),
+(23, 'Hamburguesa de pollo Pilgrim\'s de pechuga de pollo 700 g - 121', 7, 3, 'CP240021', 'A1', 'upload/product/1788834934067307.png', '10', '2024-01-01', '2024-01-31', '105', '121', '2024-01-22 23:25:33', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shopping_cart`
+--
+
+CREATE TABLE `shopping_cart` (
+  `identifier` varchar(255) NOT NULL,
+  `instance` varchar(255) NOT NULL,
+  `content` longtext NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -445,7 +570,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `photo`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'Jose', 'admin@gmail.com', '6646289328', '20240103172978.jpg', NULL, '$2y$12$8eS3WvmFg0yzL/HxocTNA.wFbdfCb0Dll.w45ouMJ/zj9CMWx1zu.', 'tK5mjlmF0bc5y3gOMoZ5zPN7OZkAxELLNSYgMNj5lhtDe2a6czXzr0QfTrUP', '2024-01-01 10:20:41', '2024-01-07 14:54:14');
+(2, 'Jose', 'admin@gmail.com', '6646289328', '20240103172978.jpg', NULL, '$2y$12$8eS3WvmFg0yzL/HxocTNA.wFbdfCb0Dll.w45ouMJ/zj9CMWx1zu.', 'bSiJ9l94FvwCwAdvEBZ3iB8TW4Qy7sLmZfKBtDNmIXhoE01DmY8YZxiZum9E', '2024-01-01 10:20:41', '2024-01-07 14:54:14');
 
 --
 -- Indexes for dumped tables
@@ -488,6 +613,12 @@ ALTER TABLE `employees`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `expenses`
+--
+ALTER TABLE `expenses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -498,6 +629,18 @@ ALTER TABLE `failed_jobs`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -526,6 +669,12 @@ ALTER TABLE `personal_access_tokens`
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `products_product_code_unique` (`product_code`);
+
+--
+-- Indexes for table `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  ADD PRIMARY KEY (`identifier`,`instance`);
 
 --
 -- Indexes for table `suppliers`
@@ -581,6 +730,12 @@ ALTER TABLE `employees`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
+-- AUTO_INCREMENT for table `expenses`
+--
+ALTER TABLE `expenses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -590,7 +745,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `pay_salaries`
@@ -608,7 +775,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
