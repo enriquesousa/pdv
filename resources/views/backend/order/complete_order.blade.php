@@ -57,7 +57,7 @@
                                         <td><span class="badge bg-success">{{ $item->order_status }}</span></td>
                                        
                                         <td>
-                                            <a href="{{ url('order/invoice-download/'.$item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Recibo PDF</a>
+                                            <a href="{{ url('order/invoice-download/'.$item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light" target="_blank">Recibo PDF</a>
                                         </td>
                                     </tr>
 

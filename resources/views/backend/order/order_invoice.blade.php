@@ -1,159 +1,108 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Invoice</title>
+    <title>Recibo</title>
 
-    <style type="text/css">
-        * {
-            font-family: Verdana, Arial, sans-serif;
-        }
-
-        table {
-            font-size: x-small;
-        }
-
-        tfoot tr td {
-            font-weight: bold;
-            font-size: x-small;
-        }
-
-        .gray {
-            background-color: lightgray
-        }
-
-        .font {
-            font-size: 15px;
-        }
-
-        .authority {
-            /*text-align: center;*/
-            float: right
-        }
-
-        .authority h5 {
-            margin-top: -10px;
-            color: green;
-            /*text-align: center;*/
-            margin-left: 35px;
-        }
-
-        .thanks p {
-            color: green;
-            ;
-            font-size: 16px;
-            font-weight: normal;
-            font-family: serif;
-            margin-top: 20px;
-        }
-    </style>
+    <link href="{{ asset('backend/assets/css/estilo_pdf.css') }}" rel="stylesheet" type="text/css" media="all" />
 
 </head>
 
 <body>
 
-    <table width="100%" style="background: #F7F7F7; padding:0 20px 0 20px;">
-        <tr>
-            <td valign="top">
-                <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-                <h2 style="color: green; font-size: 26px;"><strong>EasyShop</strong></h2>
-            </td>
-            <td align="right">
-                <pre class="font">
-               EasyShop Head Office
-               Email:support@easylearningbd.com <br>
-               Mob: 1245454545 <br>
-               Dhaka 1207,Dhanmondi:#4 <br>
-              
-            </pre>
-            </td>
-        </tr>
+    <header class="clearfix">
+        
+        <div id="logo">
+            {{-- <img src="logo.png"> --}}
+            <img src="{{ asset('backend/assets/images/logo-dark2.png') }}">
+        </div>
+        <h1>INVOICE 3-2-1</h1>
+        <div id="company" class="clearfix">
+            <div>Company Name</div>
+            <div>455 Foggy Heights,<br /> AZ 85004, US</div>
+            <div>(602) 519-0450</div>
+            <div><a href="mailto:company@example.com">company@example.com</a></div>
+        </div>
+        <div id="project">
+            <div><span>PROJECT</span> Website development</div>
+            <div><span>CLIENT</span> John Doe</div>
+            <div><span>ADDRESS</span> 796 Silver Harbour, TX 79273, US</div>
+            <div><span>EMAIL</span> <a href="mailto:john@example.com">john@example.com</a></div>
+            <div><span>DATE</span> August 17, 2015</div>
+            <div><span>DUE DATE</span> September 17, 2015</div>
+        </div>
 
-    </table>
-
-
-    <table width="100%" style="background:white; padding:2px;"></table>
-
-    <table width="100%" style="background: #F7F7F7; padding:0 5 0 5px;" class="font">
-        <tr>
-            <td>
-                <p class="font" style="margin-left: 20px;">
-                    <strong>Customer Name:</strong> <br>
-                    <strong>Customer Email:</strong> <br>
-                    <strong>Customer Phone:</strong> <br>
-
-                    <strong>Address:</strong>
-                    <strong>Shop Name:</strong>
-
-                </p>
-            </td>
-            <td>
-                <p class="font">
-                <h3><span style="color: green;">Invoice:</span> # </h3>
-                Order Date: <br>
-                Order Status: <br>
-                Payment Status: <br>
-                Total Pay : <br>
-                Total Due : </span>
-
-                </p>
-            </td>
-        </tr>
-    </table>
-    <br />
-    <h3>Products</h3>
+    </header>
 
 
-    <table width="100%">
-        <thead style="background-color: green; color:#FFFFFF;">
-            <tr class="font">
-                <th>Image </th>
-                <th>Product Name</th>
-                <th>Product Code</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Total(+Vat)</th>
-            </tr>
-        </thead>
-        <tbody>
-
-            @foreach ($orderItem as $item)
-                <tr class="font">
-                    <td align="center">
-                        <img src=" " height="50px;" width="50px;" alt="">
-                    </td>
-                    <td align="center"> </td>
-
-                    <td align="center"> </td>
-                    <td align="center"> </td>
-
-
-
-                    <td align="center">$ </td>
-                    <td align="center">$ </td>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th class="service">SERVICE</th>
+                    <th class="desc">DESCRIPTION</th>
+                    <th>PRICE</th>
+                    <th>QTY</th>
+                    <th>TOTAL</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-    <br>
-    <table width="100%" style=" padding:0 10px 0 10px;">
-        <tr>
-            <td align="right">
-                <h2><span style="color: green;">Subtotal:</span>$ </h2>
-                <h2><span style="color: green;">Total:</span> $ </h2>
-                {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
-            </td>
-        </tr>
-    </table>
-    <div class="thanks mt-3">
-        <p>Thanks For Buying Products..!!</p>
-    </div>
-    <div class="authority float-right mt-5">
-        <p>-----------------------------------</p>
-        <h5>Authority Signature:</h5>
-    </div>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="service">Design</td>
+                    <td class="desc">Creating a recognizable design solution based on the company's existing visual
+                        identity</td>
+                    <td class="unit">$40.00</td>
+                    <td class="qty">26</td>
+                    <td class="total">$1,040.00</td>
+                </tr>
+                <tr>
+                    <td class="service">Development</td>
+                    <td class="desc">Developing a Content Management System-based Website</td>
+                    <td class="unit">$40.00</td>
+                    <td class="qty">80</td>
+                    <td class="total">$3,200.00</td>
+                </tr>
+                <tr>
+                    <td class="service">SEO</td>
+                    <td class="desc">Optimize the site for search engines (SEO)</td>
+                    <td class="unit">$40.00</td>
+                    <td class="qty">20</td>
+                    <td class="total">$800.00</td>
+                </tr>
+                <tr>
+                    <td class="service">Training</td>
+                    <td class="desc">Initial training sessions for staff responsible for uploading web content</td>
+                    <td class="unit">$40.00</td>
+                    <td class="qty">4</td>
+                    <td class="total">$160.00</td>
+                </tr>
+                <tr>
+                    <td colspan="4">SUBTOTAL</td>
+                    <td class="total">$5,200.00</td>
+                </tr>
+                <tr>
+                    <td colspan="4">TAX 25%</td>
+                    <td class="total">$1,300.00</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="grand total">GRAND TOTAL</td>
+                    <td class="grand total">$6,500.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="notices">
+            <div>NOTICE:</div>
+            <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+        </div>
+    </main>
+
+
+    <footer>
+        Invoice was created on a computer and is valid without the signature and seal.
+    </footer>
+
 </body>
 
 </html>

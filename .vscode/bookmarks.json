@@ -79,6 +79,16 @@
 					"label": "pdf dump"
 				}
 			]
+		},
+		{
+			"path": "resources/views/backend/order/complete_order.blade.php",
+			"bookmarks": [
+				{
+					"line": 59,
+					"column": 175,
+					"label": "usar target=\"_blank\" para abrir en otro tab"
+				}
+			]
 		}
 	]
 }

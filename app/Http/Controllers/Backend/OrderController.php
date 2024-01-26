@@ -142,8 +142,9 @@ class OrderController extends Controller
             'tempDir' => public_path(),
             'chroot' => public_path(),
         ]);
-        return $pdf->download('invoice.pdf');
 
+        // return $pdf->download('invoice.pdf');
+        return $pdf->stream();
     }
 
 
