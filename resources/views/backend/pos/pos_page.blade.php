@@ -56,7 +56,7 @@
                                                     $in = $item->name;
                                                     $out = strlen($in) > 50 ? substr($in,0,50)."..." : $in;
                                                 @endphp --}}
-                                                <td>{{ mb_strimwidth($item->name, 0, 50, "...") }}</td>
+                                                <td>{{ mb_strimwidth($item->name, 0, 50, '...') }}</td>
                                                 <td>
                                                     <form method="post" action="{{ url('/cart-update/' . $item->rowId) }}">
                                                         @csrf
@@ -178,7 +178,7 @@
 
                                     <thead>
                                         <tr>
-                                            <th>Serie</th>
+                                            {{-- <th>Serie</th> --}}
                                             <th>Imagen</th>
                                             <th>Nombre</th>
                                             <th></th>
@@ -198,10 +198,11 @@
                                                     <input type="hidden" name="price"
                                                         value="{{ $item->selling_price }}">
 
-                                                    <td>{{ $key + 1 }}</td>
+                                                    {{-- <td>{{ $key + 1 }}</td> --}}
                                                     <td><img src="{{ asset($item->product_image) }}"
                                                             style="width: 50px; height: 40px;"></td>
-                                                    <td>{{ $item->product_name }}</td>
+
+                                                    <td>{{ mb_strimwidth($item->product_name, 0, 50, '...') }}</td>                                                            
 
                                                     {{-- botón para agregar item al carrito --}}
                                                     <td><button type="submit" style="font-size: 20px; color: #000000">
@@ -259,4 +260,5 @@
             });
         });
     </script>
+
 @endsection

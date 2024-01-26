@@ -12,6 +12,8 @@ use App\Models\OrderDetails;
 use Illuminate\Support\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class OrderController extends Controller
 {
@@ -67,26 +69,28 @@ class OrderController extends Controller
 
 
     // PendingOrder
-    public function PendingOrder(){
+    public function PendingOrder()
+    {
         $orders = Order::where('order_status', 'pendiente')->orderBy('created_at', 'ASC')->get();
         return view('backend.order.pending_order', compact('orders'));
     }
 
     // DetailOrder
-    public function DetailOrder($order_id){
+    public function DetailOrder($order_id)
+    {
 
         // El with('customer') es para incluir la relación con el id del cliente
         $order = Order::with('customer')->where('id', $order_id)->first();
 
         // El with('product') es para incluir la relación con el id del producto
         $order_items = OrderDetails::with('product')->where('order_id', $order_id)->orderby('id', 'desc')->get();
-        
+
         return view('backend.order.detail_order', compact('order', 'order_items'));
-       
     }
 
     // OrderStatusUpdate
-    public function OrderStatusUpdate(Request $request){
+    public function OrderStatusUpdate(Request $request)
+    {
 
         $order_id = $request->id;
 
@@ -102,7 +106,7 @@ class OrderController extends Controller
         Order::findOrFail($order_id)->update([
             'order_status' => 'completada'
         ]);
-        
+
         $notification = array(
             'message' => 'La orden se completo con Éxito',
             'alert-type' => 'success'
@@ -111,20 +115,38 @@ class OrderController extends Controller
         Cart::destroy();
 
         return redirect()->route('pending.order')->with($notification);
-
     }
 
     // CompleteOrder
-    public function CompleteOrder(){
+    public function CompleteOrder()
+    {
         $orders = Order::where('order_status', 'completada')->orderBy('created_at', 'ASC')->get();
         return view('backend.order.complete_order', compact('orders'));
     }
 
     // StockManage
-    public function StockManage(){
+    public function StockManage()
+    {
         $product = Product::all();
         return view('backend.order.all_stock', compact('product'));
     }
+
+    // OrderInvoiceDownload
+    public function OrderInvoiceDownload($order_id)
+    {
+
+        $order = Order::with('customer')->where('id', $order_id)->first();
+        $orderItem = OrderDetails::with('product')->where('order_id', $order_id)->orderby('id', 'desc')->get();
+
+        $pdf = Pdf::loadView('backend.order.order_invoice', compact('order', 'orderItem'))->setPaper('a4')->setOption([
+            'tempDir' => public_path(),
+            'chroot' => public_path(),
+        ]);
+        return $pdf->download('invoice.pdf');
+
+    }
+
+
 
 
 }
