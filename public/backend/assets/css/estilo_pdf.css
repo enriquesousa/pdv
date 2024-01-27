@@ -47,10 +47,22 @@
     background: url(dimension.png);
   }
   
-  #project {
+  /* #project {
     float: left;
+  } */
+
+  .column {
+    float: left;
+    width: 25%;
   }
   
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   #project span {
     color: #5D6975;
     text-align: right;
@@ -59,17 +71,29 @@
     display: inline-block;
     font-size: 0.8em;
   }
+
+  #project3 span {
+    color: #5D6975;
+    text-align: left;
+    width: 52px;
+    margin-right: 10px;
+    display: inline-block;
+    font-size: 0.8em;
+  }
   
+ 
   #company {
     float: right;
     text-align: right;
   }
   
-  #project div,
+  /* #project div,
   #company div {
     white-space: nowrap;        
-  }
+  } */
   
+
+
   table {
     width: 100%;
     border-collapse: collapse;
