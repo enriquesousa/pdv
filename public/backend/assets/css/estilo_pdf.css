@@ -130,13 +130,13 @@
   
   table td.service,
   table td.desc {
-    vertical-align: top;
+    vertical-align: middle;
   }
   
   table td.unit,
   table td.qty,
   table td.total {
-    font-size: 1.2em;
+    font-size: 1em;
   }
   
   table td.grand {

@@ -36,10 +36,14 @@
                 <div><span>ESTATUS</span> {{ $order->order_status }}</a></div>
             </div>
 
+            @php
+                $floatVar_Pago =  floatval($order->pay); 
+                $floatVar_Pendiente =  floatval($order->due); 
+            @endphp
             <div id="project" class="column">
-                <div><span>PAGO</span> {{ $order->payment_status }}</div>
-                <div><span>TOTAL</span> {{ $order->pay }}</div>
-                <div><span>PENDIENTE</span> {{ $order->due }}</div>
+                <div><span>FORMA DE PAGO</span> {{ $order->payment_status }}</div>
+                <div><span>ABONO</span> $ @convert($floatVar_Pago)</div>
+                <div><span>PENDIENTE</span> $ @convert($floatVar_Pendiente)</div>
             </div>
 
             <div id="project" class="column">
@@ -63,10 +67,11 @@
 
             <thead>
                 <tr>
-                    <th class="service">SERVICE</th>
-                    <th class="desc">DESCRIPTION</th>
-                    <th>PRICE</th>
-                    <th>QTY</th>
+                    <th class="service">IMAGEN</th>
+                    <th class="desc" style="width: 150px;">DESCRIPCIÓN</th>
+                    <th>CÓDIGO</th>
+                    <th>PRECIO</th>
+                    <th>CANTIDAD</th>
                     <th>TOTAL</th>
                 </tr>
             </thead>
@@ -75,12 +80,35 @@
 
                 @foreach ($orderItem as $item)
                     <tr>
-                        <td class="service">Design</td>
-                        <td class="desc">Creating a recognizable design solution based on the company's existing visual
-                            identity</td>
-                        <td class="unit">$40.00</td>
-                        <td class="qty">26</td>
-                        <td class="total">$1,040.00</td>
+
+                        {{-- Imagen --}}
+                        <td class="service" align="center">
+                            <img src="{{ public_path($item->product->product_image) }}" style="width: 50px; height: 40px;">
+                        </td>
+
+                        {{-- Product Name --}}
+                        <td class="desc">
+                            {{ mb_strimwidth($item->product->product_name, 0, 60, '...') }}
+                        </td>
+
+                        {{-- Product Code --}}
+                        <td class="service">{{ $item->product->product_code }}</td>
+
+                        {{-- Precio --}}
+                        @php
+                            $floatvar =  floatval($item->product->selling_price); 
+                        @endphp
+                        <td class="unit">$ @convert($floatvar)</td>
+
+                        {{-- Cantidad --}}
+                        <td class="qty">{{ $item->quantity }}</td>
+
+                        {{-- Total --}}
+                        @php
+                            $floatvar =  floatval($item->total); 
+                        @endphp
+                        <td class="total">$ @convert($floatvar)</td>
+
                     </tr>
                 @endforeach
 
@@ -89,7 +117,11 @@
         </table>
 
         {{-- SUBTOTAL, IVA y TOTAL --}}
-        <br>
+        @php
+            $floatVar_Subtotal =  floatval($order->sub_total); 
+            $floatVar_Iva =  floatval($order->iva);
+            $floatVar_Total =  floatval($order->total);
+        @endphp
 
         <table>
             <tbody>
@@ -101,57 +133,34 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td colspan="4">SUBTOTAL</td>
-                    <td class="total">$5,200.00</td>
+                    <td colspan="4">TOTAL</td>
+                    <td id="project">
+                        <div><span>SUBTOTAL</span> $ @convert($floatVar_Subtotal)</div>
+                        <div><span>IVA 15%</span> $ @convert($floatVar_Iva)</div>
+                        <div><span>TOTAL</span> $ @convert($floatVar_Total)</div>    
+                    </td>
                 </tr>
             </tbody>
         </table>
-
-        <table>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td colspan="4">TAX 25%</td>
-                    <td class="total">$1,300.00</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <table>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td colspan="4" class="grand total">GRAND TOTAL</td>
-                    <td class="grand total">$6,500.00</td>
-                </tr>
-            </tbody>
-        </table>
-
-
-
 
         <div id="notices">
-            <div>NOTICE:</div>
-            <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+            <div>NOTA:</div>
+            <div class="notice">Se aplicará un cargo financiero del 1,5% sobre los saldos impagos después de 30 días.</div>
         </div>
 
     </main>
 
+    <br>
+
+    <div class="row">
+        <div id="company" class="">
+            <p>-----------------------------------</p>
+            <h5>Firma de Autorización</h5>
+        </div>
+    </div>
 
     <footer>
-        Invoice was created on a computer and is valid without the signature and seal.
+        La factura se creó en una computadora y NO es válida sin firma ni sello.
     </footer>
 
 </body>

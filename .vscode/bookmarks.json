@@ -89,6 +89,21 @@
 					"label": "usar target=\"_blank\" para abrir en otro tab"
 				}
 			]
+		},
+		{
+			"path": "resources/views/backend/order/order_invoice.blade.php",
+			"bookmarks": [
+				{
+					"line": 24,
+					"column": 45,
+					"label": "use css para colocar contenido en varias columnas"
+				},
+				{
+					"line": 85,
+					"column": 49,
+					"label": "usar public_path para poder visualizar la imagen en el PDF"
+				}
+			]
 		}
 	]
 }
