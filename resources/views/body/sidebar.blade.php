@@ -67,7 +67,7 @@
                 {{-- * NAVEGACIÓN --}}
                 <li class="menu-title"><span class="badge bg-primary">NAVEGACIÓN</span></li>
 
-                {{-- Dashboards / Panel --}}
+                {{-- PANEL --}}
                 <li>
 
                     {{-- También podemos acceder como href="{{ url('/dashboard') }}" --}}
@@ -100,11 +100,11 @@
 
                 </li>
 
-                {{-- POS --}}
+                {{-- PDV --}}
                 <li>
 
                     <a href="{{ route('pos') }}">
-                        <span class="badge bg-pink float-end">Hot</span>
+                        <span class="badge bg-pink float-end">{{ Cart::count() }}</span>
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span> PDV </span>
                     </a>

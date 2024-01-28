@@ -25,9 +25,9 @@
             <div id="project" class="column">
                 <div><span>CLIENTE</span> {{ $order->customer->name }}</div>
                 <div><span>DIRECCIÓN</span> {{ $order->customer->address }}</div>
-                <div><span>CORREO</span> <a href="mailto:{{ $order->customer->name }}">{{ $order->customer->name }}</a></div>
                 <div><span>TELÉFONO</span> {{ $order->customer->phone }}</div>
                 <div><span>COMPAÑÍA</span> {{ $order->customer->shopname }}</div>
+                <div><a href="mailto:{{ $order->customer->email }}" target="_blank">{{ $order->customer->email }}</a></div>
             </div>
 
             <div id="project" class="column">
@@ -51,7 +51,7 @@
             </div>
 
             <div id="company" class="column">
-                <div>EsWeb</div>
+                <div>PDV EsWeb</div>
                 <div>455 Foggy Heights,<br /> AZ 85004, US</div>
                 <div>(602) 519-0450</div>
                 <div><a href="mailto:company@example.com">esweb@example.com</a></div>

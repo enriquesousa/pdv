@@ -453,91 +453,143 @@
                 </a>
                 <div class="dropdown-menu dropdown-megamenu">
                     <div class="row">
+
                         <div class="col-sm-8">
+                                <div class="row">
+                                  
+                                {{-- Columna 1 --}}
+                                <div class="col-md-2">
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h5 class="text-dark mt-0">UI Components</h5>
+                                    {{-- NAVEGACIÓN --}}
+                                    <h5 class="text-dark mt-0">NAVEGACIÓN</h5>
+                                    <ul class="list-unstyled megamenu-list">
+
+                                        {{-- PANEL --}}
+                                        <li>
+                                            <a href="{{ route('dashboard') }}">
+                                                <i class="mdi mdi-view-dashboard-outline"></i>
+                                                <span> Panel </span>
+                                            </a>
+                                        </li>
+
+                                        {{-- PDV --}}
+                                        <li>
+                                            <a href="{{ route('pos') }}">
+                                                <i class="mdi mdi-view-dashboard-outline"></i>
+                                                <span> PDV </span>
+                                            </a>
+                                        </li>
+                                       
+                                    </ul>
+
+                                    {{-- Avances de Salario --}}
+                                    <h5 class="text-dark mt-0">Avances de Salario</h5>
                                     <ul class="list-unstyled megamenu-list">
                                         <li>
-                                            <a href="javascript:void(0);">Widgets</a>
+                                            <a href="{{ route('all.advance.salary') }}">Avances de Salario</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0);">Nestable List</a>
+                                            <a href="{{ route('add.advance.salary') }}">Agregar Salario</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0);">Range Sliders</a>
+                                            <a href="{{ route('pay.salary') }}">Pagar Ultimo Mes</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0);">Masonry Items</a>
+                                            <a href="{{ route('month.salary') }}">Ver Ultimo Mes</a>
                                         </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Sweet Alerts</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Treeview Page</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Tour Page</a>
-                                        </li>
+
                                     </ul>
+
                                 </div>
 
-                                <div class="col-md-4">
-                                    <h5 class="text-dark mt-0">Applications</h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li>
-                                            <a href="javascript:void(0);">eCommerce Pages</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">CRM Pages</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Email</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Calendar</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Team Contacts</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Task Board</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Email Templates</a>
-                                        </li>
-                                    </ul>
+                                {{-- Columna 2 --}}
+                                <div class="col-md-2">
+
+                                     {{-- Pagar Otro Mes Enero a Junio --}}
+                                     <h5 class="text-dark mt-0">Pagar Otro Mes</h5>
+                                     <ul class="list-unstyled megamenu-list">
+                                         
+                                         <li>
+                                             <a href="{{ route('pay.salary.other.month', 'Enero') }}">Enero</a>
+                                         </li>
+                                         <li>
+                                             <a href="{{ route('pay.salary.other.month', 'Febrero') }}">Febrero</a>
+                                         </li>
+                                         <li>
+                                             <a href="{{ route('pay.salary.other.month', 'Marzo') }}">Marzo</a>
+                                         </li>
+                                         <li>
+                                             <a href="{{ route('pay.salary.other.month', 'Abril') }}">Abril</a>
+                                         </li>
+                                         <li>
+                                             <a href="{{ route('pay.salary.other.month', 'Mayo') }}">Mayo</a>
+                                         </li>
+                                         <li>
+                                             <a href="{{ route('pay.salary.other.month', 'Junio') }}">Junio</a>
+                                         </li>
+                                         
+                                     </ul>
+
                                 </div>
 
-                                <div class="col-md-4">
-                                    <h5 class="text-dark mt-0">Extra Pages</h5>
+                                {{-- Columna 3 --}}
+                                <div class="col-md-2">
+
+                                    {{-- Pagar Otro Mes Julio a Diciembre--}}
+                                    <h5 class="text-dark mt-0">Pagar Otro Mes</h5>
                                     <ul class="list-unstyled megamenu-list">
                                         <li>
-                                            <a href="javascript:void(0);">Left Sidebar with User</a>
+                                            <a href="{{ route('pay.salary.other.month', 'Julio') }}">Julio</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0);">Menu Collapsed</a>
+                                            <a href="{{ route('pay.salary.other.month', 'Agosto') }}">Agosto</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0);">Small Left Sidebar</a>
+                                            <a href="{{ route('pay.salary.other.month', 'Septiembre') }}">Septiembre</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0);">New Header Style</a>
+                                            <a href="{{ route('pay.salary.other.month', 'Octubre') }}">Octubre</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0);">Search Result</a>
+                                            <a href="{{ route('pay.salary.other.month', 'Noviembre') }}">Noviembre</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0);">Gallery Pages</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Maintenance & Coming Soon</a>
+                                            <a href="{{ route('pay.salary.other.month', 'Diciembre') }}">Diciembre</a>
                                         </li>
                                     </ul>
+
                                 </div>
+
+                                {{-- Columna 4 --}}
+                                <div class="col-md-2">
+
+                                    {{-- Pagar Otro Mes Julio a Diciembre--}}
+                                    <h5 class="text-dark mt-0">Columna 4</h5>
+                                    
+
+                                </div>
+
+                                {{-- Columna 5 --}}
+                                <div class="col-md-2">
+
+                                    {{-- Pagar Otro Mes Julio a Diciembre--}}
+                                    <h5 class="text-dark mt-0">Columna 5</h5>
+                                   
+
+                                </div>
+
+                                {{-- Columna 6 --}}
+                                <div class="col-md-2">
+
+                                    {{-- Pagar Otro Mes Julio a Diciembre--}}
+                                    <h5 class="text-dark mt-0">Columna 6</h5>
+
+                                </div>
+
                             </div>
                         </div>
+
+                        {{-- Special Discount Sale! --}}
                         <div class="col-sm-4">
                             <div class="text-center mt-3">
                                 <h3 class="text-dark">Special Discount Sale!</h3>
@@ -545,8 +597,8 @@
                                 <button class="btn btn-primary rounded-pill mt-3">Download Now</button>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </li>
             
