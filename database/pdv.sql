@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 25, 2024 at 07:58 PM
+-- Generation Time: Jan 28, 2024 at 05:46 PM
 -- Server version: 10.11.4-MariaDB-1~deb12u1
 -- PHP Version: 8.2.7
 
@@ -319,7 +319,32 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (18, '2024_01_22_073214_create_expenses_table', 15),
 (19, '2024_01_23_072202_create_shoppingcart_table', 16),
 (20, '2024_01_24_062420_create_orders_table', 17),
-(21, '2024_01_24_063220_create_order_details_table', 17);
+(21, '2024_01_24_063220_create_order_details_table', 17),
+(22, '2024_01_28_092935_create_permission_tables', 18);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_permissions`
+--
+
+CREATE TABLE `model_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_roles`
+--
+
+CREATE TABLE `model_has_roles` (
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -349,7 +374,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `customer_id`, `order_date`, `order_status`, `total_products`, `sub_total`, `iva`, `invoice_no`, `total`, `payment_status`, `pay`, `due`, `created_at`, `updated_at`) VALUES
-(3, 10, '24-January-2024', 'pendiente', '5', '812.00', '121.80', 'EPOS93252487', '933.80', 'Efectivo', '900', '33', '2024-01-24 16:44:44', NULL),
+(3, 10, '24-January-2024', 'completada', '5', '812.00', '121.80', 'EPOS93252487', '933.80', 'Efectivo', '900', '33', '2024-01-24 16:44:44', '2024-01-26 17:42:57'),
 (4, 5, '24-January-2024', 'pendiente', '2', '832.00', '124.80', 'EPOS80687971', '956.80', 'Efectivo', '900', '56', '2024-01-24 16:55:25', NULL),
 (7, 6, '24/enero/2024', 'completada', '1', '154.00', '23.10', 'EPOS49528532', '177.10', 'Efectivo', '100', '77', '2024-01-24 19:25:33', '2024-01-25 00:02:13'),
 (8, 6, '24/enero/2024', 'completada', '2', '136.00', '20.40', 'EPOS34701562', '156.40', 'Efectivo', '156.40', '0', '2024-01-25 03:45:48', '2024-01-25 03:46:21'),
@@ -433,6 +458,20 @@ INSERT INTO `pay_salaries` (`id`, `employee_id`, `salary_month`, `year`, `paid_a
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `guard_name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `personal_access_tokens`
 --
 
@@ -491,12 +530,37 @@ INSERT INTO `products` (`id`, `product_name`, `category_id`, `supplier_id`, `pro
 (15, 'Aceite puro de soya Nutrioli 946 ml - 45', 9, 3, 'CP240013', 'B2', 'upload/product/1788833843720685.png', '10', '2024-01-02', '2025-06-18', '40', '45', '2024-01-22 23:08:13', NULL),
 (16, 'Aderezo para ensaladas Clemente Jacques estilo ranch 473 g - 53', 9, 3, 'CP240014', 'C1', 'upload/product/1788833934955043.png', '10', '2024-01-01', '2026-06-22', '45', '53', '2024-01-22 23:09:40', NULL),
 (17, 'Tequila Don Julio 70 Cristalino 700 ml - 779', 8, 4, 'CP240015', 'D1', 'upload/product/1788834035270025.png', '10', '2023-12-14', '2027-01-13', '650', '779', '2024-01-25 05:26:06', '2024-01-25 05:26:06'),
-(18, 'Molida de res premium 95_5 por kilo - 199 por Kg', 3, 3, 'CP240016', 'A1', 'upload/product/1788834122421659.png', '10', '2024-01-02', '2024-01-31', '180', '199', '2024-01-22 23:12:39', NULL),
-(19, 'Pechuga de pollo con hueso y sin piel 800 g aprox - 119 por kg', 3, 3, 'CP240017', 'A1', 'upload/product/1788834219183173.png', '10', '2024-01-01', '2024-01-31', '100', '119', '2024-01-22 23:14:11', NULL),
-(20, 'Yoghurt griego Oikos natural 900 g - 75', 6, 3, 'CP240018', 'A1', 'upload/product/1788834628150074.png', '10', '2024-01-01', '2024-01-17', '70', '75', '2024-01-22 23:20:41', NULL),
-(21, 'Alitas de pollo Bachoco Picositas sabor tocino limón picante 700 g - 220', 7, 3, 'CP240019', 'D1', 'upload/product/1788834759979205.png', '9', '2024-04-24', '2024-04-24', '180', '220', '2024-01-22 23:22:47', '2024-01-25 16:45:47'),
+(18, 'Molida de res premium 95_5 por kilo - 199 por Kg', 3, 3, 'CP240016', 'A1', 'upload/product/1788834122421659.png', '8', '2024-01-02', '2024-01-31', '180', '199', '2024-01-22 23:12:39', '2024-01-26 17:42:57'),
+(19, 'Pechuga de pollo con hueso y sin piel 800 g aprox - 119 por kg', 3, 3, 'CP240017', 'A1', 'upload/product/1788834219183173.png', '9', '2024-01-01', '2024-01-31', '100', '119', '2024-01-22 23:14:11', '2024-01-26 17:42:57'),
+(20, 'Yoghurt griego Oikos natural 900 g - 75', 6, 3, 'CP240018', 'A1', 'upload/product/1788834628150074.png', '9', '2024-01-01', '2024-01-17', '70', '75', '2024-01-22 23:20:41', '2024-01-26 17:42:57'),
+(21, 'Alitas de pollo Bachoco Picositas sabor tocino limón picante 700 g - 220', 7, 3, 'CP240019', 'D1', 'upload/product/1788834759979205.png', '8', '2024-04-24', '2024-04-24', '180', '220', '2024-01-22 23:22:47', '2024-01-26 17:42:57'),
 (22, 'Paleta Helada Holanda Magnum mini almendras 6 pzas 55 ml c_u - 154', 7, 3, 'CP240020', 'B2', 'upload/product/1788834844836877.png', '10', '2024-01-01', '2024-05-15', '120', '154', '2024-01-22 23:24:07', NULL),
 (23, 'Hamburguesa de pollo Pilgrim\'s de pechuga de pollo 700 g - 121', 7, 3, 'CP240021', 'A1', 'upload/product/1788834934067307.png', '10', '2024-01-01', '2024-01-31', '105', '121', '2024-01-22 23:25:33', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `guard_name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_has_permissions`
+--
+
+CREATE TABLE `role_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -632,6 +696,20 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -656,6 +734,13 @@ ALTER TABLE `pay_salaries`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
+
+--
 -- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -669,6 +754,20 @@ ALTER TABLE `personal_access_tokens`
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `products_product_code_unique` (`product_code`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
+
+--
+-- Indexes for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
 -- Indexes for table `shopping_cart`
@@ -745,7 +844,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -766,6 +865,12 @@ ALTER TABLE `pay_salaries`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -778,6 +883,12 @@ ALTER TABLE `products`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
@@ -788,6 +899,29 @@ ALTER TABLE `suppliers`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
