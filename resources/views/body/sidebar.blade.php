@@ -329,6 +329,23 @@
                 </li>
 
 
+                {{-- Roles y Permisos --}}
+                <li>
+                    <a href="#roles" data-bs-toggle="collapse">
+                        <i class="mdi mdi-account-cog-outline"></i>
+                        <span>Permisos</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="roles">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.permission') }}">Lista de Permisos</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
                 {{-- * MANEJO DE DINERO --}}
                 <li class="menu-title mt-2"><span class="badge bg-primary">MANEJO DE DINERO</span></li>
 
