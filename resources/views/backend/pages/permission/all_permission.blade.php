@@ -13,7 +13,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <a href="{{ route('customer.add') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Permiso</a>
+                            <a href="{{ route('add.permission') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Permiso</a>
                         </ol>
                     </div>
                     <h4 class="page-title">Lista de Permisos</h4>
