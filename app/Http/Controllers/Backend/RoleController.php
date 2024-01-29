@@ -10,6 +10,11 @@ use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
+    
+    /**************
+    *** Permisos
+    ***************/
+
     // AllPermission
     public function AllPermission(){
         $permissions = Permission::all();
@@ -77,6 +82,37 @@ class RoleController extends Controller
        
     }
 
+
+    /**************
+    *** Roles
+    ***************/
+
+    // AllRoles
+    public function AllRoles(){
+        $roles = Role::all();
+        return view('backend.pages.roles.all_roles',compact('roles'));
+    }
+
+    // AddRole
+    public function AddRole(){
+        return view('backend.pages.roles.add_role');
+    }
+
+    // StoreRole
+    public function StoreRole(Request $request){
+
+        $role = Role::create([
+            'name' => $request->name,
+        ]);
+
+        $notification = [
+            'message' => 'Rol Añadido Correctamente',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('all.roles')->with($notification);
+       
+    }
 
 
 }

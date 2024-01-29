@@ -344,6 +344,12 @@
                             <li>
                                 <a href="{{ route('add.permission') }}">Agregar Permiso</a>
                             </li>
+                            <li>
+                                <a href="{{ route('all.roles') }}">Lista de Roles</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('add.role') }}">Agregar Rol</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
