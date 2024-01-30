@@ -134,6 +134,16 @@
 					"label": "JS para seleccionar todos los checkbox"
 				}
 			]
+		},
+		{
+			"path": "resources/views/auth/login.blade.php",
+			"bookmarks": [
+				{
+					"line": 11,
+					"column": 24,
+					"label": "App favicon"
+				}
+			]
 		}
 	]
 }
