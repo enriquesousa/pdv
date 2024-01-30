@@ -44,7 +44,7 @@
 			"path": "resources/views/backend/category/list_category.blade.php",
 			"bookmarks": [
 				{
-					"line": 110,
+					"line": 111,
 					"column": 71,
 					"label": "Auto focus on input in bootstrap modal"
 				}
@@ -66,42 +66,72 @@
 			]
 		},
 		{
-			"path": "app/Http/Controllers/Backend/OrderController.php",
+			"path": "resources/views/backend/salary/all_advance_salary.blade.php",
 			"bookmarks": [
 				{
-					"line": 81,
-					"column": 80,
-					"label": "Como pasar un tabla que esta relacionada usando with()"
-				},
-				{
-					"line": 140,
-					"column": 19,
-					"label": "pdf dump"
+					"line": 74,
+					"column": 69,
+					"label": "money en blade"
 				}
 			]
 		},
 		{
-			"path": "resources/views/backend/order/complete_order.blade.php",
+			"path": "config/cart.php",
 			"bookmarks": [
 				{
-					"line": 59,
-					"column": 175,
-					"label": "usar target=\"_blank\" para abrir en otro tab"
+					"line": 6,
+					"column": 26,
+					"label": "IVA Configuracion en Cart"
 				}
 			]
 		},
 		{
-			"path": "resources/views/backend/order/order_invoice.blade.php",
+			"path": "resources/views/backend/pos/pos_page.blade.php",
 			"bookmarks": [
 				{
-					"line": 24,
-					"column": 45,
-					"label": "use css para colocar contenido en varias columnas"
+					"line": 58,
+					"column": 65,
+					"label": "string trim"
 				},
 				{
-					"line": 85,
+					"line": 87,
 					"column": 49,
-					"label": "usar public_path para poder visualizar la imagen en el PDF"
+					"label": "grid de 4 elementos row"
+				}
+			]
+		},
+		{
+			"path": "app/Providers/AppServiceProvider.php",
+			"bookmarks": [
+				{
+					"line": 28,
+					"column": 61,
+					"label": "Blade::directive('convert', function ($money) "
+				}
+			]
+		},
+		{
+			"path": "resources/views/backend/invoice/product_invoice.blade.php",
+			"bookmarks": [
+				{
+					"line": 56,
+					"column": 0,
+					"label": "dividir contenido en columnas bootstrap"
+				},
+				{
+					"line": 251,
+					"column": 94,
+					"label": "en select usar selected=\"selected\" para default value"
+				}
+			]
+		},
+		{
+			"path": "resources/views/backend/pages/roles/add_roles_permission.blade.php",
+			"bookmarks": [
+				{
+					"line": 125,
+					"column": 47,
+					"label": "JS para seleccionar todos los checkbox"
 				}
 			]
 		}
