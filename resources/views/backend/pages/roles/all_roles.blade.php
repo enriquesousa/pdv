@@ -47,8 +47,8 @@
                                         <td>{{ $item->name }}</td>
                                        
                                         <td>
-                                            <a href="{{ route('add.role', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
-                                            <a href="{{ route('delete.permission', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a>
+                                            <a href="{{ route('edit.role', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
+                                            <a href="{{ route('delete.role', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a>
                                         </td>
                                     </tr>
 

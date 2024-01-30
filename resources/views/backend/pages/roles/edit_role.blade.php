@@ -17,7 +17,7 @@
                                 {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Agregar Permiso</a></li> --}}
                             </ol>
                         </div>
-                        <h4 class="page-title">Agregar Rol</h4>
+                        <h4 class="page-title">Editar Rol</h4>
                     </div>
                 </div>
             </div>
@@ -31,10 +31,12 @@
                             {{-- Forma --}}
                             <div class="tab-pane" id="settings">
 
-                                <form id="myForm" method="post" action="{{ route('store.role') }}" enctype="multipart/form-data">
+                                <form id="myForm" method="post" action="{{ route('update.role') }}" enctype="multipart/form-data">
                                     @csrf
 
-                                    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Agregar
+                                    <input type="hidden" name="id" value="{{ $role->id }}">
+
+                                    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Editar
                                         Rol
                                     </h5>
 
@@ -44,7 +46,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="name" class="form-label">Nombre del Rol</label>
-                                                <input type="text" name="name" class="form-control"   >
+                                                <input type="text" name="name" class="form-control" value="{{ $role->name }}">
                                             </div>
                                         </div>
 
