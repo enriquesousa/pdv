@@ -46,13 +46,20 @@
                                     <path class="st0" d="M124.5 105.7h61.8v38.7h-61.8zM196.6 170.2H249v51.7h-52.4zM196.6 105.7H249M196.6 118.6H249M196.6 131.5H249M196.6 144.4H249M124.5 157.3H249M124.5 170.2h62.2M124.5 183.2h62.2M124.5 196.1h62.2M124.5 209h62.2M124.5 221.9h62.2"/>
                                 </g>
                             </svg>
-                            <h3 class="mt-4 text-white">Bienvenido al Sistema de PDV</h3>
+
+                            <h3 class="mt-4 text-white">Bienvenido al Sistema PDV EsWeb</h3>
                             <p class="text-white-50">Punto de venta</p>
+
+                            {{-- si el usuario ya ha iniciado sesión --}}
+                            @if (Auth::check())
+                                <p class="text-white-50">El usuario: {{ Auth::user()->name }}, ya ha iniciado sesión</p>
+                                <a href="{{ route('dashboard') }}" class="btn btn-success">Ir al Panel de Control</a>
+                            @endif
 
                             <div class="row mt-5">
 
                                 {{-- Login --}}
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="text-center mt-3 ps-1 pe-1">
                                         <div class="avatar-md rounded-circle bg-soft-light mx-auto">
                                             <i class="dripicons-jewel font-22 avatar-title"></i>
@@ -63,7 +70,7 @@
                                 </div>
 
                                 {{-- Register --}}
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="text-center mt-3 ps-1 pe-1">
                                         <div class="avatar-md rounded-circle bg-soft-light mx-auto">
                                             <i class="dripicons-clock font-22 avatar-title"></i>
@@ -73,17 +80,19 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="col-md-4">
+                                {{-- Ayuda --}}
+                                <div class="col-md-4">
                                     <div class="text-center mt-3 ps-1 pe-1">
                                         <div class="avatar-md rounded-circle bg-soft-light mx-auto">
                                             <i class="dripicons-question font-22 avatar-title"></i>
                                         </div>
-                                        <h5 class="text-uppercase mt-3 text-white">Ayuda</h5>
-                                        <p class="text-white-50">If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embar.. <a href="mailto:#" class="text-white-50 fw-bold">no-reply@domain.com</a></p>
+                                        <a href="{{ route('page.ayuda') }}" class=""><h5 class="text-uppercase mt-3 text-white">Ayuda</h5></a>
+                                        <p class="text-white-50">Descripcion breve de la aplicacion. Para mayor informacion favor de contactarnos. <a href="mailto:#" class="text-white-50 fw-bold">esweb@domain.com</a></p>
                                     </div>
-                                </div>  --}}
+                                </div> 
 
                             </div> <!-- end row-->
+
                         </div> <!-- end /.text-center-->
 
                     </div> <!-- end col -->
@@ -99,7 +108,7 @@
         </div>
         
         <footer class="footer footer-alt">
-            2018 - <script>document.write(new Date().getFullYear())</script> &copy; Punto de Venta Fácil por <a href="" class="text-white-50">EsWeb</a> 
+            2023 - <script>document.write(new Date().getFullYear())</script> &copy; Punto de Venta Fácil por <a href="" class="text-white-50">EsWeb</a> 
         </footer>
 
 

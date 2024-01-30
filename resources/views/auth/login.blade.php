@@ -139,7 +139,7 @@
 
 
         <footer class="footer footer-alt">
-            Octubre - <script>document.write(new Date().getFullYear())</script> &copy; Punto de Venta Fácil por <a href="" class="text-white-50">Esweb</a> 
+            2023 - <script>document.write(new Date().getFullYear())</script> &copy; Punto de Venta Fácil por <a href="" class="text-white-50">Esweb</a> 
         </footer>
 
         <!-- Vendor js -->

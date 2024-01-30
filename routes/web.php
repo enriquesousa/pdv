@@ -31,7 +31,7 @@ use App\Http\Controllers\Backend\RoleController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('index');
@@ -53,6 +53,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/admin/logout', [AdminController::class, 'AdminDestroy'])->name('admin.logout');
 Route::get('/logout', [AdminController::class, 'AdminLogoutPage'])->name('admin.logout.page');
+Route::get('/page/ayuda', [AdminController::class, 'PageAyuda'])->name('page.ayuda');
 
 Route::middleware(['auth'])->group(function () {
 
@@ -214,6 +215,7 @@ Route::middleware(['auth'])->group(function () {
     // Asignar Rol en Permisos
     Route::controller(RoleController::class)->group(function () {
         Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
+        Route::post('/store/roles/permission', 'StoreRolesPermission')->name('store.roles.permission');
         
     });
 

@@ -136,6 +136,16 @@
 			]
 		},
 		{
+			"path": "resources/views/welcome.blade.php",
+			"bookmarks": [
+				{
+					"line": 53,
+					"column": 47,
+					"label": "si el user ya esta login check"
+				}
+			]
+		},
+		{
 			"path": "resources/views/auth/login.blade.php",
 			"bookmarks": [
 				{

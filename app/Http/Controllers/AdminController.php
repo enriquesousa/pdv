@@ -105,4 +105,11 @@ class AdminController extends Controller
 
     }
 
+
+    // PageAyuda
+    public function PageAyuda(){
+        return view('admin.page_ayuda');
+    }
+
+
 }

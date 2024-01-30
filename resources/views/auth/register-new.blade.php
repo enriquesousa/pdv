@@ -51,42 +51,24 @@
 
                                     {{-- Nombre Completo --}}
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Nombre</label>
-                                        <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name" placeholder="Entre su nombre" value="{{ old('name') }}" required>
-                                        @error('name')
-                                            <span class="text-danger"> {{ $message }} </span>
-                                        @enderror
-                                    </div>
-
-                                    {{-- Teléfono --}}
-                                    <div class="mb-3">
-                                        <label for="phone" class="form-label">Teléfono</label>
-                                        <input class="form-control @error('phone') is-invalid @enderror" type="text" id="phone" name="phone" placeholder="Entre su teléfono" value="{{ old('phone') }}" required>
-                                        @error('phone')
-                                            <span class="text-danger"> {{ $message }} </span>
-                                        @enderror
+                                        <label for="name" class="form-label">Nombre Completo</label>
+                                        <input class="form-control" type="text" id="name" name="name" placeholder="Entre su nombre" required>
                                     </div>
 
                                     {{-- Correo Electrónico --}}
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Correo Electrónico</label>
-                                        <input class="form-control @error('email') is-invalid @enderror" type="email" id="email" name="email" value="{{ old('email') }}" required placeholder="Entre su correo electrónico">
-                                        @error('email')
-                                            <span class="text-danger"> {{ $message }} </span>
-                                        @enderror
+                                        <input class="form-control" type="email" id="email" name="email" required placeholder="Entre su correo electrónico">
                                     </div>
 
                                     {{-- Contraseña --}}
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Contraseña</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Entre su contraseña">
+                                            <input type="password" id="password" name="password" class="form-control" placeholder="Entre su contraseña">
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>
-                                            @error('password')
-                                                <span class="text-danger"> {{ $message }} </span>
-                                            @enderror
                                         </div>
                                     </div>
 
@@ -94,13 +76,10 @@
                                     <div class="mb-3">
                                         <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Confirme su contraseña">
+                                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Confirme su contraseña">
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>
-                                            @error('password_confirmation')
-                                                <span class="text-danger"> {{ $message }} </span>
-                                            @enderror
                                         </div>
                                     </div>
 
@@ -156,7 +135,7 @@
 
     
         <footer class="footer footer-alt">
-            2023 - <script>document.write(new Date().getFullYear())</script> &copy; Punto de Venta Fácil por <a href="" class="text-white-50">EsWeb</a> 
+            2018 - <script>document.write(new Date().getFullYear())</script> &copy; Punto de Venta Fácil por <a href="" class="text-white-50">EsWeb</a> 
         </footer>
 
         <!-- Vendor js -->

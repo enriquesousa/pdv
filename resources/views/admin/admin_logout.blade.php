@@ -40,17 +40,13 @@
                                 
                                 <div class="text-center w-75 m-auto">
                                     <div class="auth-logo">
-                                        <a href="index.html" class="logo logo-dark text-center">
+
+                                        <a href="{{ url('/') }}" class="logo logo-dark text-center">
                                             <span class="logo-lg">
                                                 <img src="{{ asset('backend/assets/images/logo-dark2.png')}}" alt="" height="22">
                                             </span>
                                         </a>
-                    
-                                        <a href="index.html" class="logo logo-light text-center">
-                                            <span class="logo-lg">
-                                                <img src="{{ asset('backend/assets/images/logo-light2.png')}}" alt="" height="22">
-                                            </span>
-                                        </a>
+
                                     </div>
                                 </div>
 
@@ -90,7 +86,7 @@
 
 
         <footer class="footer footer-alt">
-            Octubre - <script>document.write(new Date().getFullYear())</script> &copy; Punto de Venta Fácil por <a href="" class="text-white-50">Esweb</a> 
+            2023 - <script>document.write(new Date().getFullYear())</script> &copy; Punto de Venta Fácil por <a href="" class="text-white-50">Esweb</a> 
         </footer>
 
 

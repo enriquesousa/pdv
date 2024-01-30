@@ -38,7 +38,7 @@
                             {{-- Forma Agregar Cliente --}}
                             <div class="tab-pane" id="settings">
 
-                                <form id="myForm" method="post" action="{{ route('store.permission') }}" enctype="multipart/form-data">
+                                <form id="myForm" method="post" action="{{ route('store.roles.permission') }}" enctype="multipart/form-data">
                                     @csrf
 
                                     <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i>Agregar Rol en Permisos</h5>
@@ -48,18 +48,17 @@
                                         {{-- Select Role 'group_name' --}}
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="group_name" class="form-label">Roles</label>
-                                                <select name="group_name" class="form-select">
+                                                <label for="role_id" class="form-label">Roles</label>
+                                                <select name="role_id" class="form-select">
                                                     <option selected disabled>Seleccionar Rol</option>
-
                                                     @foreach ($roles as $role)
                                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
                                                     @endforeach
-                                                   
                                                 </select>
                                             </div>
                                         </div>
 
+                                        {{-- chk all --}}
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-check mb-2 form-check-primary">
@@ -71,6 +70,7 @@
 
                                         <hr>
 
+                                        {{-- Todos los chks de Grupos y Permisos --}}
                                         @foreach ($permission_groups as $group)
                                             <div class="row">
 
@@ -133,5 +133,37 @@
             } 
         });
    </script>
+
+   {{-- Js para el manejo de la validación de la forma --}}
+   <script type="text/javascript">
+    $(document).ready(function (){
+        $('#myForm').validate({
+            rules: {
+                role_id: {
+                    required : true,
+                }, 
+                 
+            },
+            messages :{
+                role_id: {
+                    required : 'Favor de Ingresar el Rol',
+                }, 
+               
+            },
+            errorElement : 'span', 
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
+    
+</script>
 
 @endsection
