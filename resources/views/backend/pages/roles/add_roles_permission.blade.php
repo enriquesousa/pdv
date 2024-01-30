@@ -56,7 +56,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-check mb-2 form-check-primary">
-                                                    <input class="form-check-input" type="checkbox" value="" id="customckeck15" checked="">
+                                                    <input class="form-check-input" type="checkbox" value="" id="customckeck15">
                                                     <label class="form-check-label" for="customckeck15">Primary</label>
                                                 </div>
                                             </div>
@@ -64,20 +64,34 @@
 
                                         <hr>
 
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-check mb-2 form-check-primary">
-                                                    <input class="form-check-input" type="checkbox" value="" id="customckeck1" checked="">
-                                                    <label class="form-check-label" for="customckeck1">Primary</label>
+                                        @foreach ($permission_groups as $group)
+                                            <div class="row">
+
+                                                <div class="col-md-3">
+                                                    <div class="form-check mb-2 form-check-primary">
+                                                        <input class="form-check-input" type="checkbox" value="" id="customckeck1">
+                                                        <label class="form-check-label" for="customckeck1">{{ $group->group_name }}</label>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="form-check mb-2 form-check-primary">
-                                                    <input class="form-check-input" type="checkbox" value="" id="customckeck2" checked="">
-                                                    <label class="form-check-label" for="customckeck2">Primary</label>
+
+                                                
+                                                <div class="col-md-6">
+                                                        @php
+                                                            $permissions = App\Models\User::getPermissionByGroupName($group->group_name);
+                                                        @endphp
+
+                                                        @foreach ($permissions as $permission)
+                                                            <div class="form-check mb-2 form-check-primary">
+                                                                <input class="form-check-input" type="checkbox" name="permission[]" value="{{ $permission->id }}" id="customckeck{{ $permission->id }}">
+                                                                <label class="form-check-label" for="customckeck{{ $permission->id }}">{{ $permission->name }}</label>
+                                                            </div>
+                                                        @endforeach
                                                 </div>
+
+                                                <hr>
+
                                             </div>
-                                        </div>
+                                        @endforeach
 
                                     </div> <!-- end row -->
 
