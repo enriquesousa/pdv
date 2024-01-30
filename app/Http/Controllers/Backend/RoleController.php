@@ -153,4 +153,18 @@ class RoleController extends Controller
     }
 
 
+    /**************************
+    *** Asignar Rol en Permisos
+    ***************************/
+
+    // AddRolesPermission
+    public function AddRolesPermission(){
+
+        $roles = Role::all();
+        $permissions = Permission::all();
+        return view('backend.pages.roles.add_roles_permission',compact('roles','permissions'));
+       
+    }
+
+
 }

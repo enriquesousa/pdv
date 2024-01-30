@@ -342,13 +342,10 @@
                                 <a href="{{ route('all.permission') }}">Lista de Permisos</a>
                             </li>
                             <li>
-                                <a href="{{ route('add.permission') }}">Agregar Permiso</a>
-                            </li>
-                            <li>
                                 <a href="{{ route('all.roles') }}">Lista de Roles</a>
                             </li>
                             <li>
-                                <a href="{{ route('add.role') }}">Agregar Rol</a>
+                                <a href="{{ route('add.roles.permission') }}">Asignar Roles</a>
                             </li>
                         </ul>
                     </div>

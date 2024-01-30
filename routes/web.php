@@ -211,6 +211,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/delete/role/{id}', 'DeleteRole')->name('delete.role');
     });
 
+    // Asignar Rol en Permisos
+    Route::controller(RoleController::class)->group(function () {
+        Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
+        
+    });
+
     
 });
 
