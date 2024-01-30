@@ -196,5 +196,15 @@ class RoleController extends Controller
        return view('backend.pages.roles.all_roles_permission',compact('roles'));
     }
 
+    // EditAdminRoles
+    // Para editar permisos en un rol
+    public function EditAdminRoles($id){
+        $role = Role::findOrFail($id);
+        $permissions = Permission::all();
+        $permission_groups = User::getPermissionGroups();
+        return view('backend.pages.roles.edit_roles_permission',compact('role','permissions','permission_groups'));
+    }
+
+
 
 }
