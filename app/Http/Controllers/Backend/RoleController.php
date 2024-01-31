@@ -12,24 +12,27 @@ use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
-    
+
     /**************
-    *** Permisos
-    ***************/
+     *** Permisos
+     ***************/
 
     // AllPermission
-    public function AllPermission(){
+    public function AllPermission()
+    {
         $permissions = Permission::all();
-        return view('backend.pages.permission.all_permission',compact('permissions'));
+        return view('backend.pages.permission.all_permission', compact('permissions'));
     }
 
     // AddPermission
-    public function AddPermission(){
+    public function AddPermission()
+    {
         return view('backend.pages.permission.add_permission');
     }
 
     // StorePermission
-    public function StorePermission(Request $request){
+    public function StorePermission(Request $request)
+    {
 
         $role = Permission::create([
             'name' => $request->name,
@@ -42,17 +45,18 @@ class RoleController extends Controller
         ];
 
         return redirect()->route('all.permission')->with($notification);
-       
     }
 
     // EditPermission
-    public function EditPermission($id){
+    public function EditPermission($id)
+    {
         $permission = Permission::findOrFail($id);
-        return view('backend.pages.permission.edit_permission',compact('permission'));
+        return view('backend.pages.permission.edit_permission', compact('permission'));
     }
 
     // UpdatePermission
-    public function UpdatePermission(Request $request){
+    public function UpdatePermission(Request $request)
+    {
 
         $permission_id = $request->id;
 
@@ -67,11 +71,11 @@ class RoleController extends Controller
         ];
 
         return redirect()->route('all.permission')->with($notification);
-       
     }
 
     // DeletePermission
-    public function DeletePermission($id){
+    public function DeletePermission($id)
+    {
 
         Permission::findOrFail($id)->delete();
 
@@ -81,27 +85,29 @@ class RoleController extends Controller
         ];
 
         return redirect()->back()->with($notification);
-       
     }
 
 
     /**************
-    *** Roles
-    ***************/
+     *** Roles
+     ***************/
 
     // AllRoles
-    public function AllRoles(){
+    public function AllRoles()
+    {
         $roles = Role::all();
-        return view('backend.pages.roles.all_roles',compact('roles'));
+        return view('backend.pages.roles.all_roles', compact('roles'));
     }
 
     // AddRole
-    public function AddRole(){
+    public function AddRole()
+    {
         return view('backend.pages.roles.add_role');
     }
 
     // StoreRole
-    public function StoreRole(Request $request){
+    public function StoreRole(Request $request)
+    {
 
         $role = Role::create([
             'name' => $request->name,
@@ -113,17 +119,18 @@ class RoleController extends Controller
         ];
 
         return redirect()->route('all.roles')->with($notification);
-       
     }
 
     // EditRole
-    public function EditRole($id){
+    public function EditRole($id)
+    {
         $role = Role::findOrFail($id);
-        return view('backend.pages.roles.edit_role',compact('role'));
+        return view('backend.pages.roles.edit_role', compact('role'));
     }
 
     // UpdateRole
-    public function UpdateRole(Request $request){
+    public function UpdateRole(Request $request)
+    {
 
         $role_id = $request->id;
 
@@ -137,11 +144,11 @@ class RoleController extends Controller
         ];
 
         return redirect()->route('all.roles')->with($notification);
-       
     }
 
     // DeleteRole
-    public function DeleteRole($id){
+    public function DeleteRole($id)
+    {
 
         Role::findOrFail($id)->delete();
 
@@ -151,31 +158,31 @@ class RoleController extends Controller
         ];
 
         return redirect()->back()->with($notification);
-       
     }
 
 
     /**************************
-    *** Asignar Rol en Permisos
-    ***************************/
+     *** Asignar Rol en Permisos
+     ***************************/
 
     // AddRolesPermission
-    public function AddRolesPermission(){
+    public function AddRolesPermission()
+    {
 
         $roles = Role::all();
         $permissions = Permission::all();
         $permission_groups = User::getPermissionGroups();
-        return view('backend.pages.roles.add_roles_permission',compact('roles','permissions','permission_groups'));
-       
+        return view('backend.pages.roles.add_roles_permission', compact('roles', 'permissions', 'permission_groups'));
     }
 
     // StoreRolesPermission
-    public function StoreRolesPermission(Request $request){
+    public function StoreRolesPermission(Request $request)
+    {
 
         $data = array();
         $permissions = $request->permission;
 
-        foreach($permissions as $key => $item){
+        foreach ($permissions as $key => $item) {
             $data['role_id'] = $request->role_id;
             $data['permission_id'] = $item;
             DB::table('role_has_permissions')->insert($data);
@@ -187,26 +194,28 @@ class RoleController extends Controller
         ];
 
         return redirect()->route('all.roles.permission')->with($notification);
-       
     }
 
     // AllRolesPermission
-    public function AllRolesPermission(){
-       $roles = Role::all();
-       return view('backend.pages.roles.all_roles_permission',compact('roles'));
+    public function AllRolesPermission()
+    {
+        $roles = Role::all();
+        return view('backend.pages.roles.all_roles_permission', compact('roles'));
     }
 
     // EditAdminRoles
     // Para editar permisos en un rol
-    public function EditAdminRoles($id){
+    public function EditAdminRoles($id)
+    {
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
         $permission_groups = User::getPermissionGroups();
-        return view('backend.pages.roles.edit_roles_permission',compact('role','permissions','permission_groups'));
+        return view('backend.pages.roles.edit_roles_permission', compact('role', 'permissions', 'permission_groups'));
     }
 
     // RolePermissionUpdate
-    public function RolePermissionUpdate(Request $request,$id){
+    public function RolePermissionUpdate(Request $request, $id)
+    {
 
         $role = Role::findOrFail($id);
         $permissions = $request->permission;
@@ -218,15 +227,28 @@ class RoleController extends Controller
             $role->syncPermissions($permissions);
         }
 
-         $notification = array(
+        $notification = array(
             'message' => 'Permisos Asignados Correctamente',
             'alert-type' => 'success'
         );
 
         return redirect()->route('all.roles.permission')->with($notification);
+    } // End Method 
 
-    }// End Method 
+    // DeleteAdminRoles
+    public function DeleteAdminRoles($id)
+    {
+        $role = Role::findOrFail($id);
+        if (!is_null($role)) {
+            $role->delete();
+        }
 
+        $notification = array(
+            'message' => 'Rol Eliminado Correctamente',
+            'alert-type' => 'success'
+        );
 
-
+        return redirect()->back()->with($notification);
+    }
+    
 }
