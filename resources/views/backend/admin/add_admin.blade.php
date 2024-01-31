@@ -33,7 +33,7 @@
                             {{-- Forma Agregar Cliente --}}
                             <div class="tab-pane" id="settings">
 
-                                <form id="myForm" method="post" action="{{ route('store.product') }}" enctype="multipart/form-data">
+                                <form id="myForm" method="post" action="{{ route('store.admin') }}" enctype="multipart/form-data">
                                     @csrf
 
                                     <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Agregar
@@ -81,30 +81,14 @@
                                                 <select name="roles" class="form-select">
                                                     <option selected disabled>Seleccionar un Rol</option>
                                                     @foreach ($roles as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->name }}
+                                                        <option value="{{ $item->name }}">{{ $item->name }}
                                                         </option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
 
-                                        {{-- Admin Photo 'photo' --}}
-                                        <div class="col-md-4">
-                                            <div class="form-group mb-3">
-                                                <label for="photo" class="form-label">Foto del Producto</label>
-                                                <input type="file" name="photo" id="image" class="form-control">
-                                            </div>
-                                        </div>
-
-
-                                        {{-- Desplegar Foto del Producto --}}
-                                        <div class="col-md-4">
-                                            <div class="form-group mb-3">
-                                                <label for="example-fileinput" class="form-label"> </label>
-                                                <img id="showImage" src="{{ url('upload/no_image.jpg') }}"
-                                                    class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
-                                            </div>
-                                        </div> 
+                                        
 
 
                                     </div> <!-- end row -->
@@ -145,9 +129,6 @@
                     phone: {
                         required : true,
                     }, 
-                    photo: {
-                        required : true,
-                    }, 
                     password: {
                         required : true,
                     }, 
@@ -164,9 +145,6 @@
                     },
                     phone: {
                         required : 'Favor de Ingresar Teléfono',
-                    },
-                    photo: {
-                        required : 'Favor de Ingresar la Imagen',
                     },
                     password: {
                         required : 'Favor de Ingresar la Contraseña',

@@ -139,6 +139,11 @@
 			"path": "resources/views/welcome.blade.php",
 			"bookmarks": [
 				{
+					"line": 12,
+					"column": 65,
+					"label": "favicon insertar"
+				},
+				{
 					"line": 53,
 					"column": 47,
 					"label": "si el user ya esta login check"
@@ -166,6 +171,16 @@
 			]
 		},
 		{
+			"path": "app/Http/Controllers/AdminController.php",
+			"bookmarks": [
+				{
+					"line": 146,
+					"column": 47,
+					"label": "Asegurarnos que el value del select role venga con nombre y no id, asi me funciona a mi."
+				}
+			]
+		},
+		{
 			"path": "resources/views/backend/admin/all_admin.blade.php",
 			"bookmarks": [
 				{
@@ -177,6 +192,16 @@
 					"line": 18,
 					"column": 152,
 					"label": "font size text"
+				}
+			]
+		},
+		{
+			"path": "resources/views/backend/admin/add_admin.blade.php",
+			"bookmarks": [
+				{
+					"line": 83,
+					"column": 70,
+					"label": "en el value yo use name porque asi me esta funcionando con spatie permision"
 				}
 			]
 		}

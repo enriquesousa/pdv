@@ -52,7 +52,11 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->phone }}</td>
-                                        <td>Rol</td>
+                                        <td>
+                                            @foreach ($item->roles as $role)
+                                                <span class="badge rounded-pill bg-primary" style="font-size: 12px; font-weight: 500; align-items: center">{{ $role->name }}</span>
+                                            @endforeach
+                                        </td>
                                        
                                         <td>
                                             <a href="{{ route('customer.edit', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>

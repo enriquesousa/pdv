@@ -122,6 +122,7 @@ class AdminController extends Controller
     // AllAdmin
     public function AllAdmin(){
        $allAdminUsers = User::latest()->get();
+       // dd($allAdminUsers);
        return view('backend.admin.all_admin', compact('allAdminUsers'));
     }
 
@@ -129,6 +130,30 @@ class AdminController extends Controller
     public function AddAdmin(){
         $roles = Role::all();
         return view('backend.admin.add_admin', compact('roles'));
+    }
+
+    // StoreAdmin
+    public function StoreAdmin(Request $request){
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+        ]);
+
+        // Asegurarnos que el value del select role venga con nombre y no id, así me funciona a mi.
+        if($request->roles){
+            $user->assignRole($request->roles);
+        };
+
+        $notification = [
+            'message' => 'Nuevo Administrador Registrado Correctamente',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('all.admin')->with($notification);
+        
     }
 
 
