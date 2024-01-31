@@ -367,7 +367,7 @@
                                 <a href="{{ route('all.admin') }}">Lista</a>
                             </li>
                             <li>
-                                <a href="{{ route('all.roles') }}">Agregar</a>
+                                <a href="{{ route('add.admin') }}">Agregar</a>
                             </li>
                         </ul>
                     </div>

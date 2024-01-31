@@ -13,7 +13,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <a href="{{ route('customer.add') }}" class="btn btn-primary rounded-pill waves-effect waves-light"><i class="mdi mdi-account-plus-outline"></i>&nbsp;&nbsp;Agregar Admin</a>
+                            <a href="{{ route('add.admin') }}" class="btn btn-primary rounded-pill waves-effect waves-light"><i class="mdi mdi-account-plus-outline"></i>&nbsp;&nbsp;Agregar Admin</a>
                         </ol>
                     </div>
                     <h4 class="page-title">Lista de Administradores, Registrados Actualmente:  <span class="badge rounded-pill bg-danger" style="font-size: 12px; font-weight: 500; align-items: center">{{ count($allAdminUsers) }}</span></h4>
