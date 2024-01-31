@@ -156,6 +156,42 @@ class AdminController extends Controller
         
     }
 
+    // EditAdmin
+    public function EditAdmin($id){
+
+        $adminUser = User::findOrFail($id);
+        $roles = Role::all();
+        return view('backend.admin.edit_admin', compact('adminUser', 'roles'));
+    }
+
+    // UpdateAdmin
+    public function UpdateAdmin(Request $request){
+
+        $admin_id = $request->id;
+
+        $user = User::findOrFail($admin_id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+        ]);
+
+        // detach role
+        $user = User::findOrFail($admin_id);
+        $user->roles()->detach();
+
+        // Asegurarnos que el value del select role venga con nombre y no id, así me funciona a mi.
+        if($request->roles){
+            $user->assignRole($request->roles);
+        };
+
+        $notification = [
+            'message' => 'Datos de Administrador Actualizados Correctamente',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('all.admin')->with($notification);
+        
+    }
 
 
 }

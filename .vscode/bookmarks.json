@@ -204,6 +204,16 @@
 					"label": "en el value yo use name porque asi me esta funcionando con spatie permision"
 				}
 			]
+		},
+		{
+			"path": "resources/views/backend/admin/edit_admin.blade.php",
+			"bookmarks": [
+				{
+					"line": 78,
+					"column": 56,
+					"label": "spatie permiso hasRole"
+				}
+			]
 		}
 	]
 }
