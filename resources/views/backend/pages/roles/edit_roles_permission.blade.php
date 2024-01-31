@@ -1,11 +1,10 @@
 @extends('admin_dashboard')
 @section('admin')
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     {{-- Para Capitalizar la primer letra de todos los labels de los check boxes --}}
     <style type="text/css">
-        .form-check-label{
+        .form-check-label {
             text-transform: capitalize;
         }
     </style>
@@ -38,10 +37,9 @@
                             {{-- Forma Agregar --}}
                             <div class="tab-pane" id="settings">
 
-                                <form id="myForm" method="post" action="{{ route('store.roles.permission') }}" enctype="multipart/form-data">
+                                <form id="myForm" method="post" action="{{ route('role.permission.update',$role->id) }}" enctype="multipart/form-data">
                                     @csrf
 
-                                    <input type="hidden" name="role_id" value="{{ $role->id }}">
 
                                     <div class="row">
 
@@ -57,43 +55,55 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-check mb-2 form-check-primary">
-                                                    <input class="form-check-input" type="checkbox" value="" id="customCheckAll">
-                                                    <label class="form-check-label" for="customCheckAll">Seleccionar Todo</label>
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="customCheckAll">
+                                                    <label class="form-check-label" for="customCheckAll">Seleccionar
+                                                        Todo</label>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <hr>
 
-                                        {{-- Todos los chks de Grupos y Permisos --}}
                                         @foreach ($permission_groups as $group)
                                             <div class="row">
 
-                                                <div class="col-md-3">
+                                                <div class="col-3">
 
                                                     @php
                                                         $permissions = App\Models\User::getPermissionByGroupName($group->group_name);
                                                     @endphp
 
                                                     <div class="form-check mb-2 form-check-primary">
-                                                        <input class="form-check-input" type="checkbox" value="" id="customckeck1" {{ App\Models\User::roleHasPermissions($role, $permissions) ? 'checked' : '' }}>
-                                                        <label class="form-check-label" for="customckeck1">{{ $group->group_name }}</label>
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="customckeck1"
+                                                            {{ App\Models\User::roleHasPermissions($role, $permissions) ? 'checked' : '' }}>
+                                                        <label class="form-check-label"
+                                                            for="customckeck1">{{ $group->group_name }}</label>
                                                     </div>
+
                                                 </div>
 
-                                                
-                                                <div class="col-md-6">
-                                                        @foreach ($permissions as $permission)
-                                                            <div class="form-check mb-2 form-check-primary">
-                                                                <input class="form-check-input" type="checkbox" name="permission[]" {{ $role->hasPermissionTo($permission->name) ? 'checked' : '' }}  value="{{ $permission->id }}" id="customckeck{{ $permission->id }}">
-                                                                <label class="form-check-label" for="customckeck{{ $permission->id }}">{{ $permission->name }}</label>
-                                                            </div>
-                                                        @endforeach
+                                                <div class="col-9">
+
+                                                    {{-- {{ dd($permissions) }} --}}
+
+                                                    @foreach ($permissions as $permission)
+                                                        <div class="form-check mb-2 form-check-primary">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="permission[]"
+                                                                {{ $role->hasPermissionTo($permission->name) ? 'checked' : '' }}
+                                                                value="{{ $permission->name }}"
+                                                                id="customckeck{{ $permission->id }}">
+                                                            <label class="form-check-label"
+                                                                for="customckeck{{ $permission->id }}">{{ $permission->name }}</label>
+                                                        </div>
+                                                    @endforeach
+                                                    <br>
+
                                                 </div>
 
-                                                <hr>
-
-                                            </div>
+                                            </div> <!-- end row -->
                                         @endforeach
 
                                     </div> <!-- end row -->
@@ -121,45 +131,12 @@
 
     {{-- JS para seleccionar todos los checkbox --}}
     <script type="text/javascript">
-        $('#customCheckAll').click(function(){
+        $('#customCheckAll').click(function() {
             if ($(this).is(':checked')) {
-                $('input[type = checkbox]').prop('checked',true);
-            }else{
-                $('input[type = checkbox]').prop('checked',false);
-            } 
+                $('input[type = checkbox]').prop('checked', true);
+            } else {
+                $('input[type = checkbox]').prop('checked', false);
+            }
         });
-   </script>
-
-   {{-- Js para el manejo de la validación de la forma --}}
-   <script type="text/javascript">
-    $(document).ready(function (){
-        $('#myForm').validate({
-            rules: {
-                role_id: {
-                    required : true,
-                }, 
-                 
-            },
-            messages :{
-                role_id: {
-                    required : 'Favor de Ingresar el Rol',
-                }, 
-               
-            },
-            errorElement : 'span', 
-            errorPlacement: function (error,element) {
-                error.addClass('invalid-feedback');
-                element.closest('.form-group').append(error);
-            },
-            highlight : function(element, errorClass, validClass){
-                $(element).addClass('is-invalid');
-            },
-            unhighlight : function(element, errorClass, validClass){
-                $(element).removeClass('is-invalid');
-            },
-        });
-    });
-    
-</script>
-
+    </script>
 @endsection

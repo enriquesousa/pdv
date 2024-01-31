@@ -205,6 +205,28 @@ class RoleController extends Controller
         return view('backend.pages.roles.edit_roles_permission',compact('role','permissions','permission_groups'));
     }
 
+    // RolePermissionUpdate
+    public function RolePermissionUpdate(Request $request,$id){
+
+        $role = Role::findOrFail($id);
+        $permissions = $request->permission;
+
+        // dd($role);
+        // dd($permissions);
+
+        if (!empty($permissions)) {
+            $role->syncPermissions($permissions);
+        }
+
+         $notification = array(
+            'message' => 'Permisos Asignados Correctamente',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.roles.permission')->with($notification);
+
+    }// End Method 
+
 
 
 }
