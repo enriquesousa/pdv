@@ -164,6 +164,21 @@
 					"label": "ancho de columna en th tabla usar clase de tabla responsive y wrap"
 				}
 			]
+		},
+		{
+			"path": "resources/views/backend/admin/all_admin.blade.php",
+			"bookmarks": [
+				{
+					"line": 15,
+					"column": 184,
+					"label": "generar espacio en html con &nbsp"
+				},
+				{
+					"line": 18,
+					"column": 152,
+					"label": "font size text"
+				}
+			]
 		}
 	]
 }

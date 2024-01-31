@@ -354,6 +354,25 @@
                     </div>
                 </li>
 
+                {{-- Admin Configuración de Usuarios --}}
+                <li>
+                    <a href="#admin" data-bs-toggle="collapse">
+                        <i class="mdi mdi-account-cog-outline"></i>
+                        <span>Admin</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="admin">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.admin') }}">Lista</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('all.roles') }}">Agregar</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
 
                 {{-- * MANEJO DE DINERO --}}
                 <li class="menu-title mt-2"><span class="badge bg-primary">MANEJO DE DINERO</span></li>

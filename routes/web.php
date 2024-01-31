@@ -222,6 +222,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/delete/admin/roles/{id}', 'DeleteAdminRoles')->name('delete.admin.roles');
     });
 
+    // Admin Configuración de Usuarios
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/all/admin', 'AllAdmin')->name('all.admin');
+       
+    });
+
     
 });
 

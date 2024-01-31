@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
+
     public function AdminDestroy(Request $request){
         Auth::guard('web')->logout();
         $request->session()->invalidate();
@@ -105,11 +106,24 @@ class AdminController extends Controller
 
     }
 
-
     // PageAyuda
     public function PageAyuda(){
         return view('admin.page_ayuda');
     }
+
+
+    /**********************************
+     * Admin Configuración de Usuarios
+     **********************************/
+
+    // AllAdmin
+    public function AllAdmin(){
+       $allAdminUsers = User::latest()->get();
+       return view('backend.admin.all_admin', compact('allAdminUsers'));
+    }
+
+
+
 
 
 }

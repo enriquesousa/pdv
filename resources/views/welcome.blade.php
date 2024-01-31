@@ -62,7 +62,9 @@
                                 <div class="col-md-4">
                                     <div class="text-center mt-3 ps-1 pe-1">
                                         <div class="avatar-md rounded-circle bg-soft-light mx-auto">
-                                            <i class="dripicons-jewel font-22 avatar-title"></i>
+                                            <a href="{{ route('login') }}" class="">
+                                                <i class="dripicons-jewel font-22 avatar-title"></i>
+                                            </a>
                                         </div>
                                         <a href="{{ route('login') }}" class=""><h5 class="text-uppercase mt-3 text-white">Entrar</h5></a>
                                         <p class="text-white-50">Si ya tienes una cuenta, inicia sesión.</p>
@@ -73,7 +75,9 @@
                                 <div class="col-md-4">
                                     <div class="text-center mt-3 ps-1 pe-1">
                                         <div class="avatar-md rounded-circle bg-soft-light mx-auto">
-                                            <i class="dripicons-clock font-22 avatar-title"></i>
+                                            <a href="{{ route('register') }}" class="">
+                                                <i class="dripicons-clock font-22 avatar-title"></i>
+                                            </a>
                                         </div>
                                         <a href="{{ route('register') }}" class=""><h5 class="text-uppercase mt-3 text-white">Registrarse</h5></a>
                                         <p class="text-white-50">Si aun no tienes una cuenta, regístrate.</p>
@@ -84,7 +88,9 @@
                                 <div class="col-md-4">
                                     <div class="text-center mt-3 ps-1 pe-1">
                                         <div class="avatar-md rounded-circle bg-soft-light mx-auto">
-                                            <i class="dripicons-question font-22 avatar-title"></i>
+                                            <a href="{{ route('page.ayuda') }}" class="">
+                                                <i class="dripicons-question font-22 avatar-title"></i>
+                                            </a>
                                         </div>
                                         <a href="{{ route('page.ayuda') }}" class=""><h5 class="text-uppercase mt-3 text-white">Ayuda</h5></a>
                                         <p class="text-white-50">Descripcion breve de la aplicacion. Para mayor informacion favor de contactarnos. <a href="mailto:#" class="text-white-50 fw-bold">esweb@domain.com</a></p>
