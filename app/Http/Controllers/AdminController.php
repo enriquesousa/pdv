@@ -193,5 +193,22 @@ class AdminController extends Controller
         
     }
 
+    // DeleteAdmin
+    public function DeleteAdmin($id){
+
+        $adminUser = User::findOrFail($id);
+        // usar is_null para que borrar al user de spatie model_has_roles
+        if (!is_null($adminUser)) {
+            @unlink(public_path('upload/admin_image/' . $adminUser->photo));
+            User::findOrFail($id)->delete();
+        }
+
+        $notification = [
+            'message' => 'Administrador Eliminado Correctamente',
+            'alert-type' => 'success'
+        ];
+        return redirect()->back()->with($notification);
+    }
+
 
 }

@@ -177,6 +177,11 @@
 					"line": 146,
 					"column": 47,
 					"label": "Asegurarnos que el value del select role venga con nombre y no id, asi me funciona a mi."
+				},
+				{
+					"line": 183,
+					"column": 29,
+					"label": "spatie assignRole"
 				}
 			]
 		},
