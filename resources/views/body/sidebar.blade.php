@@ -339,17 +339,18 @@
                     <div class="collapse" id="roles">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('all.permission') }}">Lista de Permisos</a>
+                                <a href="{{ route('all.roles.permission') }}">Lista Roles y Permisos</a>
                             </li>
                             <li>
                                 <a href="{{ route('all.roles') }}">Lista de Roles</a>
                             </li>
                             <li>
-                                <a href="{{ route('add.roles.permission') }}">Asignar Roles</a>
+                                <a href="{{ route('all.permission') }}">Lista de Permisos</a>
                             </li>
                             <li>
-                                <a href="{{ route('all.roles.permission') }}">Lista Roles y Permisos</a>
+                                <a href="{{ route('add.roles.permission') }}">Asignar Roles</a>
                             </li>
+                           
                         </ul>
                     </div>
                 </li>
@@ -357,8 +358,8 @@
                 {{-- Admin Configuración de Usuarios --}}
                 <li>
                     <a href="#admin" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-cog-outline"></i>
-                        <span>Admin</span>
+                        <i class="mdi mdi-account-settings-outline"></i>
+                        <span>Usuarios</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="admin">

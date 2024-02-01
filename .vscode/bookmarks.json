@@ -189,12 +189,12 @@
 			"path": "resources/views/backend/admin/all_admin.blade.php",
 			"bookmarks": [
 				{
-					"line": 15,
+					"line": 17,
 					"column": 184,
 					"label": "generar espacio en html con &nbsp"
 				},
 				{
-					"line": 18,
+					"line": 20,
 					"column": 152,
 					"label": "font size text"
 				}

@@ -13,6 +13,8 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
+                            <a href="{{ route('all.roles.permission') }}" class="btn btn-secondary rounded-pill waves-effect waves-light"><i class="mdi mdi-account-supervisor"></i>&nbsp;&nbsp;Roles y Permisos</a>
+                            &nbsp;&nbsp;
                             <a href="{{ route('add.admin') }}" class="btn btn-primary rounded-pill waves-effect waves-light"><i class="mdi mdi-account-plus-outline"></i>&nbsp;&nbsp;Agregar Admin</a>
                         </ol>
                     </div>
