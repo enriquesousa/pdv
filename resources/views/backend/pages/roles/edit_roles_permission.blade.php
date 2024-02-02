@@ -69,7 +69,7 @@
 
                                         @foreach ($permission_groups as $group)
 
-                                        <div class="col-3">
+                                        {{-- <div class="col-3"> --}}
 
                                             <div class="col-3">
 
@@ -82,7 +82,7 @@
                                                         id="customckeck1"
                                                         {{ App\Models\User::roleHasPermissions($role, $permissions) ? 'checked' : '' }}>
                                                     <label class="form-check-label"
-                                                        for="customckeck1">{{ $group->group_name }}</label>
+                                                        for="customckeck1"><strong>{{ $group->group_name }}</strong></label>
                                                 </div>
 
                                             </div>
@@ -106,7 +106,7 @@
 
                                             </div>
 
-                                        </div>
+                                        {{-- </div> --}}
 
                                         @endforeach
 

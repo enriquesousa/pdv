@@ -53,11 +53,18 @@
                                         <td>{{ $item->order_date }}</td>
                                         <td>{{ $item->payment_status }}</td>
                                         <td>{{ $item->invoice_no }}</td>
-                                        <td>{{ $item->pay }}</td>
+                                        
+                                        <td>
+                                            @php
+                                                    $floatVar =  floatval($item->pay); 
+                                                @endphp
+                                                $ @convert($floatVar)
+                                        </td>
+
                                         <td><span class="badge bg-success">{{ $item->order_status }}</span></td>
                                        
                                         <td>
-                                            <a href="{{ url('order/invoice-download/'.$item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light" target="_blank">Recibo PDF</a>
+                                            <a href="{{ url('order/invoice-download/'.$item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light" target="_blank" title="Recibo PDF"><i class="mdi mdi-file-pdf-outline"></i></a>
                                         </td>
                                     </tr>
 

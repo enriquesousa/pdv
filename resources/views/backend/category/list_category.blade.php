@@ -17,8 +17,10 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <!-- Sign Up modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                @if (Auth::user()->can('categorias.add'))
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#add-category-modal"><i class="mdi mdi-basket-plus-outline"></i>&nbsp;&nbsp;Agregar Categoría</button>
+                                @endif
                             </ol>
                         </div>
                         <h4 class="page-title">Lista de Categorías</h4>
@@ -34,11 +36,11 @@
 
                             {{-- <h4 class="header-title">Lista de Empleados</h4> --}}
 
-                            <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                            <table id="basic-datatable" class="table dt-responsive w-100">
 
                                 <thead>
                                     <tr>
-                                        <th>Serie</th>
+                                        {{-- <th>Serie</th> --}}
                                         <th>Nombre</th>
                                         <th>Acción</th>
                                     </tr>
@@ -49,15 +51,19 @@
 
                                     @foreach ($category as $key => $item)
                                         <tr>
-                                            <td>{{ $key + 1 }}</td>
+                                            {{-- <td>{{ $key + 1 }}</td> --}}
                                             <td>{{ $item->category_name }}</td>
 
                                             <td>
-                                                <a href="{{ route('edit.category', $item->id) }}"
-                                                    class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
+                                                @if (Auth::user()->can('categorias.edit'))
+                                                    <a href="{{ route('edit.category', $item->id) }}"
+                                                        class="btn btn-blue rounded-pill waves-effect waves-light" title="Editar"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                @endif
 
-                                                <a href="{{ route('delete.category', $item->id) }}" id="delete"
-                                                    class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a>
+                                                @if (Auth::user()->can('categorias.delete'))
+                                                    <a href="{{ route('delete.category', $item->id) }}" id="delete"
+                                                        class="btn btn-danger rounded-pill waves-effect waves-light" title="Eliminar"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

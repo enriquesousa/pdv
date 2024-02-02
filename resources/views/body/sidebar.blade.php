@@ -187,46 +187,51 @@
 
                 {{-- Asistencias --}}
                 @if (Auth::user()->can('asistencias.menu'))
-                <li>
-                    <a href="#attendance" data-bs-toggle="collapse">
-                        <i class="mdi mdi-book-clock-outline"></i>
-                        <span>Asistencias</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="attendance">
-                        <ul class="nav-second-level">
-                            @if (Auth::user()->can('asistencias.all'))
-                                <li>
-                                    <a href="{{ route('employee.attendances.list') }}">Lista de Asistencias</a>
-                                </li>
-                            @endif
-                            @if (Auth::user()->can('asistencias.add'))
-                                <li>
-                                    <a href="{{ route('add.employee.attendance') }}">Agregar Asistencias</a>
-                                </li>
-                            @endif
-                        </ul>
-                    </div>
-                </li>
+                    <li>
+                        <a href="#attendance" data-bs-toggle="collapse">
+                            <i class="mdi mdi-book-clock-outline"></i>
+                            <span>Asistencias</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="attendance">
+                            <ul class="nav-second-level">
+                                @if (Auth::user()->can('asistencias.all'))
+                                    <li>
+                                        <a href="{{ route('employee.attendances.list') }}">Lista de Asistencias</a>
+                                    </li>
+                                @endif
+                                @if (Auth::user()->can('asistencias.add'))
+                                    <li>
+                                        <a href="{{ route('add.employee.attendance') }}">Agregar Asistencias</a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </li>
                 @endif
 
                 {{-- Categorías --}}
-                <li>
-                    <a href="#category" data-bs-toggle="collapse">
-                        <i class="mdi mdi-table-cog"></i>
-                        <span>Categorías</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="category">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('list.category') }}">Lista Categorías</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @if (Auth::user()->can('categorias.menu'))
+                    <li>
+                        <a href="#category" data-bs-toggle="collapse">
+                            <i class="mdi mdi-table-cog"></i>
+                            <span>Categorías</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="category">
+                            <ul class="nav-second-level">
+                                @if (Auth::user()->can('categorias.all'))
+                                    <li>
+                                        <a href="{{ route('list.category') }}">Lista Categorías</a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
                 {{-- Productos --}}
+                @if (Auth::user()->can('productos.menu'))
                 <li>
                     <a href="#product" data-bs-toggle="collapse">
                         <i class="mdi mdi-cart-outline"></i>
@@ -235,18 +240,25 @@
                     </a>
                     <div class="collapse" id="product">
                         <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('list.product') }}">Lista Productos</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('add.product') }}">Agregar Producto</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('import.product') }}">Importar/Exportar Excel</a>
-                            </li>
+                            @if (Auth::user()->can('productos.all'))
+                                <li>
+                                    <a href="{{ route('list.product') }}">Lista Productos</a>
+                                </li>
+                            @endif
+                            @if (Auth::user()->can('productos.add'))
+                                <li>
+                                    <a href="{{ route('add.product') }}">Agregar Producto</a>
+                                </li>
+                            @endif
+                            @if (Auth::user()->can('productos.importar'))
+                                <li>
+                                    <a href="{{ route('import.product') }}">Importar de Excel</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </li>
+                @endif
 
                 {{-- Ordenes --}}
                 <li>

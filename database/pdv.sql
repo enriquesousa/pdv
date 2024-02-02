@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 28, 2024 at 05:46 PM
+-- Generation Time: Feb 02, 2024 at 04:22 PM
 -- Server version: 10.11.4-MariaDB-1~deb12u1
 -- PHP Version: 8.2.7
 
@@ -62,7 +62,17 @@ INSERT INTO `advance_salaries` (`id`, `employee_id`, `month`, `year`, `status`, 
 (104, 30, 'Diciembre', '2023', NULL, NULL, '2024-01-17 17:08:55', NULL),
 (105, 32, 'Diciembre', '2023', NULL, NULL, '2024-01-17 17:08:55', NULL),
 (106, 29, 'Diciembre', '2023', NULL, NULL, '2024-01-17 17:08:55', NULL),
-(107, 28, 'Diciembre', '2023', NULL, NULL, '2024-01-17 17:08:55', NULL);
+(107, 28, 'Diciembre', '2023', NULL, NULL, '2024-01-17 17:08:55', NULL),
+(108, 37, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL),
+(109, 36, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL),
+(110, 35, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL),
+(111, 34, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL),
+(112, 33, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL),
+(113, 31, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL),
+(114, 30, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL),
+(115, 32, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL),
+(116, 29, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL),
+(117, 28, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -346,6 +356,15 @@ CREATE TABLE `model_has_roles` (
   `model_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\Models\\User', 2),
+(1, 'App\\Models\\User', 8),
+(4, 'App\\Models\\User', 5);
+
 -- --------------------------------------------------------
 
 --
@@ -375,7 +394,7 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `customer_id`, `order_date`, `order_status`, `total_products`, `sub_total`, `iva`, `invoice_no`, `total`, `payment_status`, `pay`, `due`, `created_at`, `updated_at`) VALUES
 (3, 10, '24-January-2024', 'completada', '5', '812.00', '121.80', 'EPOS93252487', '933.80', 'Efectivo', '900', '33', '2024-01-24 16:44:44', '2024-01-26 17:42:57'),
-(4, 5, '24-January-2024', 'pendiente', '2', '832.00', '124.80', 'EPOS80687971', '956.80', 'Efectivo', '900', '56', '2024-01-24 16:55:25', NULL),
+(4, 5, '24-January-2024', 'completada', '2', '832.00', '124.80', 'EPOS80687971', '956.80', 'Efectivo', '900', '56', '2024-01-24 16:55:25', '2024-02-02 14:59:08'),
 (7, 6, '24/enero/2024', 'completada', '1', '154.00', '23.10', 'EPOS49528532', '177.10', 'Efectivo', '100', '77', '2024-01-24 19:25:33', '2024-01-25 00:02:13'),
 (8, 6, '24/enero/2024', 'completada', '2', '136.00', '20.40', 'EPOS34701562', '156.40', 'Efectivo', '156.40', '0', '2024-01-25 03:45:48', '2024-01-25 03:46:21'),
 (9, 7, '25/enero/2024', 'pendiente', '2', '320.00', '48.00', 'EPOS76529036', '368.00', 'Efectivo', '368', '0', '2024-01-25 16:01:44', NULL),
@@ -465,9 +484,65 @@ CREATE TABLE `permissions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `guard_name` varchar(255) NOT NULL,
+  `group_name` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `created_at`, `updated_at`) VALUES
+(2, 'pdv.menu', 'web', 'pdv', '2024-01-29 16:14:28', '2024-01-29 16:14:28'),
+(3, 'empleado.menu', 'web', 'empleado', '2024-01-29 16:15:32', '2024-01-29 16:15:32'),
+(4, 'panel.menu', 'web', 'panel', '2024-01-29 16:17:28', '2024-01-29 16:17:28'),
+(5, 'empleado.all', 'web', 'empleado', '2024-01-29 16:18:02', '2024-01-29 16:18:02'),
+(6, 'empleado.add', 'web', 'empleado', '2024-01-29 16:18:24', '2024-01-29 16:18:24'),
+(7, 'empleado.edit', 'web', 'empleado', '2024-01-29 16:18:37', '2024-01-29 16:18:37'),
+(8, 'empleado.delete', 'web', 'empleado', '2024-01-29 16:19:09', '2024-01-29 16:19:09'),
+(9, 'cliente.menu', 'web', 'cliente', '2024-01-29 16:21:37', '2024-01-29 16:21:37'),
+(10, 'cliente.all', 'web', 'cliente', '2024-01-29 16:21:53', '2024-01-29 16:21:53'),
+(11, 'cliente.add', 'web', 'cliente', '2024-01-29 16:22:18', '2024-01-29 16:22:18'),
+(12, 'cliente.edit', 'web', 'cliente', '2024-01-29 16:22:31', '2024-01-29 16:22:31'),
+(13, 'cliente.delete', 'web', 'cliente', '2024-01-29 16:22:42', '2024-01-29 16:22:42'),
+(14, 'proveedor.menu', 'web', 'proveedor', '2024-01-29 16:24:29', '2024-01-29 16:24:29'),
+(15, 'proveedor.all', 'web', 'proveedor', '2024-01-29 16:24:40', '2024-01-29 16:24:40'),
+(16, 'proveedor.add', 'web', 'proveedor', '2024-01-29 16:24:52', '2024-01-29 16:24:52'),
+(17, 'proveedor.edit', 'web', 'proveedor', '2024-01-29 16:25:04', '2024-01-29 16:25:04'),
+(18, 'proveedor.delete', 'web', 'proveedor', '2024-01-29 16:25:18', '2024-01-29 16:25:18'),
+(19, 'salario.menu', 'web', 'salario', '2024-01-29 16:27:40', '2024-01-29 16:27:40'),
+(20, 'asistencias.menu', 'web', 'asistencia', '2024-01-29 16:28:10', '2024-01-29 16:28:10'),
+(21, 'asistencias.all', 'web', 'asistencia', '2024-01-29 16:30:23', '2024-01-29 16:30:23'),
+(22, 'asistencias.add', 'web', 'asistencia', '2024-01-29 16:30:46', '2024-01-29 16:30:46'),
+(23, 'asistencias.edit', 'web', 'asistencia', '2024-01-29 16:31:27', '2024-01-29 16:31:27'),
+(24, 'asistencias.detail', 'web', 'asistencia', '2024-01-29 16:32:00', '2024-02-02 00:07:14'),
+(25, 'categorias.menu', 'web', 'categoría', '2024-01-29 16:33:22', '2024-01-29 16:33:22'),
+(26, 'productos.menu', 'web', 'producto', '2024-01-29 16:33:41', '2024-01-29 16:33:41'),
+(27, 'almacen.menu', 'web', 'almacén', '2024-01-29 16:33:59', '2024-01-29 16:33:59'),
+(28, 'gastos.menu', 'web', 'gasto', '2024-01-29 16:34:12', '2024-01-29 16:34:12'),
+(29, 'datos.menu', 'web', 'datos', '2024-01-29 16:35:24', '2024-01-29 16:35:24'),
+(31, 'proveedor.detail', 'web', 'proveedor', '2024-02-01 17:55:26', '2024-02-01 17:55:26'),
+(32, 'gastos.add', 'web', 'gasto', '2024-02-01 18:12:45', '2024-02-01 18:12:45'),
+(33, 'gastos.hoy', 'web', 'gasto', '2024-02-01 18:13:02', '2024-02-01 18:13:02'),
+(34, 'gastos.mes', 'web', 'gasto', '2024-02-01 18:13:13', '2024-02-01 18:13:13'),
+(35, 'gastos.año', 'web', 'gasto', '2024-02-01 18:13:27', '2024-02-01 18:13:27'),
+(36, 'salario.avance', 'web', 'salario', '2024-02-01 20:25:20', '2024-02-01 20:25:20'),
+(37, 'salario.agregar', 'web', 'salario', '2024-02-01 20:26:11', '2024-02-01 20:26:11'),
+(38, 'salario.pagar.mes', 'web', 'salario', '2024-02-01 20:27:11', '2024-02-01 20:27:11'),
+(39, 'salario.ver.mes', 'web', 'salario', '2024-02-01 20:27:42', '2024-02-01 20:27:42'),
+(40, 'salario.pagar.otro.mes', 'web', 'salario', '2024-02-01 20:28:07', '2024-02-01 20:28:07'),
+(41, 'productos.all', 'web', 'producto', '2024-02-02 00:39:17', '2024-02-02 00:39:32'),
+(42, 'categorias.all', 'web', 'categoría', '2024-02-02 03:29:07', '2024-02-02 03:29:07'),
+(43, 'categorias.add', 'web', 'categoría', '2024-02-02 03:29:26', '2024-02-02 03:29:26'),
+(44, 'categorias.edit', 'web', 'categoría', '2024-02-02 03:30:00', '2024-02-02 03:30:00'),
+(45, 'categorias.delete', 'web', 'categoría', '2024-02-02 03:30:19', '2024-02-02 03:30:19'),
+(46, 'productos.add', 'web', 'producto', '2024-02-02 03:43:21', '2024-02-02 03:43:21'),
+(47, 'productos.edit', 'web', 'producto', '2024-02-02 03:43:44', '2024-02-02 03:43:44'),
+(48, 'productos.delete', 'web', 'producto', '2024-02-02 03:44:02', '2024-02-02 03:44:02'),
+(49, 'productos.codigo', 'web', 'producto', '2024-02-02 03:44:34', '2024-02-02 03:44:34'),
+(50, 'productos.importar', 'web', 'producto', '2024-02-02 03:44:57', '2024-02-02 03:44:57'),
+(51, 'productos.exportar', 'web', 'producto', '2024-02-02 03:45:13', '2024-02-02 03:45:13');
 
 -- --------------------------------------------------------
 
@@ -528,8 +603,8 @@ INSERT INTO `products` (`id`, `product_name`, `category_id`, `supplier_id`, `pro
 (12, 'Arrachera de res Marketside marinada 600 g - 207', 3, 3, 'CP240011', 'A5', 'upload/product/1788575337614194.png', '20', '2024-01-01', '2024-03-13', '180', '207', '2024-01-20 02:39:22', NULL),
 (14, 'Cepillo para Perro Pets&More de Limpieza Automática - 185', 5, 1, 'CP240012', 'A1', 'upload/product/1788833738145700.png', '10', '2024-01-01', '2025-06-11', '130', '185', '2024-01-22 23:06:32', NULL),
 (15, 'Aceite puro de soya Nutrioli 946 ml - 45', 9, 3, 'CP240013', 'B2', 'upload/product/1788833843720685.png', '10', '2024-01-02', '2025-06-18', '40', '45', '2024-01-22 23:08:13', NULL),
-(16, 'Aderezo para ensaladas Clemente Jacques estilo ranch 473 g - 53', 9, 3, 'CP240014', 'C1', 'upload/product/1788833934955043.png', '10', '2024-01-01', '2026-06-22', '45', '53', '2024-01-22 23:09:40', NULL),
-(17, 'Tequila Don Julio 70 Cristalino 700 ml - 779', 8, 4, 'CP240015', 'D1', 'upload/product/1788834035270025.png', '10', '2023-12-14', '2027-01-13', '650', '779', '2024-01-25 05:26:06', '2024-01-25 05:26:06'),
+(16, 'Aderezo para ensaladas Clemente Jacques estilo ranch 473 g - 53', 9, 3, 'CP240014', 'C1', 'upload/product/1788833934955043.png', '9', '2024-01-01', '2026-06-22', '45', '53', '2024-01-22 23:09:40', '2024-02-02 14:59:08'),
+(17, 'Tequila Don Julio 70 Cristalino 700 ml - 779', 8, 4, 'CP240015', 'D1', 'upload/product/1788834035270025.png', '9', '2023-12-14', '2027-01-13', '650', '779', '2024-01-25 05:26:06', '2024-02-02 14:59:08'),
 (18, 'Molida de res premium 95_5 por kilo - 199 por Kg', 3, 3, 'CP240016', 'A1', 'upload/product/1788834122421659.png', '8', '2024-01-02', '2024-01-31', '180', '199', '2024-01-22 23:12:39', '2024-01-26 17:42:57'),
 (19, 'Pechuga de pollo con hueso y sin piel 800 g aprox - 119 por kg', 3, 3, 'CP240017', 'A1', 'upload/product/1788834219183173.png', '9', '2024-01-01', '2024-01-31', '100', '119', '2024-01-22 23:14:11', '2024-01-26 17:42:57'),
 (20, 'Yoghurt griego Oikos natural 900 g - 75', 6, 3, 'CP240018', 'A1', 'upload/product/1788834628150074.png', '9', '2024-01-01', '2024-01-17', '70', '75', '2024-01-22 23:20:41', '2024-01-26 17:42:57'),
@@ -551,6 +626,16 @@ CREATE TABLE `roles` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'Super Admin', 'web', '2024-01-29 20:12:17', '2024-01-29 20:12:17'),
+(2, 'Admin', 'web', '2024-01-29 20:12:43', '2024-01-29 20:12:43'),
+(4, 'Manager', 'web', '2024-01-29 20:14:19', '2024-01-29 20:14:19'),
+(7, 'Usuario', 'web', '2024-02-01 12:58:21', '2024-02-01 12:58:21');
+
 -- --------------------------------------------------------
 
 --
@@ -561,6 +646,84 @@ CREATE TABLE `role_has_permissions` (
   `permission_id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(2, 1),
+(3, 1),
+(3, 2),
+(3, 4),
+(4, 1),
+(5, 1),
+(5, 2),
+(5, 4),
+(6, 1),
+(6, 2),
+(6, 4),
+(7, 1),
+(7, 2),
+(8, 1),
+(8, 2),
+(9, 1),
+(9, 2),
+(9, 7),
+(10, 1),
+(10, 2),
+(10, 7),
+(11, 1),
+(11, 2),
+(11, 7),
+(12, 1),
+(12, 2),
+(13, 1),
+(13, 2),
+(14, 1),
+(15, 1),
+(16, 1),
+(17, 1),
+(18, 1),
+(19, 1),
+(20, 1),
+(20, 4),
+(20, 7),
+(21, 1),
+(21, 4),
+(22, 1),
+(22, 4),
+(23, 1),
+(23, 4),
+(24, 1),
+(24, 4),
+(25, 1),
+(26, 1),
+(27, 1),
+(27, 4),
+(28, 1),
+(29, 1),
+(31, 1),
+(32, 1),
+(33, 1),
+(34, 1),
+(35, 1),
+(36, 1),
+(37, 1),
+(38, 1),
+(39, 1),
+(40, 1),
+(41, 1),
+(42, 1),
+(43, 1),
+(44, 1),
+(45, 1),
+(46, 1),
+(47, 1),
+(48, 1),
+(49, 1),
+(50, 1),
+(51, 1);
 
 -- --------------------------------------------------------
 
@@ -634,7 +797,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `photo`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'Jose', 'admin@gmail.com', '6646289328', '20240103172978.jpg', NULL, '$2y$12$8eS3WvmFg0yzL/HxocTNA.wFbdfCb0Dll.w45ouMJ/zj9CMWx1zu.', 'bSiJ9l94FvwCwAdvEBZ3iB8TW4Qy7sLmZfKBtDNmIXhoE01DmY8YZxiZum9E', '2024-01-01 10:20:41', '2024-01-07 14:54:14');
+(2, 'Jose', 'admin@gmail.com', '6646289328', '20240103172978.jpg', NULL, '$2y$12$8eS3WvmFg0yzL/HxocTNA.wFbdfCb0Dll.w45ouMJ/zj9CMWx1zu.', 'HXaNiw5vfIOKkviJAY0icbrVL1dzXIQnpCPGqB0CMVx69LKdDPf2GNis5OfR', '2024-01-01 10:20:41', '2024-01-07 14:54:14'),
+(5, 'Julio', 'julio@gmail.com', '5556887889', '20240201051550.jpg', NULL, '$2y$12$1arRC5YBQDPDwhL4nhirDehtVdtZJeZBbsBkbiAQjFfb1MO4lh0mu', NULL, '2024-01-31 16:25:45', '2024-02-01 13:15:48'),
+(8, 'Enrique Sousa', 'enrique.sousa@gmail.com', '6641880604', '202401311109fotojess_300x300.jpg', NULL, '$2y$12$aXlZjBSWBSNdHbXjCooc5e9vEz.uxa.CYqY8QU6guO.xJVMFbIwFK', NULL, '2024-01-31 18:59:20', '2024-01-31 19:09:22');
 
 --
 -- Indexes for dumped tables
@@ -796,7 +961,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `advance_salaries`
 --
 ALTER TABLE `advance_salaries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `anios`
@@ -868,7 +1033,7 @@ ALTER TABLE `pay_salaries`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -886,7 +1051,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -898,7 +1063,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
