@@ -65,181 +65,128 @@
             <ul id="side-menu">
 
                 {{-- * NAVEGACIÓN --}}
-                <li class="menu-title"><span class="badge bg-primary">NAVEGACIÓN</span></li>
+                {{-- <li class="menu-title"><span class="badge bg-primary">NAVEGACIÓN</span></li> --}}
 
                 {{-- PANEL --}}
-                <li>
-
-                    {{-- También podemos acceder como href="{{ url('/dashboard') }}" --}}
-                    <a href="{{ route('dashboard') }}">
-                        <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span> Panel </span>
-                    </a>
-
-                    {{-- <a href="#sidebarDashboards" data-bs-toggle="collapse">
-                        <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span class="badge bg-success rounded-pill float-end">4</span>
-                        <span> Dashboards </span>
-                    </a>
-                    <div class="collapse" id="sidebarDashboards">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="index.html">Dashboard 1</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-2.html">Dashboard 2</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-3.html">Dashboard 3</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-4.html">Dashboard 4</a>
-                            </li>
-                        </ul>
-                    </div> --}}
-
-                </li>
+                @if (Auth::user()->can('panel.menu'))
+                    <li>
+                        <a href="{{ route('dashboard') }}">
+                            <i class="mdi mdi-view-dashboard-outline"></i>
+                            <span> Panel </span>
+                        </a>
+                    </li>
+                @endif
 
                 {{-- PDV --}}
-                <li>
+                @if (Auth::user()->can('pdv.menu'))
+                    <li>
+                        <a href="{{ route('pos') }}">
+                            <span class="badge bg-pink float-end">{{ Cart::count() }}</span>
+                            <i class="mdi mdi-view-dashboard-outline"></i>
+                            <span> PDV </span>
+                        </a>
+                    </li>
+                @endif
 
-                    <a href="{{ route('pos') }}">
-                        <span class="badge bg-pink float-end">{{ Cart::count() }}</span>
-                        <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span> PDV </span>
-                    </a>
 
-                </li>
-
-
-                {{-- * Admin --}}
-                <li class="menu-title mt-2"><span class="badge bg-primary">Admin</span></li>
+                {{-- * ADMINISTRACIÓN --}}
+                <li class="menu-title mt-2"><span class="badge bg-primary">ADMINISTRACIÓN</span></li>
 
                 {{-- Avances de Salario --}}
-                <li>
-                    <a href="#sidebarSalario" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-cash-outline"></i>
-                        <span>Salarios</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarSalario">
+                @if (Auth::user()->can('salario.menu'))
+                    <li>
+                        <a href="#sidebarSalario" data-bs-toggle="collapse">
+                            <i class="mdi mdi-account-cash-outline"></i>
+                            <span>Salarios</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarSalario">
 
-                        <ul class="nav-second-level">
+                            <ul class="nav-second-level">
 
-                            <li>
-                                <a href="{{ route('all.advance.salary') }}">Avances de Salario</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('add.advance.salary') }}">Agregar Salario</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('pay.salary') }}">Pagar Ultimo Mes</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('month.salary') }}">Ver Ultimo Mes</a>
-                            </li>
+                                @if (Auth::user()->can('salario.avance'))
+                                    <li>
+                                        <a href="{{ route('all.advance.salary') }}">Avances de Salario</a>
+                                    </li>
+                                @endif
 
-                            {{-- Menus Multilevel --}}
-                            <li>
-                                <a href="#sidebarMultiNivel2" data-bs-toggle="collapse">
-                                    Pagar Otro Mes <span class="menu-arrow"></span>
-                                </a>
-                                <div class="collapse" id="sidebarMultiNivel2">
-                                    <ul class="nav-second-level">
-                                        <li>
-                                            <a href="{{ route('pay.salary.other.month', 'Enero') }}">Enero</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('pay.salary.other.month', 'Febrero') }}">Febrero</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('pay.salary.other.month', 'Marzo') }}">Marzo</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('pay.salary.other.month', 'Abril') }}">Abril</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('pay.salary.other.month', 'Mayo') }}">Mayo</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('pay.salary.other.month', 'Junio') }}">Junio</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('pay.salary.other.month', 'Julio') }}">Julio</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('pay.salary.other.month', 'Agosto') }}">Agosto</a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="{{ route('pay.salary.other.month', 'Septiembre') }}">Septiembre</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('pay.salary.other.month', 'Octubre') }}">Octubre</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('pay.salary.other.month', 'Noviembre') }}">Noviembre</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('pay.salary.other.month', 'Diciembre') }}">Diciembre</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
+                                @if (Auth::user()->can('salario.agregar'))
+                                    <li>
+                                        <a href="{{ route('add.advance.salary') }}">Agregar Salario</a>
+                                    </li>
+                                @endif
 
-                            {{-- Menus Multilevel sidebarMultiNivel2 --}}
-                            {{-- <li>
-                                <a href="#sidebarMultiNivel2" data-bs-toggle="collapse">
-                                    Second Level <span class="menu-arrow"></span>
-                                </a>
-                                <div class="collapse" id="sidebarMultiNivel2">
-                                    <ul class="nav-second-level">
-                                        <li>
-                                            <a href="javascript: void(0);">Item 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript: void(0);">Item 2</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li> --}}
+                                @if (Auth::user()->can('salario.pagar.mes'))
+                                    <li>
+                                        <a href="{{ route('pay.salary') }}">Pagar Ultimo Mes</a>
+                                    </li>
+                                @endif
 
-                            {{-- Menus Multilevel sidebarMultiNivel3 --}}
-                            {{-- <li>
-                                <a href="#sidebarMultiNivel3" data-bs-toggle="collapse">
-                                    Third Level <span class="menu-arrow"></span>
-                                </a>
-                                <div class="collapse" id="sidebarMultiNivel3">
-                                    <ul class="nav-second-level">
-                                        <li>
-                                            <a href="javascript: void(0);">Item 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#sidebarMultiNivel4" data-bs-toggle="collapse">
-                                                Item 2 <span class="menu-arrow"></span>
-                                            </a>
-                                            <div class="collapse" id="sidebarMultiNivel4">
-                                                <ul class="nav-second-level">
-                                                    <li>
-                                                        <a href="javascript: void(0);">Item 1</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript: void(0);">Item 2</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li> --}}
+                                @if (Auth::user()->can('salario.ver.mes'))
+                                    <li>
+                                        <a href="{{ route('month.salary') }}">Ver Ultimo Mes</a>
+                                    </li>
+                                @endif
 
-                        </ul>
+                                {{-- Menus Multilevel --}}
+                                @if (Auth::user()->can('salario.pagar.otro.mes'))
+                                    <li>
+                                        <a href="#sidebarMultiNivel2" data-bs-toggle="collapse">
+                                            Pagar Otro Mes <span class="menu-arrow"></span>
+                                        </a>
+                                        <div class="collapse" id="sidebarMultiNivel2">
+                                            <ul class="nav-second-level">
+                                                <li>
+                                                    <a href="{{ route('pay.salary.other.month', 'Enero') }}">Enero</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('pay.salary.other.month', 'Febrero') }}">Febrero</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('pay.salary.other.month', 'Marzo') }}">Marzo</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('pay.salary.other.month', 'Abril') }}">Abril</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('pay.salary.other.month', 'Mayo') }}">Mayo</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('pay.salary.other.month', 'Junio') }}">Junio</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('pay.salary.other.month', 'Julio') }}">Julio</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('pay.salary.other.month', 'Agosto') }}">Agosto</a>
+                                                </li>
+                                                <li>
+                                                    <a
+                                                        href="{{ route('pay.salary.other.month', 'Septiembre') }}">Septiembre</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('pay.salary.other.month', 'Octubre') }}">Octubre</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('pay.salary.other.month', 'Noviembre') }}">Noviembre</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('pay.salary.other.month', 'Diciembre') }}">Diciembre</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                @endif
+
+                            </ul>
 
 
-                    </div>
-                </li>
+                        </div>
+                    </li>
+                @endif
 
                 {{-- Asistencias --}}
+                @if (Auth::user()->can('asistencias.menu'))
                 <li>
                     <a href="#attendance" data-bs-toggle="collapse">
                         <i class="mdi mdi-book-clock-outline"></i>
@@ -248,12 +195,20 @@
                     </a>
                     <div class="collapse" id="attendance">
                         <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('employee.attendances.list') }}">Lista de Asistencias</a>
-                            </li>
+                            @if (Auth::user()->can('asistencias.all'))
+                                <li>
+                                    <a href="{{ route('employee.attendances.list') }}">Lista de Asistencias</a>
+                                </li>
+                            @endif
+                            @if (Auth::user()->can('asistencias.add'))
+                                <li>
+                                    <a href="{{ route('add.employee.attendance') }}">Agregar Asistencias</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </li>
+                @endif
 
                 {{-- Categorías --}}
                 <li>
@@ -328,7 +283,6 @@
                     </div>
                 </li>
 
-
                 {{-- Roles y Permisos --}}
                 <li>
                     <a href="#roles" data-bs-toggle="collapse">
@@ -374,118 +328,142 @@
                     </div>
                 </li>
 
-
                 {{-- * MANEJO DE DINERO --}}
-                <li class="menu-title mt-2"><span class="badge bg-primary">MANEJO DE DINERO</span></li>
+                @if (Auth::user()->can('gastos.menu'))
 
-                {{-- Gastos --}}
-                <li>
-                    <a href="#sidebarReportes" data-bs-toggle="collapse">
-                        <i class="mdi mdi-briefcase-check-outline"></i>
-                        <span>Gastos</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarReportes">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('add.expense') }}">Agregar Gasto</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('today.expense') }}">Gatos de Hoy</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('month.expense') }}">Gatos por Mes</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('year.expense') }}">Gastos por Año</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                    <li class="menu-title mt-2"><span class="badge bg-primary">MANEJO DE DINERO</span></li>
+
+                    {{-- Gastos --}}
+                    <li>
+                        <a href="#sidebarReportes" data-bs-toggle="collapse">
+                            <i class="mdi mdi-briefcase-check-outline"></i>
+                            <span>Gastos</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarReportes">
+                            <ul class="nav-second-level">
+                                @if (Auth::user()->can('gastos.add'))
+                                    <li>
+                                        <a href="{{ route('add.expense') }}">Agregar Gasto</a>
+                                    </li>
+                                @endif
+                                @if (Auth::user()->can('gastos.hoy'))
+                                    <li>
+                                        <a href="{{ route('today.expense') }}">Gatos de Hoy</a>
+                                    </li>
+                                @endif
+                                @if (Auth::user()->can('gastos.mes'))
+                                    <li>
+                                        <a href="{{ route('month.expense') }}">Gatos por Mes</a>
+                                    </li>
+                                @endif
+                                @if (Auth::user()->can('gastos.año'))
+                                    <li>
+                                        <a href="{{ route('year.expense') }}">Gastos por Año</a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </li>
+
+                @endif
 
 
-
-                {{-- * CONFIGURACIÓN DEL SISTEMA --}}
-                <li class="menu-title mt-2"><span class="badge bg-primary">CONFIGURACIÓN</span></li>
+                {{-- * Data: Empleados, Clientes, Proveedores, Datos --}}
+                <li class="menu-title mt-2"><span class="badge bg-primary">DATA</span></li>
 
                 {{-- Control de Empleados --}}
-                <li>
-                    <a href="#sidebarEmpleados" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-multiple-outline"></i>
-                        <span>Empleados</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarEmpleados">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('all.employee') }}">Lista Empleados</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('employee.add') }}">Agregar Empleado</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @if (Auth::user()->can('empleado.menu'))
+                    <li>
+                        <a href="#sidebarEmpleados" data-bs-toggle="collapse">
+                            <i class="mdi mdi-account-multiple-outline"></i>
+                            <span>Empleados</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarEmpleados">
+                            <ul class="nav-second-level">
+                                @if (Auth::user()->can('empleado.all'))
+                                    <li>
+                                        <a href="{{ route('all.employee') }}">Lista Empleados</a>
+                                    </li>
+                                @endif
+                                @if (Auth::user()->can('empleado.add'))
+                                    <li>
+                                        <a href="{{ route('employee.add') }}">Agregar Empleado</a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
                 {{-- Control de Clientes --}}
-                <li>
-                    <a href="#sidebarClientes" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-multiple-outline"></i>
-                        <span>Clientes</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarClientes">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('all.customer') }}">Lista Clientes</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('customer.add') }}">Agregar Cliente</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @if (Auth::user()->can('cliente.menu'))
+                    <li>
+                        <a href="#sidebarClientes" data-bs-toggle="collapse">
+                            <i class="mdi mdi-account-multiple-outline"></i>
+                            <span>Clientes</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarClientes">
+                            <ul class="nav-second-level">
+                                @if (Auth::user()->can('cliente.all'))
+                                    <li>
+                                        <a href="{{ route('all.customer') }}">Lista Clientes</a>
+                                    </li>
+                                @endif    
+                                @if (Auth::user()->can('cliente.add'))
+                                    <li>
+                                        <a href="{{ route('customer.add') }}">Agregar Cliente</a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
                 {{-- Control de Proveedores --}}
-                <li>
-                    <a href="#sidebarProveedores" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-multiple-outline"></i>
-                        <span>Proveedores</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarProveedores">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('all.supplier') }}">Lista de Proveedores</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('supplier.add') }}">Agregar Proveedor</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @if (Auth::user()->can('proveedor.menu'))
+                    <li>
+                        <a href="#sidebarProveedores" data-bs-toggle="collapse">
+                            <i class="mdi mdi-account-multiple-outline"></i>
+                            <span>Proveedores</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarProveedores">
+                            <ul class="nav-second-level">
+                                @if (Auth::user()->can('proveedor.all'))
+                                    <li>
+                                        <a href="{{ route('all.supplier') }}">Lista de Proveedores</a>
+                                    </li>
+                                @endif
+                                @if (Auth::user()->can('proveedor.add'))
+                                    <li>
+                                        <a href="{{ route('supplier.add') }}">Agregar Proveedor</a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
                 {{-- Configuración de Datos --}}
-                <li>
-                    <a href="#sidebarConfigData" data-bs-toggle="collapse">
-                        <i class="mdi mdi-poll"></i>
-                        <span>Datos</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarConfigData">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('all.anios') }}">Años</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('dashboard') }}">Meses</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-
-
+                @if (Auth::user()->can('datos.menu'))
+                    <li>
+                        <a href="#sidebarConfigData" data-bs-toggle="collapse">
+                            <i class="mdi mdi-poll"></i>
+                            <span>Datos</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarConfigData">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ route('all.anios') }}">Años</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
 
 

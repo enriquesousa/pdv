@@ -65,46 +65,53 @@
 
                                         <hr>
 
+                                    <div class="row">
+
                                         @foreach ($permission_groups as $group)
-                                            <div class="row">
 
-                                                <div class="col-3">
+                                        <div class="col-3">
 
-                                                    @php
-                                                        $permissions = App\Models\User::getPermissionByGroupName($group->group_name);
-                                                    @endphp
+                                            <div class="col-3">
 
+                                                @php
+                                                    $permissions = App\Models\User::getPermissionByGroupName($group->group_name);
+                                                @endphp
+
+                                                <div class="form-check mb-2 form-check-primary">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="customckeck1"
+                                                        {{ App\Models\User::roleHasPermissions($role, $permissions) ? 'checked' : '' }}>
+                                                    <label class="form-check-label"
+                                                        for="customckeck1">{{ $group->group_name }}</label>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-9">
+
+                                                {{-- {{ dd($permissions) }} --}}
+
+                                                @foreach ($permissions as $permission)
                                                     <div class="form-check mb-2 form-check-primary">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="customckeck1"
-                                                            {{ App\Models\User::roleHasPermissions($role, $permissions) ? 'checked' : '' }}>
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="permission[]"
+                                                            {{ $role->hasPermissionTo($permission->name) ? 'checked' : '' }}
+                                                            value="{{ $permission->name }}"
+                                                            id="customckeck{{ $permission->id }}">
                                                         <label class="form-check-label"
-                                                            for="customckeck1">{{ $group->group_name }}</label>
+                                                            for="customckeck{{ $permission->id }}">{{ $permission->name }}</label>
                                                     </div>
+                                                @endforeach
+                                                <br>
 
-                                                </div>
+                                            </div>
 
-                                                <div class="col-9">
+                                        </div>
 
-                                                    {{-- {{ dd($permissions) }} --}}
-
-                                                    @foreach ($permissions as $permission)
-                                                        <div class="form-check mb-2 form-check-primary">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                name="permission[]"
-                                                                {{ $role->hasPermissionTo($permission->name) ? 'checked' : '' }}
-                                                                value="{{ $permission->name }}"
-                                                                id="customckeck{{ $permission->id }}">
-                                                            <label class="form-check-label"
-                                                                for="customckeck{{ $permission->id }}">{{ $permission->name }}</label>
-                                                        </div>
-                                                    @endforeach
-                                                    <br>
-
-                                                </div>
-
-                                            </div> <!-- end row -->
                                         @endforeach
+
+                                    </div> <!-- end row -->
+
 
                                     </div> <!-- end row -->
 

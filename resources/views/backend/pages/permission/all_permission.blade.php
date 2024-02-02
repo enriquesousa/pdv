@@ -27,7 +27,10 @@
                 <div class="card">
                     <div class="card-body">
 
-                        {{-- <h4 class="header-title">Lista de Empleados</h4> --}}
+                        <h4 class="header-title">Lista de Permisos</h4>
+                        <p class="sub-header">
+                            Los nombres de los permisos, por ejemplo <code>pdv.menu</code> son exclusivos para el sistema, no puedes cambiar el nombre del permiso, ya que son exclusivos para el sistema. El nombre del grupo si lo puedes modificar si gustas.
+                        </p>
 
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                             <thead>

@@ -174,7 +174,7 @@
                             {{-- Lista de Productos --}}
                             <div class="tab-pane" id="settings">
 
-                                <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                <table id="basic-datatable" class="table dt-responsive w-100">
 
                                     <thead>
                                         <tr>

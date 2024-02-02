@@ -34,18 +34,18 @@
                     <div class="card-body">
 
                         {{-- Tabla de Lista de Productos --}}
-                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                        <table id="basic-datatable" class="table dt-responsive w-100">
                             <thead>
                                 <tr>
-                                    <th>Serie</th>
-                                    <th>Imagen</th>
-                                    <th>Nombre</th>
-                                    <th>Categoría</th>
-                                    <th>Almacén</th>
-                                    <th>Proveedor</th>
-                                    <th>Código</th>
-                                    <th>Precio</th>
-                                    <th>Acción</th>
+                                    {{-- <th style="width: 5%">Serie</th> --}}
+                                    <th style="width: 10%">Imagen</th>
+                                    <th style="width: 25%">Nombre</th>
+                                    <th style="width: 10%">Categoría</th>
+                                    <th style="width: 10%">Almacén</th>
+                                    <th style="width: 10%">Proveedor</th>
+                                    <th style="width: 10%">Código</th>
+                                    <th style="width: 10%">Precio</th>
+                                    <th style="width: 15%">Acción</th>
                                 </tr>
                             </thead>
                         
@@ -54,7 +54,7 @@
 
                                 @foreach ($product as $key => $item)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        {{-- <td>{{ $key + 1 }}</td> --}}
                                         <td><img src="{{ asset($item->product_image) }}" style="width: 50px; height: 40px;"></td>
                                         <td>{{ $item->product_name }}</td>
                                         <td>{{ $item->category->category_name }}</td>

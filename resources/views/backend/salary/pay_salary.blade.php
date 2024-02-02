@@ -30,10 +30,10 @@
                         {{-- Desplegar este mes y año--}}
                         <h4 class="header-title">{{ __(date("F")) }} {{ date("Y") }}</h4>
 
-                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                        <table id="basic-datatable" class="table dt-responsive w-100">
                             <thead>
                                 <tr>
-                                    <th>Serie</th>
+                                    {{-- <th>Serie</th> --}}
                                     <th>Imagen</th>
                                     <th>ID</th>
                                     <th>Nombre</th>
@@ -56,7 +56,7 @@
                                     {{-- @if ($item->advance->year == date("Y", strtotime('-1 month'))) --}}
 
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        {{-- <td>{{ $key + 1 }}</td> --}}
 
                                         {{-- Imagen --}}
                                         <td><img src="{{ asset($item->employee->image) }}" style="width: 50px; height: 40px;"></td>

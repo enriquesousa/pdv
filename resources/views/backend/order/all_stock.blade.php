@@ -34,17 +34,17 @@
                     <div class="card-body">
 
                         {{-- Tabla de Lista de Productos --}}
-                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                        <table id="basic-datatable" class="table dt-responsive w-100">
                             <thead>
 
                                 <tr>
-                                    <th>Serie</th>
-                                    <th>Imagen</th>
-                                    <th>Nombre</th>
-                                    <th>Categoría</th>
-                                    <th>Proveedor</th>
-                                    <th>Código</th>
-                                    <th>Almacén</th>
+                                    <th style="width:5%">Serie</th>
+                                    <th style="width:5%">Imagen</th>
+                                    <th style="width:30%">Nombre</th>
+                                    <th style="width:10%">Categoría</th>
+                                    <th style="width:15%">Proveedor</th>
+                                    <th style="width:15%">Código</th>
+                                    <th style="width:20%">Almacén</th>
                                 </tr>
                             </thead>
                         
@@ -54,7 +54,7 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td><img src="{{ asset($item->product_image) }}" style="width: 50px; height: 40px;"></td>
-                                        <td>{{ $item->product_name }}</td>
+                                        <td>{{ mb_strimwidth($item->product_name, 0, 50, '...') }}</td>
                                         <td>{{ $item->category->category_name }}</td>
                                         <td>{{ $item->supplier->name }}</td>
                                         <td>{{ $item->product_code }}</td>

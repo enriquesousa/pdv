@@ -13,7 +13,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <a href="{{ route('customer.add') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Cliente</a>
+                            <a href="{{ route('customer.add') }}" class="btn btn-primary rounded-pill waves-effect waves-light"><i class="mdi mdi-account-plus-outline"></i>&nbsp;&nbsp;Agregar Cliente</a>
                         </ol>
                     </div>
                     <h4 class="page-title">Lista de Clientes</h4>
@@ -55,8 +55,12 @@
                                         <td>{{ $item->shopname }}</td>
                                        
                                         <td>
-                                            <a href="{{ route('customer.edit', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
-                                            <a href="{{ route('customer.delete', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a>
+                                            @if (Auth::user()->can('cliente.edit'))
+                                                <a href="{{ route('customer.edit', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
+                                            @endif
+                                            @if (Auth::user()->can('cliente.delete'))
+                                                <a href="{{ route('customer.delete', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a>
+                                            @endif
                                         </td>
                                     </tr>
 

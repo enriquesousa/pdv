@@ -18,7 +18,7 @@
                             <ol class="breadcrumb m-0">
                                 <!-- Sign Up modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#add-category-modal">Agregar Categoría</button>
+                                    data-bs-target="#add-category-modal"><i class="mdi mdi-basket-plus-outline"></i>&nbsp;&nbsp;Agregar Categoría</button>
                             </ol>
                         </div>
                         <h4 class="page-title">Lista de Categorías</h4>

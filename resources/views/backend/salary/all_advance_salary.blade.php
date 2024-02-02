@@ -16,7 +16,7 @@
                             <a href="{{ route('add.advance.salary') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Salario</a>
                         </ol>
                     </div>
-                    <h4 class="page-title">Lista de Todos los Salarios en Avance</h4>
+                    <h4 class="page-title">Todos los Abonos a Salarios</h4>
                 </div>
             </div>
         </div>     
@@ -29,11 +29,11 @@
 
                         {{-- <h4 class="header-title">Lista de Empleados</h4> --}}
 
-                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                        <table id="basic-datatable" class="table dt-responsive w-100">
                             <thead>
                                 <tr>
-                                    <th>Serie</th>
-                                    <th>Imagen</th>
+                                    {{-- <th style="width:2%">Serie</th> --}}
+                                    <th style="width:5%">Imagen</th>
                                     <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Salario</th>
@@ -50,7 +50,7 @@
 
                                 @foreach ($salary as $key => $item)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        {{-- <td>{{ $key + 1 }}</td> --}}
                                         <td><img src="{{ asset($item->employee->image) }}" style="width: 50px; height: 40px;"></td>
                                         <td>{{ $item->employee->id }}</td>
                                         <td>{{ $item->employee->name }}</td>

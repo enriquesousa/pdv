@@ -13,7 +13,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <a href="{{ route('add.employee.attendance') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Asistencia de Empleados</a>
+                            <a href="{{ route('add.employee.attendance') }}" class="btn btn-primary rounded-pill waves-effect waves-light"><i class="mdi mdi-account-plus-outline"></i>&nbsp;&nbsp;Agregar Asistencia de Empleados</a>
                         </ol>
                     </div>
                     <h4 class="page-title">Lista Asistencia de Empleados</h4>
@@ -47,8 +47,12 @@
                                         <td>{{ \Carbon\Carbon::parse($item->date)->locale('es')->isoFormat('D[/]MM[/]YYYY') }}</td>
                                        
                                         <td>
-                                            <a href="{{ route('edit.employee.attendance', $item->date) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
-                                            <a href="{{ route('view.employee.attendance', $item->date) }}" class="btn btn-danger rounded-pill waves-effect waves-light">Detalle</a>
+                                            @if (Auth::user()->can('asistencias.edit'))
+                                                <a href="{{ route('edit.employee.attendance', $item->date) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
+                                            @endif
+                                            @if (Auth::user()->can('asistencias.detail'))
+                                                <a href="{{ route('view.employee.attendance', $item->date) }}" class="btn btn-danger rounded-pill waves-effect waves-light">Detalle</a>
+                                            @endif
                                         </td>
 
                                     </tr>

@@ -13,7 +13,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <a href="{{ route('employee.add') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Empleado</a>
+                            <a href="{{ route('employee.add') }}" class="btn btn-primary rounded-pill waves-effect waves-light"><i class="mdi mdi-account-plus-outline"></i>&nbsp;&nbsp;Agregar Empleado</a>
                         </ol>
                     </div>
                     <h4 class="page-title">Lista de Empleados</h4>
@@ -66,8 +66,12 @@
                                         @endphp
                                         <td>$ @convert($floatvar)</td>
                                         <td>
-                                            <a href="{{ route('employee.edit', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
-                                            <a href="{{ route('employee.delete', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a>
+                                            @if (Auth::user()->can('empleado.edit'))
+                                                <a href="{{ route('employee.edit', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
+                                            @endif
+                                            @if (Auth::user()->can('empleado.delete'))
+                                                <a href="{{ route('employee.delete', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a>
+                                            @endif
                                         </td>
                                     </tr>
 

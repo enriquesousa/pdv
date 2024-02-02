@@ -13,7 +13,7 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <a href="{{ route('supplier.add') }}" class="btn btn-primary rounded-pill waves-effect waves-light">Agregar Proveedor</a>
+                            <a href="{{ route('supplier.add') }}" class="btn btn-primary rounded-pill waves-effect waves-light"><i class="mdi mdi-account-plus-outline"></i>&nbsp;&nbsp;Agregar Proveedor</a>
                         </ol>
                     </div>
                     <h4 class="page-title">Lista de Proveedores</h4>
@@ -55,11 +55,17 @@
                                         <td>{{ $item->type }}</td>
                                        
                                         <td>
-                                            <a href="{{ route('supplier.edit', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light" title="Editar"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                            <a href="{{ route('supplier.delete', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light" title="Eliminar"><i class="fa fa-trash" aria-hidden="true"></i>
+                                            @if (Auth::user()->can('proveedor.edit'))
+                                                <a href="{{ route('supplier.edit', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light" title="Editar"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            @endif
+                                            @if (Auth::user()->can('proveedor.delete'))
+                                                <a href="{{ route('supplier.delete', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light" title="Eliminar"><i class="fa fa-trash" aria-hidden="true"></i>
                                             </a>
-                                            <a href="{{ route('supplier.detail',$item->id) }}" class="btn btn-info rounded-pill waves-effect waves-light" title="Detalle"><i class="fa fa-eye" aria-hidden="true"></i>
+                                            @endif
+                                            @if (Auth::user()->can('proveedor.detail'))
+                                                <a href="{{ route('supplier.detail',$item->id) }}" class="btn btn-info rounded-pill waves-effect waves-light" title="Detalle"><i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
+                                            @endif
                                         </td>
                                     </tr>
 
