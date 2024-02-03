@@ -41,6 +41,9 @@
                                     <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Editar
                                         Admin
                                     </h5>
+                                    <p class="sub-header">
+                                        Para subir una <code>imagen</code> o cambiar la <code>contraseña</code>, favor de iniciar sesión con la cuenta de ese usuario y entrar a la sección de <code>Mi Perfil</code>, ahi podrán cambiar la información.
+                                    </p>
 
                                     <div class="row">
 

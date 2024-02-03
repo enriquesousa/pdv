@@ -37,6 +37,10 @@ Route::get('/dashboard', function () {
     return view('index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/dashboard-control', function () {
+    return view('index_control');
+})->middleware(['auth', 'verified'])->name('dashboard_control');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -165,22 +169,26 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store/expense', 'StoreExpense')->name('store.expense');
         Route::get('/today/expense', 'TodayExpense')->name('today.expense');
         Route::get('/edit/expense/{id}', 'EditExpense')->name('edit.expense');
-        Route::post('/update/expense', 'UpdateExpense')->name('update.expense');
+        Route::post('/update/expense', 'http://pdv.test/all/advance/salaryUpdateExpense')->name('update.expense');
         Route::get('/month/expense', 'MonthExpense')->name('month.expense');
         Route::get('/year/expense', 'YearExpense')->name('year.expense');
     });
 
-    // POS
-    Route::controller(PosController::class)->group(function () {
-        Route::get('/pos', 'Pos')->name('pos');
-        Route::post('/add-cart','AddCart');
-        Route::get('/all/items/en/carrito', 'AllItem');
-        Route::post('/cart-update/{rowId}', 'CartUpdate');
-        Route::get('/cart-remove/{rowId}', 'CartRemove');
-        Route::post('/create-invoice', 'CreateInvoice');
+
+    // POS - PDV
+    Route::group(['middleware' => ['permission:pdv.menu']], function () {
+        Route::controller(PosController::class)->group( function () {
+            Route::get('/pos', 'Pos')->name('pos');
+            Route::post('/add-cart','AddCart');
+            Route::get('/all/items/en/carrito', 'AllItem');
+            Route::post('/cart-update/{rowId}', 'CartUpdate');
+            Route::get('/cart-remove/{rowId}', 'CartRemove');
+            Route::post('/create-invoice', 'CreateInvoice');
+        });
     });
 
-    // Orden
+
+    // Orden - Ventas
     Route::controller(OrderController::class)->group(function () {
         Route::post('/final/invoice', 'FinalInvoice')->name('final.invoice');
         Route::get('/pending/order', 'PendingOrder')->name('pending.order');
@@ -224,12 +232,12 @@ Route::middleware(['auth'])->group(function () {
 
     // Admin Configuración de Usuarios
     Route::controller(AdminController::class)->group(function () {
-        Route::get('/all/admin', 'AllAdmin')->name('all.admin');
-        Route::get('/add/admin', 'AddAdmin')->name('add.admin');
+        Route::get('/all/admin', 'AllAdmin')->name('all.admin')->middleware('permission:usuarios.menu');
+        Route::get('/add/admin', 'AddAdmin')->name('add.admin')->middleware('permission:usuarios.menu');
         Route::post('/store/admin', 'StoreAdmin')->name('store.admin');
-        Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin');
-        Route::post('/update/admin', 'UpdateAdmin')->name('update.admin');
-        Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin');
+        Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin')->middleware('permission:usuarios.menu');
+        Route::post('/update/admin', 'UpdateAdmin')->name('update.admin')->middleware('permission:usuarios.menu');
+        Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin')->middleware('permission:usuarios.menu');
     });
 
     

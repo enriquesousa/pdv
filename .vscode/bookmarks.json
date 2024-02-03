@@ -144,7 +144,7 @@
 					"label": "favicon insertar"
 				},
 				{
-					"line": 53,
+					"line": 54,
 					"column": 47,
 					"label": "si el user ya esta login check"
 				}
@@ -214,7 +214,7 @@
 			"path": "resources/views/backend/admin/edit_admin.blade.php",
 			"bookmarks": [
 				{
-					"line": 78,
+					"line": 81,
 					"column": 56,
 					"label": "spatie permiso hasRole"
 				}

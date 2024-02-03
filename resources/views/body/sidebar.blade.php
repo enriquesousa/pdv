@@ -67,12 +67,20 @@
                 {{-- * NAVEGACIÓN --}}
                 {{-- <li class="menu-title"><span class="badge bg-primary">NAVEGACIÓN</span></li> --}}
 
-                {{-- PANEL --}}
+                {{-- PANEL INICIAL --}}
+                <li>
+                    <a href="{{ route('dashboard') }}">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span> Panel Inicial </span>
+                    </a>
+                </li>
+
+                {{-- PANEL DE CONTROL --}}
                 @if (Auth::user()->can('panel.menu'))
                     <li>
-                        <a href="{{ route('dashboard') }}">
+                        <a href="{{ route('dashboard_control') }}">
                             <i class="mdi mdi-view-dashboard-outline"></i>
-                            <span> Panel </span>
+                            <span> Panel Control </span>
                         </a>
                     </li>
                 @endif

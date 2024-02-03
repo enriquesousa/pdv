@@ -26,10 +26,11 @@
 
     </head>
 
-    <body class="authentication-bg">
+    <body class="authentication-bg authentication-bg-pattern">
 
         <div class="mt-5 mb-5">
             <div class="container">
+
                 <div class="row justify-content-center">
                     <div class="col-11">
 
@@ -104,6 +105,7 @@
                     </div> <!-- end col -->
                 </div>
                 <!-- end row -->
+
             </div>
             <!-- end container -->
         </div>
