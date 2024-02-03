@@ -260,85 +260,99 @@
                 </li>
                 @endif
 
-                {{-- Ordenes --}}
-                <li>
-                    <a href="#ordenes" data-bs-toggle="collapse">
-                        <i class="mdi mdi-clipboard-multiple-outline"></i>
-                        <span>Ordenes</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="ordenes">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('pending.order') }}">Pendientes</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('complete.order') }}">Completadas</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                {{-- Ordenes / Ventas --}}
+                @if (Auth::user()->can('ventas.menu'))
+                    <li>
+                        <a href="#ordenes" data-bs-toggle="collapse">
+                            <i class="mdi mdi-clipboard-multiple-outline"></i>
+                            <span>Ventas</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="ordenes">
+                            <ul class="nav-second-level">
+                                @if (Auth::user()->can('ventas.pendientes'))
+                                    <li>
+                                        <a href="{{ route('pending.order') }}">Pendientes</a>
+                                    </li>
+                                @endif
+                                @if (Auth::user()->can('ventas.completadas'))
+                                    <li>
+                                        <a href="{{ route('complete.order') }}">Completadas</a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
                 {{-- Almacén --}}
-                <li>
-                    <a href="#stock" data-bs-toggle="collapse">
-                        <i class="mdi mdi-text-box-multiple-outline"></i>
-                        <span>Almacén</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="stock">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('stock.manage') }}">Control de Almacén</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @if (Auth::user()->can('almacen.menu'))
+                    <li>
+                        <a href="#stock" data-bs-toggle="collapse">
+                            <i class="mdi mdi-text-box-multiple-outline"></i>
+                            <span>Almacén</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="stock">
+                            <ul class="nav-second-level">
+                                @if (Auth::user()->can('almacen.all'))
+                                    <li>
+                                        <a href="{{ route('stock.manage') }}">Control de Almacén</a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
                 {{-- Roles y Permisos --}}
-                <li>
-                    <a href="#roles" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-cog-outline"></i>
-                        <span>Permisos</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="roles">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('all.roles.permission') }}">Lista Roles y Permisos</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('all.roles') }}">Lista de Roles</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('all.permission') }}">Lista de Permisos</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('add.roles.permission') }}">Asignar Roles</a>
-                            </li>
-                           
-                        </ul>
-                    </div>
-                </li>
+                @if (Auth::user()->can('permisos.menu'))
+                    <li>
+                        <a href="#roles" data-bs-toggle="collapse">
+                            <i class="mdi mdi-account-cog-outline"></i>
+                            <span>Permisos</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="roles">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ route('all.roles.permission') }}">Lista Roles y Permisos</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('all.roles') }}">Lista de Roles</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('all.permission') }}">Lista de Permisos</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('add.roles.permission') }}">Asignar Roles</a>
+                                </li>
+                            
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
                 {{-- Admin Configuración de Usuarios --}}
-                <li>
-                    <a href="#admin" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-settings-outline"></i>
-                        <span>Usuarios</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="admin">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('all.admin') }}">Lista</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('add.admin') }}">Agregar</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @if (Auth::user()->can('usuarios.menu'))
+                    <li>
+                        <a href="#admin" data-bs-toggle="collapse">
+                            <i class="mdi mdi-account-settings-outline"></i>
+                            <span>Usuarios</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="admin">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ route('all.admin') }}">Lista</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('add.admin') }}">Agregar</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
                 {{-- * MANEJO DE DINERO --}}
                 @if (Auth::user()->can('gastos.menu'))

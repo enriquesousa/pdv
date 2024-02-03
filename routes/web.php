@@ -65,12 +65,12 @@ Route::middleware(['auth'])->group(function () {
 
     // Rutas Employees
     Route::controller(EmployeeController::class)->group(function () {
-        Route::get('/all/employee', 'EmployeeList')->name('all.employee');
-        Route::get('/employee/add', 'EmployeeAdd')->name('employee.add');
+        Route::get('/all/employee', 'EmployeeList')->name('all.employee')->middleware('permission:empleado.all');
+        Route::get('/employee/add', 'EmployeeAdd')->name('employee.add')->middleware('permission:empleado.add');
         Route::post('/employee/store', 'EmployeeStore')->name('employee.store');
-        Route::get('/employee/edit/{id}', 'EmployeeEdit')->name('employee.edit');
+        Route::get('/employee/edit/{id}', 'EmployeeEdit')->name('employee.edit')->middleware('permission:empleado.edit');
         Route::post('/employee/update', 'EmployeeUpdate')->name('employee.update');
-        Route::get('/employee/delete/{id}', 'EmployeeDelete')->name('employee.delete');    
+        Route::get('/employee/delete/{id}', 'EmployeeDelete')->name('employee.delete')->middleware('permission:empleado.delete');    
     });
 
     // Rutas Customers

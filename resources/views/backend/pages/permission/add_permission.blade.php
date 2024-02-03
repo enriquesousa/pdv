@@ -65,9 +65,10 @@
                                                     <option value="categoría"> Categorías</option>
                                                     <option value="producto"> Productos</option>
                                                     <option value="gasto"> Gastos</option>
-                                                    <option value="orden"> Ordenes</option>
+                                                    <option value="ventas"> Ventas</option>
                                                     <option value="almacén"> Almacén</option>
                                                     <option value="permiso"> Permisos</option>
+                                                    <option value="usuarios"> Usuarios</option>
                                                     <option value="datos"> Datos</option>
 
                                                 </select>
