@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 02, 2024 at 04:22 PM
+-- Generation Time: Feb 04, 2024 at 05:09 PM
 -- Server version: 10.11.4-MariaDB-1~deb12u1
 -- PHP Version: 8.2.7
 
@@ -43,9 +43,9 @@ CREATE TABLE `advance_salaries` (
 --
 
 INSERT INTO `advance_salaries` (`id`, `employee_id`, `month`, `year`, `status`, `advance_salary`, `created_at`, `updated_at`) VALUES
-(88, 28, 'Enero', '2024', NULL, NULL, '2024-01-17 16:54:49', NULL),
+(88, 28, 'Enero', '2024', 'Pagado', NULL, '2024-01-17 16:54:49', '2024-02-04 01:49:11'),
 (89, 29, 'Enero', '2024', NULL, NULL, '2024-01-17 16:55:36', NULL),
-(90, 30, 'Enero', '2024', NULL, NULL, '2024-01-17 16:58:19', NULL),
+(90, 30, 'Enero', '2024', 'Pagado', NULL, '2024-01-17 16:58:19', '2024-02-04 01:49:15'),
 (91, 31, 'Enero', '2024', NULL, NULL, '2024-01-17 16:58:42', NULL),
 (92, 32, 'Enero', '2024', NULL, NULL, '2024-01-17 16:59:35', NULL),
 (93, 33, 'Enero', '2024', NULL, NULL, '2024-01-17 17:00:29', NULL),
@@ -72,7 +72,13 @@ INSERT INTO `advance_salaries` (`id`, `employee_id`, `month`, `year`, `status`, 
 (114, 30, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL),
 (115, 32, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL),
 (116, 29, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL),
-(117, 28, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL);
+(117, 28, 'Febrero', '2024', NULL, '0', '2024-02-01 20:23:41', NULL),
+(122, 33, 'Marzo', '2024', NULL, NULL, '2024-02-03 23:25:30', NULL),
+(123, 31, 'Marzo', '2024', NULL, NULL, '2024-02-03 23:25:30', NULL),
+(124, 30, 'Marzo', '2024', NULL, NULL, '2024-02-03 23:25:30', NULL),
+(125, 32, 'Marzo', '2024', NULL, NULL, '2024-02-03 23:25:30', NULL),
+(126, 29, 'Marzo', '2024', NULL, NULL, '2024-02-03 23:25:30', NULL),
+(127, 28, 'Marzo', '2024', NULL, NULL, '2024-02-03 23:25:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -274,7 +280,8 @@ INSERT INTO `expenses` (`id`, `details`, `amount`, `month`, `year`, `date`, `cre
 (2, 'Gasolina', '300', 'enero', '2024', '2024-01-21', '2024-01-22 17:25:37', NULL),
 (3, 'Renta', '3500', 'enero', '2024', '2024-01-18', '2024-01-22 17:54:57', NULL),
 (4, 'Papelería 222', '2350', 'enero', '2024', '2024-01-22', '2024-01-22 20:32:11', '2024-01-22 20:32:11'),
-(5, 'Comida', '1300', 'enero', '2024', '2024-01-22', '2024-01-22 18:19:45', NULL);
+(5, 'Comida', '1300', 'enero', '2024', '2024-01-22', '2024-01-22 18:19:45', NULL),
+(6, 'Gasolina', '300', 'febrero', '2024', '2024-02-03', '2024-02-04 02:24:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -363,7 +370,8 @@ CREATE TABLE `model_has_roles` (
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 2),
 (1, 'App\\Models\\User', 8),
-(4, 'App\\Models\\User', 5);
+(4, 'App\\Models\\User', 5),
+(7, 'App\\Models\\User', 9);
 
 -- --------------------------------------------------------
 
@@ -472,7 +480,9 @@ CREATE TABLE `pay_salaries` (
 --
 
 INSERT INTO `pay_salaries` (`id`, `employee_id`, `salary_month`, `year`, `paid_amount`, `advance_salary`, `due_salary`, `status`, `created_at`, `updated_at`) VALUES
-(20, 37, 'Diciembre', '2023', '15600', '500', '15100', 'Pagado', '2024-01-17 17:12:16', NULL);
+(20, 37, 'Diciembre', '2023', '15600', '500', '15100', 'Pagado', '2024-01-17 17:12:16', NULL),
+(21, 28, 'Enero', '2024', '15600', '0', '15600', 'Pagado', '2024-02-04 01:49:11', NULL),
+(22, 30, 'Enero', '2024', '15800', '0', '15800', 'Pagado', '2024-02-04 01:49:15', NULL);
 
 -- --------------------------------------------------------
 
@@ -542,7 +552,17 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `created_at
 (48, 'productos.delete', 'web', 'producto', '2024-02-02 03:44:02', '2024-02-02 03:44:02'),
 (49, 'productos.codigo', 'web', 'producto', '2024-02-02 03:44:34', '2024-02-02 03:44:34'),
 (50, 'productos.importar', 'web', 'producto', '2024-02-02 03:44:57', '2024-02-02 03:44:57'),
-(51, 'productos.exportar', 'web', 'producto', '2024-02-02 03:45:13', '2024-02-02 03:45:13');
+(51, 'productos.exportar', 'web', 'producto', '2024-02-02 03:45:13', '2024-02-02 03:45:13'),
+(52, 'ventas.menu', 'web', 'ventas', '2024-02-03 01:51:52', '2024-02-03 01:51:52'),
+(53, 'ventas.pendientes', 'web', 'ventas', '2024-02-03 01:52:36', '2024-02-03 01:52:36'),
+(54, 'ventas.completadas', 'web', 'ventas', '2024-02-03 01:52:51', '2024-02-03 01:52:51'),
+(55, 'almacen.all', 'web', 'almacén', '2024-02-03 01:59:24', '2024-02-03 01:59:24'),
+(56, 'permisos.menu', 'web', 'permiso', '2024-02-03 02:01:30', '2024-02-03 02:01:30'),
+(57, 'usuarios.menu', 'web', 'usuarios', '2024-02-03 02:05:42', '2024-02-03 02:05:42'),
+(58, 'salario.editar', 'web', 'salario', '2024-02-03 23:17:20', '2024-02-03 23:17:20'),
+(59, 'salario.delete', 'web', 'salario', '2024-02-03 23:26:20', '2024-02-03 23:26:20'),
+(60, 'salario.pagar.ahora', 'web', 'salario', '2024-02-04 01:46:55', '2024-02-04 01:46:55'),
+(61, 'salario.historial', 'web', 'salario', '2024-02-04 01:51:07', '2024-02-04 01:51:07');
 
 -- --------------------------------------------------------
 
@@ -656,17 +676,21 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (3, 1),
 (3, 2),
 (3, 4),
+(3, 7),
 (4, 1),
 (5, 1),
 (5, 2),
 (5, 4),
+(5, 7),
 (6, 1),
 (6, 2),
 (6, 4),
 (7, 1),
 (7, 2),
+(7, 7),
 (8, 1),
 (8, 2),
+(8, 7),
 (9, 1),
 (9, 2),
 (9, 7),
@@ -691,14 +715,17 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (20, 7),
 (21, 1),
 (21, 4),
+(21, 7),
 (22, 1),
 (22, 4),
 (23, 1),
 (23, 4),
 (24, 1),
 (24, 4),
+(24, 7),
 (25, 1),
 (26, 1),
+(26, 7),
 (27, 1),
 (27, 4),
 (28, 1),
@@ -714,6 +741,7 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (39, 1),
 (40, 1),
 (41, 1),
+(41, 7),
 (42, 1),
 (43, 1),
 (44, 1),
@@ -723,7 +751,17 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (48, 1),
 (49, 1),
 (50, 1),
-(51, 1);
+(51, 1),
+(52, 1),
+(53, 1),
+(54, 1),
+(55, 1),
+(56, 1),
+(57, 1),
+(58, 1),
+(59, 1),
+(60, 1),
+(61, 1);
 
 -- --------------------------------------------------------
 
@@ -799,7 +837,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `photo`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 'Jose', 'admin@gmail.com', '6646289328', '20240103172978.jpg', NULL, '$2y$12$8eS3WvmFg0yzL/HxocTNA.wFbdfCb0Dll.w45ouMJ/zj9CMWx1zu.', 'HXaNiw5vfIOKkviJAY0icbrVL1dzXIQnpCPGqB0CMVx69LKdDPf2GNis5OfR', '2024-01-01 10:20:41', '2024-01-07 14:54:14'),
 (5, 'Julio', 'julio@gmail.com', '5556887889', '20240201051550.jpg', NULL, '$2y$12$1arRC5YBQDPDwhL4nhirDehtVdtZJeZBbsBkbiAQjFfb1MO4lh0mu', NULL, '2024-01-31 16:25:45', '2024-02-01 13:15:48'),
-(8, 'Enrique Sousa', 'enrique.sousa@gmail.com', '6641880604', '202401311109fotojess_300x300.jpg', NULL, '$2y$12$aXlZjBSWBSNdHbXjCooc5e9vEz.uxa.CYqY8QU6guO.xJVMFbIwFK', NULL, '2024-01-31 18:59:20', '2024-01-31 19:09:22');
+(8, 'Enrique Sousa', 'enrique.sousa@gmail.com', '6641880604', '202401311109fotojess_300x300.jpg', NULL, '$2y$12$aXlZjBSWBSNdHbXjCooc5e9vEz.uxa.CYqY8QU6guO.xJVMFbIwFK', NULL, '2024-01-31 18:59:20', '2024-01-31 19:09:22'),
+(9, 'User', 'user@gmail.com', '+1 (103) 684-7606', NULL, NULL, '$2y$12$ot5ZnFytwzyVjeFK6AZgUuegJnWA52FOVmMeS6U0JCi8qykIZBuG6', NULL, '2024-02-03 15:45:41', '2024-02-03 15:45:41');
 
 --
 -- Indexes for dumped tables
@@ -961,7 +1000,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `advance_salaries`
 --
 ALTER TABLE `advance_salaries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT for table `anios`
@@ -997,7 +1036,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1027,13 +1066,13 @@ ALTER TABLE `order_details`
 -- AUTO_INCREMENT for table `pay_salaries`
 --
 ALTER TABLE `pay_salaries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1063,7 +1102,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
