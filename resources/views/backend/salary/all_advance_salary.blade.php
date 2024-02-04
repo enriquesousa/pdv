@@ -39,7 +39,7 @@
                                     <th>Salario</th>
                                     <th><span>Mes</span></th>
                                     <th><span>Año</span></th>
-                                    <th><span>Avance</span></th>
+                                    <th><span><h4>AVANCE</h4></span></th>
                                     <th><span class="badge bg-primary">Estatus</span></th>
                                     <th>Acción</th>
                                 </tr>
@@ -93,7 +93,7 @@
                                                 <a href="{{ route('edit.advance.salary', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar Avance</a>
                                             @endif
 
-                                            {{-- <a href="{{ route('delete.advance.salary', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a> --}}
+                                            <a href="{{ route('delete.advance.salary', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a>
                                         </td>
                                     </tr>
 

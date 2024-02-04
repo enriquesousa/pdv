@@ -2,6 +2,7 @@
 <div class="navbar-custom">
     <div class="container-fluid">
 
+        {{-- CAJA DE BÚSQUEDA, ICONO FULL SCREEN, LIGAS DROPDOWN, BANDERAS DE IDIOMAS, CAMPANA DE NOTIFICACIONES, PERFIL --}}
         <ul class="list-unstyled topnav-menu float-end mb-0">
 
             {{-- CLICK DROPDOWN CAJA PARA CAJA DE BÚSQUEDA app-search-box dropdown --}}
@@ -289,7 +290,6 @@
             </li>
 
 
-
             {{-- PERFIL - Código para poder traer datos del usuario para desplegar foto de perfil y nombre de usuario --}}
             @php
                 $id = Auth::user()->id;
@@ -401,11 +401,11 @@
                 <!-- End mobile menu toggle-->
             </li>
 
-            {{-- Create New Menu --}}
+            {{-- Menu Corto --}}
             <li class="dropdown d-none d-xl-block">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
-                    Create New
+                    Menu Corto
                     <i class="mdi mdi-chevron-down"></i>
                 </a>
                 <div class="dropdown-menu">
@@ -599,6 +599,63 @@
                         </div>
 
                     </div>
+                </div>
+            </li>
+
+            {{-- LIGAS DROPDOWN  --}}
+            <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
+                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown"
+                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="fe-grid noti-icon"></i>
+                </a>
+                <div class="dropdown-menu dropdown-lg dropdown-menu-end">
+
+                    <div class="p-lg-1">
+                        <div class="row g-0">
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="{{ asset('backend/assets/images/brands/slack.png') }}" alt="slack">
+                                    <span>Slack</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="{{ asset('backend/assets/images/brands/github.png') }}" alt="Github">
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="{{ asset('backend/assets/images/brands/dribbble.png') }}" alt="dribbble">
+                                    <span>Dribbble</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row g-0">
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="{{ asset('backend/assets/images/brands/bitbucket.png') }}"
+                                        alt="bitbucket">
+                                    <span>Bitbucket</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="{{ asset('backend/assets/images/brands/dropbox.png') }}" alt="dropbox">
+                                    <span>Dropbox</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="{{ asset('backend/assets/images/brands/g-suite.png') }}" alt="G Suite">
+                                    <span>G Suite</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
             </li>
             
