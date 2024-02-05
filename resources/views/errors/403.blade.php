@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Pagina de Error | 404 | Pagina no Encontrada </title>
+        <title>Pagina de Error | 403 | Acceso denegado </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -78,10 +78,8 @@
                                 </div>
 
                                 <div class="text-center">
-                                    <h3 class="mt-4">404 - Pagina No Encontrada </h3>
-                                    <p class="text-muted mb-0">Parece que has tomado un camino equivocado. No te preocupes...
-                                        nos pasa a los mejores. Es posible que desees comprobar tu conexión a Internet.
-                                        Aquí tienes un pequeño consejo que puede ayudarte a retomar el rumbo.</p>
+                                    <h3 class="mt-4">403 - Acceso denegado</h3>
+                                    <p class="text-muted mb-0">El usuario no tiene los permisos para acceder.</p>
                                 </div>
 
                             </div> <!-- end card-body -->
