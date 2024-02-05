@@ -187,6 +187,11 @@
 					"line": 222,
 					"column": 97,
 					"label": "path storage_path database backup"
+				},
+				{
+					"line": 247,
+					"column": 52,
+					"label": "eliminar archivo"
 				}
 			]
 		},

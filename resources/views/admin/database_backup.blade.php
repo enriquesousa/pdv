@@ -65,7 +65,7 @@
                                             @endif
 
                                             @if (Auth::user()->can('respaldo.menu'))
-                                                <a href="" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a>
+                                                <a href="{{ route('delete.database.backup', $item->getFileName()) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a>
                                             @endif
 
                                         </td>

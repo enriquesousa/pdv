@@ -242,6 +242,19 @@ class AdminController extends Controller
         return response()->download(storage_path('/app/PDV/'.$file_name));
     }
 
+    // BackupDelete
+    public function BackupDelete($file_name){
+
+        Storage::delete('PDV/'.$file_name);
+
+        $notification = [
+            'message' => 'Database - Copia de Seguridad Eliminada',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
 
 
 

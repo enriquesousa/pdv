@@ -257,7 +257,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/database/backup', 'DatabaseBackup')->name('database.backup')->middleware('permission:respaldo.menu');
         Route::get('/backup/now', 'BackupNow')->name('backup.now')->middleware('permission:respaldo.menu');
         Route::get('/backup/download/{file_name}', 'BackupDownload')->name('download.database.backup')->middleware('permission:respaldo.menu');
-        
+        Route::get('/backup/delete/{file_name}', 'BackupDelete')->name('delete.database.backup')->middleware('permission:respaldo.menu');
 
     });
 
