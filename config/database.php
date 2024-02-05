@@ -60,7 +60,7 @@ return [
             'engine' => null,
 
             'dump' => [
-                'dump_binary_path' => '/usr/bin', // path al mysqldump 
+                'dump_binary_path' => '/usr/bin', // path al mysqldump ejecutable. defaults to `C:\xampp\mysql\bin\mysql.exe` on windows
                 'use_single_transaction',
                 'timeout' => 60 * 5, // 5 minute timeout
             ],

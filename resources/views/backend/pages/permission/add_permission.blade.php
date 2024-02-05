@@ -69,6 +69,7 @@
                                                     <option value="almacén"> Almacén</option>
                                                     <option value="permiso"> Permisos</option>
                                                     <option value="usuarios"> Usuarios</option>
+                                                    <option value="respaldo"> Respaldo</option>
                                                     <option value="datos"> Datos</option>
 
                                                 </select>

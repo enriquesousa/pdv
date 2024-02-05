@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -210,5 +212,14 @@ class AdminController extends Controller
         return redirect()->back()->with($notification);
     }
 
+
+    /**********************************
+     * Database Backup
+     **********************************/
+
+    // DatabaseBackup
+    public function DatabaseBackup(){
+        return view('admin.database_backup')->with('files', File::allFiles(storage_path('/app/PDV')));
+    }
 
 }

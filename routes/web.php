@@ -244,12 +244,18 @@ Route::middleware(['auth'])->group(function () {
 
     // Admin Configuración de Usuarios
     Route::controller(AdminController::class)->group(function () {
+
+        // Usuarios Administradores
         Route::get('/all/admin', 'AllAdmin')->name('all.admin')->middleware('permission:usuarios.menu');
         Route::get('/add/admin', 'AddAdmin')->name('add.admin')->middleware('permission:usuarios.menu');
         Route::post('/store/admin', 'StoreAdmin')->name('store.admin');
         Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin')->middleware('permission:usuarios.menu');
         Route::post('/update/admin', 'UpdateAdmin')->name('update.admin')->middleware('permission:usuarios.menu');
         Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin')->middleware('permission:usuarios.menu');
+
+        // Database Backup
+        Route::get('/database/backup', 'DatabaseBackup')->name('database.backup')->middleware('permission:respaldo.menu');
+
     });
 
     
