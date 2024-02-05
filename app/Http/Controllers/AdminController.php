@@ -12,6 +12,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Artisan;
 
 class AdminController extends Controller
 {
@@ -221,5 +222,27 @@ class AdminController extends Controller
     public function DatabaseBackup(){
         return view('admin.database_backup')->with('files', File::allFiles(storage_path('/app/PDV')));
     }
+
+    // Backup Now
+    public function BackupNow(){
+
+        Artisan::call('backup:run');
+
+        $notification = [
+            'message' => 'Database - Copia de Seguridad Realizada',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    // BackupDownload
+    public function BackupDownload($file_name){
+
+        return response()->download(storage_path('/app/PDV/'.$file_name));
+    }
+
+
+
 
 }
