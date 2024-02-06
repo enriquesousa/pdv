@@ -38,6 +38,7 @@
                                     <th>Fecha</th>
                                     <th>Forma de Pago</th>
                                     <th>Recibo #</th>
+                                    <th>Total</th>
                                     <th>Avance</th>
                                     <th>Saldo</th>
                                     <th>Acción</th>
@@ -55,6 +56,14 @@
                                         <td>{{ $item->order_date }}</td>
                                         <td>{{ $item->payment_status }}</td>
                                         <td>{{ $item->invoice_no }}</td>
+
+                                        {{-- Total de la Orden --}}
+                                        <td>
+                                            @php
+                                                $floatVar =  floatval($item->total); 
+                                            @endphp
+                                            <span class="btn btn-info waves-effect waves-light">$ @convert($floatVar)</span>
+                                        </td>
 
                                         {{-- Avance de Pago --}}
                                         <td>
@@ -121,16 +130,17 @@
                     </div>
                 </div>
 
-                <form class="px-3" method="POST" action="{{ url('/final/invoice') }}">
+                <form class="px-3" method="post" action="{{ route('update.due') }}">
                     @csrf
 
-                    {{-- Abono --}}
+                    <input type="hidden" name="id" id="order_id">
+                    <input type="hidden" name="pay" id="pay">
+
                     <div class="mb-3">
                         <label for="due" class="form-label">Saldo</label>
                         <input class="form-control" type="number" name="due" id="due">
                     </div>
 
-                    {{-- Botón Actualizar Saldo --}}
                     <div class="mb-3 text-center">
                         <button class="btn btn-primary" type="submit">Actualizar Saldo</button>
                     </div>
@@ -154,6 +164,8 @@
             success:function(data){
                 // console.log(data)
                 $('#due').val(data.due);
+                $('#pay').val(data.pay);
+                $('#order_id').val(data.id);
             }
         })
     }

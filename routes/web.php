@@ -207,8 +207,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/order/invoice-download/{order_id}', 'OrderInvoiceDownload');
 
         // Saldos pendientes
-        Route::get('/pending/due', 'PendingDue')->name('pending.due')->middleware('permission:ventas.menu');
-        Route::get('/order/due/{id}', 'OrderDueAjax');
+        Route::get('/pending/due', 'PendingDue')->name('pending.due')->middleware('permission:vetas.menu');
+        Route::get('/order/due/{id}', 'OrderDueAjax')->middleware('permission:vetas.menu');
+        Route::post('/update/due','UpdateDue')->name('update.due')->middleware('permission:vetas.menu');
 
     });
 
