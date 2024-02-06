@@ -206,8 +206,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/stock/manage', 'StockManage')->name('stock.manage')->middleware('permission:almacen.all');
         Route::get('/order/invoice-download/{order_id}', 'OrderInvoiceDownload');
 
-        // Due All Route
+        // Saldos pendientes
         Route::get('/pending/due', 'PendingDue')->name('pending.due')->middleware('permission:ventas.menu');
+        Route::get('/order/due/{id}', 'OrderDueAjax');
 
     });
 

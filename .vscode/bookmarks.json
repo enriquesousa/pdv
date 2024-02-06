@@ -244,6 +244,16 @@
 					"label": "js hide or show element"
 				}
 			]
+		},
+		{
+			"path": "resources/views/backend/order/pending_due.blade.php",
+			"bookmarks": [
+				{
+					"line": 149,
+					"column": 16,
+					"label": "pasar parametros con ajax regresamos resultados en json"
+				}
+			]
 		}
 	]
 }

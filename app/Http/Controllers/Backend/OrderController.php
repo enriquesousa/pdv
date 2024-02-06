@@ -161,6 +161,11 @@ class OrderController extends Controller
         return view('backend.order.pending_due', compact('allDue'));
     }
 
+    // OrderDueAjax
+    public function OrderDueAjax($id){
+        $order = Order::findOrFail($id);
+        return response()->json($order);
+    }
 
 
 }

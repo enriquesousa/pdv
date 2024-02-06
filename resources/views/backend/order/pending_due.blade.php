@@ -74,7 +74,18 @@
                                         
                                        
                                         <td>
-                                            <a href="{{ route('detail.order', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Completar Orden</a>
+                                            <a href="{{ route('detail.order', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Detalle</a>
+
+                                            {{-- botón para abrir ventana modal y realizar abono --}}
+                                            <button type="button" 
+                                                    class="btn btn-warning rounded-pill waves-effect waves-light" 
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#ventana-modal"
+                                                    id = "{{ $item->id }}"
+                                                    onclick="orderDue(this.id)">
+                                            Pagar
+                                            </button>
+
                                         </td>
                                     </tr>
 
@@ -96,5 +107,57 @@
 
 </div> <!-- content -->
 
+<!-- Ventana Modal -->
+<div id="ventana-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+
+                <div class="text-center mt-2 mb-4">
+                    <div class="auth-logo">
+                        <h3>Abonar al Saldo</h3>
+                    </div>
+                </div>
+
+                <form class="px-3" method="POST" action="{{ url('/final/invoice') }}">
+                    @csrf
+
+                    {{-- Abono --}}
+                    <div class="mb-3">
+                        <label for="due" class="form-label">Saldo</label>
+                        <input class="form-control" type="number" name="due" id="due">
+                    </div>
+
+                    {{-- Botón Actualizar Saldo --}}
+                    <div class="mb-3 text-center">
+                        <button class="btn btn-primary" type="submit">Actualizar Saldo</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+
+</div><!-- /.modal -->
+
+
+<script type="text/javascript">
+        
+    function orderDue(id) {
+        $.ajax({
+            type: 'GET',
+            url: '/order/due/'+id,
+            dataType: 'json',
+            success:function(data){
+                // console.log(data)
+                $('#due').val(data.due);
+            }
+        })
+    }
+
+</script>
 
 @endsection
