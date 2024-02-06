@@ -150,6 +150,16 @@ class OrderController extends Controller
         return $pdf->stream();
     }
 
+    
+    // *****************
+    // Ventas pendientes
+    // *****************
+
+    // PendingDue
+    public function PendingDue(){
+        $allDue = Order::where('due', '>', 0)->orderBy('created_at', 'ASC')->get();
+        return view('backend.order.pending_due', compact('allDue'));
+    }
 
 
 

@@ -288,6 +288,11 @@
                                         <a href="{{ route('complete.order') }}">Completadas</a>
                                     </li>
                                 @endif
+                                @if (Auth::user()->can('ventas.menu'))
+                                    <li>
+                                        <a href="{{ route('pending.due') }}">Saldos Pendientes</a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </li>

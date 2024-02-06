@@ -197,6 +197,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Orden - Ventas
     Route::controller(OrderController::class)->group(function () {
+
         Route::post('/final/invoice', 'FinalInvoice')->name('final.invoice');
         Route::get('/pending/order', 'PendingOrder')->name('pending.order')->middleware('permission:ventas.pendientes');
         Route::get('/detail/order/{order_id}', 'DetailOrder')->name('detail.order');
@@ -204,6 +205,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/complete/order', 'CompleteOrder')->name('complete.order')->middleware('permission:ventas.completadas');
         Route::get('/stock/manage', 'StockManage')->name('stock.manage')->middleware('permission:almacen.all');
         Route::get('/order/invoice-download/{order_id}', 'OrderInvoiceDownload');
+
+        // Due All Route
+        Route::get('/pending/due', 'PendingDue')->name('pending.due')->middleware('permission:ventas.menu');
+
     });
 
 
