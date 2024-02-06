@@ -1,6 +1,29 @@
 @extends('admin_dashboard')
 @section('admin')
 
+    {{-- Para Traer el Contenido que queremos mostrar --}}
+    @php
+
+        // date, tiene que ser el mismo formato que definimos en resources/views/backend/invoice/product_invoice.blade.php
+        $date = \Carbon\Carbon::parse(date('Y-m-d'))->locale('es')->isoFormat('D[/]MMMM[/]YYYY');
+
+        // Total de ventas de hoy
+        $total_hoy = App\Models\Order::where('order_date', $date)->sum('total');
+
+        // Total de entradas de todas las ventas 'orders' table field 'pay'
+        $total_ventas = App\Models\Order::sum('pay');
+
+        // Total de saldos de todas las ventas 'orders' table field 'due'
+        $total_due = App\Models\Order::sum('due');
+
+        // Total de ordenes (Ventas) completadas - table 'orders' field 'order_status'
+        $ordenes_completadas = App\Models\Order::where('order_status', 'completada')->count();
+
+        // Total de ordenes (Ventas) pendientes - table 'orders' field 'order_status'
+        $ordenes_pendientes = App\Models\Order::where('order_status', 'pendiente')->count();
+
+    @endphp
+
     <div class="content">
 
         <!-- Start Content-->
@@ -32,7 +55,10 @@
             </div>
             <!-- end page title -->
 
+            {{-- 4 Cards de Quick Info --}}
             <div class="row">
+
+                {{-- Card 1 --}}
                 <div class="col-md-6 col-xl-3">
                     <div class="widget-rounded-circle card">
                         <div class="card-body">
@@ -44,8 +70,9 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="text-end">
-                                        <h3 class="text-dark mt-1">$<span data-plugin="counterup">58,947</span></h3>
-                                        <p class="text-muted mb-1 text-truncate">Total Revenue</p>
+                                        <h3 class="text-dark mt-1">$ <span data-plugin="counterup">@convert($total_hoy)</span>
+                                        </h3>
+                                        <p class="text-muted mb-1 text-truncate">Total Ventas Hoy</p>
                                     </div>
                                 </div>
                             </div> <!-- end row-->
@@ -53,6 +80,7 @@
                     </div> <!-- end widget-rounded-circle-->
                 </div> <!-- end col-->
 
+                {{-- Card 2 --}}
                 <div class="col-md-6 col-xl-3">
                     <div class="widget-rounded-circle card">
                         <div class="card-body">
@@ -73,6 +101,7 @@
                     </div> <!-- end widget-rounded-circle-->
                 </div> <!-- end col-->
 
+                {{-- Card 3 --}}
                 <div class="col-md-6 col-xl-3">
                     <div class="widget-rounded-circle card">
                         <div class="card-body">
@@ -93,6 +122,7 @@
                     </div> <!-- end widget-rounded-circle-->
                 </div> <!-- end col-->
 
+                {{-- Card 4 --}}
                 <div class="col-md-6 col-xl-3">
                     <div class="widget-rounded-circle card">
                         <div class="card-body">
@@ -112,6 +142,7 @@
                         </div>
                     </div> <!-- end widget-rounded-circle-->
                 </div> <!-- end col-->
+
             </div>
             <!-- end row-->
 

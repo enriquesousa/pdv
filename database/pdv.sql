@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 04, 2024 at 05:09 PM
+-- Generation Time: Feb 06, 2024 at 02:50 PM
 -- Server version: 10.11.4-MariaDB-1~deb12u1
 -- PHP Version: 8.2.7
 
@@ -402,12 +402,14 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `customer_id`, `order_date`, `order_status`, `total_products`, `sub_total`, `iva`, `invoice_no`, `total`, `payment_status`, `pay`, `due`, `created_at`, `updated_at`) VALUES
 (3, 10, '24-January-2024', 'completada', '5', '812.00', '121.80', 'EPOS93252487', '933.80', 'Efectivo', '900', '33', '2024-01-24 16:44:44', '2024-01-26 17:42:57'),
-(4, 5, '24-January-2024', 'completada', '2', '832.00', '124.80', 'EPOS80687971', '956.80', 'Efectivo', '900', '56', '2024-01-24 16:55:25', '2024-02-02 14:59:08'),
-(7, 6, '24/enero/2024', 'completada', '1', '154.00', '23.10', 'EPOS49528532', '177.10', 'Efectivo', '100', '77', '2024-01-24 19:25:33', '2024-01-25 00:02:13'),
+(4, 5, '24-January-2024', 'completada', '2', '832.00', '124.80', 'EPOS80687971', '956.80', 'Efectivo', '906', '50', '2024-01-24 16:55:25', '2024-02-06 05:00:59'),
+(7, 6, '24/enero/2024', 'completada', '1', '154.00', '23.10', 'EPOS49528532', '177.10', 'Efectivo', '150', '27', '2024-01-24 19:25:33', '2024-02-06 05:00:46'),
 (8, 6, '24/enero/2024', 'completada', '2', '136.00', '20.40', 'EPOS34701562', '156.40', 'Efectivo', '156.40', '0', '2024-01-25 03:45:48', '2024-01-25 03:46:21'),
 (9, 7, '25/enero/2024', 'pendiente', '2', '320.00', '48.00', 'EPOS76529036', '368.00', 'Efectivo', '368', '0', '2024-01-25 16:01:44', NULL),
 (10, 4, '25/enero/2024', 'pendiente', '1', '119.00', '17.85', 'EPOS37635913', '136.85', 'Efectivo', '136.85', '0', '2024-01-25 16:44:09', NULL),
-(11, 1, '25/enero/2024', 'completada', '1', '220.00', '33.00', 'EPOS10253654', '253.00', 'Efectivo', '253.00', '0', '2024-01-25 16:45:19', '2024-01-25 16:45:47');
+(11, 1, '25/enero/2024', 'completada', '1', '220.00', '33.00', 'EPOS10253654', '253.00', 'Efectivo', '253.00', '0', '2024-01-25 16:45:19', '2024-01-25 16:45:47'),
+(12, 12, '5/febrero/2024', 'pendiente', '2', '900.00', '135.00', 'EPOS51713125', '1035.00', 'Efectivo', '1031', '4', '2024-02-06 02:28:56', '2024-02-06 04:58:06'),
+(13, 5, '6/febrero/2024', 'completada', '4', '594.00', '89.10', 'EPOS92398222', '683.10', 'Efectivo', '683.10', '0', '2024-02-06 14:38:00', '2024-02-06 14:38:10');
 
 -- --------------------------------------------------------
 
@@ -442,7 +444,12 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `quantity`, `unit_c
 (19, 9, 23, '1', '121', '139.15', NULL, NULL),
 (20, 9, 18, '1', '199', '228.85', NULL, NULL),
 (21, 10, 19, '1', '119', '136.85', NULL, NULL),
-(22, 11, 21, '1', '220', '253.00', NULL, NULL);
+(22, 11, 21, '1', '220', '253.00', NULL, NULL),
+(23, 12, 17, '1', '779', '895.85', NULL, NULL),
+(24, 12, 23, '1', '121', '139.15', NULL, NULL),
+(25, 13, 23, '1', '121', '139.15', NULL, NULL),
+(26, 13, 20, '1', '75', '86.25', NULL, NULL),
+(27, 13, 18, '2', '199', '457.70', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -562,7 +569,8 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `created_at
 (58, 'salario.editar', 'web', 'salario', '2024-02-03 23:17:20', '2024-02-03 23:17:20'),
 (59, 'salario.delete', 'web', 'salario', '2024-02-03 23:26:20', '2024-02-03 23:26:20'),
 (60, 'salario.pagar.ahora', 'web', 'salario', '2024-02-04 01:46:55', '2024-02-04 01:46:55'),
-(61, 'salario.historial', 'web', 'salario', '2024-02-04 01:51:07', '2024-02-04 01:51:07');
+(61, 'salario.historial', 'web', 'salario', '2024-02-04 01:51:07', '2024-02-04 01:51:07'),
+(62, 'respaldo.menu', 'web', 'respaldo', '2024-02-05 15:06:38', '2024-02-05 15:06:38');
 
 -- --------------------------------------------------------
 
@@ -625,12 +633,12 @@ INSERT INTO `products` (`id`, `product_name`, `category_id`, `supplier_id`, `pro
 (15, 'Aceite puro de soya Nutrioli 946 ml - 45', 9, 3, 'CP240013', 'B2', 'upload/product/1788833843720685.png', '10', '2024-01-02', '2025-06-18', '40', '45', '2024-01-22 23:08:13', NULL),
 (16, 'Aderezo para ensaladas Clemente Jacques estilo ranch 473 g - 53', 9, 3, 'CP240014', 'C1', 'upload/product/1788833934955043.png', '9', '2024-01-01', '2026-06-22', '45', '53', '2024-01-22 23:09:40', '2024-02-02 14:59:08'),
 (17, 'Tequila Don Julio 70 Cristalino 700 ml - 779', 8, 4, 'CP240015', 'D1', 'upload/product/1788834035270025.png', '9', '2023-12-14', '2027-01-13', '650', '779', '2024-01-25 05:26:06', '2024-02-02 14:59:08'),
-(18, 'Molida de res premium 95_5 por kilo - 199 por Kg', 3, 3, 'CP240016', 'A1', 'upload/product/1788834122421659.png', '8', '2024-01-02', '2024-01-31', '180', '199', '2024-01-22 23:12:39', '2024-01-26 17:42:57'),
+(18, 'Molida de res premium 95_5 por kilo - 199 por Kg', 3, 3, 'CP240016', 'A1', 'upload/product/1788834122421659.png', '6', '2024-01-02', '2024-01-31', '180', '199', '2024-01-22 23:12:39', '2024-02-06 14:38:10'),
 (19, 'Pechuga de pollo con hueso y sin piel 800 g aprox - 119 por kg', 3, 3, 'CP240017', 'A1', 'upload/product/1788834219183173.png', '9', '2024-01-01', '2024-01-31', '100', '119', '2024-01-22 23:14:11', '2024-01-26 17:42:57'),
-(20, 'Yoghurt griego Oikos natural 900 g - 75', 6, 3, 'CP240018', 'A1', 'upload/product/1788834628150074.png', '9', '2024-01-01', '2024-01-17', '70', '75', '2024-01-22 23:20:41', '2024-01-26 17:42:57'),
+(20, 'Yoghurt griego Oikos natural 900 g - 75', 6, 3, 'CP240018', 'A1', 'upload/product/1788834628150074.png', '8', '2024-01-01', '2024-01-17', '70', '75', '2024-01-22 23:20:41', '2024-02-06 14:38:10'),
 (21, 'Alitas de pollo Bachoco Picositas sabor tocino limón picante 700 g - 220', 7, 3, 'CP240019', 'D1', 'upload/product/1788834759979205.png', '8', '2024-04-24', '2024-04-24', '180', '220', '2024-01-22 23:22:47', '2024-01-26 17:42:57'),
 (22, 'Paleta Helada Holanda Magnum mini almendras 6 pzas 55 ml c_u - 154', 7, 3, 'CP240020', 'B2', 'upload/product/1788834844836877.png', '10', '2024-01-01', '2024-05-15', '120', '154', '2024-01-22 23:24:07', NULL),
-(23, 'Hamburguesa de pollo Pilgrim\'s de pechuga de pollo 700 g - 121', 7, 3, 'CP240021', 'A1', 'upload/product/1788834934067307.png', '10', '2024-01-01', '2024-01-31', '105', '121', '2024-01-22 23:25:33', NULL);
+(23, 'Hamburguesa de pollo Pilgrim\'s de pechuga de pollo 700 g - 121', 7, 3, 'CP240021', 'A1', 'upload/product/1788834934067307.png', '9', '2024-01-01', '2024-01-31', '105', '121', '2024-01-22 23:25:33', '2024-02-06 14:38:10');
 
 -- --------------------------------------------------------
 
@@ -693,9 +701,11 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (8, 7),
 (9, 1),
 (9, 2),
+(9, 4),
 (9, 7),
 (10, 1),
 (10, 2),
+(10, 4),
 (10, 7),
 (11, 1),
 (11, 2),
@@ -761,7 +771,8 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (58, 1),
 (59, 1),
 (60, 1),
-(61, 1);
+(61, 1),
+(62, 1);
 
 -- --------------------------------------------------------
 
@@ -1054,13 +1065,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `pay_salaries`
@@ -1072,7 +1083,7 @@ ALTER TABLE `pay_salaries`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

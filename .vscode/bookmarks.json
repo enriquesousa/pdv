@@ -254,6 +254,16 @@
 					"label": "pasar parametros con ajax regresamos resultados en json"
 				}
 			]
+		},
+		{
+			"path": "resources/views/index_control.blade.php",
+			"bookmarks": [
+				{
+					"line": 3,
+					"column": 4,
+					"label": "traer contenido a blade vista para mostrar"
+				}
+			]
 		}
 	]
 }
