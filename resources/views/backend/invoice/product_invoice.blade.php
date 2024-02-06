@@ -100,11 +100,10 @@
                                 {{-- Columna 2: Fecha, Estatus y Numero de Orden --}}
                                 <div class="col-md-3">
                                     <div class="mt-3 float-end">
-                                        <p><strong>Fecha : </strong> <span class="float-end"> &nbsp;&nbsp;&nbsp;&nbsp; Jan
-                                                17, 2016</span></p>
+                                        <p><strong>Fecha : </strong> <span class="float-end"> &nbsp;&nbsp;&nbsp;&nbsp; {{ date('d/m/Y') }}</span></p>
                                         <p><strong>Estatus : </strong> <span class="float-end"><span
-                                                    class="badge bg-danger">Unpaid</span></span></p>
-                                        <p><strong>No. : </strong> <span class="float-end">000028 </span></p>
+                                                    class="badge bg-danger">Pendiente</span></span></p>
+                                        <p><strong>No. : </strong> <span class="float-end">Pendiente</span></p>
                                     </div>
                                 </div><!-- end col -->
 
@@ -258,10 +257,10 @@
 
 
                         {{-- Pendiente --}}
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="due" class="form-label">Pendiente</label>
                             <input class="form-control" type="number" name="due" placeholder="Pendiente" value="0">
-                        </div>
+                        </div> --}}
 
                         {{-- Pasar los demás datos de la orden --}}
                         <input type="hidden" name="customer_id" value="{{ $customer->id }}">

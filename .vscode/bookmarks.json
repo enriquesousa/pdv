@@ -94,7 +94,7 @@
 					"label": "string trim"
 				},
 				{
-					"line": 87,
+					"line": 101,
 					"column": 49,
 					"label": "grid de 4 elementos row"
 				}
@@ -119,7 +119,7 @@
 					"label": "dividir contenido en columnas bootstrap"
 				},
 				{
-					"line": 251,
+					"line": 250,
 					"column": 94,
 					"label": "en select usar selected=\"selected\" para default value"
 				}

@@ -26,7 +26,7 @@
             <div class="row">
 
                 {{-- 1er Columna --}}
-                <div class="col-lg-6 col-xl-6">
+                <div class="col-lg-7 col-xl-7">
 
                     {{-- Tabla de PDV, Resumen de la Orden y Seleccionar Cliente --}}
                     <div class="card text-center">
@@ -38,11 +38,11 @@
 
                                     <thead>
                                         <tr>
-                                            <th>Nombre</th>
-                                            <th>Cantidad</th>
-                                            <th>Precio</th>
-                                            <th>Subtotal</th>
-                                            <th>Acción</th>
+                                            <th style="width:45%">Producto</th>
+                                            <th style="width:20%">Cantidad</th>
+                                            <th style="width:15%">Precio</th>
+                                            <th style="width:15%">Subtotal</th>
+                                            <th style="width:5%"></th>
                                         </tr>
                                     </thead>
 
@@ -67,13 +67,27 @@
                                                                 class="fas fa-sync-alt"></i></button>
                                                     </form>
                                                 </td>
-                                                <td>$ {{ $item->price }}</td>
-                                                <td>$ {{ $item->price * $item->qty }}</td>
+
+                                                <td>
+                                                    @php
+                                                        $floatVar =  floatval($item->price); 
+                                                    @endphp
+                                                    $ @convert($floatVar)
+                                                </td>
+
+                                                <td>
+                                                    @php
+                                                        $floatVar =  floatval($item->price * $item->qty); 
+                                                    @endphp
+                                                    $ @convert($floatVar)
+                                                </td>
+
                                                 <td>
                                                     <a href="{{ url('/cart-remove/' . $item->rowId) }}">
                                                         <i class="fas fa-trash-alt" style="color: red"></i>
                                                     </a>
                                                 </td>
+
                                             </tr>
                                         </tbody>
                                     @endforeach
@@ -166,7 +180,7 @@
                 </div> <!-- end col-->
 
                 {{-- 2da Columna --}}
-                <div class="col-lg-6 col-xl-6">
+                <div class="col-lg-5 col-xl-5">
                     <div class="card">
 
                         <div class="card-body">
@@ -180,7 +194,7 @@
                                         <tr>
                                             {{-- <th>Serie</th> --}}
                                             <th>Imagen</th>
-                                            <th>Nombre</th>
+                                            <th>Producto</th>
                                             <th></th>
                                         </tr>
                                     </thead>

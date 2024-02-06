@@ -20,6 +20,9 @@ class OrderController extends Controller
     // FinalInvoice
     public function FinalInvoice(Request $request)
     {
+        $rTotal = $request->total;
+        $rPay = $request->pay;
+        $mTotal = $rTotal - $rPay;
 
         $data = array();
 
@@ -34,7 +37,7 @@ class OrderController extends Controller
         $data['total'] = $request->total;
         $data['payment_status'] = $request->payment_status;
         $data['pay'] = $request->pay;
-        $data['due'] = $request->due;
+        $data['due'] = $mTotal;
         $data['created_at'] = Carbon::now();
 
         // Insert Data a la tabla 'orders'
