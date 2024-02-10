@@ -5,22 +5,46 @@
     @php
 
         // date, tiene que ser el mismo formato que definimos en resources/views/backend/invoice/product_invoice.blade.php
-        $date = \Carbon\Carbon::parse(date('Y-m-d'))->locale('es')->isoFormat('D[/]MMMM[/]YYYY');
+        $date = \Carbon\Carbon::parse(date('Y-m-d'))
+            ->locale('es')
+            ->isoFormat('D[/]MMMM[/]YYYY');
+        $mes = \Carbon\Carbon::parse(date('Y-m-d'))
+            ->locale('es')
+            ->isoFormat('MMMM');
+        $mes_año = \Carbon\Carbon::parse(date('Y-m-d'))
+            ->locale('es')
+            ->isoFormat('MMMM[/]YYYY');
+
 
         // Total de ventas de hoy
-        $total_hoy = App\Models\Order::where('order_date', $date)->sum('total');
+        $total_ventas_hoy = App\Models\Order::where('order_date', $date)->sum('total');
 
         // Total de entradas de todas las ventas 'orders' table field 'pay'
-        $total_ventas = App\Models\Order::sum('pay');
+        $total_ventas_facturadas = App\Models\Order::sum('total');
+
+        // Total de entradas de todas las ventas 'orders' table field 'pay'
+        $total_ventas_entradas = App\Models\Order::sum('pay');
 
         // Total de saldos de todas las ventas 'orders' table field 'due'
         $total_due = App\Models\Order::sum('due');
+
+
+        // Total de ventas facturadas del mes Table:'orders' field:'total'
+        $total_facturadas_mes = App\Models\Order::where('order_date', 'LIKE', '%' . $mes_año . '%')->sum('total');
+
+        // Total de ventas facturadas del mes Table:'orders' field:'total'
+        $total_entradas_mes = App\Models\Order::where('order_date', 'LIKE', '%' . $mes_año . '%')->sum('pay');
+
+        // Total de ventas facturadas del mes Table:'orders' field:'total'
+        $total_pendientes_mes = App\Models\Order::where('order_date', 'LIKE', '%' . $mes_año . '%')->sum('due');
+
 
         // Total de ordenes (Ventas) completadas - table 'orders' field 'order_status'
         $ordenes_completadas = App\Models\Order::where('order_status', 'completada')->count();
 
         // Total de ordenes (Ventas) pendientes - table 'orders' field 'order_status'
         $ordenes_pendientes = App\Models\Order::where('order_status', 'pendiente')->count();
+
 
     @endphp
 
@@ -55,32 +79,11 @@
             </div>
             <!-- end page title -->
 
-            {{-- 4 Cards de Quick Info --}}
+
+            {{-- 4 Cards: Ventas Facturadas, Entradas, Saldos, Pendientes  --}}
             <div class="row">
 
-                {{-- Card 1 --}}
-                <div class="col-md-6 col-xl-3">
-                    <div class="widget-rounded-circle card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="avatar-lg rounded-circle bg-primary border-primary border shadow">
-                                        <i class="fe-heart font-22 avatar-title text-white"></i>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="text-end">
-                                        <h3 class="text-dark mt-1">$ <span data-plugin="counterup">@convert($total_hoy)</span>
-                                        </h3>
-                                        <p class="text-muted mb-1 text-truncate">Total Ventas Hoy</p>
-                                    </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div>
-                    </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col-->
-
-                {{-- Card 2 --}}
+                {{-- Card 1 - Total de Ventas Facturadas --}}
                 <div class="col-md-6 col-xl-3">
                     <div class="widget-rounded-circle card">
                         <div class="card-body">
@@ -92,8 +95,10 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="text-end">
-                                        <h3 class="text-dark mt-1"><span data-plugin="counterup">127</span></h3>
-                                        <p class="text-muted mb-1 text-truncate">Today's Sales</p>
+                                        <h3 class="text-dark mt-1">$ <span data-plugin="counterup">@convert($total_ventas_facturadas)</span>
+                                        </h3>
+                                        <p class="text-muted mb-1 text-truncate" title="Total de Ventas Facturadas">Total
+                                            Ventas Facturadas</p>
                                     </div>
                                 </div>
                             </div> <!-- end row-->
@@ -101,20 +106,45 @@
                     </div> <!-- end widget-rounded-circle-->
                 </div> <!-- end col-->
 
-                {{-- Card 3 --}}
+                {{-- Card 2 - Total de Ventas Entradas --}}
                 <div class="col-md-6 col-xl-3">
                     <div class="widget-rounded-circle card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="avatar-lg rounded-circle bg-info border-info border shadow">
+                                    <div class="avatar-lg rounded-circle bg-warning border-danger border shadow">
+                                        <i class="fe-check-square font-22 avatar-title text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+                                        <h3 class="text-dark mt-1">$ <span data-plugin="counterup">@convert($total_ventas_entradas)</span>
+                                        </h3>
+                                        <p class="text-muted mb-1 text-truncate" title="Total de Entradas">Total
+                                            de Entradas</p>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+
+                {{-- Card 3 - Total de Saldos Pendientes --}}
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget-rounded-circle card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-lg rounded-circle bg-danger border-danger border shadow">
                                         <i class="fe-bar-chart-line- font-22 avatar-title text-white"></i>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="text-end">
-                                        <h3 class="text-dark mt-1"><span data-plugin="counterup">0.58</span>%</h3>
-                                        <p class="text-muted mb-1 text-truncate">Conversion</p>
+                                        <h3 class="text-dark mt-1">$ <span data-plugin="counterup">@convert($total_due)</span>
+                                        </h3>
+                                        <p class="text-muted mb-1 text-truncate" title="Total Saldos Pendientes">Total
+                                            Saldos Pendientes</p>
                                     </div>
                                 </div>
                             </div> <!-- end row-->
@@ -122,20 +152,22 @@
                     </div> <!-- end widget-rounded-circle-->
                 </div> <!-- end col-->
 
-                {{-- Card 4 --}}
+                {{-- Card 4 -  Total de Ventas Hoy --}}
                 <div class="col-md-6 col-xl-3">
                     <div class="widget-rounded-circle card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="avatar-lg rounded-circle bg-warning border-warning border shadow">
-                                        <i class="fe-eye font-22 avatar-title text-white"></i>
+                                    <div class="avatar-lg rounded-circle bg-primary border-primary border shadow">
+                                        <i class="fe-heart font-22 avatar-title text-white"></i>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="text-end">
-                                        <h3 class="text-dark mt-1"><span data-plugin="counterup">78.41</span>k</h3>
-                                        <p class="text-muted mb-1 text-truncate">Today's Visits</p>
+                                        <h3 class="text-dark mt-1">$ <span data-plugin="counterup">@convert($total_ventas_hoy)</span>
+                                        </h3>
+                                        <p class="text-muted mb-1 text-truncate" title="Total Ventas Hoy">Total Ventas Hoy
+                                        </p>
                                     </div>
                                 </div>
                             </div> <!-- end row-->
@@ -145,6 +177,111 @@
 
             </div>
             <!-- end row-->
+
+            {{-- 4 Cards: Facturadas del Mes, Entradas del Mes, Ordenes Completadas, Ordenes Pendientes --}}
+            <div class="row">
+
+                {{-- Card 1 - Total de Ventas Facturadas del Mes --}}
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget-rounded-circle card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-lg rounded-circle bg-success border-success border shadow">
+                                        <i class="fe-shopping-cart font-22 avatar-title text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+                                        <h3 class="text-dark mt-1">$ <span
+                                                data-plugin="counterup">@convert($total_facturadas_mes)</span>
+                                        </h3>
+                                        <p class="text-muted mb-1 text-truncate" title="Total Ventas Facturadas del Mes">Facturadas
+                                            del Mes</p>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+
+                {{-- Card 2 - Total de Ventas Entradas del Mes --}}
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget-rounded-circle card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-lg rounded-circle bg-warning border-danger border shadow">
+                                        <i class="fe-check-square font-22 avatar-title text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+                                        <h3 class="text-dark mt-1">$ <span
+                                                data-plugin="counterup">@convert($total_entradas_mes)</span>
+                                        </h3>
+                                        <p class="text-muted mb-1 text-truncate" title="Total Entradas del Mes">Entradas
+                                            del Mes</p>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+
+                {{-- Card 3 - Total de Saldos Pendientes del Mes --}}
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget-rounded-circle card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-lg rounded-circle bg-danger border-danger border shadow">
+                                        <i class="fe-bar-chart-line- font-22 avatar-title text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+                                        <h3 class="text-dark mt-1">$ <span data-plugin="counterup">@convert($total_pendientes_mes)</span>
+                                        </h3>
+                                        <p class="text-muted mb-1 text-truncate" title="Total Saldos Pendientes del Mes">Pendientes</p>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+
+                {{-- Card 4 - Total de Ordenes Completadas y Pendientes --}}
+                <div class="col-md-6 col-xl-3">
+                    <div class="widget-rounded-circle card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-lg rounded-circle bg-info border-success border shadow">
+                                        <i class="fe-eye font-22 avatar-title text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+
+                                        <div class="row">
+                                            <p class="text-muted" title="Total Ordenes Completadas">Completadas: <strong>{{ $ordenes_completadas }}</strong></p>
+                                        </div>
+
+                                        <div class="row">
+                                            <p class="text-muted" title="Total Ordenes Pendientes">Pendientes: <strong>{{ $ordenes_pendientes }}</strong></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div>
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+
+            </div>
+            <!-- end row-->
+
 
             <div class="row">
                 <div class="col-lg-4">
@@ -602,5 +739,4 @@
         </div> <!-- container -->
 
     </div> <!-- content -->
-
 @endsection
