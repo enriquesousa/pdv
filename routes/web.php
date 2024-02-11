@@ -58,6 +58,7 @@ require __DIR__.'/auth.php';
 Route::get('/admin/logout', [AdminController::class, 'AdminDestroy'])->name('admin.logout');
 Route::get('/logout', [AdminController::class, 'AdminLogoutPage'])->name('admin.logout.page');
 Route::get('/page/ayuda', [AdminController::class, 'PageAyuda'])->name('page.ayuda');
+Route::get('/page/olvide/password', [AdminController::class, 'PageOlvidePassword'])->name('page.olvide.password');
 
 Route::middleware(['auth'])->group(function () {
 

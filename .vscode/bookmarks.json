@@ -174,22 +174,22 @@
 			"path": "app/Http/Controllers/AdminController.php",
 			"bookmarks": [
 				{
-					"line": 149,
+					"line": 153,
 					"column": 47,
 					"label": "Asegurarnos que el value del select role venga con nombre y no id, asi me funciona a mi."
 				},
 				{
-					"line": 186,
+					"line": 190,
 					"column": 29,
 					"label": "spatie assignRole"
 				},
 				{
-					"line": 222,
+					"line": 226,
 					"column": 97,
 					"label": "path storage_path database backup"
 				},
 				{
-					"line": 247,
+					"line": 251,
 					"column": 52,
 					"label": "eliminar archivo"
 				}

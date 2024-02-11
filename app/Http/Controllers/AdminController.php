@@ -117,6 +117,10 @@ class AdminController extends Controller
         return view('admin.page_ayuda');
     }
 
+    // PageOlvidePassword
+    public function PageOlvidePassword(){
+        return view('auth.forgot-password');
+    }
 
     /**********************************
      * Admin Configuración de Usuarios
