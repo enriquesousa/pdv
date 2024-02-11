@@ -55,6 +55,22 @@
                                 </div>
                             @endif
 
+                            @if (session('message'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ session('message') }}
+                                </div>
+                            @endif
+
+                            {{-- Errores de Validación --}}
+                            @if (count($errors) > 0)
+                                @foreach ($errors->all() as $message)
+                                    <div class="alert alert-danger display-hide">
+                                        <i class="fe-alert-circle"></i>
+                                        <span>{{ $message }}</span>
+                                    </div>
+                                @endforeach
+                            @endif
+
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
 
