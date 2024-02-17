@@ -229,6 +229,16 @@
 					"label": "unlink para borrar la imagen anterior"
 				}
 			]
+		},
+		{
+			"path": "resources/views/admin_dashboard.blade.php",
+			"bookmarks": [
+				{
+					"line": 563,
+					"column": 4,
+					"label": "sweetalert2"
+				}
+			]
 		}
 	]
 }
