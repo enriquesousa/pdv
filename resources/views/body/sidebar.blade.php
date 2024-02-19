@@ -64,8 +64,8 @@
 
             <ul id="side-menu">
 
-                {{-- * NAVEGACIÓN --}}
-                {{-- <li class="menu-title"><span class="badge bg-primary">NAVEGACIÓN</span></li> --}}
+                {{-- * PANELES --}}
+                <li class="menu-title"><span class="badge bg-primary">PANELES</span></li>
 
                 {{-- PANEL INICIAL --}}
                 <li>
@@ -76,7 +76,7 @@
                 </li>
 
                 {{-- PANEL DE CONTROL --}}
-                @if (Auth::user()->can('panel.menu'))
+                @if (Auth::user()->can('panel.control'))
                     <li>
                         <a href="{{ route('dashboard_control') }}">
                             <i class="mdi mdi-view-dashboard-outline"></i>
@@ -86,7 +86,7 @@
                 @endif
 
                 {{-- PDV --}}
-                @if (Auth::user()->can('pdv.menu'))
+                @if (Auth::user()->can('panel.pdv'))
                     <li>
                         <a href="{{ route('pos') }}">
                             <span class="badge bg-pink float-end">{{ Cart::count() }}</span>

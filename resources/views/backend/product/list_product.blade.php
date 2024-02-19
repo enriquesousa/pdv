@@ -47,13 +47,15 @@
                             <thead>
                                 <tr>
                                     {{-- <th style="width: 5%">Serie</th> --}}
-                                    <th style="width: 10%">Imagen</th>
+                                    {{-- <th style="width: 5%">Serie</th> --}}
+                                    <th style="width: 5%">Imagen</th>
                                     <th style="width: 25%">Nombre</th>
                                     <th style="width: 10%">Categoría</th>
-                                    <th style="width: 10%">Almacén</th>
+                                    <th style="width: 5%">Almacén</th>
                                     <th style="width: 10%">Proveedor</th>
                                     <th style="width: 10%">Código</th>
                                     <th style="width: 10%">Precio</th>
+                                    <th style="width: 10%">Caducidad</th>
                                     <th style="width: 15%">Acción</th>
                                 </tr>
                             </thead>
@@ -70,11 +72,22 @@
                                         <td>{{ $item->product_store }}</td>
                                         <td>{{ $item->supplier->name }}</td>
                                         <td>{{ $item->product_code }}</td>
+
                                         <td>
                                             @php
                                                 $floatVar =  floatval($item->selling_price); 
                                             @endphp
                                             $ @convert($floatVar)
+                                        </td>
+
+                                        {{-- Si la fecha de expiración es mayor o igual a la fecha actual --}}
+                                        <td>
+                                            @if ($item->expire_date >= \Carbon\Carbon::now()->format('Y-m-d'))
+                                                <span class="badge bg-success">Valido</span>
+                                            @else
+                                                <span class="badge bg-danger">Invalido</span>
+
+                                            @endif
                                         </td>
 
                                        

@@ -8,15 +8,22 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Customer;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Carbon;
 
 class PosController extends Controller
 {
     
     // Pos
     public function Pos(){
-        $products = Product::latest()->get();
+
+        // Format para que solo compare la fecha y no la hora
+        $todayDate = Carbon::now()->format('Y-m-d');
+
+	    $products = Product::where('expire_date', '>=', $todayDate)->latest()->get();
+        // $products = Product::latest()->get();
         $customers = Customer::latest()->get();
         return view('backend.pos.pos_page', compact('products', 'customers'));
+        
     }
 
     // AddCart

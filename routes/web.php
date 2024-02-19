@@ -37,9 +37,17 @@ Route::get('/dashboard', function () {
     return view('index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard-control', function () {
-    return view('index_control');
-})->middleware(['auth', 'verified'])->name('dashboard_control');
+
+// PANEL DE CONTROL
+Route::group(['middleware' => ['permission:panel.control']], function () {
+
+    Route::get('/dashboard-control', function () {
+        return view('index_control');
+    })->middleware(['auth', 'verified'])->name('dashboard_control');    
+
+});
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -181,7 +189,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     // POS - PDV
-    Route::group(['middleware' => ['permission:pdv.menu']], function () {
+    Route::group(['middleware' => ['permission:panel.pdv']], function () {
 
         Route::controller(PosController::class)->group( function () {
             Route::get('/pos', 'Pos')->name('pos');
