@@ -47,13 +47,13 @@
                                 </div>
 
                                 <div class="col-2">
-                                    <p class="text-white-50">Ir a mi Perfil</p>
-                                    <a href="{{ route('admin.profile') }}" class="btn btn-success">{{ Auth::user()->name }}</a>
+                                    <p class="text-white-50"> Ir a mi Perfil</p>
+                                    <a href="{{ route('admin.profile') }}" class="btn btn-success"><i class="fas fa-user"></i>&nbsp;&nbsp;{{ Auth::user()->name }}</a>
                                 </div>
 
                                 <div class="col-2">
-                                    <p class="text-white-50">Ir a Punto de Venta</p>
-                                    <a href="{{ route('pos') }}" class="btn btn-success">PDV</a>
+                                    <p class="text-white-50"><i class="ri-money-dollar-circle-fill"></i> Ir a Punto de Venta</p>
+                                    <a href="{{ route('pos') }}" class="btn btn-success"><i class="fas fa-cash-register"></i>&nbsp;&nbsp;PDV</a>
                                 </div>
 
                                 <div class="col-2">
