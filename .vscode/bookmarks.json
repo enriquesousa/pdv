@@ -179,22 +179,22 @@
 			"path": "app/Http/Controllers/AdminController.php",
 			"bookmarks": [
 				{
-					"line": 153,
+					"line": 156,
 					"column": 47,
 					"label": "Asegurarnos que el value del select role venga con nombre y no id, asi me funciona a mi."
 				},
 				{
-					"line": 190,
+					"line": 193,
 					"column": 29,
 					"label": "spatie assignRole"
 				},
 				{
-					"line": 226,
+					"line": 229,
 					"column": 97,
 					"label": "path storage_path database backup"
 				},
 				{
-					"line": 251,
+					"line": 254,
 					"column": 52,
 					"label": "eliminar archivo"
 				}
@@ -267,6 +267,16 @@
 					"line": 50,
 					"column": 4,
 					"label": "traer contenido a blade vista para mostrar"
+				}
+			]
+		},
+		{
+			"path": "resources/views/admin/admin_profile_view.blade.php",
+			"bookmarks": [
+				{
+					"line": 47,
+					"column": 28,
+					"label": "rol de usuario"
 				}
 			]
 		}

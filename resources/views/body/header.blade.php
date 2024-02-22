@@ -312,12 +312,13 @@
 
                 {{-- profile-dropdown --}}
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
-                    <!-- item-->
+
+                    <!-- Bienvenido -->
                     <div class="dropdown-header noti-title">
                         <h6 class="text-overflow m-0">Bienvenido !</h6>
                     </div>
 
-                    <!-- item-->
+                    <!-- Mi Perfil -->
                     <a href="{{ route('admin.profile') }}" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
                         <span>Mi Perfil</span>
