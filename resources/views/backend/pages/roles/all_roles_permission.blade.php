@@ -15,12 +15,15 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Roles y Permisos</a></li>
-                            {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Lista</a></li> --}}
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Permisos</a></li>
                             <li class="breadcrumb-item active">Lista</li>
                         </ol>
                     </div>
 
-                    <h4 class="page-title">Roles y Permisos</h4>
+                    <h4 class="page-title">
+                        <span><img src="{{ asset('backend/assets/icons/lock.svg') }}" alt="" height="40"></span>
+                        Lista de Roles y Permisos
+                    </h4>
 
                 </div>
             </div>
@@ -44,24 +47,21 @@
                             <div class="col-sm-4">
                                 <div class="text-sm-middle">
 
-                                    <button type="button" class="btn btn-info mb-2 me-1">
+                                    {{-- Lista Roles --}}
+                                    <a  href="{{ route('all.roles') }}" 
+                                        class="btn btn-info mb-2">
                                         <i class="mdi mdi-format-list-bulleted">
-                                            Lista
+                                            Lista Roles
                                         </i>
-                                    </button>
+                                    </a>
 
-                                    <button type="button" class="btn btn-info mb-2 me-1">
+                                    {{-- Lista Permisos --}}
+                                    <a  href="{{ route('all.permission') }}" 
+                                        class="btn btn-info mb-2">
                                         <i class="mdi mdi-format-list-bulleted">
-                                            Lista
+                                            Lista Permisos
                                         </i>
-                                    </button>
-
-                                    <button type="button" class="btn btn-info mb-2 me-1">
-                                        <i class="mdi mdi-format-list-bulleted">
-                                            Lista
-                                        </i>
-                                    </button>
-                                    
+                                    </a>
                                     
                                 </div>
                             </div>
@@ -81,6 +81,7 @@
 
                         {{-- <table id="basic-datatable" class="table dt-responsive nowrap w-100"> --}}
                         <table id="basic-datatable" class="table dt-responsive wrap w-100">
+
                             <thead>
                                 <tr>
                                     <th width="5%">Serie</th>
@@ -112,11 +113,8 @@
                                         {{-- Acción --}}
                                         <td>
 
-                                            {{-- <a href="{{ route('edit.admin.roles', $item->id) }}" class="btn btn-blue rounded-pill waves-effect waves-light">Editar</a>
-                                            <a href="{{ route('delete.admin.roles', $item->id) }}" id="delete" class="btn btn-danger rounded-pill waves-effect waves-light">Eliminar</a> --}}
-
                                             <a href="{{ route('edit.admin.roles', $item->id) }}"
-                                                class="btn btn-info" title="Editar Permisos">
+                                                class="btn btn-success" title="Editar Permisos">
                                                 <i class="fas fa-edit"></i>
                                             </a>
 
@@ -132,6 +130,7 @@
 
 
                             </tbody>
+
                         </table>
 
                     </div> <!-- end card body-->

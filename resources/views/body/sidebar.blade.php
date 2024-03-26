@@ -64,8 +64,12 @@
 
             <ul id="side-menu">
 
+
                 {{-- * PANELES --}}
-                <li class="menu-title"><span class="badge bg-primary">PANELES</span></li>
+                <li class="menu-title">
+                    <img src="{{ asset('backend/assets/icons/paneles.svg') }}" alt="" height="20">
+                    <span class="badge bg-primary">PANELES</span>
+                </li>
 
                 {{-- PANEL INICIAL --}}
                 <li>
@@ -99,7 +103,10 @@
 
 
                 {{-- * ADMINISTRACIÓN --}}
-                <li class="menu-title mt-2"><span class="badge bg-primary">ADMINISTRACIÓN</span></li>
+                <li class="menu-title mt-2">
+                    <img src="{{ asset('backend/assets/icons/administracion.svg') }}" alt="" height="20">
+                    <span class="badge bg-primary">ADMINISTRACIÓN</span>
+                </li>
 
                 {{-- Avances de Salario --}}
                 @if (Auth::user()->can('salario.menu'))
@@ -371,7 +378,10 @@
                 {{-- * MANEJO DE DINERO --}}
                 @if (Auth::user()->can('gastos.menu'))
 
-                    <li class="menu-title mt-2"><span class="badge bg-primary">MANEJO DE DINERO</span></li>
+                    <li class="menu-title mt-2">
+                        <img src="{{ asset('backend/assets/icons/dinero.svg') }}" alt="" height="20">
+                        <span class="badge bg-primary">MANEJO DE DINERO</span>
+                    </li>
 
                     {{-- Gastos --}}
                     <li>
@@ -409,7 +419,10 @@
                 @endif
 
                 {{-- * Data: Empleados, Clientes, Proveedores, Datos --}}
-                <li class="menu-title mt-2"><span class="badge bg-primary">DATA</span></li>
+                <li class="menu-title mt-2">
+                    <img src="{{ asset('backend/assets/icons/config.svg') }}" alt="" height="20">
+                    <span class="badge bg-primary">DATA</span>
+                </li>
 
                 {{-- Control de Empleados --}}
                 @if (Auth::user()->can('empleado.menu'))
@@ -508,7 +521,10 @@
 
 
                 {{-- * Roles y Permisos --}}
-                <li class="menu-title mt-2"><span class="badge bg-primary">ROLES Y PERMISOS</span></li>
+                <li class="menu-title mt-2">
+                    <img src="{{ asset('backend/assets/icons/lock.svg') }}" alt="" height="20">
+                    <span class="badge bg-primary">ROLES Y PERMISOS</span>
+                </li>
 
                 {{-- Roles y Permisos --}}
                 @if (Auth::user()->can('permisos.menu'))

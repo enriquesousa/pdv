@@ -69,7 +69,7 @@
 			"path": "resources/views/backend/salary/all_advance_salary.blade.php",
 			"bookmarks": [
 				{
-					"line": 74,
+					"line": 114,
 					"column": 69,
 					"label": "money en blade"
 				}
@@ -129,7 +129,12 @@
 			"path": "resources/views/backend/pages/roles/add_roles_permission.blade.php",
 			"bookmarks": [
 				{
-					"line": 125,
+					"line": 5,
+					"column": 41,
+					"label": "Capitalizar la primer letra"
+				},
+				{
+					"line": 168,
 					"column": 47,
 					"label": "JS para seleccionar todos los checkbox"
 				}
@@ -169,7 +174,7 @@
 			"path": "resources/views/backend/pages/roles/all_roles_permission.blade.php",
 			"bookmarks": [
 				{
-					"line": 87,
+					"line": 88,
 					"column": 70,
 					"label": "ancho de columna en th tabla usar clase de tabla responsive y wrap"
 				}

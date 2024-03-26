@@ -19,16 +19,25 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
+
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Agregar Permiso</a></li> --}}
+                                <li class="breadcrumb-item"><a href="{{ route('all.roles.permission') }}">Roles y Permisos</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Asignar Roles</a></li>
+                                <li class="breadcrumb-item active">Lista</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Agregar Rol en Permisos</h4>
+
+                        <h4 class="page-title">
+                            <span><img src="{{ asset('backend/assets/icons/lock.svg') }}" alt="" height="40"></span>
+                            Asignar Permisos por Rol
+                        </h4>
+
                     </div>
                 </div>
-            </div>
-            <!-- end page title -->
+            </div>     
+            <!-- end page title --> 
+
 
             <div class="row">
                 <div class="col-lg-8 col-xl-12">
@@ -41,7 +50,41 @@
                                 <form id="myForm" method="post" action="{{ route('store.roles.permission') }}" enctype="multipart/form-data">
                                     @csrf
 
-                                    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i>Agregar Rol en Permisos</h5>
+                                    {{-- Botones --}}
+                                    <div class="row mb-2">
+
+                                        <div class="col-sm-4">
+                                            <div class="text-sm-start">
+                                                
+                                            </div>
+                                        </div>
+
+                                        {{-- Lista Roles y Permisos --}}
+                                        <div class="col-sm-4">
+                                            <div class="text-sm-middle">
+
+                                                <a  href="{{ route('all.roles.permission') }}" 
+                                                    class="btn btn-info mb-2">
+                                                    <i class="mdi mdi-format-list-bulleted">
+                                                        Lista Roles y Permisos
+                                                    </i>
+                                                </a>
+                                                
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="text-sm-end">
+                                                {{-- <a  href="{{ route('add.roles.permission') }}" 
+                                                    class="btn btn-primary mb-2">
+                                                    <i class="mdi mdi-plus-circle me-2">
+                                                        Asignar Roles y Permisos
+                                                    </i>
+                                                </a> --}}
+                                            </div>
+                                        </div>
+
+                                    </div>
 
                                     <div class="row">
 
