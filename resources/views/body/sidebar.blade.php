@@ -333,44 +333,7 @@
 
 
 
-                {{-- Admin Configuración de Usuarios --}}
-                @if (Auth::user()->can('usuarios.menu'))
-                    <li>
-                        <a href="#admin" data-bs-toggle="collapse">
-                            <i class="mdi mdi-account-settings-outline"></i>
-                            <span>Usuarios</span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <div class="collapse" id="admin">
-                            <ul class="nav-second-level">
-                                <li>
-                                    <a href="{{ route('all.admin') }}">Lista</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('add.admin') }}">Agregar</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                @endif
 
-                {{-- Respaldo Database --}}
-                @if (Auth::user()->can('respaldo.menu'))
-                    <li>
-                        <a href="#respaldo_menu" data-bs-toggle="collapse">
-                            <i class="mdi mdi-backup-restore"></i>
-                            <span>Respaldos</span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <div class="collapse" id="respaldo_menu">
-                            <ul class="nav-second-level">
-                                <li>
-                                    <a href="{{ route('database.backup') }}">Base de Datos</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                @endif
 
 
 
@@ -554,6 +517,44 @@
                     </li>
                 @endif
 
+                {{-- Admin Configuración de Usuarios --}}
+                @if (Auth::user()->can('usuarios.menu'))
+                    <li>
+                        <a href="#admin" data-bs-toggle="collapse">
+                            <i class="mdi mdi-account-settings-outline"></i>
+                            <span>Usuarios</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="admin">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ route('all.admin') }}">Lista</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('add.admin') }}">Agregar</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
+
+                {{-- Respaldo Database --}}
+                @if (Auth::user()->can('respaldo.menu'))
+                    <li>
+                        <a href="#respaldo_menu" data-bs-toggle="collapse">
+                            <i class="mdi mdi-backup-restore"></i>
+                            <span>Respaldos</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="respaldo_menu">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ route('database.backup') }}">Base de Datos</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
 
 
 
