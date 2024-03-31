@@ -279,7 +279,27 @@ Route::middleware(['auth'])->group(function () {
     
 });
 
+/*
+|--------------------------------------------------------------------------
+| Notas
+|--------------------------------------------------------------------------
+|
+| 
+| * Use gitKraken para reset branch y tener siempre la última versión en Master
 
+    *Reset*
+    1. Check out el branch (master) que queremos hacer un reset
+    2. Irnos al punto donde queremos hacer el reset.
+    3. Click derecho reset master to this commit (hard)
+
+    *Merge*
+    1. Check out el branch mas nuevo
+    2. Irnos al branch (master) donde queremos que quede el merge click derecho y merge in to Yoga por ejemplo.
+
+| * Use php artisan optimize:clear para limpiar el cache
+| 
+|
+*/
 
 
 
