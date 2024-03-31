@@ -69,7 +69,7 @@
 			"path": "resources/views/backend/salary/all_advance_salary.blade.php",
 			"bookmarks": [
 				{
-					"line": 74,
+					"line": 114,
 					"column": 69,
 					"label": "money en blade"
 				}
@@ -129,7 +129,12 @@
 			"path": "resources/views/backend/pages/roles/add_roles_permission.blade.php",
 			"bookmarks": [
 				{
-					"line": 125,
+					"line": 5,
+					"column": 41,
+					"label": "Capitalizar la primer letra"
+				},
+				{
+					"line": 168,
 					"column": 47,
 					"label": "JS para seleccionar todos los checkbox"
 				}
@@ -157,6 +162,11 @@
 					"line": 11,
 					"column": 24,
 					"label": "App favicon"
+				},
+				{
+					"line": 63,
+					"column": 50,
+					"label": "mostrar errores mesajes status en inicio de pagina login"
 				}
 			]
 		},
@@ -164,7 +174,7 @@
 			"path": "resources/views/backend/pages/roles/all_roles_permission.blade.php",
 			"bookmarks": [
 				{
-					"line": 37,
+					"line": 88,
 					"column": 70,
 					"label": "ancho de columna en th tabla usar clase de tabla responsive y wrap"
 				}
@@ -174,22 +184,22 @@
 			"path": "app/Http/Controllers/AdminController.php",
 			"bookmarks": [
 				{
-					"line": 149,
+					"line": 156,
 					"column": 47,
 					"label": "Asegurarnos que el value del select role venga con nombre y no id, asi me funciona a mi."
 				},
 				{
-					"line": 186,
+					"line": 193,
 					"column": 29,
 					"label": "spatie assignRole"
 				},
 				{
-					"line": 222,
+					"line": 229,
 					"column": 97,
 					"label": "path storage_path database backup"
 				},
 				{
-					"line": 247,
+					"line": 254,
 					"column": 52,
 					"label": "eliminar archivo"
 				}
@@ -252,6 +262,26 @@
 					"line": 159,
 					"column": 16,
 					"label": "pasar parametros con ajax regresamos resultados en json"
+				}
+			]
+		},
+		{
+			"path": "resources/views/index_control.blade.php",
+			"bookmarks": [
+				{
+					"line": 50,
+					"column": 4,
+					"label": "traer contenido a blade vista para mostrar"
+				}
+			]
+		},
+		{
+			"path": "resources/views/admin/admin_profile_view.blade.php",
+			"bookmarks": [
+				{
+					"line": 47,
+					"column": 28,
+					"label": "rol de usuario"
 				}
 			]
 		}

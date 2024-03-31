@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Artisan;
 class AdminController extends Controller
 {
 
+    // AdminDestroy
     public function AdminDestroy(Request $request){
         Auth::guard('web')->logout();
         $request->session()->invalidate();
@@ -36,11 +37,13 @@ class AdminController extends Controller
          return view('admin.admin_logout');
      }
 
+    //  AdminProfile
      public function AdminProfile(){
         // Para saber que usuario esta logueado
         $id = Auth::user()->id;
         $adminData = User::find($id);
-        return view('admin.admin_profile_view', compact('adminData'));
+        $allAdminUsers = User::latest()->get();
+        return view('admin.admin_profile_view', compact('adminData', 'allAdminUsers'));
     }
 
     // AdminProfileStore

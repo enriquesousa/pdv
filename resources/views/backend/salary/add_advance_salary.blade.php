@@ -1,6 +1,6 @@
 @extends('admin_dashboard')
-
 @section('admin')
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <div class="content">
@@ -9,24 +9,66 @@
         <div class="container-fluid">
 
             <!-- start page title -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box">
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Avance de Salario</a></li> --}}
-                            </ol>
-                        </div>
-                        <h4 class="page-title">Avance de Salario</h4>
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="{{ route('all.advance.salary') }}">Salarios</a></li>
+                            <li class="breadcrumb-item"><a href="#">Agregar Salario</a></li>
+                            <li class="breadcrumb-item active">Agregar</li>
+                        </ol>
                     </div>
+
+                    <h4 class="page-title">Agregar Avance de Salario</h4>
+
                 </div>
             </div>
-            <!-- end page title -->
+        </div>     
+        <!-- end page title -->
 
             <div class="row">
                 <div class="col-lg-8 col-xl-12">
                     <div class="card">
                         <div class="card-body">
+
+                             {{-- Botones --}}
+                            <div class="row mb-2">
+
+                                <div class="col-sm-4">
+                                    <div class="text-sm-start">
+                                        {{-- <button type="button" class="btn btn-info mb-2 me-1">
+                                            <i class="mdi mdi-format-list-bulleted">
+                                                Lista Avances de Salarios
+                                            </i>
+                                        </button> --}}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="text-sm-middle">
+                                        <a  href="{{ route('all.advance.salary') }}" 
+                                            class="btn btn-info mb-2">
+                                            <i class="mdi mdi-format-list-bulleted">
+                                                Avances de Salarios
+                                            </i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="text-sm-end">
+                                        {{-- <a  href="{{ route('add.advance.salary') }}" 
+                                            class="btn btn-primary mb-2">
+                                            <i class="mdi mdi-plus-circle me-1">
+                                                Agregar Salario
+                                            </i>
+                                        </a> --}}
+                                    </div>
+                                </div>
+
+                            </div>
 
                             <div class="tab-pane" id="settings">
 
@@ -212,13 +254,22 @@
 
                                         <!-- Guardar -->
                                         <div class="row">
+
                                             <div class="col-md-6">
-                                                <div class="text-end">
-                                                    <button type="submit"
-                                                        class="btn btn-success waves-effect waves-light mt-2"><i
-                                                            class="mdi mdi-content-save"></i> Guardar</button>
+                                                <div class="text-start">
+                                                    <button 
+                                                        type="submit"
+                                                        class="btn btn-primary waves-effect waves-light mt-2">
+                                                        <i class="mdi mdi-content-save"></i>
+                                                        Guardar
+                                                    </button>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-6">
+                                                
+                                            </div>
+
                                         </div>
                                 
                                     </form>
@@ -271,4 +322,5 @@
             document.getElementById("employee-select").disabled = document.getElementById("CheckBoxEmployees").checked;
         }
     </script>
+    
 @endsection

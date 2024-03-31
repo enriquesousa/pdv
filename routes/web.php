@@ -37,9 +37,17 @@ Route::get('/dashboard', function () {
     return view('index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard-control', function () {
-    return view('index_control');
-})->middleware(['auth', 'verified'])->name('dashboard_control');
+
+// PANEL DE CONTROL
+Route::group(['middleware' => ['permission:panel.control']], function () {
+
+    Route::get('/dashboard-control', function () {
+        return view('index_control');
+    })->middleware(['auth', 'verified'])->name('dashboard_control');    
+
+});
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -52,7 +60,7 @@ require __DIR__.'/auth.php';
 /*
 |--------------------------------------------------------------------------
 | Mis Rutas
-|--------------------------------------------------------------------------|
+|--------------------------------------------------------------------------
 */
 
 Route::get('/admin/logout', [AdminController::class, 'AdminDestroy'])->name('admin.logout');
@@ -181,7 +189,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     // POS - PDV
-    Route::group(['middleware' => ['permission:pdv.menu']], function () {
+    Route::group(['middleware' => ['permission:panel.pdv']], function () {
 
         Route::controller(PosController::class)->group( function () {
             Route::get('/pos', 'Pos')->name('pos');
@@ -207,9 +215,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/order/invoice-download/{order_id}', 'OrderInvoiceDownload');
 
         // Saldos pendientes
-        Route::get('/pending/due', 'PendingDue')->name('pending.due')->middleware('permission:vetas.menu');
-        Route::get('/order/due/{id}', 'OrderDueAjax')->middleware('permission:vetas.menu');
-        Route::post('/update/due','UpdateDue')->name('update.due')->middleware('permission:vetas.menu');
+        Route::get('/pending/due', 'PendingDue')->name('pending.due')->middleware('permission:ventas.pendientes');
+        Route::get('/order/due/{id}', 'OrderDueAjax')->middleware('permission:ventas.pendientes');
+        Route::post('/update/due','UpdateDue')->name('update.due')->middleware('permission:ventas.pendientes');
 
     });
 
@@ -270,18 +278,6 @@ Route::middleware(['auth'])->group(function () {
 
     
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

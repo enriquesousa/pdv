@@ -39,7 +39,21 @@
 
                         {{-- Nombre de Admin --}}
                         <h4 class="mb-0">{{ $adminData->name }}</h4>
+
+                        {{-- Email de Admin --}}
                         <p class="text-muted">{{ $adminData->email }}</p>
+
+                        {{-- Roles de Admin --}}
+                        <p>
+                            @foreach ($allAdminUsers as $key => $item)
+                                @if ($item->id == Auth::user()->id)
+                                    @foreach ($item->roles as $role)
+                                        <span class="badge rounded-pill bg-primary" style="font-size: 12px; font-weight: 500; align-items: center">{{ $role->name }}</span>
+                                    @endforeach
+                                @endif
+                            @endforeach
+                        </p>
+
 
                         <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Follow</button>
                         <button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Message</button>
@@ -51,7 +65,6 @@
                             <p class="text-muted mb-2 font-13"><strong>Teléfono:</strong><span class="ms-2">{{ $adminData->phone }}</span></p>
                         
                             <p class="text-muted mb-2 font-13"><strong>Correo:</strong> <span class="ms-2">{{ $adminData->email }}</span></p>
-                        
                             
                         </div>                                    
 
